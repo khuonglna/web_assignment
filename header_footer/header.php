@@ -60,6 +60,6 @@
             </li>
         </ul>
     </nav>
-    <div style="margin:auto;" class="container">                                                            
-    <img  src="https://www.cambridgeenglish.org/Images/test-your-english-banner-2019.jpg" alt="">
+    <div style="margin:auto;" class="container">
+        <img src="https://www.cambridgeenglish.org/Images/test-your-english-banner-2019.jpg" alt="">
     </div>

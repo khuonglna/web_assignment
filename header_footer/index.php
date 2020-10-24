@@ -5,8 +5,7 @@
 if (isset($_GET['page'])) {
     $page = $_GET['page'];
     include "$page.php";
-}
-else if (isset($_COOKIE["username"])){
+} else if (isset($_COOKIE["username"])) {
     echo "Welcome back!";
 }
 ?>
