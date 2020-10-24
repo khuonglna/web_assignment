@@ -25,11 +25,11 @@
                 <button class="btn btn-success" type="submit">Search</button>
             </form>
         </div>
-        <div class="navbar-collapse collapse w-100 order-3 dual-collapse2">
+        <div class="navbar-collapse collapse w-100 order-3 dual-collapse2" style="position:relative; height:50px">
             <ul class="navbar-nav ml-auto">
                 <li>
-                    <button class="btn" style="text-align:center;color:white;"><i class="far fa-user-circle" style='font-size:20px;color:white'></i> Sign up</button>
-                    <button class="btn" style="text-align:center;color:white;"><i class="fa fa-sign-in" style='font-size:20px;color:white'></i> Log in</button>
+                    <button class="btn" style="text-align:center;color:white;"><i class="far fa-user-circle" style='font-size:20px;color:white;'></i> Sign up</button>
+                    <button class="btn" style="text-align:center;color:white;margin-right: 20px;"><i class="fa fa-sign-in" style='font-size:20px;color:white;'></i> Log in</button>
                 </li>
             </ul>
         </div>
@@ -44,7 +44,7 @@
     </header>
 
     <nav style="margin-left:20%;margin-right:20%; margin-bottom:0px" class="navbar navbar-expand-sm bg-white navbar-white">
-        <a class="navbar-brand" href="#">HOME</a>
+        <a class="navbar-brand" href="#">Home</a>
         <ul class="navbar-nav">
             <!-- Test -->
             <li class="nav-item dropdown">

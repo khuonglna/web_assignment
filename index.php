@@ -1,6 +1,6 @@
 <!DOCTYPE html>
-<?php include 'header.php' ?>
-
+<?php include 'php/common/header.php' ?>
+<?php include 'php/common/home.php' ?>
 <?php
 if (isset($_GET['page'])) {
     $page = $_GET['page'];
@@ -10,4 +10,4 @@ if (isset($_GET['page'])) {
 }
 ?>
 
-<?php include 'footer.php' ?>
+<?php include 'php/common/footer.php' ?>
