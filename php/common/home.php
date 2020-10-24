@@ -25,9 +25,9 @@
 
 <body>
   <div class="container-fluid">
-    <div class="row justify-content-md-center">
+    <!-- <div class="row justify-content-md-center">
       <h1>Welcome to our online English test </h1>
-    </div>
+    </div> -->
 
     <div class="row justify-content-md-center">
       <div class="col col-lg-5">

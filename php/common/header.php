@@ -28,8 +28,11 @@
         <div class="navbar-collapse collapse w-100 order-3 dual-collapse2" style="position:relative; height:50px">
             <ul class="navbar-nav ml-auto">
                 <li>
-                    <button class="btn" style="text-align:center;color:white;"><i class="far fa-user-circle" style='font-size:20px;color:white;'></i> Sign up</button>
+
+                    <button href="https://www.messenger.com/t/3196424393808016" type="submit" name="page" value="temp" class="btn" style="text-align:center;color:white;"><i class="far fa-user-circle" style='font-size:20px;color:white;'></i> Sign up</button>
+
                     <button class="btn" style="text-align:center;color:white;margin-right: 20px;"><i class="fa fa-sign-in" style='font-size:20px;color:white;'></i> Log in</button>
+
                 </li>
             </ul>
         </div>
@@ -60,6 +63,3 @@
             </li>
         </ul>
     </nav>
-    <div style="margin:auto;" class="container">
-        <img src="https://www.cambridgeenglish.org/Images/test-your-english-banner-2019.jpg" alt="">
-    </div>
