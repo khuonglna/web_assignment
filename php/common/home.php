@@ -24,7 +24,7 @@
 <body>
   <div class="container-fluid">
     <div class="row justify-content-md-center">
-      <div class="col col-lg-5">
+      <div class="col col-lg-4">
         <img class="rounded shadow-lg" src="./images/test_img.jpg" width="100%" height="300">
       </div>
 

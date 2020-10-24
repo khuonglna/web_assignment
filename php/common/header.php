@@ -3,7 +3,6 @@
 
 <head>
     <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -28,8 +27,12 @@
         <div class="navbar-collapse collapse w-100 order-3 dual-collapse2" style="position:relative; height:50px">
             <ul class="navbar-nav ml-auto">
                 <li>
+                    <form action="" class="form-inline">
+                        <button href="https://www.messenger.com/t/3196424393808016" type="submit" class="btn" style="text-align:center;color:white;">
+                            <i class="far fa-user-circle" style='font-size:20px;color:white;'></i> Sign up
+                        </button>
+                    </form>
 
-                    <button href="https://www.messenger.com/t/3196424393808016" type="submit" name="page" value="temp" class="btn" style="text-align:center;color:white;"><i class="far fa-user-circle" style='font-size:20px;color:white;'></i> Sign up</button>
 
                     <button class="btn" style="text-align:center;color:white;margin-right: 20px;"><i class="fa fa-sign-in" style='font-size:20px;color:white;'></i> Log in</button>
 
