@@ -18,8 +18,7 @@
 <body style="margin:0;">
     <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
         <div class="navbar-collapse collapse w-100 order-1 order-md-0 dual-collapse2">
-            <form class="form-inline" action="index.php?page=login">
-                <!--REPLACE ACTION_PAGE.PHP-->
+            <form class="form-inline" action="index.php?page=home">
                 <input class="form-control mr-sm-2" type="text" placeholder="Search">
                 <button class="btn btn-success" type="submit">Search</button>
             </form>
@@ -27,12 +26,12 @@
         <div class="navbar-collapse collapse w-100 order-3 dual-collapse2" style="position:relative; height:50px">
             <ul class="navbar-nav ml-auto">
                 <li>
-                    <a href="http://facebook.com" class="btn btn-primary btn-lg" role="button">
+                    <a href="index.php?page=sign_up" class="btn btn-primary btn-lg" role="button">
                         <i class="far fa-user-circle" style='font-size:20px;color:white; margin-right: 10px;'></i>
                         Sign Up
                     </a>
 
-                    <a href="http://facebook.com" class="btn btn-primary btn-lg" role="button">
+                    <a href="index.php?page=login" class="btn btn-primary btn-lg" role="button">
                         <i class="fas fa-sign-in-alt" style='font-size:20px;color:white; margin-right: 10px;' ></i>
                         Login
                     </a>
@@ -50,7 +49,7 @@
     </header>
 
     <nav style="margin-left:20%;margin-right:20%; margin-bottom:0px" class="navbar navbar-expand-sm bg-white navbar-white">
-        <a class="navbar-brand" href="#">Home</a>
+        <a class="navbar-brand" href="index.php?page=home">Home</a>
         <ul class="navbar-nav">
             <!-- Test -->
             <li class="nav-item dropdown">

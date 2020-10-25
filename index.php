@@ -1,10 +1,15 @@
 <!DOCTYPE html>
 <?php include 'php/common/header.php' ?>
-<?php include 'php/common/home.php' ?>
 <?php
 if (isset($_GET['page'])) {
     $page = $_GET['page'];
-    include "$page.php";
+    if ($page == "login") {
+        include "php/common/login/$page.php";
+    } elseif ($page == "sign_up") {
+        include "php/common/sign_up/$page.php";
+    } elseif ($page == "home") {
+        include "php/common/$page.php";
+    } else include "$page.php";
 } else if (isset($_COOKIE["username"])) {
     echo "Welcome back!";
 }

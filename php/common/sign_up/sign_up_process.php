@@ -1,6 +1,6 @@
 <?php
     $severname = "localhost";
-    $password = "abcdef1234";
+    $password = "";
     $username = "root";
     $db = "web_assignment";
     $conn= mysqli_connect($severname, $username, $password, $db);
