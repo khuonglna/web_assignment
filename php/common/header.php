@@ -3,7 +3,6 @@
 
 <head>
     <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -19,17 +18,24 @@
 <body style="margin:0;">
     <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
         <div class="navbar-collapse collapse w-100 order-1 order-md-0 dual-collapse2">
-            <form class="form-inline" action="/action_page.php">
+            <form class="form-inline" action="index.php?page=login">
                 <!--REPLACE ACTION_PAGE.PHP-->
                 <input class="form-control mr-sm-2" type="text" placeholder="Search">
                 <button class="btn btn-success" type="submit">Search</button>
             </form>
         </div>
-        <div class="navbar-collapse collapse w-100 order-3 dual-collapse2">
+        <div class="navbar-collapse collapse w-100 order-3 dual-collapse2" style="position:relative; height:50px">
             <ul class="navbar-nav ml-auto">
                 <li>
-                    <button class="btn" style="text-align:center;color:white;"><i class="far fa-user-circle" style='font-size:20px;color:white'></i> Sign up</button>
-                    <button class="btn" style="text-align:center;color:white;"><i class="fa fa-sign-in" style='font-size:20px;color:white'></i> Log in</button>
+                    <a href="http://facebook.com" class="btn btn-primary btn-lg" role="button">
+                        <i class="far fa-user-circle" style='font-size:20px;color:white; margin-right: 10px;'></i>
+                        Sign Up
+                    </a>
+
+                    <a href="http://facebook.com" class="btn btn-primary btn-lg" role="button">
+                        <i class="fas fa-sign-in-alt" style='font-size:20px;color:white; margin-right: 10px;' ></i>
+                        Login
+                    </a>
                 </li>
             </ul>
         </div>
@@ -44,7 +50,7 @@
     </header>
 
     <nav style="margin-left:20%;margin-right:20%; margin-bottom:0px" class="navbar navbar-expand-sm bg-white navbar-white">
-        <a class="navbar-brand" href="#">HOME</a>
+        <a class="navbar-brand" href="#">Home</a>
         <ul class="navbar-nav">
             <!-- Test -->
             <li class="nav-item dropdown">
@@ -60,6 +66,3 @@
             </li>
         </ul>
     </nav>
-    <div style="margin:auto;" class="container">                                                            
-    <img  src="https://www.cambridgeenglish.org/Images/test-your-english-banner-2019.jpg" alt="">
-    </div>
