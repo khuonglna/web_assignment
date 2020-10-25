@@ -18,7 +18,7 @@
 <body style="margin:0;">
     <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
         <div class="navbar-collapse collapse w-100 order-1 order-md-0 dual-collapse2">
-            <form class="form-inline" action="/action_page.php">
+            <form class="form-inline" action="index.php?page=login">
                 <!--REPLACE ACTION_PAGE.PHP-->
                 <input class="form-control mr-sm-2" type="text" placeholder="Search">
                 <button class="btn btn-success" type="submit">Search</button>
@@ -27,15 +27,15 @@
         <div class="navbar-collapse collapse w-100 order-3 dual-collapse2" style="position:relative; height:50px">
             <ul class="navbar-nav ml-auto">
                 <li>
-                    <form action="" class="form-inline">
-                        <button href="https://www.messenger.com/t/3196424393808016" type="submit" class="btn" style="text-align:center;color:white;">
-                            <i class="far fa-user-circle" style='font-size:20px;color:white;'></i> Sign up
-                        </button>
-                    </form>
+                    <a href="http://facebook.com" class="btn btn-primary btn-lg" role="button">
+                        <i class="far fa-user-circle" style='font-size:20px;color:white; margin-right: 10px;'></i>
+                        Sign Up
+                    </a>
 
-
-                    <button class="btn" style="text-align:center;color:white;margin-right: 20px;"><i class="fa fa-sign-in" style='font-size:20px;color:white;'></i> Log in</button>
-
+                    <a href="http://facebook.com" class="btn btn-primary btn-lg" role="button">
+                        <i class="fas fa-sign-in-alt" style='font-size:20px;color:white; margin-right: 10px;' ></i>
+                        Login
+                    </a>
                 </li>
             </ul>
         </div>
