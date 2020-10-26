@@ -1,6 +1,6 @@
-<!DOCTYPE html>
+<!-- <!DOCTYPE html> -->
 <?php include('sign_up_process.php') ?>
-<html lang="en">
+<!-- <html lang="en">
 
 <head>
     <link rel="stylesheet" href="../css/webpage.css">
@@ -10,10 +10,10 @@
     <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.8/css/all.css">
-</head>
+</head> -->
 
 <body>
-    <div class="container">
+    <div class="container h-30">
         <div class="row justify-content-center align-items-center h-100">
             <div class="col-4 align-items-center">
                 <div class="card">
@@ -48,6 +48,6 @@
             </div>
         </div>
     </div>
-</body>
+<!-- </body>
 
-</html>
+</html> -->
