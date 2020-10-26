@@ -2,7 +2,7 @@
         <div class="navbar fixed-bottom">
                 <div class="container">
                         <div class="row w-100">
-                                <div class="col-sm">
+                                <div class="col-sw w-10">
                                         <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
                                                 <a class="nav-link" href="index.php?page=home">Home</a>
                                                 <a class="nav-link" href="#v-pills-profile">Profile</a>
@@ -11,11 +11,11 @@
                                         </div>
 
                                 </div>
-                                <div class="col-sm" style="text-align:center;">
+                                <div class="col-sm w-80" style="text-align:center;">
                                         <div class="col h-50"></div>
                                         <div class="col h-50">Copyright@2020 HCMUT</div>
                                 </div>
-                                <div class="col-sm">
+                                <div class="col-sm w-10">
 
                                 </div>
                         </div>
