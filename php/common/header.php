@@ -15,14 +15,13 @@
 
 </head>
 
-<body style="margin:0;">
-    <!-- <div class="container"> -->
-        <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
-
-            <div class="navbar-collapse collapse w-100 order-3 dual-collapse2" style="position:relative; height:50px">
-                <ul class="navbar-nav ml-auto">
-                    <li>
-                        <a href="index.php?page=sign_up" class="btn btn-primary btn-lg" role="button">
+<body>
+    <header margin=0>
+        <div class="container-fluid">
+            <div class="col">
+                <div class="row bg-dark d-flex flex-row-reverse">
+                    <li style="margin-top: 10px; margin-bottom:10px; margin-right:10px">
+                        <a href="index.php?page=sign_up" class="btn btn-primary btn-lg " role="button">
                             <i class="far fa-user-circle" style='font-size:20px;color:white; margin-right: 10px;'></i>
                             Sign Up
                         </a>
@@ -32,25 +31,33 @@
                             Login
                         </a>
                     </li>
-                </ul>
-            </div>
-        </nav>
-
-
-        <header style="margin-top: 0px; margin-left:5%; margin-right:5%; text-align:left;">
-            <div class="container w-100">
-            <a href="index.php?page=home" class="btn" role="button">
-                <img width="784px" height="138px" src="images/logo.PNG" alt="">
-            </a>
-            </div>
-        </header>
-        <div class="container w-100">
-            <div class="topnav">
-                <a class="active" href="index.php?page=home">Home</a>
-                <a href="#news">Test</a>
-                <a href="#contact">About Us</a>
+                </div>
+                <div class="row">
+                    <div class="col"> </div>
+                    <div class="col-7">
+                        <div class="container-fluid">
+                            <a href="index.php?page=home" class="btn" role="button">
+                                <img  src="images/logo.PNG" class="img-fluid" alt="Responsive image">
+                            </a>
+                        </div>
+                    </div>
+                    <div class="col"> </div>
+                </div>
+                <div class="row">
+                    <div class="col"> </div>
+                    <div class="col-7">
+                        <div class="container w-100">
+                            <div class="topnav">
+                                <a class="active" href="index.php?page=home">Home</a>
+                                <a href="#news">Test</a>
+                                <a href="#contact">About Us</a>
+                            </div>
+                        </div>
+                        <div class="container" style="margin-top:10px">
+                        </div>
+                    </div>
+                    <div class="col"> </div>
+                </div>
             </div>
         </div>
-        <div class="container" style="margin-top:10px">
-        </div>
-    <!-- </div> -->
+    </header>
