@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!-- <!DOCTYPE html>
 <html>
 
 <head>
@@ -7,7 +7,7 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-</head>
+</head> -->
 
 <style> 
   .my-sidebar {
@@ -16,7 +16,6 @@
   } 
 </style>
 
-<body>
   <div class="container">
     <div class="row justify-content-md-center">
       <div id="demo" class="text-center col my-sidebar carousel slide" data-ride="carousel">
@@ -56,8 +55,27 @@
         <a class="carousel-control-next" href="#demo" data-slide="next">
           <span class="carousel-control-next-icon"></span>
         </a>
-
       </div>
+
+      <div class="text-justify col my-sidebar">
+        <div class="row">
+            <h2>Welcome to our online English test </h2>
+          </div>
+        <div class="row">
+          <p>
+            We are here to help you learn and improve your English.<br>
+            We have lots of exam with different topics and levels for you to test your English.<br>
+            Click "Test" to do the exam now!
+          </p>
+          </div>
+      </div>
+    </div>
+  </div>
+
+  
+<!-- 
+<div class="container" style="margin-top:30px">
+</div>
 
       <div class="text-justify col my-sidebar">
         <div class="row">
@@ -73,6 +91,7 @@
       </div>
     </div>
   </div>
-</body>
+</div> -->
+<!-- </body>
 
-</html>
+</html> -->

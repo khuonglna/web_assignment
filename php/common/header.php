@@ -17,12 +17,7 @@
 
 <body style="margin:0;">
     <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
-        <div class="navbar-collapse collapse w-100 order-1 order-md-0 dual-collapse2">
-            <form class="form-inline" action="index.php?page=home">
-                <input class="form-control mr-sm-2" type="text" placeholder="Search">
-                <button class="btn btn-success" type="submit">Search</button>
-            </form>
-        </div>
+
         <div class="navbar-collapse collapse w-100 order-3 dual-collapse2" style="position:relative; height:50px">
             <ul class="navbar-nav ml-auto">
                 <li>
@@ -32,7 +27,7 @@
                     </a>
 
                     <a href="index.php?page=login" class="btn btn-primary btn-lg" role="button">
-                        <i class="fas fa-sign-in-alt" style='font-size:20px;color:white; margin-right: 10px;' ></i>
+                        <i class="fas fa-sign-in-alt" style='font-size:20px;color:white; margin-right: 10px;'></i>
                         Login
                     </a>
                 </li>
@@ -41,27 +36,20 @@
     </nav>
 
 
-    <header style="margin-top: 0px; margin-left:10%; margin-right:10%; text-align:left; display:flex;">
-        <div class="container">
-            <img width="150px" height="150px" src="https://d3av3o1z276gfa.cloudfront.net/images/place/E4VUSvgU7jj78OxlCe2aUr7AojaXmrf7.jpeg" alt="">
-            <a style="float:top;">Banner</a>
+    <header style="margin-top: 0px; margin-left:5%; margin-right:5%; text-align:left;">
+        <div class="container w-100">
+        <a href="index.php?page=home" class="btn" role="button">
+            <img width="784px" height="138px" src="images/logo.PNG" alt="">
+        </a>
         </div>
     </header>
-
-    <nav style="margin-left:20%;margin-right:20%; margin-bottom:0px" class="navbar navbar-expand-sm bg-white navbar-white">
-        <a class="navbar-brand" href="index.php?page=home">Home</a>
-        <ul class="navbar-nav">
-            <!-- Test -->
-            <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle;" href="#" id="navbardrop" data-toggle="dropdown">Test</a>
-                <div class="dropdown-menu">
-                    <a class="dropdown-item" href="#">Link 1</a>
-                    <a class="dropdown-item" href="#">Link 2</a>
-                    <a class="dropdown-item" href="#">Link 3</a>
-                </div>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="#">About Us</a>
-            </li>
-        </ul>
-    </nav>
+    <div class="container w-100">
+        <div class="topnav">
+            <a class="active" href="index.php?page=home">Home</a>
+            <a href="#news">Test</a>
+            <a href="#contact">About Us</a>
+        </div>
+    </div>
+    <div class="container" style="margin-top:10px">
+    </div>
+    
