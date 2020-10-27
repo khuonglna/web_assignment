@@ -1,51 +1,27 @@
-<footer style="margin-bottom: 0px; position: fixed; bottom: 0; margin-left:10%; margin-right:10%; text-align:center">
-        <a> Contact Us:</a>
-        <div class="container">
-                <a href="#" class="fa fa-facebook" style="  padding: 20px;
-                                                    font-size: 30px;
-                                                    width: 50px;
-                                                    text-align: center;
-                                                    text-decoration: none;
-                                                    margin: 5px 2px;
-                                                    background: #3B5998;
-                                                    color: white;"></a>
-                <a href="#" class="fa fa-twitter" style="  padding: 20px;
-                                                    font-size: 30px;
-                                                    width: 50px;
-                                                    text-align: center;
-                                                    text-decoration: none;
-                                                    margin: 5px 2px;
-                                                    background: #55ACEE;
-                                                    color: white;"></a>
-                <a href="#" class="fa fa-google" style="  padding: 20px;
-                                                    font-size: 30px;
-                                                    width: 50px;
-                                                    text-align: center;
-                                                    text-decoration: none;
-                                                    margin: 5px 2px;
-                                                    background: #dd4b39;
-                                                    color: white;"></a>
-                <a href="#" class="fa fa-linkedin" style="  padding: 20px;
-                                                    font-size: 30px;
-                                                    width: 50px;
-                                                    text-align: center;
-                                                    text-decoration: none;
-                                                    margin: 5px 2px;
-                                                    background: #007bb5;
-                                                    color: white;"></a>
-                <a href="#" class="fa fa-instagram" style="  padding: 15px;
-                                                    padding: 20px;
-                                                    font-size: 30px;
-                                                    width: 50px;
-                                                    text-align: center;
-                                                    text-decoration: none;
-                                                    margin: 5px 2px;
-                                                    background: #125688;
-                                                    color: white;"></a>
+<footer style="margin-bottom: 0px; position:relative; bottom: 0; margin-left:10%; margin-right:10%; text-align:center">
+        <div class="navbar fixed-bottom">
+                <div class="container">
+                        <div class="row w-100">
+                                <div class="col-sm">
+                                        <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+                                                <a class="nav-link" href="index.php?page=home">Home</a>
+                                                <a class="nav-link" href="#v-pills-profile">Profile</a>
+                                                <a class="nav-link" href="#v-pills-messages">Messages</a>
+                                                <a class="nav-link" href="#v-pills-settings">Settings</a>
+                                        </div>
 
+                                </div>
+                                <div class="col-sm" style="text-align:center;">
+                                        <div class="col h-50"></div>
+                                        <div class="col h-50">Copyright@2020 HCMUT</div>
+                                </div>
+                                <div class="col-sm">
+
+                                </div>
+                        </div>
+                </div>
         </div>
 
-        <a>@Copyright @2020 TEAM_HCMUT</a>
 </footer>
 </body>
 
