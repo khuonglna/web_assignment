@@ -36,13 +36,14 @@
     </nav>
 
 
-    <header style="margin-top: 0px; margin-left:10%; margin-right:10%; text-align:left; display:flex;">
-        <div class="container">
-            <img width="150px" height="150px" src="https://d3av3o1z276gfa.cloudfront.net/images/place/E4VUSvgU7jj78OxlCe2aUr7AojaXmrf7.jpeg" alt="">
-            <a style="float:top;">Banner</a>
+    <header style="margin-top: 0px; margin-left:5%; margin-right:5%; text-align:left;">
+        <div class="container w-100">
+        <a href="index.php?page=home" class="btn" role="button">
+            <img width="784px" height="138px" src="images/logo.PNG" alt="">
+        </a>
         </div>
     </header>
-    <div class="container">
+    <div class="container w-100">
         <div class="topnav">
             <a class="active" href="index.php?page=home">Home</a>
             <a href="#news">Test</a>
@@ -50,37 +51,5 @@
         </div>
     </div>
     <div class="container" style="margin-top:10px">
-        <div id="demo" class="carousel slide" data-ride="carousel">
-
-            <!-- Indicators -->
-            <ul class="carousel-indicators">
-                <li data-target="#demo" data-slide-to="0" class="active"></li>
-                <li data-target="#demo" data-slide-to="1"></li>
-                <li data-target="#demo" data-slide-to="2"></li>
-            </ul>
-
-            <!-- The slideshow -->
-            <div class="carousel-inner">
-                <div class="carousel-item active">
-                    <img src="https://artsci.inl.gov/Slider%20Images/2W-5.color2small1300x400.jpg" alt="Los Angeles" width="1100" height="500">
-                </div>
-                <div class="carousel-item">
-                    <img src="https://artsci.inl.gov/Slider%20Images/MC13-7R-6colorbsmall1300x400.jpg" alt="Chicago" width="1100" height="500">
-                </div>
-                <div class="carousel-item">
-                    <img src="https://artsci.inl.gov/Slider%20Images/TO-651-S6_FSE_whole-sample1300x400.jpg" alt="New York" width="1100" height="500">
-                </div>
-            </div>
-
-            <!-- Left and right controls -->
-            <a class="carousel-control-prev" href="#demo" data-slide="prev">
-                <span class="carousel-control-prev-icon"></span>
-            </a>
-            <a class="carousel-control-next" href="#demo" data-slide="next">
-                <span class="carousel-control-next-icon"></span>
-            </a>
-        </div>
-
-        <div class="container" style="margin-top:30px">
-        </div>
     </div>
+    
