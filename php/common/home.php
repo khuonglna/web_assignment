@@ -19,9 +19,11 @@
     font-size: 20px;
   }
 </style>
+<div style="position: relative;">
 
+</div>
 
-<div class="container">
+<div class="container content">
   <div id="demo" class="carousel slide" data-ride="carousel">
 
     <ul class="carousel-indicators">

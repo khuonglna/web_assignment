@@ -16,40 +16,41 @@
 </head>
 
 <body style="margin:0;">
-    <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+    <!-- <div class="container"> -->
+        <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
 
-        <div class="navbar-collapse collapse w-100 order-3 dual-collapse2" style="position:relative; height:50px">
-            <ul class="navbar-nav ml-auto">
-                <li>
-                    <a href="index.php?page=sign_up" class="btn btn-primary btn-lg" role="button">
-                        <i class="far fa-user-circle" style='font-size:20px;color:white; margin-right: 10px;'></i>
-                        Sign Up
-                    </a>
+            <div class="navbar-collapse collapse w-100 order-3 dual-collapse2" style="position:relative; height:50px">
+                <ul class="navbar-nav ml-auto">
+                    <li>
+                        <a href="index.php?page=sign_up" class="btn btn-primary btn-lg" role="button">
+                            <i class="far fa-user-circle" style='font-size:20px;color:white; margin-right: 10px;'></i>
+                            Sign Up
+                        </a>
 
-                    <a href="index.php?page=login" class="btn btn-primary btn-lg" role="button">
-                        <i class="fas fa-sign-in-alt" style='font-size:20px;color:white; margin-right: 10px;'></i>
-                        Login
-                    </a>
-                </li>
-            </ul>
-        </div>
-    </nav>
+                        <a href="index.php?page=login" class="btn btn-primary btn-lg" role="button">
+                            <i class="fas fa-sign-in-alt" style='font-size:20px;color:white; margin-right: 10px;'></i>
+                            Login
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
 
 
-    <header style="margin-top: 0px; margin-left:5%; margin-right:5%; text-align:left;">
+        <header style="margin-top: 0px; margin-left:5%; margin-right:5%; text-align:left;">
+            <div class="container w-100">
+            <a href="index.php?page=home" class="btn" role="button">
+                <img width="784px" height="138px" src="images/logo.PNG" alt="">
+            </a>
+            </div>
+        </header>
         <div class="container w-100">
-        <a href="index.php?page=home" class="btn" role="button">
-            <img width="784px" height="138px" src="images/logo.PNG" alt="">
-        </a>
+            <div class="topnav">
+                <a class="active" href="index.php?page=home">Home</a>
+                <a href="#news">Test</a>
+                <a href="#contact">About Us</a>
+            </div>
         </div>
-    </header>
-    <div class="container w-100">
-        <div class="topnav">
-            <a class="active" href="index.php?page=home">Home</a>
-            <a href="#news">Test</a>
-            <a href="#contact">About Us</a>
+        <div class="container" style="margin-top:10px">
         </div>
-    </div>
-    <div class="container" style="margin-top:10px">
-    </div>
-    
+    <!-- </div> -->
