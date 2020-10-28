@@ -57,13 +57,13 @@
   
         <a class="carousel-control-prev" href="#slideshow" data-slide="prev">
           <!-- <span class="carousel-control-prev-icon"></span> -->
-          <!-- <i style="color:#000; font-size:30px;" class="fas fa-arrow-alt-circle-left"></i>
-          <span class="sr-only">Previous</span> -->
+          <i style="color:#000; font-size:30px;" class="fas fa-arrow-alt-circle-left"></i>
+          <span class="sr-only">Previous</span>
         </a>
         <a class="carousel-control-next" href="#slideshow" data-slide="next">
           <!-- <span class="carousel-control-next-icon"></span> -->
-          <!-- <i style="color:#000; font-size:30px" class="fas fa-arrow-alt-circle-right"></i>
-          <span class="sr-only">Next</span> -->
+          <i style="color:#000; font-size:30px" class="fas fa-arrow-alt-circle-right"></i>
+          <span class="sr-only">Next</span>
         </a>
       </div>
     </div>

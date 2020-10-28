@@ -1,5 +1,6 @@
 body {
   font-family: Arial, Helvetica, sans-serif;
+  height: 100%;
 }
 .topnav {
   overflow: hidden;
@@ -43,3 +44,8 @@ body {
   height: 100%;
 } */
 
+.content {
+  position: relative;
+  min-height: 460px;
+  width: 100%;
+}
