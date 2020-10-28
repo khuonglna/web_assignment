@@ -26,8 +26,20 @@ body {
   border-bottom: 3px solid blue;
   text-decoration: none;
 }
-.carousel-inner img {
+
+.home-image-sidebar {
+  -ms-flex: 0 0 700px;
+  flex: 0 0 700px;
+} 
+
+.home-text-sidebar {
+  -ms-flex: 0 0 400px;
+  flex: 0 0 400px;
+}
+
+
+/* .carousel-inner img {
   width: 100%;
   height: 100%;
-}
+} */
 
