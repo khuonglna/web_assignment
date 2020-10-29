@@ -9,6 +9,8 @@ if (isset($_GET['page'])) {
         include "php/common/sign_up/$page.php";
     } elseif ($page == "home") {
         include "php/common/$page.php";
+    } elseif ($page == "test") {
+        include "php/component/$page/$page.php";
     } else include "$page.php";
 } else if (isset($_COOKIE["username"])) {
     echo "Welcome back!";
