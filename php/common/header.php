@@ -46,7 +46,7 @@
         </header>
         <div class="container w-100">
             <div class="topnav">
-                <a class="active" href="index.php?page=home">Home</a>
+                <a href="index.php?page=home">Home</a>
                 <a href="index.php?page=test">Test</a>
                 <a href="#contact">About Us</a>
             </div>

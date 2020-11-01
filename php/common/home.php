@@ -9,7 +9,7 @@
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </head> -->
 
-  <div class="container">
+  <div class="container content">
       <div id="slideshow" class="carousel slide" data-ride="carousel">
         <ul class="carousel-indicators">
           <li data-target="#slideshow" data-slide-to="0" class="active"></li>
