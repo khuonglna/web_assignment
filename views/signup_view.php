@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <body>
-    <div class="container h-100" style="border: 1px solid black;">
+    <div class="container h-100 content">
         <div class="row justify-content-center align-items-center h-100" >
             <div class="col-4 align-items-center">
             <div class="card" >
