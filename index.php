@@ -1,20 +1,24 @@
 <!DOCTYPE html>
-<?php include 'php/common/header.php' ?>
-<?php
-if (isset($_GET['page'])) {
-    $page = $_GET['page'];
-    if ($page == "login") {
-        include "php/common/login/$page.php";
-    } elseif ($page == "sign_up") {
-        include "php/common/sign_up/$page.php";
-    } elseif ($page == "home") {
-        include "php/common/$page.php";
-    } elseif ($page == "test") {
-        include "php/component/$page/$page.php";
-    } else include "$page.php";
-} else if (isset($_COOKIE["username"])) {
-    echo "Welcome back!";
-}
-?>
+<?php 
+    include 'views/header.php'; 
 
-<?php include 'php/common/footer.php' ?>
+    if (isset($_GET['page'])) {
+        $page = $_GET['page'];
+        if ($page == "login") {
+            include "php/common/login/$page.php";
+        } 
+        elseif ($page == "sign_up") {
+            $controller = isset($_GET['controller'])? $_GET['controller'].'Controller' : 'UserController' ;
+            $action = isset($_GET['action'])?$_GET['action']: 'getUser' ;
+
+            require_once('controllers/signup_controller.php');
+            $usercontroller = new $controller();
+            $usercontroller-> $action();
+        } 
+        elseif ($page == "home") {
+            include "views/$page.php";
+        } 
+        else include "$page.php";
+    } 
+    include 'views/footer.php'; 
+?>
