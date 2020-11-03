@@ -3,7 +3,7 @@
 
 <head>
     <title>English Test Site</title>
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="assets/css/style.css">
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
@@ -40,13 +40,13 @@
         <header style="margin-top: 0px; margin-left:5%; margin-right:5%; text-align:left;">
             <div class="container w-100">
             <a href="index.php?page=home" class="btn" role="button">
-                <img width="784px" height="138px" src="images/logo.PNG" alt="">
+                <img width="784px" height="138px" src="assets/images/logo.PNG" alt="">
             </a>
             </div>
         </header>
         <div class="container w-100">
             <div class="topnav">
-                <a class="active" href="index.php?page=home">Home</a>
+                <a href="index.php?page=home">Home</a>
                 <a href="index.php?page=test">Test</a>
                 <a href="#contact">About Us</a>
             </div>
