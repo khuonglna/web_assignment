@@ -25,7 +25,7 @@ class Question
 
 class QuestionModel extends DbModel
 {
-    function queryQuestionList($category, $difficulty)
+    function queryQuestionList($category, $level)
     {
         $questionList = array();
         $conn = $this->connect();
@@ -34,7 +34,7 @@ class QuestionModel extends DbModel
                     FROM 
                         QUESTION
                     WHERE 
-                        _LEVEL = $ category AND Q_CATEGORY = $ difficulty";
+                        _LEVEL = $ category AND Q_CATEGORY = $level";
         $res = mysqli_query($conn, $sql);
         if (mysqli_num_rows($res) > 0) {
             while ($row = mysqli_fetch_row($res)) {
