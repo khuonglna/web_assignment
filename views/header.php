@@ -13,16 +13,32 @@
     <script src='https://kit.fontawesome.com/a076d05399.js'></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
+    <script type="text/javascript">
+        $(function() {
+            $("a").click(function() {
+                $("a").each(function() {
+                    $(this).removeClass("active");
+                });
+                $(this).addClass("active");
+            });
+        });
+    </script>
+
+    <script type="text/javascript">
+        function showStuff(id) {
+            var element = document.getElementById("test_navtab");
+            element.style.display = "none";
+        }
+    </script>
 </head>
 
 <body style="margin:0;">
-    <!-- <div class="container"> -->
-        <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
-
-            <div class="navbar-collapse collapse w-100 order-3 dual-collapse2" style="position:relative; height:50px">
-                <ul class="navbar-nav ml-auto">
-                    <li>
-                        <a href="index.php?page=sign_up" class="btn btn-primary btn-lg" role="button">
+<header margin=0>
+        <div class="container-fluid">
+            <div class="col">
+                <div class="row bg-dark d-flex flex-row-reverse">
+                    <li style="margin-top: 10px; margin-bottom:10px; margin-right:10px">
+                        <a href="index.php?page=sign_up" class="btn btn-primary btn-lg " role="button">
                             <i class="far fa-user-circle" style='font-size:20px;color:white; margin-right: 10px;'></i>
                             Sign Up
                         </a>
@@ -32,25 +48,35 @@
                             Login
                         </a>
                     </li>
-                </ul>
-            </div>
-        </nav>
-
-
-        <header style="margin-top: 0px; margin-left:5%; margin-right:5%; text-align:left;">
-            <div class="container w-100">
-            <a href="index.php?page=home" class="btn" role="button">
-                <img width="784px" height="138px" src="assets/images/logo.PNG" alt="">
-            </a>
-            </div>
-        </header>
-        <div class="container w-100">
-            <div class="topnav">
-                <a href="index.php?page=home">Home</a>
-                <a href="index.php?page=test">Test</a>
-                <a href="#contact">About Us</a>
+                </div>
+                <div class="row">
+                    <div class="col"> </div>
+                    <div class="col-7">
+                        <div class="container-fluid">
+                            <a href="index.php?page=home" class="btn" role="button">
+                                <img src="assets/images/logo.PNG" class="img-fluid" alt="Responsive image">
+                            </a>
+                        </div>
+                    </div>
+                    <div class="col"> </div>
+                </div>
+                <div class="row" id="nav_row">
+                    <div class="col"> </div>
+                    <div class="col-7" id="nav_col">
+                        <div class="container w-100" id="nav_container">
+                            <div class="topnav" id="nav_menu">
+                                <a class="active" id="home_navtab" href="index.php?page=home">Home</a>
+                                <!-- <a id="test_navtab" href="#news">Test</a> -->
+                                <a id="info_navtab" href="#contact">About Us</a>
+                            </div>
+                        </div>
+                        <div class="container" style="margin-top:10px">
+                        </div>
+                    </div>
+                    <div class="col"> </div>
+                </div>
             </div>
         </div>
-        <div class="container" style="margin-top:10px">
-        </div>
-    <!-- </div> -->
+    </header>
+
+    <script src="js/roles.js"></script>
