@@ -2,7 +2,7 @@
 	class DbModel 
 	{
         private $severname = "localhost";
-        private $password = "abcdef1234";
+        private $password = "";
         private $username = "root";
         private $db = "web_assignment"; 
 		public function connect(){

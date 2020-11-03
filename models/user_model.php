@@ -1,5 +1,13 @@
 <?php 
-	require_once('db_model.php');
+    require_once('db_model.php');
+    
+    class User {
+        private $username;
+        private $userId;
+        private $role;
+        private $result = array();
+    }
+
 	class UserModel extends DbModel
 	{
         public function signup($username , $password)
