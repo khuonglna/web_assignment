@@ -18,6 +18,9 @@
         elseif ($page == "home") {
             include "views/$page.php";
         } 
+        elseif ($page == "test") {
+            include "php/component/test/$page.php";
+        } 
         else include "$page.php";
     } 
     include 'views/footer.php'; 

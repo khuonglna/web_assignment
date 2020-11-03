@@ -44,5 +44,6 @@ class QuestionModel extends DbModel
                 $questionList[] = $question;
             }
         }
+        return $questionList;
     }
 }
