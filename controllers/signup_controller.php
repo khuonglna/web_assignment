@@ -9,7 +9,7 @@
             return $data;
         }
 
-		public function getUser(){
+		public function getUser() {
 			$username = isset($_POST['name'])? $_POST['name']: '' ;
 			$password = isset($_POST['pass'])? $_POST['pass']: '' ;
 			if ($password != '' && $username != '' ) {
@@ -20,7 +20,7 @@
                 } else {
 				 	require_once('views/signup_view.php');
                 }
-			} else{
+			} else {
 				require_once('views/signup_view.php');
 			}
 		}
