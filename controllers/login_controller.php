@@ -11,20 +11,19 @@
 
 		public function getUser() {
 			$username = isset($_POST['name'])? $_POST['name']: '' ;
-			$password = isset($_POST['pass'])? $_POST['pass']: '' ;
+			$password = md5(isset($_POST['pass'])? $_POST['pass']: '');
 			if ($password != '' && $username != '' ) {
 				$usermodel = new UserModel();
-                $user = $usermodel->signup($username , $password);
+                $user = $usermodel->login($username , $password);
                 if ($user) {
-					require_once('views/signup_view.php');
-					echo "sign up success";
+					require_once('views/login_view.php');
+					$_SESSION["role"] = mysqli_fetch_assoc($user)["role"];
+					echo $_SESSION["role"];
                 } else {
-					 require_once('views/signup_view.php');
-					 echo "sign up failed";
+				 	require_once('views/login_view.php');
                 }
 			} else {
-				require_once('views/signup_view.php');
-				echo "invalid";
+				require_once('views/login_view.php');
 			}
 		}
 	} 

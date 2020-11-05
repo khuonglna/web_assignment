@@ -33,6 +33,7 @@
 </head>
 
 <body style="margin:0;">
+<?php session_start();?>
 <header margin=0>
         <div class="container-fluid">
             <div class="col">
@@ -81,4 +82,4 @@
         </div>
     </header>
 
-    <script src="js/roles.js"></script>
+    <script src="views/js/roles.js"></script>

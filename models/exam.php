@@ -2,9 +2,9 @@
 class Exam
 {
     private $score;
-    private $questionList = array();
+    private $questionList;
 
-    private function calculateScore()
-    {
+    public function __construct(array $questionList) {
+        $this->questionList = $questionList;
     }
 }

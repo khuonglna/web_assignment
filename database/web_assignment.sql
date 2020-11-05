@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 29, 2020 at 02:55 PM
+-- Generation Time: Nov 05, 2020 at 06:10 AM
 -- Server version: 10.4.14-MariaDB
 -- PHP Version: 7.4.10
 
@@ -246,18 +246,21 @@ INSERT INTO `question` (`q_id`, `q_level`, `q_category`, `q_text`) VALUES
 
 CREATE TABLE `users` (
   `username` text NOT NULL,
-  `password` text NOT NULL
+  `password` text NOT NULL,
+  `role` int(1) NOT NULL DEFAULT 1
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `users`
 --
 
-INSERT INTO `users` (`username`, `password`) VALUES
-('tienanh', 'ea985e09f5a56a18df47f0b3262a47da'),
-('tienanh2', 'ea985e09f5a56a18df47f0b3262a47da'),
-('tienanh3', '202cb962ac59075b964b07152d234b70'),
-('tien', 'c4ca4238a0b923820dcc509a6f75849b');
+INSERT INTO `users` (`username`, `password`, `role`) VALUES
+('tienanh', 'ea985e09f5a56a18df47f0b3262a47da', 1),
+('tienanh2', 'ea985e09f5a56a18df47f0b3262a47da', 1),
+('tienanh3', '202cb962ac59075b964b07152d234b70', 1),
+('tien', 'c4ca4238a0b923820dcc509a6f75849b', 1),
+('admin', '21232f297a57a5a743894a0e4a801fc3', 3),
+('staff', '1253208465b1efa876f982d8a9e73eef', 2);
 
 --
 -- Indexes for dumped tables
@@ -267,7 +270,8 @@ INSERT INTO `users` (`username`, `password`) VALUES
 -- Indexes for table `answer`
 --
 ALTER TABLE `answer`
-  ADD PRIMARY KEY (`a_id`);
+  ADD PRIMARY KEY (`a_id`),
+  ADD KEY `q_id` (`q_id`);
 
 --
 -- Indexes for table `category`
@@ -279,7 +283,8 @@ ALTER TABLE `category`
 -- Indexes for table `question`
 --
 ALTER TABLE `question`
-  ADD PRIMARY KEY (`q_id`);
+  ADD PRIMARY KEY (`q_id`),
+  ADD KEY `q_category` (`q_category`);
 
 --
 -- AUTO_INCREMENT for dumped tables
@@ -302,6 +307,22 @@ ALTER TABLE `category`
 --
 ALTER TABLE `question`
   MODIFY `q_id` int(3) NOT NULL AUTO_INCREMENT COMMENT 'question id', AUTO_INCREMENT=41;
+
+--
+-- Constraints for dumped tables
+--
+
+--
+-- Constraints for table `answer`
+--
+ALTER TABLE `answer`
+  ADD CONSTRAINT `answer_ibfk_1` FOREIGN KEY (`q_id`) REFERENCES `question` (`q_id`);
+
+--
+-- Constraints for table `question`
+--
+ALTER TABLE `question`
+  ADD CONSTRAINT `question_ibfk_1` FOREIGN KEY (`q_category`) REFERENCES `category` (`c_id`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
