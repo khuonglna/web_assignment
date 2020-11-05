@@ -1,4 +1,3 @@
-
 var ajax = new XMLHttpRequest();
 var method = "GET";
 var url = "views/test.php"
