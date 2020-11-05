@@ -18,8 +18,14 @@
         elseif ($page == "home") {
             include "views/$page.php";
         } 
-        elseif ($page == "test") {
-            include "php/component/test/$page.php";
+        elseif ($page == "addtest") {
+            include "views/add_question.php";
+            $controller = isset($_GET['controller'])? $_GET['controller'].'Controller' : 'ExamController' ;
+            $action = isset($_GET['action'])?$_GET['action']: 'addQuestion' ;
+
+            require_once('controllers/addexam_controller.php');
+            $examController = new $controller();
+            $examController->$action();
         } 
         else include "$page.php";
     } 

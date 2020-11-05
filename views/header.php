@@ -66,7 +66,9 @@
                         <div class="container w-100" id="nav_container">
                             <div class="topnav" id="nav_menu">
                                 <a class="active" id="home_navtab" href="index.php?page=home">Home</a>
-                                <!-- <a id="test_navtab" href="#news">Test</a> -->
+
+                                <a id="test_navtab" href="index.php?page=addtest">Add Test</a>
+
                                 <a id="info_navtab" href="#contact">About Us</a>
                             </div>
                         </div>

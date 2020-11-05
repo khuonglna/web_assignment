@@ -1,12 +1,12 @@
 <?php 
 	class DbModel 
 	{
-        private $severname = "localhost";
-        private $password = "12345678";
+        private $servername = "localhost";
         private $username = "root";
+        private $password = "12345678";     
         private $db = "web_assignment"; 
 		public function connect(){
-            $conn= mysqli_connect($this->severname, $this->username, $this->password, $this->db);
+            $conn= mysqli_connect($this->servername, $this->username, $this->password, $this->db);
 			if($conn === false){
                 echo "Could not connect to database";
                 die;
