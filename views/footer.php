@@ -11,12 +11,7 @@
                                 </div>
 
                         </div>
-                        <div class="col-sm w-80" style="text-align:center;">
-                                <div class="col h-50"></div>
-                                <div class="col h-50 text-white">Copyright@2020 HCMUT</div>
-                        </div>
                         <div class="col-sm w-10">
-
                         </div>
                 </div>
         </div>
@@ -25,7 +20,6 @@
         <div class="footer-copyright text-center py-3">© 2020 Copyright:
                 <a href="index.php?page=home"> HCMUT</a>
         </div>
-        <!-- Copyright -->
 
 </footer>
 </body>

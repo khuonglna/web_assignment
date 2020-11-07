@@ -33,8 +33,7 @@
 </head>
 
 <body style="margin:0;">
-<?php session_start();?>
-<header margin=0>
+    <header margin=0>
         <div class="container-fluid">
             <div class="col">
                 <div class="row bg-dark d-flex flex-row-reverse">
