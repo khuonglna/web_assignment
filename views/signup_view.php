@@ -29,7 +29,7 @@
                 </div> 
                 <?php echo "<p class='text-danger text-center h6'></p>" ?> 
                 <div class="form-group">
-                <button type="submit" class="btn btn-primary btn-block"> Creat an account  </button>
+                <button type="submit" class="btn btn-primary btn-block"> Creat account  </button>
                 </div> 
                 </form>
             </article>
