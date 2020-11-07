@@ -24,7 +24,7 @@
                         username='$username'";
             $res = mysqli_query($conn, $sql);
 			if (mysqli_num_rows($res) > 0) {
-                return false; 	
+                return true; 	
             }
             $query = "INSERT INTO 
                         USERS (username, password) 
@@ -46,7 +46,8 @@
                         username = "'.$username.'" and password = "'.$password.'"';
             $res = mysqli_query($conn, $sql);
 			if (mysqli_num_rows($res) > 0) {
-                return $res;
+                $row = mysqli_fetch_assoc($res);
+                return $row;
             }
             else {
                 return null;
