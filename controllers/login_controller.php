@@ -2,13 +2,6 @@
 	require_once('models/user_model.php');
     class UserController
 	{
-        private function test_input($data) {
-            $data = trim($data);
-            $data = stripslashes($data);
-            $data = htmlspecialchars($data);
-            return $data;
-        }
-
 		public function getUser() {
 			$username = isset($_POST['name'])? $_POST['name']: '' ;
 			$password = md5(isset($_POST['pass'])? $_POST['pass']: '');
