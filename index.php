@@ -20,6 +20,15 @@
             $usercontroller = new $controller();
             $usercontroller-> $action();
         } 
+
+        elseif ($page == "logout") {
+            $controller = isset($_GET['controller'])? $_GET['controller'].'Controller' : 'UserController' ;
+            $action = isset($_GET['action'])?$_GET['action']: 'logout' ;
+
+            require_once('controllers/logout_controller.php');
+            $usercontroller = new $controller();
+            $usercontroller-> $action();
+        } 
         
         elseif ($page == "home") {
             include "views/$page.php";
