@@ -5,7 +5,7 @@
     <script src="views/js/add_question_view.js"></script>
 </head>
 
-<body>
+<body onload="onEnterEvent()">
   <div class="container content">
     <form id="addForm" class="form-group" method="post" action=""> 
       <div class="row justify-content-md-center">
@@ -77,16 +77,27 @@
           </tbody>
         </table>
 
-        <input type="button" class="btn btn-primary btn-block" value="Add Question" onclick="submitForm()">
+        <input type="button" id="btn" class="btn btn-primary btn-block" value="Add Question" onclick="submitForm()">
       </div>
       <br>
 
       <div class="alert alert-danger" role="alert" id="error" style="display:none;">
         Please fill all the information!!!
-        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <button type="button" class="close" aria-label="Close" onclick="closeError()">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
+
+      <div id="result"> 
+      <div class="alert alert-succeess" role="alert" id="success" style="display:none;">
+        Add successfully!
+        <!-- <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button> -->
+      </div>
+      </div>
+
+      <p id="demo"></p>
     </form>
   </div>
 </body>

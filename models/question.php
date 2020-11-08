@@ -46,7 +46,12 @@ class QuestionModel extends DbModel {
 
     public function queryAddQuestion($category , $level, $questionText, $ansList, $correct) {   
         $conn = $this->connect();
-        $sql = "SELECT * FROM QUESTION WHERE `q_text`='$questionText'";
+        $sql = "SELECT 
+                    * 
+                FROM 
+                    QUESTION 
+                WHERE 
+                    `q_text`='$questionText'";
         $res = mysqli_query($conn, $sql);
         if (!$res) {
             echo mysqli_error($conn);
@@ -55,7 +60,10 @@ class QuestionModel extends DbModel {
             return false;
         }
 
-        $sql = "SELECT `q_id` FROM QUESTION";
+        $sql = "SELECT 
+                    `q_id` 
+                FROM 
+                    QUESTION";
         $res = mysqli_query($conn, $sql);
         if (!$res) {
             echo mysqli_error($conn);
@@ -63,7 +71,10 @@ class QuestionModel extends DbModel {
         }
 
         $qId = mysqli_num_rows($res) + 1;
-        $query = "INSERT INTO QUESTION (`q_id`, `q_level`, `q_category`, `q_text`) VALUES ('$qId' , '$level', '$category' , '$questionText')";
+        $query = "INSERT INTO 
+                    QUESTION (`q_id`, `q_level`, `q_category`, `q_text`) 
+                VALUES 
+                    ('$qId' , '$level', '$category' , '$questionText')";
         if (!mysqli_query($conn, $query)) {
             echo mysqli_error($conn);
             return false;
@@ -76,7 +87,8 @@ class QuestionModel extends DbModel {
         }
         return true;
     }
-    function test ($category, $level) {
+    
+    public function queryQuestions ($category, $level) {
         $questionList = array();
         $conn = $this->connect();
         $sql = "SELECT
@@ -99,4 +111,22 @@ class QuestionModel extends DbModel {
         return $data;
     }
 
+    public function querygetCorrectAnswer($qId) {
+        $conn = $this->connect();
+        $sql = "SELECT 
+                    a.a_id,
+                    a.a_correct_flag
+                FROM 
+                    ANSWER a
+                INNER JOIN QUESTION  q ON
+                    a.q_id = q.q_id;
+                WHERE 
+                    q.q_id = $qId AND a.a_correct_flag = 1";
+        $res = mysqli_query($conn, $sql);
+        if (mysqli_num_rows($res) == 1) {
+            $row = mysqli_fetch_assoc($res);
+            return $row['a_id'];
+        }
+        return 0;
+    }
 }

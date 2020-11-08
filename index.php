@@ -1,7 +1,7 @@
-<!DOCTYPE html>
+<!-- <!DOCTYPE html> -->
 <?php 
     require_once 'views/header.php'; 
-
+    
     if (isset($_GET['page'])) {
         $page = $_GET['page'];
         if ($page == "login") {
@@ -20,20 +20,17 @@
             $usercontroller = new $controller();
             $usercontroller-> $action();
         } 
-
-
-        
         elseif ($page == "home") {
             include "views/$page.php";
         } 
-        elseif ($page == "addtest") {
+        elseif ($page == "add_test") {
             include "views/add_question.php";
-            $controller = isset($_GET['controller'])? $_GET['controller'].'Controller' : 'ExamController' ;
-            $action = isset($_GET['action'])?$_GET['action']: 'addQuestion' ;
+            // $controller = isset($_GET['controller']) ? $_GET['controller'].'Controller' : 'ExamController' ;
+            // $action = isset($_GET['action']) ? $_GET['action'] : 'addQuestion';
 
-            require_once('controllers/addexam_controller.php');
-            $examController = new $controller();
-            $examController->$action();
+            // require_once('controllers/addexam_controller.php');
+            // $examController = new $controller();
+            // $examController->$action();
         } elseif ($page == "exam_view") {
             include "view/$page.php";
         } 

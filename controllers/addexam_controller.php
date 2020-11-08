@@ -21,16 +21,26 @@
             
             $correct = isset($_POST['correct']) ? $this->test_input($_POST['correct']) : '';
 
-            if ($category == '' || $level == '' || $question == '' || $ansList[0] == '' || $ansList[1] == '' || $ansList[2] == '' || $correct == '') {
-                require_once('views/add_question.php');
+            $result = false;
+
+            if ($category == '' || $level == '' || $question == '' || $ansList[0] == '' || $ansList[1] == '' || $ansList[2] == '' || $correct == '') {   
+                // require_once __DIR__ . '/../views/add_question.php';
+                // require_once('views/add_question.php');
+                // echo json_encode($result);
             } else {
                 $questionmodel = new QuestionModel();
                 $result = $questionmodel->queryAddQuestion($category, $level, $question, $ansList, $correct);
                 if ($result) {
-                    require_once('views/add_question.php');
+                    // require_once __DIR__ . '/../views/add_question.php';
+                    // require_once('views/add_question.php');
+                    // echo json_encode($result);
                 }
-                require_once('views/add_question.php');
+                // require_once __DIR__ . '/../views/add_question.php';
+                // require_once('views/add_question.php');
+                // echo json_encode($result);
             }
+            require_once("views/add_question.php");
+            return $result;
 		}
     }
 ?>
