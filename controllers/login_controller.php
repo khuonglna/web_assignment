@@ -10,11 +10,10 @@
 				$usermodel = new UserModel();
                 $user = $usermodel->login($username , $password);
                 if ($user) {
-					require_once('views/login_view.php');
+					require_once('views/home.php');
 					$_SESSION["username"] = $user["username"];
 					$_SESSION["role"] =$user["role"];
                 } else {
-					session_unset();
 					require_once('views/login_view.php');
 					echo '<script language="javascript">';
 					echo 'alert("failed")';
