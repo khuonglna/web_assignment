@@ -1,5 +1,13 @@
 <?php 
-	require_once('db_model.php');
+    require_once('db_model.php');
+    
+    class User {
+        private $username;
+        private $userId;
+        private $role;
+        private $result = array();
+    }
+
 	class UserModel extends DbModel
 	{
         public function signup($username , $password)
@@ -8,12 +16,20 @@
                 return false;
             }
 			$conn = $this->connect();
-			$sql = "SELECT * FROM USERS WHERE username='$username'";
+			$sql = "SELECT 
+                        *
+                    FROM 
+                        USERS 
+                    WHERE 
+                        username='$username'";
             $res = mysqli_query($conn, $sql);
 			if (mysqli_num_rows($res) > 0) {
                 return false; 	
             }
-            $query = "INSERT INTO USERS (username, password) VALUES ('$username','".md5($password)."')";
+            $query = "INSERT INTO 
+                        USERS (username, password) 
+                    VALUES 
+                        ('$username','".md5($password)."')";
             mysqli_query($conn, $query);
         }
         
@@ -22,13 +38,18 @@
                 return false;
             }
 			$conn = $this->connect();
-			$sql = 'SELECT * FROM `user` WHERE username = "'.$username.'" and password = "'.$password.'"';
+			$sql = 'SELECT 
+                        * 
+                    FROM 
+                        USERS
+                    WHERE 
+                        username = "'.$username.'" and password = "'.$password.'"';
             $res = mysqli_query($conn, $sql);
 			if (mysqli_num_rows($res) > 0) {
-                return true; 	
+                return $res;
             }
             else {
-                return false;
+                return null;
             }
         }
 	}

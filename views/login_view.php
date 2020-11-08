@@ -6,7 +6,7 @@
             <div class="col-4 align-items-center">
             <div class="card" >
             <article class="card-body">
-                <h4 class="card-title text-center mb-4 mt-1">Sign up</h4>
+                <h4 class="card-title text-center mb-4 mt-1">Login</h4>
                 <hr>
                 <form method="post" action="">
                 <div class="form-group">
@@ -29,7 +29,7 @@
                 </div> 
                 <?php echo "<p class='text-danger text-center h6'></p>" ?> 
                 <div class="form-group">
-                <button type="submit" class="btn btn-primary btn-block"> Creat account  </button>
+                <button type="submit" class="btn btn-primary btn-block">Login  </button>
                 </div> 
                 </form>
             </article>

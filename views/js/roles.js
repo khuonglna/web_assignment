@@ -3,22 +3,22 @@ var ajax = new XMLHttpRequest();
 var method = "GET";
 var url = "views/test.php"
 var asynchronous = true;
-var userType = "guest";
+var userType = "admin";
 ajax.open(method, url, asynchronous);
 ajax.send();
 
 ajax.onreadystatechange = function () {
     if (this.readyState == 4 && this.status == 200) {
-        alert(this.responseText);
+        // alert(this.responseText);
         userType = this.responseText;
         switch (userType) {
             case "guest":
                 var para = document.createElement("a");
-                var node = document.createTextNode("Test");
+                var node = document.createTextNode("Exam");
                 para.appendChild(node);
                 para.href = "#content"
                 break;
-            case "admin":
+            case "staff":
                 var para = document.createElement("a");
                 var node = document.createTextNode("Manage");
                 para.appendChild(node);
