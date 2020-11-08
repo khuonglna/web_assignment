@@ -48,7 +48,7 @@ function submitForm() {
     document.getElementById("error").style.display = "block";
   } else {
     document.getElementById("addForm").submit();
-    // getResult();
+    getResult();
   }
 }
 
@@ -59,7 +59,7 @@ function closeError() {
 function getResult() {
   var ajax = new XMLHttpRequest();
   var method = "GET";
-  var url = "views/test.php?function=addQuestion"
+  var url = "controllers/test.php?function=addQuestion"
   var asynchronous = true;
 
   ajax.onreadystatechange = function () {
