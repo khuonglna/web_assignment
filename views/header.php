@@ -24,12 +24,6 @@
         });
     </script>
 
-    <script type="text/javascript">
-        function showStuff(id) {
-            var element = document.getElementById("test_navtab");
-            element.style.display = "none";
-        }
-    </script>
 </head>
 
 <body style="margin:0;">
@@ -80,3 +74,4 @@
     </header>
 
     <script src="views/js/roles.js"></script>
+    <script src="sandbox.js"></script>

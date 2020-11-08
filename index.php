@@ -1,12 +1,7 @@
 <?php 
     session_start();
-    if (!isset($_SESSION['test'])) {
-        $_SESSION['test'] = "khuong";
-        $_SESSION['more_test'] = "khuong2";
-    }
+    include 'views/header.php';
     
-    require_once 'views/header.php'; 
-
     if (isset($_GET['page'])) {
         $page = $_GET['page'];
         if ($page == "login") {
@@ -32,13 +27,12 @@
         elseif ($page == "exam_view") {
             include "view/$page.php";
         } 
-        else include "$page.php";
 
-        if (isset($_SESSION['test']) && isset($_SESSION['role']) && isset($_SESSION['username'])) {
-            echo "current section is " . $_SESSION['test'] . ".<br>";
-            echo "current section is " . $_SESSION['username'] . ".<br>";
-            echo "current section is " . $_SESSION['role'] . ".<br>";
-        }
+        // if (isset($_SESSION['role']) && isset($_SESSION['username'])) {
+        //     $var = $_SESSION['username'];
+        //     echo "current section is " . $var . ".<br>";
+        //     echo "current section is " . $_SESSION['role'] . ".<br>";
+        // }
     } 
     require_once 'views/footer.php'; 
 ?>

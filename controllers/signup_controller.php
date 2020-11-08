@@ -15,7 +15,6 @@
 					require_once('views/signup_view.php');
 					$_SESSION["username"] = $username;
 					$_SESSION["role"] = DEFAULT_ROLE;
-					$_SESSION["test"] = 'hong phai khuong';
 					echo "sign up success";
                 } else {
 					require_once('views/signup_view.php');

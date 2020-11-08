@@ -1,8 +1,8 @@
-
 var ajax = new XMLHttpRequest();
 var method = "GET";
-var url = "views/test.php"
+var url = "sandbox.php";
 var asynchronous = true;
+
 var userType = "admin";
 ajax.open(method, url, asynchronous);
 ajax.send();
@@ -12,24 +12,27 @@ ajax.onreadystatechange = function () {
         // alert(this.responseText);
         userType = this.responseText;
         switch (userType) {
-            case "guest":
+            case 1:
                 var para = document.createElement("a");
                 var node = document.createTextNode("Exam");
                 para.appendChild(node);
                 para.href = "#content"
                 break;
-            case "staff":
+            case 2:
                 var para = document.createElement("a");
-                var node = document.createTextNode("Manage");
+                var node = document.createTextNode("Manage Exam");
                 para.appendChild(node);
                 para.href = "#content"
                 break;
             case 3:
-                // code block
+                var para = document.createElement("a");
+                var node = document.createTextNode("Manage Staff");
+                para.appendChild(node);
+                para.href = "#content"
                 break;
             default:
                 var para = document.createElement("a");
-                var node = document.createTextNode("Test");
+                var node = document.createTextNode("Exam");
                 para.appendChild(node);
                 para.href = "#content"
         }

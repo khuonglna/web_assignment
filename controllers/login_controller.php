@@ -13,9 +13,6 @@
 					require_once('views/login_view.php');
 					$_SESSION["username"] = $user["username"];
 					$_SESSION["role"] =$user["role"];
-					$_SESSION["test"] = 'hong phai khuong';
-					echo $_SESSION["username"];
-					echo $_SESSION["role"];
                 } else {
 					session_unset();
 					require_once('views/login_view.php');
