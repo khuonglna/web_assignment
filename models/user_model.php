@@ -24,13 +24,14 @@
                         username='$username'";
             $res = mysqli_query($conn, $sql);
 			if (mysqli_num_rows($res) > 0) {
-                return true; 	
+                return false; 	
             }
             $query = "INSERT INTO 
                         USERS (username, password) 
                     VALUES 
                         ('$username','".md5($password)."')";
             mysqli_query($conn, $query);
+            return true;
         }
         
         public function login($username , $password){

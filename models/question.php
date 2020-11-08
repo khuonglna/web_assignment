@@ -26,33 +26,32 @@ class Question
 
 class QuestionModel extends DbModel
 {
-    function queryQuestionList($category, $level)
-    {
-        $questionList = array();
-        $conn = $this->connect();
-        $sql = "SELECT 
-                    Q_ID,
-                    Q_TEXT
-                FROM 
-                    QUESTION
-                WHERE 
-                    Q_LEVEL = $category AND Q_CATEGORY = $level";
-        $res = mysqli_query($conn, $sql);
-        if (mysqli_num_rows($res) > 0) {
-            while ($row = mysqli_fetch_assoc($res)) {
-                $question = new Question();
-                $answerModel = new AnswerModel();
-                $temp = $row["Q_ID"];
-                $temp2 = $answerModel->queryListAnswerByQuestionId($temp);
-                $question->setAnswerList($temp2);
-                $questionList[] = $question;
-            }
-        }
-        return $questionList;
-    }
+    // function queryQuestionList($category, $level)
+    // {
+    //     $questionList = array();
+    //     $conn = $this->connect();
+    //     $sql = "SELECT 
+    //                 Q_ID,
+    //                 Q_TEXT
+    //             FROM 
+    //                 QUESTION
+    //             WHERE 
+    //                 Q_LEVEL = $category AND Q_CATEGORY = $level";
+    //     $res = mysqli_query($conn, $sql);
+    //     if (mysqli_num_rows($res) > 0) {
+    //         while ($row = mysqli_fetch_assoc($res)) {
+    //             $question = new Question();
+    //             $answerModel = new AnswerModel();
+    //             $temp = $row["Q_ID"];
+    //             $temp2 = $answerModel->queryListAnswerByQuestionId($temp);
+    //             $question->setAnswerList($temp2);
+    //             $questionList[] = $question;
+    //         }
+    //     }
+    //     return $questionList;
+    // }
 
-    function test ($category, $level) {
-        $questionList = array();
+    function queryQuestionList ($category, $level) {
         $conn = $this->connect();
         $sql = "SELECT
                     q.q_id,
@@ -73,5 +72,4 @@ class QuestionModel extends DbModel
         }
         return $data;
     }
-
 }
