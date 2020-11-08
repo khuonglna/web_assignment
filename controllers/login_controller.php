@@ -1,4 +1,5 @@
 <?php 
+
 	require_once('models/user_model.php');
     class UserController
 	{
@@ -9,13 +10,18 @@
 				$usermodel = new UserModel();
                 $user = $usermodel->login($username , $password);
                 if ($user) {
-					require_once('views/login_view.php');
-					$_SESSION["role"] = mysqli_fetch_assoc($user)["role"];
-					echo $_SESSION["role"];
+					require_once('views/home.php');
+					$_SESSION["username"] = $user["username"];
+					$_SESSION["role"] =$user["role"];
                 } else {
-				 	require_once('views/login_view.php');
+					require_once('views/login_view.php');
+					echo '<script language="javascript">';
+					echo 'alert("failed")';
+					echo '</script>';
                 }
 			} else {
+				// When pressed login again will remove session
+				session_unset();
 				require_once('views/login_view.php');
 			}
 		}

@@ -1,4 +1,7 @@
 <?php 
+
+	define("DEFAULT_ROLE", 1);
+
 	require_once('models/user_model.php');
     class UserController
 	{
@@ -10,14 +13,16 @@
                 $user = $usermodel->signup($username , $password);
                 if ($user) {
 					require_once('views/signup_view.php');
+					$_SESSION["username"] = $username;
+					$_SESSION["role"] = DEFAULT_ROLE;
 					echo "sign up success";
                 } else {
-					 require_once('views/signup_view.php');
-					 echo "sign up failed";
+					require_once('views/signup_view.php');
+					echo "sign up failed";
                 }
 			} else {
 				require_once('views/signup_view.php');
-				echo "invalid";
+				// echo "invalid";
 			}
 		}
 	} 

@@ -24,30 +24,31 @@
         });
     </script>
 
-    <script type="text/javascript">
-        function showStuff(id) {
-            var element = document.getElementById("test_navtab");
-            element.style.display = "none";
-        }
-    </script>
 </head>
 
 <body style="margin:0;">
-<?php session_start();?>
-<header margin=0>
+    <header margin=0>
         <div class="container-fluid">
             <div class="col">
                 <div class="row bg-dark d-flex flex-row-reverse">
                     <li style="margin-top: 10px; margin-bottom:10px; margin-right:10px">
-                        <a href="index.php?page=sign_up" class="btn btn-primary btn-lg " role="button">
+                        <a id="signup" href="index.php?page=sign_up" class="btn btn-primary btn-lg " role="button">
                             <i class="far fa-user-circle" style='font-size:20px;color:white; margin-right: 10px;'></i>
                             Sign Up
                         </a>
 
-                        <a href="index.php?page=login" class="btn btn-primary btn-lg" role="button">
+                        <a id="login" href="index.php?page=login" class="btn btn-primary btn-lg" role="button">
                             <i class="fas fa-sign-in-alt" style='font-size:20px;color:white; margin-right: 10px;'></i>
                             Login
                         </a>
+
+                        <a id="username" class="p-3" href=""></a>
+
+                        <a id="logout" href="index.php?page=logout" name="logout" class="btn btn-primary btn-lg " role="button">
+                            <i class="fas fa-code" style='font-size:20px;color:white; margin-right: 10px;'></i>
+                            Logout
+                        </a>
+
                     </li>
                 </div>
                 <div class="row">
