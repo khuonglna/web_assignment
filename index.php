@@ -31,10 +31,10 @@
         } 
         
         elseif ($page == "home") {
-            include "views/$page.php";
+            include "test.php";
         } 
         elseif ($page == "exam_view") {
-            include "view/$page.php";
+            include "test.php";
         } 
 
         // if (isset($_SESSION['role']) && isset($_SESSION['username'])) {
