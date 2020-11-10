@@ -28,7 +28,7 @@
 
 <body style="margin:0;">
     <header margin=0>
-        <div class="container-fluid">
+        <div class="container-fluid p-0">
             <div class="col">
                 <div class="row bg-dark d-flex flex-row-reverse">
                     <li style="margin-top: 10px; margin-bottom:10px; margin-right:10px">
