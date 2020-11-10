@@ -1,6 +1,5 @@
 var ajax = new XMLHttpRequest();
 var method = "GET";
-// var url = "sandbox.php";
 var url = "controllers/session_ptj.php";
 var asynchronous = true;
 var userType;
@@ -72,7 +71,6 @@ function toggleTopNavbar(state, name) {
         signup.style.display = "none";
         username.removeAttribute("style");
         logout.removeAttribute("style");
-        // username.textContent = name;
         username.innerHTML = name;
     }
 }

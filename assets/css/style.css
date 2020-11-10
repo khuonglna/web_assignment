@@ -5,8 +5,8 @@ body {
 }
 
 .topnav {
-  /* overflow: hidden; */
-  background-color: #f1f1f1;
+  overflow: hidden;
+  background-color: #dbdbdb;
 }
 
 .topnav a {
@@ -30,6 +30,7 @@ body {
   text-decoration: none;
 }
 
+/* STYLE FOR HOME ----------------------------------------------------*/
 .home-image-sidebar {
   -ms-flex: 0 0 700px;
   flex: 0 0 700px;
@@ -42,9 +43,11 @@ body {
 
 .content {
   position: relative;
-  min-height: 425px;
+  min-height: 350px;
   width: 100%;
 }
+/* STYLE FOR HOME ----------------------------------------------------*/
+
 
 /* STYLE FOR CATEGORY ----------------------------------------------------*/
 /* Style the buttons inside the tab */

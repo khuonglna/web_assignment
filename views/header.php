@@ -42,9 +42,9 @@
                             Login
                         </a>
 
-                        <a id="username" class="p-3" href=""></a>
+                        <a id="username" class="p-3" href="" style="display: none;"></a>
 
-                        <a id="logout" href="index.php?page=logout" name="logout" class="btn btn-primary btn-lg " role="button">
+                        <a id="logout" href="index.php?page=logout" name="logout" class="btn btn-primary btn-lg " role="button" style="display: none;">
                             <i class="fas fa-code" style='font-size:20px;color:white; margin-right: 10px;'></i>
                             Logout
                         </a>
