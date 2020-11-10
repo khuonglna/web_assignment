@@ -2,6 +2,7 @@
 <div class="container content">
     <h1 id="category"> Category</h1>
     <div class="container">
+      <script src="views/js/category_function.js"></script>
         <div class="row">
             <?php
                 if ($result->num_rows > 0) {
@@ -39,6 +40,6 @@
 </div>
 
 <div class="clearfix"></div>
-<?php
+<!-- <?php
   include "views/js/category_function.php"
-?>
+?> -->
