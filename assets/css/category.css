@@ -1,4 +1,13 @@
 /* Style the buttons inside the tab */
+
+.tab {
+  float: left;
+  border: 1px solid #ccc;
+  background-color: orange;
+  width: 30%;
+  height: 207px;
+}
+
 .tab button {
   display: block;
   background-color: inherit;
@@ -29,7 +38,7 @@
   border: 1px solid #ccc;
   width: 70%;
   border-left: none;
-  height: 300px;
+  height: 207px;
   display: none;
 }
 

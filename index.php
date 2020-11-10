@@ -31,8 +31,9 @@
         } 
         
         elseif ($page == "home") {
-            include "views/$page.php";
+            include "test.php";
         } 
+
         elseif ($page == "add_test") {
             include "views/add_question.php";
             // $controller = isset($_GET['controller']) ? $_GET['controller'].'Controller' : 'ExamController' ;
@@ -41,8 +42,10 @@
             // require_once('controllers/addexam_controller.php');
             // $examController = new $controller();
             // $examController->$action();
-        } elseif ($page == "exam_view") {
-            include "view/$page.php";
+        }
+        elseif ($page == "exam_view") {
+            include "test.php";
+
         } 
 
         // if (isset($_SESSION['role']) && isset($_SESSION['username'])) {

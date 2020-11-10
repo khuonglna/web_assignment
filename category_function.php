@@ -50,4 +50,5 @@ function sF(evt, category, dif) {
     form.submit();
     form.parentNode.removeChild(form);
 }
+
 </script>
