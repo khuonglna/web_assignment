@@ -1,21 +1,7 @@
-<?php include "php/component/test/test_process.php"; ?>
-<head>
-    <link rel="stylesheet" type="text/css" href="./assets/css/category.css">
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-    <script src='https://kit.fontawesome.com/a076d05399.js'></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-</head>
-
+<?php include "controllers/category_controller.php"; ?>
 <div class="container content">
     <h1 id="category"> Category</h1>
-    <h2 id="difficulty"> Difficulty</h2>
     <div class="container">
-        <p>Question</p>
         <div class="row">
             <?php
                 if ($result->num_rows > 0) {
@@ -54,5 +40,5 @@
 
 <div class="clearfix"></div>
 <?php
-  include "category_function.php"
+  include "views/js/category_function.php"
 ?>

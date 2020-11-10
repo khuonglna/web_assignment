@@ -129,4 +129,20 @@ class QuestionModel extends DbModel {
         }
         return 0;
     }
+
+    public function queryCategory() {
+        $conn = $this->connect();
+        $sql = "SELECT 
+                    *
+                FROM
+                    CATEGORY
+                ";
+        $res =  mysqli_query($conn, $sql);
+        $data =array();
+        $res = mysqli_query($conn, $sql);
+        while ($row = mysqli_fetch_assoc($res)) {
+            $data[] = $row;
+        }
+        return $data;
+    }
 }

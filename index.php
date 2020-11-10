@@ -4,7 +4,10 @@
     
     if (isset($_GET['page'])) {
         $page = $_GET['page'];
-        if ($page == "login") {
+        if ($page == "") {
+            include "views/exception.php";
+        }
+        elseif ($page == "login") {
             $controller = isset($_GET['controller'])? $_GET['controller'].'Controller' : 'UserController' ;
             $action = isset($_GET['action'])?$_GET['action']: 'getUser' ;
             
@@ -29,30 +32,16 @@
             $usercontroller = new $controller();
             $usercontroller-> $action();
         } 
-        
-        elseif ($page == "home") {
-            include "test.php";
-        } 
 
         elseif ($page == "add_test") {
             include "views/add_question.php";
-            // $controller = isset($_GET['controller']) ? $_GET['controller'].'Controller' : 'ExamController' ;
-            // $action = isset($_GET['action']) ? $_GET['action'] : 'addQuestion';
-
-            // require_once('controllers/addexam_controller.php');
-            // $examController = new $controller();
-            // $examController->$action();
         }
         elseif ($page == "exam_view") {
-            include "test.php";
+            include "views/category_view.php";
 
-        } 
-
-        // if (isset($_SESSION['role']) && isset($_SESSION['username'])) {
-        //     $var = $_SESSION['username'];
-        //     echo "current section is " . $var . ".<br>";
-        //     echo "current section is " . $_SESSION['role'] . ".<br>";
-        // }
+        } else {
+            include "views/$page.php";
+        }
     } 
     require_once 'views/footer.php'; 
 ?>

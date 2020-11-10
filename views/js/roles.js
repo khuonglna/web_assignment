@@ -30,13 +30,13 @@ ajax.onreadystatechange = function () {
                 var para = document.createElement("a");
                 var node = document.createTextNode("Exam");
                 para.appendChild(node);
-                para.href = "#content"
+                para.href = "index.php?page=exam_view"
                 break;
             case "2":
                 var para = document.createElement("a");
                 var node = document.createTextNode("Manage Exam");
                 para.appendChild(node);
-                para.href = "#content"
+                para.href = "index.php?page=add_test"
                 break;
             case "3":
                 var para = document.createElement("a");
@@ -48,7 +48,7 @@ ajax.onreadystatechange = function () {
                 var para = document.createElement("a");
                 var node = document.createTextNode("Exam");
                 para.appendChild(node);
-                para.href = "#content"
+                para.href = "index.php?page=exam_view"
                 break;
         }
         var element = document.getElementById("nav_menu");
