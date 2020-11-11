@@ -1,19 +1,19 @@
 <?php include "controllers/category_controller.php"; ?>
 <div class="container content">
-    <h1 id="category"> Category</h1>
-    <div class="container">
-      <script src="views/js/category_function.js"></script>
-        <div class="row">
-            <?php
-                if ($result->num_rows > 0) {
-                  // output data of each row
-                  while($row = $result->fetch_assoc()) {
-                    $nation = '"' . $row["c_name"] . '"';
-                    $choice = '"choice' . $row["c_name"] . '"';
-                    $Elementary = '"Elementary"';
-                    $Intermediate = '"Intermediate"';
-                    $Native = '"Native"';
-                    echo "
+	<h1 id="category"> Category</h1>
+	<div class="container">
+		<script src="views/js/category_function.js"></script>
+		<div class="row">
+			<?php
+			if ($result->num_rows > 0) {
+				// output data of each row
+				while ($row = $result->fetch_assoc()) {
+					$nation = '"' . $row["c_name"] . '"';
+					$choice = '"choice' . $row["c_name"] . '"';
+					$Elementary = '"Elementary"';
+					$Intermediate = '"Intermediate"';
+					$Native = '"Native"';
+					echo "
                           <div class='col-sm-3'>
 
                           </div>
@@ -27,19 +27,19 @@
                             </div>
                           </div> 
                           ";
-                  }
-                } else {
-                  echo "0 results";
-                }
-            ?>
-            
-        </div>
-    </div>
-    
-    
+				}
+			} else {
+				echo "0 results";
+			}
+			?>
+
+		</div>
+	</div>
+
+
 </div>
 
 <div class="clearfix"></div>
 <!-- <?php
-  include "views/js/category_function.php"
-?> -->
+		include "views/js/category_function.php"
+		?> -->
