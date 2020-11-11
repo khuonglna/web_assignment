@@ -31,36 +31,17 @@
             require_once('controllers/logout_controller.php');
             $usercontroller = new $controller();
             $usercontroller-> $action();
-        } 
-<<<<<<< HEAD
-        
-        elseif ($page == "home") {
+        } elseif ($page == "home") {
             include "views/$page.php";
         } elseif ($page == "add_question") {
             include "views/add_question_view.php";
         } elseif ($page == "delete_question") {
             include "views/delete_question_view.php";
-        }elseif ($page == "exam_view") {
-            include "view/$page.php";
-        } 
-
-        // if (isset($_SESSION['role']) && isset($_SESSION['username'])) {
-        //     $var = $_SESSION['username'];
-        //     echo "current section is " . $var . ".<br>";
-        //     echo "current section is " . $_SESSION['role'] . ".<br>";
-        // }
-=======
-
-        elseif ($page == "add_test") {
-            include "views/add_question.php";
-        }
-        elseif ($page == "exam_view") {
+        } elseif ($page == "exam_view") {
             include "views/category_view.php";
-
         } else {
             include "views/$page.php";
         }
->>>>>>> upstream/main
     } 
     require_once 'views/footer.php'; 
 ?>
