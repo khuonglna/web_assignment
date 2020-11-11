@@ -20,9 +20,9 @@
         } elseif ($res == "listQuestion") {
                 $category = $_REQUEST['category'];
                 $level = $_REQUEST['level'];
+        
                 $examController = new ExamController();
                 $result = $examController->getQuestionList($category, $level);
-                echo "go";
                 echo json_encode($result);
         } else {
                 echo "guest";

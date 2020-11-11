@@ -32,16 +32,11 @@
         
         elseif ($page == "home") {
             include "views/$page.php";
-        } 
-        elseif ($page == "add_test") {
-            include "views/add_question.php";
-            // $controller = isset($_GET['controller']) ? $_GET['controller'].'Controller' : 'ExamController' ;
-            // $action = isset($_GET['action']) ? $_GET['action'] : 'addQuestion';
-
-            // require_once('controllers/addexam_controller.php');
-            // $examController = new $controller();
-            // $examController->$action();
-        } elseif ($page == "exam_view") {
+        } elseif ($page == "add_question") {
+            include "views/add_question_view.php";
+        } elseif ($page == "delete_question") {
+            include "views/delete_question_view.php";
+        }elseif ($page == "exam_view") {
             include "view/$page.php";
         } 
 

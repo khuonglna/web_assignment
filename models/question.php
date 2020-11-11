@@ -25,17 +25,18 @@ class QuestionModel extends DbModel {
         $questionList = array();
         $conn = $this->connect();
         $sql = "SELECT 
-                        *
-                    FROM 
-                        QUESTION
-                    WHERE 
-                        Q_LEVEL = '$category' AND Q_CATEGORY = '$difficulty'";
+                    *
+                FROM 
+                    QUESTION
+                WHERE 
+                    `q_category` = '$category' AND `q_level` = '$difficulty'";
         $res = mysqli_query($conn, $sql);
         if (mysqli_num_rows($res) > 0) {
             while ($row = mysqli_fetch_assoc($res)) {
                 $question = new Question();
                 $answerModel = new AnswerModel();
-                $temp = $row["Q_ID"];
+                $temp = $row["q_id"];
+                echo json_encode($temp);
                 $temp2 = $answerModel->queryListAnswerByQuestionId($temp);
                 $question->setAnswerList($temp2);
                 $questionList[] = $question;

@@ -7,7 +7,7 @@
 
 <body onload="onEnterEvent()">
   <div class="container content">
-    <form id="addForm" class="form-group" method="post" action=""> 
+    <form id="addForm" class="form-group"> 
       <div class="row justify-content-md-center">
         <div class="col col-3 text-center"> 
           <h5>Category:</h5>
