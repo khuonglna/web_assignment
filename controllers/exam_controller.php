@@ -28,8 +28,9 @@
 
         public function getQuestionList($category, $level) {
             $questionModel = new QuestionModel();
-            $exam = new Exam($questionModel->queryQuestionList($category, $level));
-            return $exam;
+            $questionList = $questionModel->queryQuestionList($category, $level);
+            // $exam = new Exam($questionModel->queryQuestionList($category, $level));
+            return $questionList;
         }
     
         public function calculateScore() {

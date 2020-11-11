@@ -13,8 +13,8 @@
           <h5>Category:</h5>
           <select onchange="openQuestionList()" class="custom-select custom-select-sm" name="category" id="category" required>
             <option value=""></option>
-            <option value="1">Tense</option>
-            <option value="2">Family</option>
+            <option value="1">Family</option>
+            <option value="2">Tense</option>
 
           </select>
         </div>

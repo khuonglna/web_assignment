@@ -74,8 +74,10 @@ function getQuestionList() {
   ajax.onreadystatechange = function () {
       if (this.readyState == 4 && this.status == 200) {
           document.getElementById("success").style.display = "block";
-          $result = this.responseText;
-          alert($result);
+          $data = this.responseText;
+          alert($data);
+          $questionList = JSON.parse($data);
+          document.getElementById("demo").innerHTML = $questionList[0].q_id;
           // if (JSON.parse($result)) {
           //   document.getElementById("addForm").reset();
           //   document.getElementById("success").style.display = "block";

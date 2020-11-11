@@ -3,21 +3,37 @@ require_once('db_model.php');
 require_once('exam.php');
 require_once('answer.php');
 
-class Question {
+class Question { //implements JsonSerializable {
     private $questionId;
     private $questionText;
     private $answerList;
 
+    function __construct($questionId, $questionText) {
+        $this->questionId = $questionId;
+        $this->questionText = $questionText;
+    }
+
     function getCorrectAnswer() {
     }
 
-    function getQuestionId() {
+    public function getQuestionId() {
         return $this->questionId;
     }
 
-    function setAnswerList(array $answerList) {
+    public function getQuestionText() {
+        return $this->questionText;
+    }
+
+    public function setAnswerList(array $answerList) {
         $this->answerList = $answerList;
     }
+
+    // public function jsonSerialize(){
+    //     return array(
+    //         "q_id"=>$this->questionId,
+    //         "q_text"=>$this->questionText
+    //     );
+    // }
 }
 
 class QuestionModel extends DbModel {
@@ -33,12 +49,12 @@ class QuestionModel extends DbModel {
         $res = mysqli_query($conn, $sql);
         if (mysqli_num_rows($res) > 0) {
             while ($row = mysqli_fetch_assoc($res)) {
-                $question = new Question();
-                $answerModel = new AnswerModel();
-                $temp = $row["q_id"];
-                echo json_encode($temp);
-                $temp2 = $answerModel->queryListAnswerByQuestionId($temp);
-                $question->setAnswerList($temp2);
+                $question = new Question($row["q_id"], $row["q_text"]);
+                // $answerModel = new AnswerModel();
+                // $q_id = $row["q_id"];
+                // $q_text = $row["q_text"];
+                // $answerList = $answerModel->queryListAnswerByQuestionId($q_id);
+                // $question->setAnswerList($answerList);
                 $questionList[] = $question;
             }
         }

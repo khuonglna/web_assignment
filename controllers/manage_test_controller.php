@@ -23,7 +23,13 @@
         
                 $examController = new ExamController();
                 $result = $examController->getQuestionList($category, $level);
-                echo json_encode($result);
+                $questionList = array();
+                for ($i = 0; $i < sizeof($result); $i++) {
+                        $q_id = $result[$i]->getQuestionId();
+                        $q_text = $result[$i]->getQuestionText();
+                        $questionList[$i] = array("q_id"=>$q_id,"q_text"=>$q_text);
+                }
+                echo json_encode($questionList);
         } else {
                 echo "guest";
         }

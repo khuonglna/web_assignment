@@ -69,13 +69,10 @@
                             <div class="topnav" id="nav_menu">
                                 <a class="active" id="home_navtab" href="index.php?page=home">Home</a>
 
-<<<<<<< HEAD
                                 <a id="test_navtab" href="index.php?page=add_question">Add Question</a>
 
                                 <a id="test_navtab" href="index.php?page=delete_question">Delete Question</a>
 
-=======
->>>>>>> upstream/main
                                 <a id="info_navtab" href="#contact">About Us</a>
                             </div>
                         </div>
