@@ -52,7 +52,8 @@ class QuestionModel extends DbModel {
                 FROM 
                     QUESTION 
                 WHERE 
-                    `q_text`='$questionText'";
+                    Q_TEXT='$questionText'
+                ";
         $res = mysqli_query($conn, $sql);
         if (!$res) {
             echo mysqli_error($conn);
@@ -62,9 +63,10 @@ class QuestionModel extends DbModel {
         }
 
         $sql = "SELECT 
-                    `q_id` 
+                    Q_ID 
                 FROM 
-                    QUESTION";
+                    QUESTION
+                ";
         $res = mysqli_query($conn, $sql);
         if (!$res) {
             echo mysqli_error($conn);
@@ -73,9 +75,10 @@ class QuestionModel extends DbModel {
 
         $qId = mysqli_num_rows($res) + 1;
         $query = "INSERT INTO 
-                    QUESTION (`q_id`, `q_level`, `q_category`, `q_text`) 
+                    QUESTION (Q_ID, Q_LEVEL, Q_CATEGORY, Q_TEXT) 
                 VALUES 
-                    ('$qId' , '$level', '$category' , '$questionText')";
+                    ('$qId' , '$level', '$category' , '$questionText')
+                ";
         if (!mysqli_query($conn, $query)) {
             echo mysqli_error($conn);
             return false;
@@ -103,7 +106,8 @@ class QuestionModel extends DbModel {
                 INNER JOIN answer a ON
                     a.q_id = q.q_id
                 WHERE
-                    q.q_level = $level AND q.q_category = $category";
+                    q.q_level = $level AND q.q_category = $category
+                ";
         $data =array();
         $res = mysqli_query($conn, $sql);
         while ($row = mysqli_fetch_assoc($res)) {
@@ -122,12 +126,31 @@ class QuestionModel extends DbModel {
                 INNER JOIN QUESTION  q ON
                     a.q_id = q.q_id;
                 WHERE 
-                    q.q_id = $qId AND a.a_correct_flag = 1";
+                    q.q_id = $qId AND a.a_correct_flag = 1
+                ";
         $res = mysqli_query($conn, $sql);
         if (mysqli_num_rows($res) == 1) {
             $row = mysqli_fetch_assoc($res);
             return $row['a_id'];
         }
         return 0;
+    }
+
+    public function queryCategory() {
+        $conn = $this->connect();
+        $sql = "SELECT 
+                    *
+                FROM
+                    CATEGORY
+                ORDER BY
+                    C_NAME ASC
+                ";
+        $res =  mysqli_query($conn, $sql);
+        $data =array();
+        $res = mysqli_query($conn, $sql);
+        while ($row = mysqli_fetch_assoc($res)) {
+            $data[] = $row;
+        }
+        return $data;
     }
 }

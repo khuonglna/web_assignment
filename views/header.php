@@ -28,7 +28,7 @@
 
 <body style="margin:0;">
     <header margin=0>
-        <div class="container-fluid">
+        <div class="container-fluid p-0">
             <div class="col">
                 <div class="row bg-dark d-flex flex-row-reverse">
                     <li style="margin-top: 10px; margin-bottom:10px; margin-right:10px">
@@ -42,9 +42,9 @@
                             Login
                         </a>
 
-                        <a id="username" class="p-3" href=""></a>
+                        <a id="username" class="p-3" href="" style="display: none;"></a>
 
-                        <a id="logout" href="index.php?page=logout" name="logout" class="btn btn-primary btn-lg " role="button">
+                        <a id="logout" href="index.php?page=logout" name="logout" class="btn btn-primary btn-lg " role="button" style="display: none;">
                             <i class="fas fa-code" style='font-size:20px;color:white; margin-right: 10px;'></i>
                             Logout
                         </a>
@@ -69,10 +69,13 @@
                             <div class="topnav" id="nav_menu">
                                 <a class="active" id="home_navtab" href="index.php?page=home">Home</a>
 
+<<<<<<< HEAD
                                 <a id="test_navtab" href="index.php?page=add_question">Add Question</a>
 
                                 <a id="test_navtab" href="index.php?page=delete_question">Delete Question</a>
 
+=======
+>>>>>>> upstream/main
                                 <a id="info_navtab" href="#contact">About Us</a>
                             </div>
                         </div>

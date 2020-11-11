@@ -1,6 +1,5 @@
 var ajax = new XMLHttpRequest();
 var method = "GET";
-// var url = "sandbox.php";
 var url = "controllers/session_ptj.php";
 var asynchronous = true;
 var userType;
@@ -30,13 +29,13 @@ ajax.onreadystatechange = function () {
                 var para = document.createElement("a");
                 var node = document.createTextNode("Exam");
                 para.appendChild(node);
-                para.href = "#content"
+                para.href = "index.php?page=exam_view"
                 break;
             case "2":
                 var para = document.createElement("a");
                 var node = document.createTextNode("Manage Exam");
                 para.appendChild(node);
-                para.href = "#content"
+                para.href = "index.php?page=add_test"
                 break;
             case "3":
                 var para = document.createElement("a");
@@ -48,7 +47,7 @@ ajax.onreadystatechange = function () {
                 var para = document.createElement("a");
                 var node = document.createTextNode("Exam");
                 para.appendChild(node);
-                para.href = "#content"
+                para.href = "index.php?page=exam_view"
                 break;
         }
         var element = document.getElementById("nav_menu");
@@ -72,7 +71,6 @@ function toggleTopNavbar(state, name) {
         signup.style.display = "none";
         username.removeAttribute("style");
         logout.removeAttribute("style");
-        // username.textContent = name;
         username.innerHTML = name;
     }
 }
