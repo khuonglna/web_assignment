@@ -41,16 +41,17 @@
         <table class="table table-bordered">
           <thead>
             <tr class="text-center">
+              <th scope="col"></th>
               <th scope="col">Question</th>
-              <th scope="col">Answer</th>
+              <th scope="col">Delete</th>
             </tr>
           </thead>
 
-          <tbody id="questions">
+          <tbody id="questionTable">
           </tbody>
         </table>
 
-        <input type="button" id="btn" class="btn btn-primary btn-block" value="Detele All Selected Questions" onclick="submitForm()">
+        <input id="btn" type="button" class="btn btn-primary btn-block" value="Detele All Selected Questions" onclick="submitForm()">
       </div>
       <br>
 

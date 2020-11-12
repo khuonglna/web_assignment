@@ -30,6 +30,11 @@
                         $questionList[$i] = array("q_id"=>$q_id,"q_text"=>$q_text);
                 }
                 echo json_encode($questionList);
+        } elseif ($res == "deleteQuestion") {
+                $category = $_REQUEST['category'];
+                $level = $_REQUEST['level'];
+
+                echo json_encode($_REQUEST['q_id']);
         } else {
                 echo "guest";
         }

@@ -7,7 +7,7 @@
 
 <body onload="onEnterEvent()">
   <div class="container content">
-    <form id="addForm" class="form-group"> 
+    <form id="addForm" class="form-group"z> 
       <div class="row justify-content-md-center">
         <div class="col col-3 text-center"> 
           <h5>Category:</h5>
@@ -77,7 +77,7 @@
           </tbody>
         </table>
 
-        <input type="button" id="btn" class="btn btn-primary btn-block" value="Add Question" onclick="submitForm()">
+        <input id="btn" type="button" class="btn btn-primary btn-block" value="Add Question" onclick="submitForm()">
       </div>
       <br>
 
@@ -106,7 +106,11 @@
       </div>
 
       <p id="demo"></p>
+
+      <div id="container"></div>
     </form>
+
+    
   </div>
 </body>
 </html>

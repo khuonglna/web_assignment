@@ -3,7 +3,7 @@ require_once('db_model.php');
 require_once('exam.php');
 require_once('answer.php');
 
-class Question { //implements JsonSerializable {
+class Question { 
     private $questionId;
     private $questionText;
     private $answerList;
@@ -27,13 +27,6 @@ class Question { //implements JsonSerializable {
     public function setAnswerList(array $answerList) {
         $this->answerList = $answerList;
     }
-
-    // public function jsonSerialize(){
-    //     return array(
-    //         "q_id"=>$this->questionId,
-    //         "q_text"=>$this->questionText
-    //     );
-    // }
 }
 
 class QuestionModel extends DbModel {
@@ -50,11 +43,11 @@ class QuestionModel extends DbModel {
         if (mysqli_num_rows($res) > 0) {
             while ($row = mysqli_fetch_assoc($res)) {
                 $question = new Question($row["q_id"], $row["q_text"]);
-                // $answerModel = new AnswerModel();
-                // $q_id = $row["q_id"];
+                $answerModel = new AnswerModel();
+                $q_id = $row["q_id"];
                 // $q_text = $row["q_text"];
-                // $answerList = $answerModel->queryListAnswerByQuestionId($q_id);
-                // $question->setAnswerList($answerList);
+                $answerList = $answerModel->queryListAnswerByQuestionId($q_id);
+                $question->setAnswerList($answerList);
                 $questionList[] = $question;
             }
         }

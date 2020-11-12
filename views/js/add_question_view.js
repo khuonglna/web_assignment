@@ -51,7 +51,7 @@ function submitForm() {
   if (ques.value == '' || ans1.value == '' || ans2.value == '' || ans3.value == '') {
     document.getElementById("missing").style.display = "block";
   } else {
-    getResult();
+    addQuestion();
   }
 }
 
@@ -67,7 +67,7 @@ function closeAddError() {
   document.getElementById("error").style.display = "none";
 }
 
-function getResult() {
+function addQuestion() {
   document.getElementById("questionForm").style.display = "none";
   
   var cate = document.getElementById("category").value;
@@ -89,8 +89,8 @@ function getResult() {
 
   ajax.onreadystatechange = function () {
       if (this.readyState == 4 && this.status == 200) {
-          $result = this.responseText;
-          if (JSON.parse($result)) {
+          var result = this.responseText;
+          if (JSON.parse(result)) {
             document.getElementById("addForm").reset();
             document.getElementById("success").style.display = "block";
           } else {
