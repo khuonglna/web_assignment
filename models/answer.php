@@ -35,8 +35,7 @@ class Answer
 
 class AnswerModel extends DbModel
 {
-    function queryListAnswerByQuestionId($questionId)
-    {
+    function queryListAnswerByQuestionId($questionId) {
         $answerList = array();
         $conn = $this->connect();
         $sql = "SELECT
@@ -56,5 +55,33 @@ class AnswerModel extends DbModel
             }
         }
         return $answerList;
+    }
+
+    public function queryAddAnswers($qId , $ansText, $correctAns) {   
+        $conn = $this->connect();
+        $sql = "SELECT 
+                    * 
+                FROM 
+                    ANSWER";
+        $res = mysqli_query($conn, $sql);
+        if (!$res) {
+            echo mysqli_error($conn);
+            return false;
+        }
+
+        $id = mysqli_num_rows($res) + 1;
+        for ($i = 0; $i < 3 ; $i++) {
+            $correctFlag = ((int)$correctAns == $i + 1) ? 1 : 0;
+            $query =    "INSERT INTO 
+                            ANSWER (`a_id`, `q_id`, `a_text`, `a_correct_flag`) 
+                        VALUES 
+                            ('$id' , '$qId', '$ansText[$i]' , '$correctFlag')";
+            $id = $id + 1;
+            if (!mysqli_query($conn, $query)) {
+                echo mysqli_error($conn);
+                return false;
+            }
+        }
+        return true;
     }
 }

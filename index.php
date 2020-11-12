@@ -1,13 +1,16 @@
-<!DOCTYPE html>
 <?php 
-    require_once 'views/header.php'; 
-
+    session_start();
+    include 'views/header.php';
+    
     if (isset($_GET['page'])) {
         $page = $_GET['page'];
-        if ($page == "login") {
+        if ($page == "") {
+            include "views/exception.php";
+        }
+        elseif ($page == "login") {
             $controller = isset($_GET['controller'])? $_GET['controller'].'Controller' : 'UserController' ;
             $action = isset($_GET['action'])?$_GET['action']: 'getUser' ;
-
+            
             require_once('controllers/login_controller.php');
             $usercontroller = new $controller();
             $usercontroller-> $action();
@@ -21,15 +24,24 @@
             $usercontroller-> $action();
         } 
 
+        elseif ($page == "logout") {
+            $controller = isset($_GET['controller'])? $_GET['controller'].'Controller' : 'UserController' ;
+            $action = isset($_GET['action'])?$_GET['action']: 'logout' ;
 
-        
-        elseif ($page == "home") {
-            include "views/$page.php";
+            require_once('controllers/logout_controller.php');
+            $usercontroller = new $controller();
+            $usercontroller-> $action();
         } 
+
+        elseif ($page == "add_test") {
+            include "views/add_question.php";
+        }
         elseif ($page == "exam_view") {
-            include "view/$page.php";
-        } 
-        else include "$page.php";
+            include "views/category_view.php";
+
+        } else {
+            include "views/$page.php";
+        }
     } 
     require_once 'views/footer.php'; 
 ?>

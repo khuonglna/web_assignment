@@ -31,6 +31,7 @@
                     VALUES 
                         ('$username','".md5($password)."')";
             mysqli_query($conn, $query);
+            return true;
         }
         
         public function login($username , $password){
@@ -46,7 +47,8 @@
                         username = "'.$username.'" and password = "'.$password.'"';
             $res = mysqli_query($conn, $sql);
 			if (mysqli_num_rows($res) > 0) {
-                return $res;
+                $row = mysqli_fetch_assoc($res);
+                return $row;
             }
             else {
                 return null;
