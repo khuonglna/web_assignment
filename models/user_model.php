@@ -54,5 +54,29 @@
                 return null;
             }
         }
+
+        public function addStaff($username , $password)
+		{   
+            if ($username == '' || $password == ''){
+                return false;
+            }
+			$conn = $this->connect();
+			$sql = "SELECT 
+                        *
+                    FROM 
+                        USERS 
+                    WHERE 
+                        username='$username'";
+            $res = mysqli_query($conn, $sql);
+			if (mysqli_num_rows($res) > 0) {
+                return false; 	
+            }
+            $query = "INSERT INTO 
+                        USERS (username, password, role) 
+                    VALUES 
+                        ('$username','".md5($password)."','2')";
+            mysqli_query($conn, $query);
+            return true;
+        }
 	}
 ?>
