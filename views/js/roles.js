@@ -59,9 +59,11 @@ ajax.onreadystatechange = function () {
                 insertNode.href = "index.php?page=insert_staff";
                 deleteNode.href = "index.php?page=delete_staff";
                 container.classList.add("dropdown-menu");
-                parent.classList.add("nav-link dropdown-toggle");
-                navitem.classList.add("nav-item dropdown");
-                //parent.data-toggle = "dropdown";
+                parent.classList.add("nav-link");
+                parent.classList.add("dropdown-toggle");
+                navitem.classList.add("nav-item");
+                navitem.classList.add("dropdown");
+                parent.setAttribute("data-toggle","dropdown");
 
                 insertNode.appendChild(insertText);
                 deleteNode.appendChild(deleteText);
