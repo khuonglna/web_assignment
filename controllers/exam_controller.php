@@ -33,6 +33,25 @@
             return $questionList;
         }
     
+        public function deleteQuestions($questionId) {
+            $questionModel = new QuestionModel();
+            $resultQuestion = $questionModel->querydeleteQuestion($questionId);
+            $answerModel = new AnswerModel();
+            $resultAnswer = $answerModel->queryDeleteAnswerByQuestionId($questionId);
+            // $resultAnswer = true;
+
+            $result = 1;
+            if ($resultQuestion != true && $resultAnswer != true) {
+                $result = 2;
+            } elseif ($resultQuestion != true) {
+                $result = 3;
+            } elseif ($resultAnswer != true) {
+                $result = 4;
+            }
+            // $result = $resultQuestion;
+
+            return $result;
+        }
         public function calculateScore() {
     
         }

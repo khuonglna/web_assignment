@@ -66,6 +66,7 @@ function closeAddError() {
 
 function submitForm() {
 	deleteQuestions();
+	// clearQuestionList();
 }
 
 function showQuestionList(questionList) {
@@ -73,26 +74,43 @@ function showQuestionList(questionList) {
 
 	for (var index in questionList) {
 		// Insert a row at the end of the table
-		var newRow = table.insertRow(-1);
+		var newRow1 = table.insertRow(-1);
 	
 		// Insert a cell in the row 
-		var id = newRow.insertCell(0);
+		var id = newRow1.insertCell(0);
+		id.rowSpan = 3;
 		id.style.textAlign = "center";
 		id.appendChild(document.createTextNode(parseFloat(index)+1));
 
 		// Insert a cell in the row 
-		var question = newRow.insertCell(1);
+		var question = newRow1.insertCell(1);
+		question.rowSpan = 3;
 		question.appendChild(document.createTextNode(questionList[index].q_text));
 
 		// Insert a cell in the row 
-		var del = newRow.insertCell(2);
+		var ans = newRow1.insertCell(2);
+		ans.appendChild(document.createTextNode(questionList[index].ans1));	
+
+		// Insert a cell in the row 
+		var del = newRow1.insertCell(3);
+		del.rowSpan = 3;
 		del.setAttribute("id", questionList[index].q_id);
 		del.style.textAlign = "center"; 
 		/* create a radio button */
 		var delButton = document.createElement("input");
 		delButton.setAttribute("type", "checkbox");
 		delButton.setAttribute("id", index);
-		del.appendChild(delButton);
+		del.appendChild(delButton);	
+
+		// Insert a row at the end of the table
+		var newRow2 = table.insertRow(-1);
+		var ans = newRow2.insertCell(0);
+		ans.appendChild(document.createTextNode(questionList[index].ans2));
+
+		// Insert a row at the end of the table
+		var newRow3 = table.insertRow(-1);
+		var ans = newRow3.insertCell(0);
+		ans.appendChild(document.createTextNode(questionList[index].ans3));
 	}
 	document.getElementById("questionForm").style.display = "block";
 }
@@ -111,7 +129,7 @@ function getQuestionList() {
 	ajax.onreadystatechange = function () {
 		if (this.readyState == 4 && this.status == 200) {
 			var data = this.responseText;
-			//   alert(data);
+			// alert(data);
 			questionList = JSON.parse(data);
 			showQuestionList(questionList);
 		}
@@ -121,16 +139,13 @@ function getQuestionList() {
 }
 
 function deleteQuestions() {
-	var cate = document.getElementById("category").value;
-	var lvl = document.getElementById("level").value;
-
-	var dataStr = '&category=' + cate + '&level=' + lvl + '&q_id='; 
+	var dataStr = '&q_id='; 
 
 	var questions = document.getElementById("questionTable");
 	
-	for (var i = questions.rows.length - 1; i >= 0; i--) {
+	for (var i = questions.rows.length / 3 - 1; i >= 0; i--) {
 		if (document.getElementById(i).checked == true) {
-			dataStr = dataStr + '-' + questions.rows[i].cells[2].id;
+			dataStr = dataStr + questions.rows[3*i].cells[3].id + '-';
 		}
 	}
 

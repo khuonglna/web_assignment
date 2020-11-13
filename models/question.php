@@ -16,6 +16,10 @@ class Question {
     function getCorrectAnswer() {
     }
 
+    public function getAnswerList() {
+        return $this->answerList;
+    }
+
     public function getQuestionId() {
         return $this->questionId;
     }
@@ -44,9 +48,7 @@ class QuestionModel extends DbModel {
             while ($row = mysqli_fetch_assoc($res)) {
                 $question = new Question($row["q_id"], $row["q_text"]);
                 $answerModel = new AnswerModel();
-                $q_id = $row["q_id"];
-                // $q_text = $row["q_text"];
-                $answerList = $answerModel->queryListAnswerByQuestionId($q_id);
+                $answerList = $answerModel->queryListAnswerByQuestionId($row["q_id"]);
                 $question->setAnswerList($answerList);
                 $questionList[] = $question;
             }
@@ -61,8 +63,7 @@ class QuestionModel extends DbModel {
                 FROM 
                     QUESTION 
                 WHERE 
-                    Q_TEXT='$questionText'
-                ";
+                    Q_TEXT='$questionText'";
         $res = mysqli_query($conn, $sql);
         if (!$res) {
             echo mysqli_error($conn);
@@ -83,11 +84,11 @@ class QuestionModel extends DbModel {
         }
 
         $qId = mysqli_num_rows($res) + 1;
-        $query = "INSERT INTO 
-                    QUESTION (Q_ID, Q_LEVEL, Q_CATEGORY, Q_TEXT) 
-                VALUES 
-                    ('$qId' , '$level', '$category' , '$questionText')
-                ";
+        $query =    "INSERT INTO 
+                        QUESTION (Q_ID, Q_LEVEL, Q_CATEGORY, Q_TEXT) 
+                    VALUES 
+                        ('$qId' , '$level', '$category' , '$questionText')
+                    ";
         if (!mysqli_query($conn, $query)) {
             echo mysqli_error($conn);
             return false;
@@ -101,6 +102,21 @@ class QuestionModel extends DbModel {
         return true;
     }
     
+    public function queryDeleteQuestion ($questionId) {
+        $conn = $this->connect();
+        $q_id = (int)$questionId;
+        $sql = "DELETE FROM 
+                    QUESTION
+                WHERE 
+                    Q_ID='$q_id'";
+        if (!mysqli_query($conn, $sql)) {
+            echo mysqli_error($conn);
+            return false;
+        }
+        // echo json_encode ("OK");
+        return true;
+    }
+
     public function queryQuestions ($category, $level) {
         $questionList = array();
         $conn = $this->connect();

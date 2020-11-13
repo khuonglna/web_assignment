@@ -84,4 +84,19 @@ class AnswerModel extends DbModel
         }
         return true;
     }
+
+    public function queryDeleteAnswerByQuestionId ($questionId) {
+        $conn = $this->connect();
+        $sql = "DELETE FROM 
+                    ANSWER
+                WHERE 
+                    Q_ID='$questionId'";
+        $res = mysqli_query($conn, $sql);
+        if (!mysqli_query($conn, $sql)) {
+            echo mysqli_error($conn);
+            return false;
+        }
+        // echo json_encode ("OK");
+        return true;
+    }
 }

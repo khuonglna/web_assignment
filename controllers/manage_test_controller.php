@@ -27,14 +27,39 @@
                 for ($i = 0; $i < sizeof($result); $i++) {
                         $q_id = $result[$i]->getQuestionId();
                         $q_text = $result[$i]->getQuestionText();
-                        $questionList[$i] = array("q_id"=>$q_id,"q_text"=>$q_text);
+                        $answerList = $result[$i]->getAnswerList();
+                        $questionList[$i] = array("q_id"=>$q_id,
+                                "q_text"=>$q_text,
+                                "ans1"=>$answerList[0]->getAnswerText(),
+                                "ans2"=>$answerList[1]->getAnswerText(),
+                                "ans3"=>$answerList[2]->getAnswerText());
                 }
                 echo json_encode($questionList);
         } elseif ($res == "deleteQuestion") {
                 $category = $_REQUEST['category'];
                 $level = $_REQUEST['level'];
+                $dataStr = $_REQUEST['q_id'];
 
-                echo json_encode($_REQUEST['q_id']);
+				$start = 0;
+				$end = 0;
+				$pos = 0;
+                $char = $dataStr[$pos];
+                while ($char != "") {
+                    if ($char == "-") {
+						$end = $pos;
+						$q_id = substr($dataStr, $start, ($end-$start));
+						$start = $end + 1;
+						$examController = new ExamController();
+						$result = $examController->deleteQuestions($q_id);
+						if ($result == false) {
+							$result = "Failed " . $q_id;
+							break;
+						}
+					} 
+					$pos = $pos + 1;
+					$char = $dataStr[$pos];
+                }
+                echo json_encode($result);
         } else {
                 echo "guest";
         }
