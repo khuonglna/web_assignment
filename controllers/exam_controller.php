@@ -40,14 +40,18 @@
             $resultAnswer = $answerModel->queryDeleteAnswerByQuestionId($questionId);
             // $resultAnswer = true;
 
-            $result = 1;
-            if ($resultQuestion != true && $resultAnswer != true) {
-                $result = 2;
-            } elseif ($resultQuestion != true) {
-                $result = 3;
-            } elseif ($resultAnswer != true) {
-                $result = 4;
+            if ($resultQuestion == true && $resultAnswer == true) {
+                $result = 1;
+            } else {
+                $result = 0;
             }
+            // if ($resultQuestion != true && $resultAnswer != true) {
+            //     $result = 2;
+            // } elseif ($resultQuestion != true) {
+            //     $result = 3;
+            // } elseif ($resultAnswer != true) {
+            //     $result = 4;
+            // }
             // $result = $resultQuestion;
 
             return $result;

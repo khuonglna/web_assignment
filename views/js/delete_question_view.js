@@ -31,9 +31,9 @@ function onEnterEvent() {
 }
 
 function openQuestionList() {
-	closeMissingError();
-	closeAddSuccess();
-	closeAddError();
+	closeNothingNoti();
+	closeDelSuccess();
+	closeDelError();
 	var cate = document.getElementById("category");
 	var lvl = document.getElementById("level");
 	if (cate.options[cate.selectedIndex].value != "" && lvl.options[lvl.selectedIndex].value != "") {
@@ -52,21 +52,27 @@ function clearQuestionList() {
 	}	
 }
 
-function closeMissingError() {
-  document.getElementById("missing").style.display = "none";
+function closeNothingNoti() {
+  document.getElementById("nothing").style.display = "none";
 }
 
-function closeAddSuccess() {
+function closeDelSuccess() {
   document.getElementById("success").style.display = "none";
 }
 
-function closeAddError() {
+function closeDelError() {
   document.getElementById("error").style.display = "none";
 }
 
 function submitForm() {
 	deleteQuestions();
-	// clearQuestionList();
+	clearQuestionList();
+}
+
+function resetDelForm() {
+	document.getElementById("deleteForm").reset();
+	clearQuestionList();
+	document.getElementById("questionForm").style.display = "none";
 }
 
 function showQuestionList(questionList) {
@@ -157,7 +163,16 @@ function deleteQuestions() {
 	ajax.onreadystatechange = function () {
 		if (this.readyState == 4 && this.status == 200) {
 			var result = this.responseText;
-			alert(result);
+			// alert(result);
+			if (JSON.parse(result == -1)) {
+				resetDelForm();
+				document.getElementById("nothing").style.display = "block";
+			} else if (JSON.parse(result)) {
+				resetDelForm();
+				document.getElementById("success").style.display = "block";
+			} else {
+				document.getElementById("error").style.display = "block";
+			}
 		}
 	}
 	ajax.open(method, url + dataStr, asynchronous);

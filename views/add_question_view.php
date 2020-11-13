@@ -93,9 +93,6 @@
         <button type="button" class="close" aria-label="Close" onclick="closeAddSuccess()">
           <span aria-hidden="true">&times;</span>
         </button>
-        <!-- <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button> -->
       </div>
 
       <div class="alert alert-danger" role="alert" id="error" style="display:none;">

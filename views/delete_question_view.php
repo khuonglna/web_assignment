@@ -56,16 +56,16 @@
       </div>
       <br>
 
-      <div class="alert alert-danger" role="alert" id="missing" style="display:none;">
-        Please fill all the information!!!
-        <button type="button" class="close" aria-label="Close" onclick="closeMissingError()">
+      <div class="alert alert-primary" role="alert" id="nothing" style="display:none;">
+        You have not chosen any questions!!!
+        <button type="button" class="close" aria-label="Close" onclick="closeNothingNoti()">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
 
       <div class="alert alert-success" role="alert" id="success" style="display:none;">
-        Add successfully!
-        <button type="button" class="close" aria-label="Close" onclick="closeAddSuccess()">
+        Delete question(s) successfully!
+        <button type="button" class="close" aria-label="Close" onclick="closeDelSuccess()">
           <span aria-hidden="true">&times;</span>
         </button>
         <!-- <button type="button" class="close" data-dismiss="alert" aria-label="Close">
@@ -74,8 +74,8 @@
       </div>
 
       <div class="alert alert-danger" role="alert" id="error" style="display:none;">
-        Failed to add question!!!
-        <button type="button" class="close" aria-label="Close" onclick="closeAddError()">
+        Failed to delete question(s)!!!
+        <button type="button" class="close" aria-label="Close" onclick="closeDelError()">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>

@@ -96,7 +96,6 @@ class AnswerModel extends DbModel
             echo mysqli_error($conn);
             return false;
         }
-        // echo json_encode ("OK");
         return true;
     }
 }

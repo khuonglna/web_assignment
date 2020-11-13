@@ -34,12 +34,14 @@
                                 "ans2"=>$answerList[1]->getAnswerText(),
                                 "ans3"=>$answerList[2]->getAnswerText());
                 }
-                echo json_encode($questionList);
+				echo json_encode($questionList);
+				
         } elseif ($res == "deleteQuestion") {
                 $category = $_REQUEST['category'];
                 $level = $_REQUEST['level'];
                 $dataStr = $_REQUEST['q_id'];
 
+				$result = -1;
 				$start = 0;
 				$end = 0;
 				$pos = 0;
@@ -52,7 +54,6 @@
 						$examController = new ExamController();
 						$result = $examController->deleteQuestions($q_id);
 						if ($result == false) {
-							$result = "Failed " . $q_id;
 							break;
 						}
 					} 
