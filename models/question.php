@@ -71,19 +71,7 @@ class QuestionModel extends DbModel {
         } elseif (mysqli_num_rows($res) > 0) {
             return false;
         }
-
-        // $sql = "SELECT 
-        //             Q_ID 
-        //         FROM 
-        //             QUESTION
-        //         ";
-        // $res = mysqli_query($conn, $sql);
-        // if (!$res) {
-        //     echo mysqli_error($conn);
-        //     return false;
-        // }
-
-        // $qId = mysqli_num_rows($res) + 1;
+        
         $query =    "INSERT INTO 
                         QUESTION (Q_LEVEL, Q_CATEGORY, Q_TEXT) 
                     VALUES
