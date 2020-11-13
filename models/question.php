@@ -72,8 +72,30 @@ class QuestionModel extends DbModel {
             return false;
         }
 
+        // $sql = "SELECT 
+        //             Q_ID 
+        //         FROM 
+        //             QUESTION
+        //         ";
+        // $res = mysqli_query($conn, $sql);
+        // if (!$res) {
+        //     echo mysqli_error($conn);
+        //     return false;
+        // }
+
+        // $qId = mysqli_num_rows($res) + 1;
+        $query =    "INSERT INTO 
+                        QUESTION (Q_LEVEL, Q_CATEGORY, Q_TEXT) 
+                    VALUES
+                        ('$level', '$category' , '$questionText')
+                    ";
+        if (!mysqli_query($conn, $query)) {
+            echo mysqli_error($conn);
+            return false;
+        }
+
         $sql = "SELECT 
-                    Q_ID 
+                    MAX(Q_ID) 
                 FROM 
                     QUESTION
                 ";
@@ -82,16 +104,11 @@ class QuestionModel extends DbModel {
             echo mysqli_error($conn);
             return false;
         }
-
-        $qId = mysqli_num_rows($res) + 1;
-        $query =    "INSERT INTO 
-                        QUESTION (Q_ID, Q_LEVEL, Q_CATEGORY, Q_TEXT) 
-                    VALUES 
-                        ('$qId' , '$level', '$category' , '$questionText')
-                    ";
-        if (!mysqli_query($conn, $query)) {
-            echo mysqli_error($conn);
-            return false;
+        $qId = 1;
+        if (mysqli_num_rows($res) > 0) {
+            while ($row = mysqli_fetch_assoc($res)) {
+                $qId = $row["MAX(Q_ID)"];
+            }
         }
   
         $answermodel = new AnswerModel();
