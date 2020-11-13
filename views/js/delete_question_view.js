@@ -1,35 +1,3 @@
-function onEnterEvent() {
-  var ques = document.getElementById("question");
-  var ans1 = document.getElementById("answer1");
-  var ans2 = document.getElementById("answer2");
-  var ans3 = document.getElementById("answer3");
-
-  ques.addEventListener("keyup", function(event) {
-    if (event.keyCode === 13) {
-    event.preventDefault();
-    document.getElementById("btn").click();
-    }
-  });
-  ans1.addEventListener("keyup", function(event) {
-    if (event.keyCode === 13) {
-    event.preventDefault();
-    document.getElementById("btn").click();
-    }
-  });
-  ans2.addEventListener("keyup", function(event) {
-    if (event.keyCode === 13) {
-    event.preventDefault();
-    document.getElementById("btn").click();
-    }
-  });
-  ans3.addEventListener("keyup", function(event) {
-    if (event.keyCode === 13) {
-    event.preventDefault();
-    document.getElementById("btn").click();
-    }
-  });
-}
-
 function openQuestionList() {
 	closeNothingNoti();
 	closeDelSuccess();
