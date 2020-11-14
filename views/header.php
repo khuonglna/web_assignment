@@ -68,26 +68,19 @@
                     <div class="col"> </div>
                     <div class="col-7" id="nav_col">
                         <div class="container w-100" id="nav_container">
-<<<<<<< HEAD
-                            <div class="topnav" id="nav_menu">
-                                <a class="active" id="home_navtab" href="index.php?page=home">Home</a>
-
-                                <a id="test_navtab" href="index.php?page=add_question">Add Question</a>
-
-                                <a id="test_navtab" href="index.php?page=delete_question">Delete Question</a>
-
-                                <a id="info_navtab" href="#contact">About Us</a>
-                            </div>
-=======
                             <nav class="navbar navbar-expand-md navbar-light bg-light">
                                 <div class="collapse navbar-collapse" >
                                     <ul class="navbar-nav" id="nav_menu">
                                         <li class="nav-item active"><a class="nav-link" href="index.php?page=home">Home</a</li> 
+
+                                        <li class="nav-item"><a class="nav_link" href="index.php?page=add_question">Add Question</a></li>
+
+                                        <li class="nav-item"><a class="nav_link" href="index.php?page=delete_question">Delete Question</a></li>
+
                                         <li class="nav-item"><a class="nav-link" href="#" id="info_navtab">About Us</a></li>
                                     </ul>
                                 </div>
                             </nav>
->>>>>>> upstream/main
                         </div>
                         <div class="container" style="margin-top:10px">
                         </div>

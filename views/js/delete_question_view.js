@@ -2,6 +2,7 @@ function openQuestionList() {
 	closeNothingNoti();
 	closeDelSuccess();
 	closeDelError();
+	closeNumWarning();
 	var cate = document.getElementById("category");
 	var lvl = document.getElementById("level");
 	if (cate.options[cate.selectedIndex].value != "" && lvl.options[lvl.selectedIndex].value != "") {
@@ -32,9 +33,12 @@ function closeDelError() {
   document.getElementById("error").style.display = "none";
 }
 
+function closeNumWarning() {
+	document.getElementById("warning").style.display = "none";
+  }
+
 function submitForm() {
 	deleteQuestions();
-	clearQuestionList();
 }
 
 function resetDelForm() {
@@ -89,6 +93,18 @@ function showQuestionList(questionList) {
 	document.getElementById("questionForm").style.display = "block";
 }
 
+function checkNumber() {
+	var questions = document.getElementById("questionTable");
+	var totalQuestions = questions.rows.length / 3 - 1;
+	var questionChosen = 0;
+
+	for (var i = questions.rows.length / 3 - 1; i >= 0; i--) {
+		if (document.getElementById(i).checked == true) {
+			questionChosen = questionChosen + 1;
+		}
+	}
+	return ((totalQuestions - questionChosen) >= 10 ? true : false);
+}
 function getQuestionList() {
 	var cate = document.getElementById("category").value;
 	var lvl = document.getElementById("level").value;
@@ -113,36 +129,47 @@ function getQuestionList() {
 }
 
 function deleteQuestions() {
+	closeNothingNoti();
+	closeDelSuccess();
+	closeDelError();
+	closeNumWarning();
 	var dataStr = '&q_id='; 
 
 	var questions = document.getElementById("questionTable");
+	var totalQuestions = questions.rows.length / 3;
+	var questionChosen = 0;
 	
-	for (var i = questions.rows.length / 3 - 1; i >= 0; i--) {
+	for (var i = totalQuestions - 1; i >= 0; i--) {
 		if (document.getElementById(i).checked == true) {
 			dataStr = dataStr + questions.rows[3*i].cells[3].id + '-';
+			questionChosen = questionChosen + 1;
 		}
 	}
 
-	var ajax = new XMLHttpRequest();
-	var method = "POST";
-	var url = "controllers/manage_test_controller.php?function=deleteQuestion";
-	var asynchronous = true;
+	if (totalQuestions - questionChosen < 10) {
+		document.getElementById("warning").style.display = "block";
+	} else {
+		var ajax = new XMLHttpRequest();
+		var method = "POST";
+		var url = "controllers/manage_test_controller.php?function=deleteQuestion";
+		var asynchronous = true;
 
-	ajax.onreadystatechange = function () {
-		if (this.readyState == 4 && this.status == 200) {
-			var result = this.responseText;
-			// alert(result);
-			if (JSON.parse(result == -1)) {
-				resetDelForm();
-				document.getElementById("nothing").style.display = "block";
-			} else if (JSON.parse(result)) {
-				resetDelForm();
-				document.getElementById("success").style.display = "block";
-			} else {
-				document.getElementById("error").style.display = "block";
+		ajax.onreadystatechange = function () {
+			if (this.readyState == 4 && this.status == 200) {
+				var result = this.responseText;
+				// alert(result);
+				if (JSON.parse(result == -1)) {
+					document.getElementById("nothing").style.display = "block";
+				} else if (JSON.parse(result)) {
+					resetDelForm();
+					document.getElementById("success").style.display = "block";
+				} else {
+					resetDelForm();
+					document.getElementById("error").style.display = "block";
+				}
 			}
 		}
+		ajax.open(method, url + dataStr, asynchronous);
+		ajax.send();
 	}
-	ajax.open(method, url + dataStr, asynchronous);
-	ajax.send();
 }

@@ -30,12 +30,6 @@
         </div>
       </div>
       <br>
-      
-      <!-- <div class="row justify-content-md-center">
-        <div col col-2>
-          <input type="button" id="btn" class="btn btn-primary btn-block" value="Show" onclick="getQuestionList()">
-        </div>
-      </div> -->
 
       <div id="questionForm" style="display:none;">
         <table class="table table-bordered">
@@ -76,6 +70,13 @@
       <div class="alert alert-danger" role="alert" id="error" style="display:none;">
         Failed to delete question(s)!!!
         <button type="button" class="close" aria-label="Close" onclick="closeDelError()">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+
+      <div class="alert alert-danger" role="alert" id="warning" style="display:none;">
+        The number of questions after deleting must be greater and equal 10!!!
+        <button type="button" class="close" aria-label="Close" onclick="closeNumWarning()">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
