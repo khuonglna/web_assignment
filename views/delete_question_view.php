@@ -5,7 +5,7 @@
     <script src="views/js/delete_question_view.js"></script>
 </head>
 
-<body onload="onEnterEvent()">
+<body>
   <div class="container content">
     <form id="deleteForm" class="form-group"> 
       <div class="row justify-content-md-center">

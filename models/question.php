@@ -127,29 +127,29 @@ class QuestionModel extends DbModel {
         return true;
     }
 
-    public function queryQuestions ($category, $level) {
-        $questionList = array();
-        $conn = $this->connect();
-        $sql = "SELECT
-                    q.q_id,
-                    q.q_text,
-                    a.a_id,
-                    a.a_text,
-                    a.a_correct_flag
-                FROM
-                    question q
-                INNER JOIN answer a ON
-                    a.q_id = q.q_id
-                WHERE
-                    q.q_level = $level AND q.q_category = $category
-                ";
-        $data =array();
-        $res = mysqli_query($conn, $sql);
-        while ($row = mysqli_fetch_assoc($res)) {
-            $data[] = $row;
-        }
-        return $data;
-    }
+    // public function queryQuestions ($category, $level) {
+    //     $questionList = array();
+    //     $conn = $this->connect();
+    //     $sql = "SELECT
+    //                 q.q_id,
+    //                 q.q_text,
+    //                 a.a_id,
+    //                 a.a_text,
+    //                 a.a_correct_flag
+    //             FROM
+    //                 question q
+    //             INNER JOIN answer a ON
+    //                 a.q_id = q.q_id
+    //             WHERE
+    //                 q.q_level = $level AND q.q_category = $category
+    //             ";
+    //     $data =array();
+    //     $res = mysqli_query($conn, $sql);
+    //     while ($row = mysqli_fetch_assoc($res)) {
+    //         $data[] = $row;
+    //     }
+    //     return $data;
+    // }
 
     public function querygetCorrectAnswer($qId) {
         $conn = $this->connect();

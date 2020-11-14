@@ -29,31 +29,19 @@
         public function getQuestionList($category, $level) {
             $questionModel = new QuestionModel();
             $questionList = $questionModel->queryQuestionList($category, $level);
-            // $exam = new Exam($questionModel->queryQuestionList($category, $level));
             return $questionList;
         }
     
         public function deleteQuestions($questionId) {
-            $questionModel = new QuestionModel();
-            $resultQuestion = $questionModel->querydeleteQuestion($questionId);
             $answerModel = new AnswerModel();
             $resultAnswer = $answerModel->queryDeleteAnswerByQuestionId($questionId);
-            // $resultAnswer = true;
-
+            $questionModel = new QuestionModel();
+            $resultQuestion = $questionModel->querydeleteQuestion($questionId);
             if ($resultQuestion == true && $resultAnswer == true) {
                 $result = 1;
             } else {
                 $result = 0;
             }
-            // if ($resultQuestion != true && $resultAnswer != true) {
-            //     $result = 2;
-            // } elseif ($resultQuestion != true) {
-            //     $result = 3;
-            // } elseif ($resultAnswer != true) {
-            //     $result = 4;
-            // }
-            // $result = $resultQuestion;
-
             return $result;
         }
         public function calculateScore() {

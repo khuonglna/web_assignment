@@ -157,10 +157,10 @@ function deleteQuestions() {
 		ajax.onreadystatechange = function () {
 			if (this.readyState == 4 && this.status == 200) {
 				var result = this.responseText;
-				// alert(result);
-				if (JSON.parse(result == -1)) {
+				console.log(this.responseText);
+				if (result == -1) {
 					document.getElementById("nothing").style.display = "block";
-				} else if (JSON.parse(result)) {
+				} else if (result) {
 					resetDelForm();
 					document.getElementById("success").style.display = "block";
 				} else {
