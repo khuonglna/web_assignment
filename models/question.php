@@ -71,7 +71,7 @@ class QuestionModel extends DbModel {
         } elseif (mysqli_num_rows($res) > 0) {
             return false;
         }
-        
+
         $query =    "INSERT INTO 
                         QUESTION (Q_LEVEL, Q_CATEGORY, Q_TEXT) 
                     VALUES
@@ -82,6 +82,18 @@ class QuestionModel extends DbModel {
             return false;
         }
 
+        $qId = $this->queryGetLastID();
+  
+        $answermodel = new AnswerModel();
+        $result = $answermodel->queryAddAnswers($qId, $ansList, $correct);
+        if (!$result) {
+            return false;
+        }
+        return true;
+    }
+
+    public function queryGetLastID() {
+        $conn = $this->connect();
         $sql = "SELECT 
                     MAX(Q_ID) 
                 FROM 
@@ -98,13 +110,7 @@ class QuestionModel extends DbModel {
                 $qId = $row["MAX(Q_ID)"];
             }
         }
-  
-        $answermodel = new AnswerModel();
-        $result = $answermodel->queryAddAnswers($qId, $ansList, $correct);
-        if (!$result) {
-            return false;
-        }
-        return true;
+        return $qId;
     }
     
     public function queryDeleteQuestion ($questionId) {

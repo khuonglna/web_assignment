@@ -4,6 +4,7 @@
 <head>
     <title>English Test Site</title>
     <link rel="stylesheet" href="assets/css/style.css">
+    <script src="views/js/roles.js"></script>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
@@ -67,6 +68,7 @@
                     <div class="col"> </div>
                     <div class="col-7" id="nav_col">
                         <div class="container w-100" id="nav_container">
+<<<<<<< HEAD
                             <div class="topnav" id="nav_menu">
                                 <a class="active" id="home_navtab" href="index.php?page=home">Home</a>
 
@@ -76,6 +78,16 @@
 
                                 <a id="info_navtab" href="#contact">About Us</a>
                             </div>
+=======
+                            <nav class="navbar navbar-expand-md navbar-light bg-light">
+                                <div class="collapse navbar-collapse" >
+                                    <ul class="navbar-nav" id="nav_menu">
+                                        <li class="nav-item active"><a class="nav-link" href="index.php?page=home">Home</a</li> 
+                                        <li class="nav-item"><a class="nav-link" href="#" id="info_navtab">About Us</a></li>
+                                    </ul>
+                                </div>
+                            </nav>
+>>>>>>> upstream/main
                         </div>
                         <div class="container" style="margin-top:10px">
                         </div>
@@ -86,4 +98,4 @@
         </div>
     </header>
 
-    <script src="views/js/roles.js"></script>
+    
