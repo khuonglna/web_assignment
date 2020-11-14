@@ -37,13 +37,49 @@ ajax.onreadystatechange = function () {
                 break;
             case "2":
                 var navitem = document.createElement("li");
-                var para = document.createElement("a");
-                var node = document.createTextNode("Manage Exam");
+                var parent = document.createElement("a");
+                var container = document.createElement("div");
+                var insertNode = document.createElement("a");
+                var deleteNode = document.createElement("a");
+                var modifyNode = document.createElement("a");
+                var insertText = document.createTextNode("Add Question");
+                var deleteText = document.createTextNode("Delete Question");
+                var modifyText = document.createTextNode("Modify Question");
+                var nodeText = document.createTextNode("Manage Exam");
+                insertNode.classList.add("dropdown-item");
+                deleteNode.classList.add("dropdown-item");
+                modifyNode.classList.add("dropdown-item");
+                insertNode.href = "index.php?page=add_test";
+                deleteNode.href = "index.php?page=delete_staff";
+                modifyNode.href = "index.php?page=delete_staff";
+                container.classList.add("dropdown-menu");
+                parent.classList.add("nav-link");
+                parent.classList.add("dropdown-toggle");
                 navitem.classList.add("nav-item");
-                navitem.appendChild(para);
-                para.appendChild(node);
-                para.href = "index.php?page=exam_view"
-                para.classList.add("nav-link");
+                navitem.classList.add("dropdown");
+                parent.setAttribute("data-toggle","dropdown");
+
+                insertNode.appendChild(insertText);
+                deleteNode.appendChild(deleteText);
+                modifyNode.appendChild(modifyText);
+                parent.appendChild(nodeText);
+                container.appendChild(insertNode);
+                container.appendChild(deleteNode);
+                container.appendChild(modifyNode);
+                navitem.appendChild(parent);
+                navitem.appendChild(container);
+            
+            
+            
+            
+                // var navitem = document.createElement("li");
+                // var para = document.createElement("a");
+                // var node = document.createTextNode("Manage Exam");
+                // navitem.classList.add("nav-item");
+                // navitem.appendChild(para);
+                // para.appendChild(node);
+                // para.href = "index.php?page=exam_view"
+                // para.classList.add("nav-link");
                 break;
             case "3":
                 var navitem = document.createElement("li");
