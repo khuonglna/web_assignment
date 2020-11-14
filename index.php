@@ -31,7 +31,6 @@
             require_once('controllers/logout_controller.php');
             $usercontroller = new $controller();
             $usercontroller-> $action();
-<<<<<<< HEAD
         } elseif ($page == "home") {
             include "views/$page.php";
         } elseif ($page == "add_question") {
@@ -39,19 +38,14 @@
         } elseif ($page == "delete_question") {
             include "views/delete_question_view.php";
         } elseif ($page == "exam_view") {
-=======
-        } 
-
-        elseif ($page == "insert_staff") {
+        } elseif ($page == "insert_staff") {
             $controller = isset($_GET['controller'])? $_GET['controller'].'Controller' : 'StaffController' ;
             $action = isset($_GET['action'])?$_GET['action']: 'insertStaff' ;
 
             require_once('controllers/insert_staff_controller.php');
             $usercontroller = new $controller();
             $usercontroller-> $action();
-        }  
-
-        elseif ($page == "delete_staff") {
+        }  elseif ($page == "delete_staff") {
             $controller = isset($_GET['controller'])? $_GET['controller'].'Controller' : 'StaffController' ;
             $action = isset($_GET['action'])?$_GET['action']: 'insertStaff' ;
 
@@ -65,7 +59,6 @@
             include "views/add_question.php";
         }
         elseif ($page == "exam_view") {
->>>>>>> upstream/main
             include "views/category_view.php";
         } else {
             include "views/$page.php";
