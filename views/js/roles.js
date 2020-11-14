@@ -49,8 +49,8 @@ ajax.onreadystatechange = function () {
                 insertNode.classList.add("dropdown-item");
                 deleteNode.classList.add("dropdown-item");
                 modifyNode.classList.add("dropdown-item");
-                insertNode.href = "index.php?page=add_test";
-                deleteNode.href = "index.php?page=delete_staff";
+                insertNode.href = "index.php?page=add_question";
+                deleteNode.href = "index.php?page=delete_question";
                 modifyNode.href = "index.php?page=delete_staff";
                 container.classList.add("dropdown-menu");
                 parent.classList.add("nav-link");

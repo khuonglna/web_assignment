@@ -4,7 +4,6 @@
 <head>
     <title>English Test Site</title>
     <link rel="stylesheet" href="assets/css/style.css">
-    <script src="views/js/roles.js"></script>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
@@ -72,11 +71,6 @@
                                 <div class="collapse navbar-collapse" >
                                     <ul class="navbar-nav" id="nav_menu">
                                         <li class="nav-item active"><a class="nav-link" href="index.php?page=home">Home</a</li> 
-
-                                        <li class="nav-item"><a class="nav_link" href="index.php?page=add_question">Add Question</a></li>
-
-                                        <li class="nav-item"><a class="nav_link" href="index.php?page=delete_question">Delete Question</a></li>
-
                                         <li class="nav-item"><a class="nav-link" href="#" id="info_navtab">About Us</a></li>
                                     </ul>
                                 </div>
