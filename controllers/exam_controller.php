@@ -12,6 +12,12 @@
             return $data;
         }
 
+        public function getCategory() {
+            $questionModel = new QuestionModel();
+            $categoryList = $questionModel->queryCategory();
+            return $categoryList;
+        }
+
         public function addQuestion($question, $category, $level, $ansList, $correct) {
             $category = $this->test_input($category);
             $result = false;
@@ -44,7 +50,7 @@
             }
             return $result;
         }
-        
+
         public function calculateScore() {
     
         }

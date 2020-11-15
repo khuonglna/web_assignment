@@ -1,23 +1,29 @@
 <?php
-        include 'exam_controller.php';
+    include 'exam_controller.php';
+    $res = $_REQUEST['function'];
 
-        $res = $_REQUEST['function'];
-        if ($res == "addQuestion") {
-                $question = $_REQUEST['question'];
-                $category = $_REQUEST['category'];
-                $level = $_REQUEST['level'];
-                $correct = $_REQUEST['correct'];
+    if ($res == "getCategory") {
+		$examController = new ExamController();
+		$result = $examController->getCategory();
 
-                $ansList = array();
-                $ansList[0] = $_REQUEST['answer1'];
-                $ansList[1] = $_REQUEST['answer2'];
-                $ansList[2] = $_REQUEST['answer3'];
+		echo json_encode($result);
+		
+    } elseif ($res == "addQuestion") {
+            $question = $_REQUEST['question'];
+            $category = $_REQUEST['category'];
+            $level = $_REQUEST['level'];
+            $correct = $_REQUEST['correct'];
 
-                $examController = new ExamController();
-                $result = $examController->addQuestion ($question, $category, $level, $ansList, $correct);
-                echo json_encode($result);
+            $ansList = array();
+            $ansList[0] = $_REQUEST['answer1'];
+            $ansList[1] = $_REQUEST['answer2'];
+            $ansList[2] = $_REQUEST['answer3'];
 
-        } elseif ($res == "listQuestion") {
+            $examController = new ExamController();
+            $result = $examController->addQuestion($question, $category, $level, $ansList, $correct);
+            echo json_encode($result);
+
+    } elseif ($res == "listQuestion") {
                 $category = $_REQUEST['category'];
                 $level = $_REQUEST['level'];
         
@@ -36,7 +42,7 @@
                 }
 				echo json_encode($questionList);
 				
-        } elseif ($res == "deleteQuestion") {
+    } elseif ($res == "deleteQuestion") {
                 $dataStr = $_REQUEST['q_id'];
 
 				$result = -1;
@@ -58,8 +64,9 @@
 					$pos = $pos + 1;
 					$char = $dataStr[$pos];
                 }
-                echo json_encode($result);
-        } else {
-                echo "guest";
-        }
+				echo json_encode($result);
+				
+    } else {
+            // echo "guest";
+    }
 ?>

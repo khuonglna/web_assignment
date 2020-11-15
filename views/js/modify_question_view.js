@@ -129,7 +129,7 @@ function getQuestionList() {
 
 	var ajax = new XMLHttpRequest();
 	var method = "POST";
-	var url = "controllers/manage_test_controller.php?function=listQuestion";
+	var url = "controllers/manage_exam_controller.php?function=listQuestion";
 	var asynchronous = true;
 
 	ajax.onreadystatechange = function () {

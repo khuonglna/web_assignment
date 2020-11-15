@@ -1,3 +1,8 @@
+function setUp() {
+	getCategory();
+	onEnterEvent();
+}
+
 function onEnterEvent() {
 	var ques = document.getElementById("question");
 	var ans1 = document.getElementById("answer1");
@@ -43,6 +48,17 @@ function openForm() {
 	}
 }
 
+function addCategory(cateList) {
+	var category = document.getElementById("category");
+
+	for (var index in cateList) {
+		var option = document.createElement("option");
+		option.text = cateList[index].c_name;
+		option.id = cateList[index].c_id;
+		category.add(option);
+	}
+}
+
 function submitForm() {
 	closeMissingError();
 	closeAddSuccess();
@@ -71,7 +87,7 @@ function closeAddError() {
 }
 
 function addQuestion() {
-	var cate = document.getElementById("category").value;
+	var cate = document.getElementById("category").options[document.getElementById("category").selectedIndex].id;
 	var lvl = document.getElementById("level").value;
 	var ques = document.getElementById("question").value;
 	var ans1 = document.getElementById("answer1").value;
@@ -85,12 +101,13 @@ function addQuestion() {
 
 	var ajax = new XMLHttpRequest();
 	var method = "POST";
-	var url = "controllers/manage_test_controller.php?function=addQuestion";
+	var url = "controllers/manage_exam_controller.php?function=addQuestion";
 	var asynchronous = true;
 
 	ajax.onreadystatechange = function () {
 		if (this.readyState == 4 && this.status == 200) {
 			var result = this.responseText;
+			// console.log(result);
 			if (JSON.parse(result)) {
 				document.getElementById("questionForm").style.display = "none";
 				document.getElementById("addForm").reset();
@@ -101,5 +118,23 @@ function addQuestion() {
 		}
 	}
 	ajax.open(method, url + dataStr, asynchronous);
+	ajax.send();
+}
+
+function getCategory() {
+	var ajax = new XMLHttpRequest();
+	var method = "POST";
+	var url = "controllers/manage_exam_controller.php?function=getCategory";
+	var asynchronous = true;
+
+	ajax.onreadystatechange = function () {
+		if (this.readyState == 4 && this.status == 200) {
+			var data = this.responseText;
+			var cateList = JSON.parse(data);
+			// console.log(result);
+			addCategory(cateList);
+		}
+	}
+	ajax.open(method, url, asynchronous);
 	ajax.send();
 }
