@@ -13,6 +13,17 @@ function openQuestionList() {
 	}
 }
 
+function addCategory(cateList) {
+	var category = document.getElementById("category");
+
+	for (var index in cateList) {
+		var option = document.createElement("option");
+		option.text = cateList[index].c_name;
+		option.id = cateList[index].c_id;
+		category.add(option);
+	}
+}
+
 function clearQuestionList() {
 	document.getElementById("questionForm").style.display = "none";
 	var questions = document.getElementById("questionTable");
@@ -64,11 +75,19 @@ function showQuestionList(questionList) {
 		// Insert a cell in the row 
 		var question = newRow1.insertCell(1);
 		question.rowSpan = 3;
-		question.appendChild(document.createTextNode(questionList[index].q_text));
+		var ques_text = document.createElement("input");
+		ques_text.defaultValue = questionList[index].q_text;
+		ques_text.style.border = "none";
+		ques_text.style.width = ques_text.value.length + "ch";
+		question.appendChild(ques_text);
 
 		// Insert a cell in the row 
 		var ans = newRow1.insertCell(2);
-		ans.appendChild(document.createTextNode(questionList[index].ans1));	
+		var ans1 = document.createElement("input");
+		ans1.value = questionList[index].ans1;
+		ans1.style.border = "none";
+		ans1.style.width = ans1.value.length + "ch";
+		ans.appendChild(ans1);	
 
 		// Insert a cell in the row 
 		var del = newRow1.insertCell(3);
@@ -84,12 +103,20 @@ function showQuestionList(questionList) {
 		// Insert a row at the end of the table
 		var newRow2 = table.insertRow(-1);
 		var ans = newRow2.insertCell(0);
-		ans.appendChild(document.createTextNode(questionList[index].ans2));
+		var ans2 = document.createElement("input");
+		ans2.value = questionList[index].ans2;
+		ans2.style.border = "none";
+		ans2.style.width = ans2.value.length + "ch";
+		ans.appendChild(ans2);
 
 		// Insert a row at the end of the table
 		var newRow3 = table.insertRow(-1);
 		var ans = newRow3.insertCell(0);
-		ans.appendChild(document.createTextNode(questionList[index].ans3));
+		var ans3 = document.createElement("input");
+		ans3.value = questionList[index].ans3;
+		ans3.style.border = "none";
+		ans3.style.width = ans3.value.length + "ch";
+		ans.appendChild(ans3);
 	}
 	document.getElementById("questionForm").style.display = "block";
 }
@@ -107,22 +134,26 @@ function checkNumber() {
 	return ((totalQuestions - questionChosen) >= 10 ? true : false);
 }
 
-function removeDelRow () {
-	var questions = document.getElementById("questionTable");
-	var totalQuestions = questions.rows.length / 3;
-	
-	for (var i = totalQuestions - 1; i >= 0; i--) {
-		if (document.getElementById(i).checked == true) {
-			for (var j = 0; j < 3; j++) {
-				// questions.deleteRow(3*i);
-				// questions.
-			}
+function getCategory() {
+	var ajax = new XMLHttpRequest();
+	var method = "POST";
+	var url = "controllers/manage_exam_controller.php?function=getCategory";
+	var asynchronous = true;
+
+	ajax.onreadystatechange = function () {
+		if (this.readyState == 4 && this.status == 200) {
+			var data = this.responseText;
+			var cateList = JSON.parse(data);
+			// console.log(result);
+			addCategory(cateList);
 		}
 	}
+	ajax.open(method, url, asynchronous);
+	ajax.send();
 }
 
 function getQuestionList() {
-	var cate = document.getElementById("category").value;
+	var cate = document.getElementById("category").options[document.getElementById("category").selectedIndex].id;
 	var lvl = document.getElementById("level").value;
 
 	var dataStr = '&category=' + cate + '&level=' + lvl; 
@@ -179,7 +210,6 @@ function deleteQuestions() {
 				if (result == -1) {
 					document.getElementById("nothing").style.display = "block";
 				} else if (result) {
-					// removeDelRow();
 					resetDelForm();
 					document.getElementById("success").style.display = "block";
 				} else {

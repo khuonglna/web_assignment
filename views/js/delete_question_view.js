@@ -13,6 +13,17 @@ function openQuestionList() {
 	}
 }
 
+function addCategory(cateList) {
+	var category = document.getElementById("category");
+
+	for (var index in cateList) {
+		var option = document.createElement("option");
+		option.text = cateList[index].c_name;
+		option.id = cateList[index].c_id;
+		category.add(option);
+	}
+}
+
 function clearQuestionList() {
 	document.getElementById("questionForm").style.display = "none";
 	var questions = document.getElementById("questionTable");
@@ -121,8 +132,26 @@ function removeDelRow () {
 	}
 }
 
+function getCategory() {
+	var ajax = new XMLHttpRequest();
+	var method = "POST";
+	var url = "controllers/manage_exam_controller.php?function=getCategory";
+	var asynchronous = true;
+
+	ajax.onreadystatechange = function () {
+		if (this.readyState == 4 && this.status == 200) {
+			var data = this.responseText;
+			var cateList = JSON.parse(data);
+			// console.log(result);
+			addCategory(cateList);
+		}
+	}
+	ajax.open(method, url, asynchronous);
+	ajax.send();
+}
+
 function getQuestionList() {
-	var cate = document.getElementById("category").value;
+	var cate = document.getElementById("category").options[document.getElementById("category").selectedIndex].id;
 	var lvl = document.getElementById("level").value;
 
 	var dataStr = '&category=' + cate + '&level=' + lvl; 

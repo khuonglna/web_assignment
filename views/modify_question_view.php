@@ -2,10 +2,10 @@
 <html>
 
 <head>
-    <script src="views/js/delete_question_view.js"></script>
+    <script src="views/js/modify_question_view.js"></script>
 </head>
 
-<body>
+<body onload="getCategory()">
   <div class="container content">
     <form id="deleteForm" class="form-group"> 
       <div class="row justify-content-md-center">
@@ -13,9 +13,8 @@
           <h5>Category:</h5>
           <select onchange="openQuestionList()" class="custom-select custom-select-sm" name="category" id="category" required>
             <option value=""></option>
-            <option value="1">Family</option>
-            <option value="2">Tense</option>
-
+            <!-- <option value="1">Family</option>
+            <option value="2">Tense</option> -->
           </select>
         </div>
         
