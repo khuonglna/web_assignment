@@ -39,14 +39,17 @@ class AnswerModel extends DbModel
         $answerList = array();
         $conn = $this->connect();
         $sql = "SELECT
-                    a.a_id,
-                    a.a_text
+                    a.a_id
+                    , a.a_text
+                    , a.a_correct_flag
                 FROM
                     answer a
                 INNER JOIN question q ON
                     a.q_id = q.q_id
                 WHERE 
-                    q.q_id = $questionId";
+                    q.q_id = $questionId
+                ORDER BY RAND();
+                ";
         $res = mysqli_query($conn, $sql);
         if (mysqli_num_rows($res) > 0) {
             while ($row = mysqli_fetch_assoc($res)) {

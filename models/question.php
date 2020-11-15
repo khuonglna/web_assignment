@@ -34,7 +34,7 @@ class Question {
 }
 
 class QuestionModel extends DbModel {
-    public function queryQuestionList($category, $difficulty) {
+    public function queryQuestionList($category, $level) {
         $questionList = array();
         $conn = $this->connect();
         $sql = "SELECT 
@@ -42,7 +42,7 @@ class QuestionModel extends DbModel {
                 FROM 
                     QUESTION
                 WHERE 
-                    `q_category` = '$category' AND `q_level` = '$difficulty'";
+                    `q_category` = '$category' AND `q_level` = '$level'";
         $res = mysqli_query($conn, $sql);
         if (mysqli_num_rows($res) > 0) {
             while ($row = mysqli_fetch_assoc($res)) {
@@ -127,29 +127,29 @@ class QuestionModel extends DbModel {
         return true;
     }
 
-    // public function queryQuestions ($category, $level) {
-    //     $questionList = array();
-    //     $conn = $this->connect();
-    //     $sql = "SELECT
-    //                 q.q_id,
-    //                 q.q_text,
-    //                 a.a_id,
-    //                 a.a_text,
-    //                 a.a_correct_flag
-    //             FROM
-    //                 question q
-    //             INNER JOIN answer a ON
-    //                 a.q_id = q.q_id
-    //             WHERE
-    //                 q.q_level = $level AND q.q_category = $category
-    //             ";
-    //     $data =array();
-    //     $res = mysqli_query($conn, $sql);
-    //     while ($row = mysqli_fetch_assoc($res)) {
-    //         $data[] = $row;
-    //     }
-    //     return $data;
-    // }
+    public function queryQuestions ($category, $level) {
+        $questionList = array();
+        $conn = $this->connect();
+        $sql = "SELECT
+                    q.q_id,
+                    q.q_text,
+                    a.a_id,
+                    a.a_text,
+                    a.a_correct_flag
+                FROM
+                    question q
+                INNER JOIN answer a ON
+                    a.q_id = q.q_id
+                WHERE
+                    q.q_level = $level AND q.q_category = $category
+                ";
+        $data =array();
+        $res = mysqli_query($conn, $sql);
+        while ($row = mysqli_fetch_assoc($res)) {
+            $data[] = $row;
+        }
+        return $data;
+    }
 
     public function querygetCorrectAnswer($qId) {
         $conn = $this->connect();
@@ -187,5 +187,30 @@ class QuestionModel extends DbModel {
             $data[] = $row;
         }
         return $data;
+    }
+
+    public function queryExamQuestionList($category, $level) {
+        $questionList = array();
+        $conn = $this->connect();
+        $sql = "SELECT 
+                    *
+                FROM 
+                    QUESTION
+                WHERE 
+                    Q_CATEGORY = '$category' AND Q_LEVEL = '$level'
+                ORDER BY RAND()
+                LIMIT 10
+                ";
+        $res = mysqli_query($conn, $sql);
+        if (mysqli_num_rows($res) > 0) {
+            while ($row = mysqli_fetch_assoc($res)) {
+                $question = new Question($row["q_id"], $row["q_text"]);
+                $answerModel = new AnswerModel();
+                $answerList = $answerModel->queryListAnswerByQuestionId($row["q_id"]);
+                $question->setAnswerList($answerList);
+                $questionList[] = $question;
+            }
+        }
+        return $questionList;
     }
 }
