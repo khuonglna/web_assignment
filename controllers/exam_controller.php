@@ -29,7 +29,6 @@
         public function getQuestionList($category, $level) {
             $questionModel = new QuestionModel();
             $questionList = $questionModel->queryQuestionList($category, $level);
-            // $exam = new Exam($questionModel->queryQuestionList($category, $level));
             return $questionList;
         }
     
@@ -38,16 +37,14 @@
             $resultAnswer = $answerModel->queryDeleteAnswerByQuestionId($questionId);
             $questionModel = new QuestionModel();
             $resultQuestion = $questionModel->querydeleteQuestion($questionId);
-            // $resultAnswer = true;
 
+            $result = 0;
             if ($resultQuestion == true && $resultAnswer == true) {
                 $result = 1;
-            } else {
-                $result = 0;
             }
-
             return $result;
         }
+        
         public function calculateScore() {
     
         }

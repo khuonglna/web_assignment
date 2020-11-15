@@ -176,12 +176,9 @@ function deleteQuestions() {
 			if (this.readyState == 4 && this.status == 200) {
 				var result = this.responseText;
 				console.log(this.responseText);
-				// console.log(JSON.parse(this.responseText));
-				// alert(dataStr);
 				if (result == -1) {
 					document.getElementById("nothing").style.display = "block";
 				} else if (result) {
-					// removeDelRow();
 					resetDelForm();
 					document.getElementById("success").style.display = "block";
 				} else {

@@ -37,8 +37,6 @@
 				echo json_encode($questionList);
 				
         } elseif ($res == "deleteQuestion") {
-                $category = $_REQUEST['category'];
-                $level = $_REQUEST['level'];
                 $dataStr = $_REQUEST['q_id'];
 
 				$result = -1;
