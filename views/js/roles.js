@@ -51,7 +51,7 @@ ajax.onreadystatechange = function () {
                 modifyNode.classList.add("dropdown-item");
                 insertNode.href = "index.php?page=add_question";
                 deleteNode.href = "index.php?page=delete_question";
-                modifyNode.href = "index.php?page=delete_staff";
+                modifyNode.href = "index.php?page=modify_question";
                 container.classList.add("dropdown-menu");
                 parent.classList.add("nav-link");
                 parent.classList.add("dropdown-toggle");

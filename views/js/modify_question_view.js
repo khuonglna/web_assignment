@@ -38,7 +38,7 @@ function closeNumWarning() {
   }
 
 function submitForm() {
-	deleteQuestions();
+	// deleteQuestions();
 }
 
 function resetDelForm() {
@@ -58,7 +58,7 @@ function showQuestionList(questionList) {
 		var id = newRow1.insertCell(0);
 		id.rowSpan = 3;
 		id.style.textAlign = "center";
-		// id.setAttribute("id", "id" + index);
+		id.setAttribute("id", "id" + index);
 		id.appendChild(document.createTextNode(parseFloat(index)+1));
 
 		// Insert a cell in the row 
@@ -114,13 +114,11 @@ function removeDelRow () {
 	for (var i = totalQuestions - 1; i >= 0; i--) {
 		if (document.getElementById(i).checked == true) {
 			for (var j = 0; j < 3; j++) {
-				questions.deleteRow(3*i);
+				// questions.deleteRow(3*i);
 				// questions.
 			}
 		}
 	}
-
-	
 }
 
 function getQuestionList() {
