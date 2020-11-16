@@ -2,6 +2,7 @@
     session_start();
     include 'views/header.php';
     
+
     if (isset($_GET['page'])) {
         $page = $_GET['page'];
         if ($page == "") {
@@ -33,18 +34,18 @@
             $usercontroller-> $action();
         } elseif ($page == "home") {
             include "views/$page.php";
-        } elseif ($page == "add_question") {
+        } elseif ($page == "add_question" && $_SESSION['role'] == 2) {
             include "views/add_question_view.php";
-        } elseif ($page == "delete_question") {
+        } elseif ($page == "delete_question" && $_SESSION['role'] == 2) {
             include "views/delete_question_view.php";
-        } elseif ($page == "insert_staff") {
+        } elseif ($page == "insert_staff" && $_SESSION['role'] == 3) {
             $controller = isset($_GET['controller'])? $_GET['controller'].'Controller' : 'StaffController' ;
             $action = isset($_GET['action'])?$_GET['action']: 'insertStaff' ;
 
             require_once('controllers/insert_staff_controller.php');
             $usercontroller = new $controller();
             $usercontroller-> $action();
-        }  elseif ($page == "delete_staff") {
+        }  elseif ($page == "delete_staff" && $_SESSION['role'] == 3) {
             $controller = isset($_GET['controller'])? $_GET['controller'].'Controller' : 'StaffController' ;
             $action = isset($_GET['action'])?$_GET['action']: 'insertStaff' ;
 
@@ -54,7 +55,7 @@
         } elseif ($page == "exam_view") {
             include "views/exam_view.php";
         } else {
-            include "views/$page.php";
+            include "views/exception.php";
         }
     } 
     require_once 'views/footer.php'; 
