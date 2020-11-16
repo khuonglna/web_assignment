@@ -60,6 +60,29 @@ class AnswerModel extends DbModel
         return $answerList;
     }
 
+    public function queryGetCorrectAnswerByQuestionId($questionId) {
+        $conn = $this->connect();
+        $sql = "SELECT 
+                    `a_text`
+                FROM 
+                    ANSWER
+                WHERE 
+                    `q_id` = '$questionId' AND `a_correct_flag` = 1
+                ";
+        $res = mysqli_query($conn, $sql);
+        if (!$res) {
+            echo mysqli_error($conn);
+            return false;
+        }
+        $result = "";
+        if (mysqli_num_rows($res) > 0) {
+            while ($row = mysqli_fetch_assoc($res)) {
+                $result = $row["a_text"];
+            }
+        }
+        return $result;
+    }
+
     public function queryAddAnswers($qId , $ansText, $correctAns) {   
         $conn = $this->connect();
 

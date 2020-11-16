@@ -37,7 +37,7 @@
               <th scope="col"></th>
               <th scope="col">Question</th>
               <th scope="col">Answer</th>
-              <th scope="col">Delete</th>
+              <th scope="col">Correct</th>
             </tr>
           </thead>
 
@@ -71,7 +71,7 @@
       </div>
 
       <div class="alert alert-danger" role="alert" id="warning" style="display:none;">
-        The number of questions after deleting must be greater and equal 10!!!
+        <!-- The number of questions after deleting must be greater and equal 10!!! -->
         <button type="button" class="close" aria-label="Close" onclick="closeNumWarning()">
           <span aria-hidden="true">&times;</span>
         </button>

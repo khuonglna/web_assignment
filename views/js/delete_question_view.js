@@ -79,7 +79,7 @@ function showQuestionList(questionList) {
 
 		// Insert a cell in the row 
 		var ans = newRow1.insertCell(2);
-		ans.appendChild(document.createTextNode(questionList[index].ans1));	
+		ans.appendChild(document.createTextNode(questionList[index].ans[0].a_text));	
 
 		// Insert a cell in the row 
 		var del = newRow1.insertCell(3);
@@ -95,12 +95,12 @@ function showQuestionList(questionList) {
 		// Insert a row at the end of the table
 		var newRow2 = table.insertRow(-1);
 		var ans = newRow2.insertCell(0);
-		ans.appendChild(document.createTextNode(questionList[index].ans2));
+		ans.appendChild(document.createTextNode(questionList[index].ans[1].a_text));
 
 		// Insert a row at the end of the table
 		var newRow3 = table.insertRow(-1);
 		var ans = newRow3.insertCell(0);
-		ans.appendChild(document.createTextNode(questionList[index].ans3));
+		ans.appendChild(document.createTextNode(questionList[index].ans[2].a_text));
 	}
 	document.getElementById("questionForm").style.display = "block";
 }
@@ -164,7 +164,7 @@ function getQuestionList() {
 	ajax.onreadystatechange = function () {
 		if (this.readyState == 4 && this.status == 200) {
 			var data = this.responseText;
-			console.log(data);
+			// console.log(data);
 			questionList = JSON.parse(data);
 			showQuestionList(questionList);
 		}

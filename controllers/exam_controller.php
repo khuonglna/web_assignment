@@ -5,12 +5,11 @@ require_once('../models/exam.php');
 
 class ExamController
 {
-
-    private function test_input($data)
-    {
+    private function test_input($data) {
         $data = trim($data);
         $data = stripslashes($data);
         $data = htmlspecialchars($data);
+        $data = str_replace("'","''",$data);
         return $data;
     }
 
@@ -25,6 +24,7 @@ class ExamController
             $result = false;
 
         if ($category == '' || $level == '' || $question == '' || $ansList[0] == '' || $ansList[1] == '' || $ansList[2] == '' || $correct == '') {
+
         } else {
             $questionmodel = new QuestionModel();
             $result = $questionmodel->queryAddQuestion($category, $level, $question, $ansList, $correct);
@@ -84,6 +84,13 @@ class ExamController
         }
         return $result;
     }
+
+    public function updateQuestion($questionId, $questionText) {
+        $questionModel = new QuestionModel();
+        $result = $questionModel->queryUpdateQuestion($this->test_input($questionId), $this->test_input($questionText));
+        return $result;
+    }
+
     public function calculateScore()
     {
     }
