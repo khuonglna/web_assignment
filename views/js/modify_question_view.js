@@ -2,7 +2,6 @@ function openQuestionList() {
 	closeNothingNoti();
 	closeDelSuccess();
 	closeDelError();
-	closeNumWarning();
 	var cate = document.getElementById("category");
 	var lvl = document.getElementById("level");
 	if (cate.options[cate.selectedIndex].value != "" && lvl.options[lvl.selectedIndex].value != "") {
@@ -50,22 +49,18 @@ function closeDelError() {
 }
 
 //*******************************************************************************************//
-function closeNumWarning() {
-	document.getElementById("warning").style.display = "none";
-  }
-
-//*******************************************************************************************//
 function submitForm() {
 	closeNothingNoti();
 	closeDelSuccess();
 	closeDelError();
-	closeNumWarning();
 	var questions = document.getElementById("questionTable");
 	var totalQuestions = questions.rows.length / 3;
+	var changed = false;
 	
 	for (var i = totalQuestions - 1; i >= 0; i--) {
 		// if question is modified
 		if (questions.rows[3*i].cells[1].firstChild.value != questions.rows[3*i].cells[1].firstChild.defaultValue) {
+			changed = true;
 			var newQuestion = questions.rows[3*i].cells[1].firstChild.value;
 			var questionId = questions.rows[3*i].cells[1].firstChild.id;
 			updateQuestion(questionId, newQuestion);
@@ -73,17 +68,10 @@ function submitForm() {
 		}
 
 		// if answer is modified
-		// // the first answer 
-		// if (questions.rows[3*i].cells[2].firstChild.value != questions.rows[3*i].cells[2].firstChild.defaultValue) {
-		// 	var newAnswer= questions.rows[3*i].cells[2].firstChild.value;
-		// 	var answerId = questions.rows[3*i].cells[2].firstChild.id;
-		// 	updateAnswer(answerId, newAnswer, 1);
-		// 	questions.rows[3*i].cells[2].firstChild.defaultValue = newAnswer;
-		// }
-		// // the second and third answer
 		for (var j = 0; j < 3; j++) {
 			var cell = (j == 0) ? 2 : 0;
 			if (questions.rows[3*i+j].cells[cell].firstChild.value != questions.rows[3*i+j].cells[cell].firstChild.defaultValue) {
+				changed = true;
 				var newAnswer = questions.rows[3*i+j].cells[cell].firstChild.value;
 				var answerId = questions.rows[3*i+j].cells[cell].firstChild.id;
 				updateAnswer(answerId, newAnswer, 1);
@@ -98,18 +86,15 @@ function submitForm() {
 			var cell = (j == 0) ? 2 : 0;
 			var answerId = questions.rows[3*i+j].cells[cell].firstChild.id;
 			if (option[j].checked != option[j].defaultChecked) {
+				changed = true;
 				updateAnswer(answerId, option[j].checked, 0);
 			}
 		}
 	}
 
-}
-
-//*******************************************************************************************//
-function resetDelForm() {
-	document.getElementById("deleteForm").reset();
-	clearQuestionList();
-	document.getElementById("questionForm").style.display = "none";
+	if (changed == false) {
+		document.getElementById("nothing").style.display = "block";
+	}
 }
 
 //*******************************************************************************************//
@@ -266,14 +251,12 @@ function updateQuestion(questionId, newQuestion) {
 	ajax.onreadystatechange = function () {
 		if (this.readyState == 4 && this.status == 200) {
 			var result = this.responseText;
-			console.log(result);
-			// if (result) {
-			// 	resetDelForm();
-			// 	document.getElementById("success").style.display = "block";
-			// } else {
-			// 	resetDelForm();
-			// 	document.getElementById("error").style.display = "block";
-			// }
+			// console.log(result);
+			if (result) {
+				document.getElementById("success").style.display = "block";
+			} else {
+				document.getElementById("error").style.display = "block";
+			}
 		}
 	}
 	ajax.open(method, url + dataStr, asynchronous);
@@ -294,15 +277,12 @@ function updateAnswer(answerId, data, option) {
 		ajax.onreadystatechange = function () {
 			if (this.readyState == 4 && this.status == 200) {
 				var result = this.responseText;
-				console.log(result);
-				// console.log(JSON.parse(this.responseText));
-				// if (result) {
-				// 	resetDelForm();
-				// 	document.getElementById("success").style.display = "block";
-				// } else {
-				// 	resetDelForm();
-				// 	document.getElementById("error").style.display = "block";
-				// }
+				// console.log(result);
+				if (result) {
+					document.getElementById("success").style.display = "block";
+				} else {
+					document.getElementById("error").style.display = "block";
+				}
 			}
 		}
 		ajax.open(method, url + dataStr, asynchronous);
@@ -318,15 +298,12 @@ function updateAnswer(answerId, data, option) {
 		ajax.onreadystatechange = function () {
 			if (this.readyState == 4 && this.status == 200) {
 				var result = this.responseText;
-				console.log(result);
-				// console.log(JSON.parse(this.responseText));
-				// if (result) {
-				// 	resetDelForm();
-				// 	document.getElementById("success").style.display = "block";
-				// } else {
-				// 	resetDelForm();
-				// 	document.getElementById("error").style.display = "block";
-				// }
+				// console.log(result);
+				if (result) {
+					document.getElementById("success").style.display = "block";
+				} else {
+					document.getElementById("error").style.display = "block";
+				}
 			}
 		}
 		ajax.open(method, url + dataStr, asynchronous);
