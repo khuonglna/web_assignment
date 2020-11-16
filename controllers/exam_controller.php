@@ -85,9 +85,21 @@ class ExamController
         return $result;
     }
 
-    public function updateQuestion($questionId, $questionText) {
+    public function updateQuestionText($questionId, $questionText) {
         $questionModel = new QuestionModel();
         $result = $questionModel->queryUpdateQuestion($this->test_input($questionId), $this->test_input($questionText));
+        return $result;
+    }
+
+    public function updateAnswerText($answerId, $answerText) {
+        $answerModel = new AnswerModel();
+        $result = $answerModel->queryUpdateAnswerText($this->test_input($answerId), $this->test_input($answerText));
+        return $result;
+    }
+
+    public function updateAnswerCorrect($answerId, $correct) {
+        $answerModel = new AnswerModel();
+        $result = $answerModel->queryUpdateAnswerCorrect($this->test_input($answerId), $this->test_input($correct));
         return $result;
     }
 

@@ -113,4 +113,36 @@ class AnswerModel extends DbModel
         }
         return true;
     }
+
+    public function queryUpdateAnswerText($answerId, $answerText) {
+        $conn = $this->connect();
+        $sql = "UPDATE 
+                    ANSWER
+                SET
+                    `a_text` = '$answerText'
+                WHERE 
+                    `a_id` = '$answerId'
+                ";
+        if (!mysqli_query($conn, $sql)) {
+            echo mysqli_error($conn);
+            return false;
+        }
+        return true;
+    }
+
+    public function queryUpdateAnswerCorrect($answerId, $correct) {
+        $conn = $this->connect();
+        $sql = "UPDATE 
+                    ANSWER
+                SET
+                    `a_correct_flag` = '$correct'
+                WHERE 
+                    `a_id` = '$answerId'
+                ";
+        if (!mysqli_query($conn, $sql)) {
+            echo mysqli_error($conn);
+            return false;
+        }
+        return true;
+    }
 }

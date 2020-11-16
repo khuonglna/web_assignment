@@ -82,15 +82,32 @@
         }
 		echo json_encode($result);
 				
-    } elseif ($res == "updateQuestion") {
+    } elseif ($res == "updateQuestionText") {
         $q_id = $_REQUEST['q_id'];
         $q_text = $_REQUEST['q_text'];
 
         $examController = new ExamController();
-        $result = $examController->updateQuestion($q_id, $q_text);
+        $result = $examController->updateQuestionText($q_id, $q_text);
+
+        echo json_encode($result);
+
+    } elseif ($res == "updateAnswerText") {
+        $a_id = $_REQUEST['a_id'];
+        $a_text = $_REQUEST['a_text'];
+
+        $examController = new ExamController();
+        $result = $examController->updateAnswerText($a_id, $a_text);
         
         echo json_encode($result);
 
+    } elseif ($res == "updateAnswerCorrect") {
+        $a_id = $_REQUEST['a_id'];
+        $correct = $_REQUEST['correct'];
+
+        $examController = new ExamController();
+        $result = $examController->updateAnswerCorrect($a_id, $correct);
+        
+        echo json_encode($result);
     } else {
             // echo "guest";
     }

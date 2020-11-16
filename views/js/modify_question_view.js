@@ -64,21 +64,45 @@ function submitForm() {
 	var totalQuestions = questions.rows.length / 3;
 	
 	for (var i = totalQuestions - 1; i >= 0; i--) {
+		// if question is modified
 		if (questions.rows[3*i].cells[1].firstChild.value != questions.rows[3*i].cells[1].firstChild.defaultValue) {
 			var newQuestion = questions.rows[3*i].cells[1].firstChild.value;
 			var questionId = questions.rows[3*i].cells[1].firstChild.id;
 			updateQuestion(questionId, newQuestion);
-			// document.getElementById("warning").style.display = "block";
-			// document.getElementById("warning").appendChild(document.createTextNode(questions.rows[3*i].cells[1].firstChild.defaultValue));
-			// document.getElementById("warning").appendChild(document.createTextNode(questions.rows[3*i].cells[1].firstChild.value));
-			// document.getElementById("warning").appendChild(document.createTextNode(document.getElementById(0).value));
+			questions.rows[3*i].cells[1].firstChild.defaultValue = newQuestion;
 		}
-		// if (document.getElementById(i).checked == true) {
-			// dataStr = dataStr + questions.rows[3*i].cells[3].id + '-';
+
+		// if answer is modified
+		// // the first answer 
+		// if (questions.rows[3*i].cells[2].firstChild.value != questions.rows[3*i].cells[2].firstChild.defaultValue) {
+		// 	var newAnswer= questions.rows[3*i].cells[2].firstChild.value;
+		// 	var answerId = questions.rows[3*i].cells[2].firstChild.id;
+		// 	updateAnswer(answerId, newAnswer, 1);
+		// 	questions.rows[3*i].cells[2].firstChild.defaultValue = newAnswer;
 		// }
+		// // the second and third answer
+		for (var j = 0; j < 3; j++) {
+			var cell = (j == 0) ? 2 : 0;
+			if (questions.rows[3*i+j].cells[cell].firstChild.value != questions.rows[3*i+j].cells[cell].firstChild.defaultValue) {
+				var newAnswer = questions.rows[3*i+j].cells[cell].firstChild.value;
+				var answerId = questions.rows[3*i+j].cells[cell].firstChild.id;
+				updateAnswer(answerId, newAnswer, 1);
+				questions.rows[3*i+j].cells[cell].firstChild.defaultValue = newAnswer;
+			}
+		}
+
+		// if chosen correct answer is changed
+		var optionName = questions.rows[3*i].cells[3].firstChild.getAttribute("name");
+		var option = document.getElementsByName(optionName); 
+		for (var j = 0; j < 3; j++) {
+			var cell = (j == 0) ? 2 : 0;
+			var answerId = questions.rows[3*i+j].cells[cell].firstChild.id;
+			if (option[j].checked != option[j].defaultChecked) {
+				updateAnswer(answerId, option[j].checked, 0);
+			}
+		}
 	}
 
-	// modifyQuestions();
 }
 
 //*******************************************************************************************//
@@ -236,17 +260,14 @@ function updateQuestion(questionId, newQuestion) {
 
 	var ajax = new XMLHttpRequest();
 	var method = "POST";
-	var url = "controllers/manage_exam_controller.php?function=updateQuestion";
+	var url = "controllers/manage_exam_controller.php?function=updateQuestionText";
 	var asynchronous = true;
 
 	ajax.onreadystatechange = function () {
 		if (this.readyState == 4 && this.status == 200) {
 			var result = this.responseText;
 			console.log(result);
-			// console.log(JSON.parse(this.responseText));
-			// if (result == -1) {
-			// 	document.getElementById("nothing").style.display = "block";
-			// } else if (result) {
+			// if (result) {
 			// 	resetDelForm();
 			// 	document.getElementById("success").style.display = "block";
 			// } else {
@@ -260,6 +281,55 @@ function updateQuestion(questionId, newQuestion) {
 }
 
 //*******************************************************************************************//
-function updateAnswer(answerId, newAnswer, option) {
+function updateAnswer(answerId, data, option) {
+	if (option == 0) {
+		data = (data == true) ? 1 : 0;
+		var dataStr = '&a_id=' + answerId + '&correct=' + data; 
 
+		var ajax = new XMLHttpRequest();
+		var method = "POST";
+		var url = "controllers/manage_exam_controller.php?function=updateAnswerCorrect";
+		var asynchronous = true;
+	
+		ajax.onreadystatechange = function () {
+			if (this.readyState == 4 && this.status == 200) {
+				var result = this.responseText;
+				console.log(result);
+				// console.log(JSON.parse(this.responseText));
+				// if (result) {
+				// 	resetDelForm();
+				// 	document.getElementById("success").style.display = "block";
+				// } else {
+				// 	resetDelForm();
+				// 	document.getElementById("error").style.display = "block";
+				// }
+			}
+		}
+		ajax.open(method, url + dataStr, asynchronous);
+		ajax.send();
+	} else if (option == 1) {
+		var dataStr = '&a_id=' + answerId + '&a_text=' + data; 
+
+		var ajax = new XMLHttpRequest();
+		var method = "POST";
+		var url = "controllers/manage_exam_controller.php?function=updateAnswerText";
+		var asynchronous = true;
+	
+		ajax.onreadystatechange = function () {
+			if (this.readyState == 4 && this.status == 200) {
+				var result = this.responseText;
+				console.log(result);
+				// console.log(JSON.parse(this.responseText));
+				// if (result) {
+				// 	resetDelForm();
+				// 	document.getElementById("success").style.display = "block";
+				// } else {
+				// 	resetDelForm();
+				// 	document.getElementById("error").style.display = "block";
+				// }
+			}
+		}
+		ajax.open(method, url + dataStr, asynchronous);
+		ajax.send();
+	}
 }
