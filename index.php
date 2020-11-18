@@ -55,7 +55,7 @@
             $usercontroller = new $controller();
             $usercontroller-> $action();
         } elseif ($page == "exam_view") {
-            include "views/exam_view.php";
+            include "views/category_view.php";
         } else {
             include "views/exception.php";
         }
