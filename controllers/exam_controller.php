@@ -3,10 +3,6 @@ require_once('../models/question.php');
 require_once('../models/answer.php');
 require_once('../models/exam.php');
 
-define('MAX_SCORE', 100);
-define('INCORRECT', 10);
-define("QUESTION_NUMBER", 10);
-
 class ExamController
 {
 
@@ -45,18 +41,19 @@ class ExamController
                 "q_text" => $q_text,
                 "ans" => array(
                     array(
-                        "a_id"      => $answerList[0]->getAnswerId(),
+                        "a_id"      => $answerList[0]->getAnswerId(), 
                         "a_text"    => $answerList[0]->getAnswerText()
                     ),
                     array(
-                        "a_id"      => $answerList[1]->getAnswerId(),
-                        "a_text"    => $answerList[1]->getAnswerText()
+                        "a_id"      =>$answerList[1]->getAnswerId(), 
+                        "a_text"    =>$answerList[1]->getAnswerText()
                     ),
                     array(
-                        "a_id"      => $answerList[2]->getAnswerId(),
-                        "a_text"    => $answerList[2]->getAnswerText()
+                        "a_id"      =>$answerList[2]->getAnswerId(), 
+                        "a_text"    =>$answerList[2]->getAnswerText()
                     )
                 )
+                
             );
         }
         return $questionList;
@@ -82,26 +79,7 @@ class ExamController
         }
         return $result;
     }
-
-    public function calculateScore($userSubmission)
+    public function calculateScore()
     {
-        $exam = new ExamModel();
-        $score = MAX_SCORE;
-        $questionList = array_keys($userSubmission);
-        $correctAns = $exam->queryCorrectAnswerList($questionList);
-        $incorrectList = array();
-        foreach ($questionList as $q) {
-            if ($correctAns[$q] != $userSubmission[$q]) {
-                $incorrectList[] = $userSubmission[$q];
-                $score -= INCORRECT;
-            }
-        }
-        $result = array(
-            "score" => $score,
-            "red" => $incorrectList,
-            "green" => array_values($correctAns),
-            "correct" => $correctAns
-        );
-        return $result;
     }
 }
