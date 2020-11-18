@@ -5,7 +5,7 @@
     <script src="views/js/add_question_view.js"></script>
 </head>
 
-<body onload="onEnterEvent()">
+<body onload="setUp()">
   <div class="container content">
     <form id="addForm" class="form-group"z> 
       <div class="row justify-content-md-center">
@@ -13,9 +13,8 @@
           <h5>Category:</h5>
           <select onchange="openForm()" class="custom-select custom-select-sm" name="category" id="category" required>
             <option value=""></option>
-            <option value="1">Family</option>
-            <option value="2">Tense</option>
-
+            <!-- <option value="1">Family</option>
+            <option value="2">Tense</option> -->
           </select>
         </div>
         

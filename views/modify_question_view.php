@@ -2,7 +2,7 @@
 <html>
 
 <head>
-    <script src="views/js/delete_question_view.js"></script>
+    <script src="views/js/modify_question_view.js"></script>
 </head>
 
 <body onload="getCategory()">
@@ -15,7 +15,6 @@
             <option value=""></option>
             <!-- <option value="1">Family</option>
             <option value="2">Tense</option> -->
-
           </select>
         </div>
         
@@ -38,7 +37,7 @@
               <th scope="col"></th>
               <th scope="col">Question</th>
               <th scope="col">Answer</th>
-              <th scope="col">Delete</th>
+              <th scope="col">Correct</th>
             </tr>
           </thead>
 
@@ -51,29 +50,22 @@
       <br>
 
       <div class="alert alert-primary" role="alert" id="nothing" style="display:none;">
-        You have not chosen any questions!!!
+        You have not changed anything!!!
         <button type="button" class="close" aria-label="Close" onclick="closeNothingNoti()">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
 
       <div class="alert alert-success" role="alert" id="success" style="display:none;">
-        Delete question(s) successfully!
+        Modify question(s) successfully!
         <button type="button" class="close" aria-label="Close" onclick="closeDelSuccess()">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
 
       <div class="alert alert-danger" role="alert" id="error" style="display:none;">
-        Failed to delete question(s)!!!
+        Failed to modify question(s)!!!
         <button type="button" class="close" aria-label="Close" onclick="closeDelError()">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-
-      <div class="alert alert-danger" role="alert" id="warning" style="display:none;">
-        The number of questions after deleting must be greater and equal 10!!!
-        <button type="button" class="close" aria-label="Close" onclick="closeNumWarning()">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>

@@ -34,6 +34,8 @@
             $usercontroller-> $action();
         } elseif ($page == "home") {
             include "views/$page.php";
+        } elseif ($page == "modify_question") {
+            include "views/modify_question_view.php";
         } elseif ($page == "add_question" && $_SESSION['role'] == 2) {
             include "views/add_question_view.php";
         } elseif ($page == "delete_question" && $_SESSION['role'] == 2) {

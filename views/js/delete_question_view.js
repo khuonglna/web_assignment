@@ -13,6 +13,17 @@ function openQuestionList() {
 	}
 }
 
+function addCategory(cateList) {
+	var category = document.getElementById("category");
+
+	for (var index in cateList) {
+		var option = document.createElement("option");
+		option.text = cateList[index].c_name;
+		option.id = cateList[index].c_id;
+		category.add(option);
+	}
+}
+
 function clearQuestionList() {
 	document.getElementById("questionForm").style.display = "none";
 	var questions = document.getElementById("questionTable");
@@ -58,6 +69,7 @@ function showQuestionList(questionList) {
 		var id = newRow1.insertCell(0);
 		id.rowSpan = 3;
 		id.style.textAlign = "center";
+		// id.setAttribute("id", "id" + index);
 		id.appendChild(document.createTextNode(parseFloat(index)+1));
 
 		// Insert a cell in the row 
@@ -67,7 +79,7 @@ function showQuestionList(questionList) {
 
 		// Insert a cell in the row 
 		var ans = newRow1.insertCell(2);
-		ans.appendChild(document.createTextNode(questionList[index].ans1));	
+		ans.appendChild(document.createTextNode(questionList[index].ans[0].a_text));	
 
 		// Insert a cell in the row 
 		var del = newRow1.insertCell(3);
@@ -83,12 +95,12 @@ function showQuestionList(questionList) {
 		// Insert a row at the end of the table
 		var newRow2 = table.insertRow(-1);
 		var ans = newRow2.insertCell(0);
-		ans.appendChild(document.createTextNode(questionList[index].ans2));
+		ans.appendChild(document.createTextNode(questionList[index].ans[1].a_text));
 
 		// Insert a row at the end of the table
 		var newRow3 = table.insertRow(-1);
 		var ans = newRow3.insertCell(0);
-		ans.appendChild(document.createTextNode(questionList[index].ans3));
+		ans.appendChild(document.createTextNode(questionList[index].ans[2].a_text));
 	}
 	document.getElementById("questionForm").style.display = "block";
 }
@@ -105,21 +117,54 @@ function checkNumber() {
 	}
 	return ((totalQuestions - questionChosen) >= 10 ? true : false);
 }
+
+function removeDelRow () {
+	var questions = document.getElementById("questionTable");
+	var totalQuestions = questions.rows.length / 3;
+	
+	for (var i = totalQuestions - 1; i >= 0; i--) {
+		if (document.getElementById(i).checked == true) {
+			for (var j = 0; j < 3; j++) {
+				questions.deleteRow(3*i);
+				// questions.
+			}
+		}
+	}
+}
+
+function getCategory() {
+	var ajax = new XMLHttpRequest();
+	var method = "POST";
+	var url = "controllers/manage_exam_controller.php?function=getCategory";
+	var asynchronous = true;
+
+	ajax.onreadystatechange = function () {
+		if (this.readyState == 4 && this.status == 200) {
+			var data = this.responseText;
+			var cateList = JSON.parse(data);
+			// console.log(result);
+			addCategory(cateList);
+		}
+	}
+	ajax.open(method, url, asynchronous);
+	ajax.send();
+}
+
 function getQuestionList() {
-	var cate = document.getElementById("category").value;
+	var cate = document.getElementById("category").options[document.getElementById("category").selectedIndex].id;
 	var lvl = document.getElementById("level").value;
 
 	var dataStr = '&category=' + cate + '&level=' + lvl; 
 
 	var ajax = new XMLHttpRequest();
 	var method = "POST";
-	var url = "controllers/manage_test_controller.php?function=listQuestion";
+	var url = "controllers/manage_exam_controller.php?function=listQuestion";
 	var asynchronous = true;
 
 	ajax.onreadystatechange = function () {
 		if (this.readyState == 4 && this.status == 200) {
 			var data = this.responseText;
-			console.log(data);
+			// console.log(data);
 			questionList = JSON.parse(data);
 			showQuestionList(questionList);
 		}
@@ -151,7 +196,7 @@ function deleteQuestions() {
 	} else {
 		var ajax = new XMLHttpRequest();
 		var method = "POST";
-		var url = "controllers/manage_test_controller.php?function=deleteQuestion";
+		var url = "controllers/manage_exam_controller.php?function=deleteQuestion";
 		var asynchronous = true;
 
 		ajax.onreadystatechange = function () {

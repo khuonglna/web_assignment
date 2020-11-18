@@ -13,6 +13,15 @@ class Question {
     }
 
     function getCorrectAnswer() {
+        $answerModel = new AnswerModel();
+        $correctAnswer = $answerModel->queryGetCorrectAnswerByQuestionId($this->questionId);
+        $correct = -1;
+        for ($i = 0; $i < 3; $i++) {
+            if ($correctAnswer == $this->answerList[$i]->getAnswerText()) {
+                $correct = $i;
+            }
+        }
+        return $correct;
     }
 
     public function getAnswerList() {
@@ -112,7 +121,7 @@ class QuestionModel extends DbModel {
         return $qId;
     }
     
-    public function queryDeleteQuestion ($questionId) {
+    public function queryDeleteQuestion($questionId) {
         $conn = $this->connect();
         $q_id = (int)$questionId;
         $sql = "DELETE FROM 
@@ -124,6 +133,66 @@ class QuestionModel extends DbModel {
             return false;
         }
         return true;
+    }
+
+    public function queryUpdateQuestion($questionId, $questionText) {
+        $conn = $this->connect();
+        $sql = "UPDATE 
+                    QUESTION
+                SET
+                    `q_text` = '$questionText'
+                WHERE 
+                    `q_id` = '$questionId'
+                ";
+        if (!mysqli_query($conn, $sql)) {
+            echo mysqli_error($conn);
+            return false;
+        }
+        return true;
+    }
+
+    public function queryQuestions($category, $level) {
+        $questionList = array();
+        $conn = $this->connect();
+        $sql = "SELECT
+                    q.q_id,
+                    q.q_text,
+                    a.a_id,
+                    a.a_text,
+                    a.a_correct_flag
+                FROM
+                    question q
+                INNER JOIN answer a ON
+                    a.q_id = q.q_id
+                WHERE
+                    q.q_level = $level AND q.q_category = $category
+                ";
+        $data =array();
+        $res = mysqli_query($conn, $sql);
+        while ($row = mysqli_fetch_assoc($res)) {
+            $data[] = $row;
+        }
+        return $data;
+    }
+
+    public function querygetCorrectAnswer($qId) {
+        $conn = $this->connect();
+        $sql = "SELECT 
+                    a.a_id,
+                    a.a_correct_flag
+                FROM 
+                    ANSWER a
+                INNER JOIN QUESTION  q ON
+                    a.q_id = q.q_id;
+                WHERE 
+                    q.q_id = $qId AND a.a_correct_flag = 1
+                ";
+        $res = mysqli_query($conn, $sql);
+        if (mysqli_num_rows($res) == 1) {
+            $row = mysqli_fetch_assoc($res);
+            return $row['a_id'];
+        }
+        return 0;
     }
 
     public function queryCategory() {

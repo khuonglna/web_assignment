@@ -60,26 +60,38 @@ class AnswerModel extends DbModel
         return $answerList;
     }
 
-    public function queryAddAnswers($qId , $ansText, $correctAns) {   
+    public function queryGetCorrectAnswerByQuestionId($questionId) {
         $conn = $this->connect();
         $sql = "SELECT 
-                    * 
+                    `a_text`
                 FROM 
-                    ANSWER";
+                    ANSWER
+                WHERE 
+                    `q_id` = '$questionId' AND `a_correct_flag` = 1
+                ";
         $res = mysqli_query($conn, $sql);
         if (!$res) {
             echo mysqli_error($conn);
             return false;
         }
+        $result = "";
+        if (mysqli_num_rows($res) > 0) {
+            while ($row = mysqli_fetch_assoc($res)) {
+                $result = $row["a_text"];
+            }
+        }
+        return $result;
+    }
 
-        $id = mysqli_num_rows($res) + 1;
+    public function queryAddAnswers($qId , $ansText, $correctAns) {   
+        $conn = $this->connect();
+
         for ($i = 0; $i < 3 ; $i++) {
             $correctFlag = ((int)$correctAns == $i + 1) ? 1 : 0;
             $query =    "INSERT INTO 
-                            ANSWER (`a_id`, `q_id`, `a_text`, `a_correct_flag`) 
+                            ANSWER (`q_id`, `a_text`, `a_correct_flag`) 
                         VALUES 
-                            ('$id' , '$qId', '$ansText[$i]' , '$correctFlag')";
-            $id = $id + 1;
+                            ('$qId', '$ansText[$i]' , '$correctFlag')";
             if (!mysqli_query($conn, $query)) {
                 echo mysqli_error($conn);
                 return false;
@@ -95,6 +107,38 @@ class AnswerModel extends DbModel
                 WHERE 
                     Q_ID='$questionId'";
         $res = mysqli_query($conn, $sql);
+        if (!mysqli_query($conn, $sql)) {
+            echo mysqli_error($conn);
+            return false;
+        }
+        return true;
+    }
+
+    public function queryUpdateAnswerText($answerId, $answerText) {
+        $conn = $this->connect();
+        $sql = "UPDATE 
+                    ANSWER
+                SET
+                    `a_text` = '$answerText'
+                WHERE 
+                    `a_id` = '$answerId'
+                ";
+        if (!mysqli_query($conn, $sql)) {
+            echo mysqli_error($conn);
+            return false;
+        }
+        return true;
+    }
+
+    public function queryUpdateAnswerCorrect($answerId, $correct) {
+        $conn = $this->connect();
+        $sql = "UPDATE 
+                    ANSWER
+                SET
+                    `a_correct_flag` = '$correct'
+                WHERE 
+                    `a_id` = '$answerId'
+                ";
         if (!mysqli_query($conn, $sql)) {
             echo mysqli_error($conn);
             return false;

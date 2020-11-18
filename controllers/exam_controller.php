@@ -9,21 +9,26 @@ define("QUESTION_NUMBER", 10);
 
 class ExamController
 {
-
-    private function test_input($data)
-    {
+    private function test_input($data) {
         $data = trim($data);
         $data = stripslashes($data);
         $data = htmlspecialchars($data);
+        $data = str_replace("'","''",$data);
         return $data;
     }
 
-    public function addQuestion($question, $category, $level, $ansList, $correct)
-    {
-        $category = $this->test_input($category);
-        $result = false;
+        public function getCategory() {
+            $questionModel = new QuestionModel();
+            $categoryList = $questionModel->queryCategory();
+            return $categoryList;
+        }
+
+        public function addQuestion($question, $category, $level, $ansList, $correct) {
+            $category = $this->test_input($category);
+            $result = false;
 
         if ($category == '' || $level == '' || $question == '' || $ansList[0] == '' || $ansList[1] == '' || $ansList[2] == '' || $correct == '') {
+
         } else {
             $questionmodel = new QuestionModel();
             $result = $questionmodel->queryAddQuestion($category, $level, $question, $ansList, $correct);
@@ -80,6 +85,24 @@ class ExamController
         } else {
             $result = 0;
         }
+        return $result;
+    }
+
+    public function updateQuestionText($questionId, $questionText) {
+        $questionModel = new QuestionModel();
+        $result = $questionModel->queryUpdateQuestion($this->test_input($questionId), $this->test_input($questionText));
+        return $result;
+    }
+
+    public function updateAnswerText($answerId, $answerText) {
+        $answerModel = new AnswerModel();
+        $result = $answerModel->queryUpdateAnswerText($this->test_input($answerId), $this->test_input($answerText));
+        return $result;
+    }
+
+    public function updateAnswerCorrect($answerId, $correct) {
+        $answerModel = new AnswerModel();
+        $result = $answerModel->queryUpdateAnswerCorrect($this->test_input($answerId), $this->test_input($correct));
         return $result;
     }
 
