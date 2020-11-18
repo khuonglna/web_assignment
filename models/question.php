@@ -1,6 +1,5 @@
 <?php
 require_once('db_model.php');
-require_once('exam.php');
 require_once('answer.php');
 
 class Question { 
