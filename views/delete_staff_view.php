@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html>
-
+<head>
+    <script src="views/js/delete_staff.js"></script>
+</head>
 <body>
     <div class="container h-100 content">
         <table class="table">
@@ -12,7 +14,7 @@
                 </tr>
             </thead>
             <tbody>
-                <tr>
+                <!-- <tr>
                     <th scope="row">1</th>
                     <td>Mark</td>
                     <td class = "p-0">
@@ -46,7 +48,7 @@
                             </label>
                         </div>
                     </td>
-                </tr>
+                </tr> -->
 
                 
             </tbody>

@@ -81,6 +81,7 @@
 
         public function queryStaffList() {
             $staffList = array();
+            $idx = 0;
             $conn = $this->connect();
             $sql = "SELECT 
                         *
@@ -92,15 +93,11 @@
             $res = mysqli_query($conn, $sql);
             if (mysqli_num_rows($res) > 0) {
                 while ($row = mysqli_fetch_assoc($res)) {
-                    $question = new Question();
-                    $answerModel = new AnswerModel();
-                    $temp = $row["Q_ID"];
-                    $temp2 = $answerModel->queryListAnswerByQuestionId($temp);
-                    $question->setAnswerList($temp2);
-                    $questionList[] = $question;
+                    $staffList[$idx] = $row["username"];
+                    $idx = $idx + 1;
                 }
             }
-            return $questionList;
+            return $staffList;
         }
 	}
 ?>
