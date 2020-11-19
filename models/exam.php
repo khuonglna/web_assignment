@@ -19,7 +19,7 @@ class ExamModel extends DbModel
 {
     public function queryCorrectAnswerList($questionList)
     {
-        $questionList = implode("," ,$questionList);
+        $questionList = implode(",", $questionList);
         $answerList = array();
         $conn = $this->connect();
         $sql = "SELECT
@@ -37,7 +37,24 @@ class ExamModel extends DbModel
         return $answerList;
     }
 
-    // public function queryAddUserSubmission($) {
-
-    // }
+    public function queryCategory()
+    {
+        $category = array();
+        $conn = $this->connect();
+        $sql = "SELECT 
+                    * 
+                FROM 
+                    category
+                ORDER BY 
+                    c_name ASC
+        ";
+        $res = mysqli_query($conn, $sql);
+        while ($row = mysqli_fetch_assoc($res)) {
+            $category[] = array(
+                "id" => $row['c_id'],
+                "name" => $row['c_name']
+            );
+        }
+        return $category;
+    }
 }

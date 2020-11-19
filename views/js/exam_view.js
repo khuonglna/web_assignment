@@ -2,6 +2,9 @@ var QUESTION_NUMBER = 10;
 var ANSWER_NUMBER = 3;
 var METHOD = "POST";
 var ASYN = true;
+var ELEMENTARY = 1;
+var INTERMEDIATE = 2;
+var NATIVE = 3;
 function showExam(questionList) {
 	var exam = document.getElementById("examForm");
 
@@ -109,7 +112,9 @@ function showResult(result) {
 	for (i of result.red) {
 		document.getElementById(i).setAttribute("style", "color: red");
 	}
-	document.getElementById("score").appendChild(document.createTextNode(result.score + "/100"));
+	document
+		.getElementById("score")
+		.appendChild(document.createTextNode(result.score + "/100"));
 }
 
 function retry() {
@@ -149,4 +154,127 @@ function submitForm() {
 		ajax.open(METHOD, url + submissionData, ASYN);
 		ajax.send();
 	}
+}
+
+function activeDifficult(evt) {
+	evt.currentTarget.className += " active";
+}
+
+function deactiveDifficult() {
+	var i, tablinks;
+	tablinks = document.getElementsByClassName("tablinks");
+	for (i = 0; i < tablinks.length; i++) {
+		tablinks[i].className = tablinks[i].className.replace(" active", "");
+	}
+}
+
+function openDifficult(ele) {
+	var id = ele.id;
+	document.getElementById(id.concat("choice")).style.display = "block";
+	document.getElementById(id).style.display = "none";
+}
+
+function closeDifficult(ele) {
+	var id = ele.id;
+	document.getElementById(id).style.display = "none";
+	document.getElementById(id.substr(0, id.length - 6)).style.display =
+		"block";
+}
+
+function sF(ele) {
+	//alert(ele.id);
+	document.getElementById("categorySelectionCtn").remove();
+	document.getElementById("examForm").removeAttribute("style");
+	var category = ele.parentElement.id.substr(
+		0,
+		ele.parentElement.id.length - 6
+	);
+	var dif = ele.id.substr(0, 1);
+	var data = "&category=" + category + "&dif=" + dif;
+	var ajax = new XMLHttpRequest();
+	var url = "controllers/question_ptj.php?do=getExam";
+	ajax.onreadystatechange = function () {
+		if (this.readyState == 4 && this.status == 200) {
+			var data = this.responseText;
+			questionList = JSON.parse(data);
+			showExam(questionList);
+		}
+	};
+	ajax.open(METHOD, url + data, ASYN);
+	ajax.send();
+}
+
+function showCategory() {
+	url = "controllers/category_ptj.php";
+	ajax = new XMLHttpRequest();
+	ajax.open(METHOD, url, ASYN);
+	ajax.send();
+	ajax.onreadystatechange = function () {
+		if (this.readyState == 4 && this.status == 200) {
+			var data = this.responseText;
+			console.log(data);
+			data = JSON.parse(this.responseText);
+			for (x of data) {
+				createCategory(x.name, x.id + "category");
+			}
+		}
+	};
+}
+
+function createCategory(name, id) {
+	var container = document.createElement("div");
+	var temp = document.createElement("div");
+	var category = document.createElement("button");
+	var choice = document.createElement("div");
+	var Elementary = document.createElement("button");
+	var Intermediate = document.createElement("button");
+	var Native = document.createElement("button");
+
+	category.setAttribute("id", id);
+	category.setAttribute("onmouseover", "openDifficult(this)");
+	category.innerHTML += name;
+
+	choice.setAttribute("id", id.concat("choice"));
+	choice.setAttribute("style", "display: none;");
+	choice.setAttribute("onmouseleave", "closeDifficult(this)");
+
+	Elementary.setAttribute("id", ELEMENTARY);
+	Elementary.setAttribute("onmouseover", "activeDifficult(event)");
+	Elementary.setAttribute("onmouseleave", "deactiveDifficult()");
+	Elementary.setAttribute("onclick", "sF(this)");
+	Elementary.setAttribute("style", "display: block;");
+	Elementary.innerHTML += "Elementary";
+
+	Intermediate.setAttribute("id", INTERMEDIATE);
+	Intermediate.setAttribute("onmouseover", "activeDifficult(event)");
+	Intermediate.setAttribute("onmouseleave", "deactiveDifficult()");
+	Intermediate.setAttribute("onclick", "sF(this)");
+	Intermediate.setAttribute("style", "display: block;");
+	Intermediate.innerHTML += "Intermediate";
+
+	Native.setAttribute("id", NATIVE);
+	Native.setAttribute("onmouseover", "activeDifficult(event)");
+	Native.setAttribute("onmouseleave", "deactiveDifficult()");
+	Native.setAttribute("onclick", "sF(this)");
+	Native.setAttribute("style", "display: block;");
+	Native.innerHTML += "Native";
+
+	container.classList.add("tab");
+	container.classList.add("col-sm-3");
+	temp.classList.add("col-sm-3");
+	category.classList.add("tablinks");
+	Elementary.classList.add("tablinks");
+	Intermediate.classList.add("tablinks");
+	Native.classList.add("tablinks");
+
+	choice.appendChild(Elementary);
+	choice.appendChild(Intermediate);
+	choice.appendChild(Native);
+
+	container.appendChild(category);
+	container.appendChild(choice);
+
+	var element = document.getElementById("where");
+	element.appendChild(temp);
+	element.appendChild(container);
 }
