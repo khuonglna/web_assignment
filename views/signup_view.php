@@ -18,7 +18,6 @@
                                     <input name="name" class="form-control" placeholder="Username" type="text">
                                 </div>
                             </div>
-                            <?php echo "<p class='text-danger text-center h6'></p>" ?>
 
                             <div class="form-group">
                                 <div class="input-group">
@@ -28,7 +27,6 @@
                                     <input name="pass" class="form-control" placeholder="********" type="password">
                                 </div>
                             </div>
-                            <?php echo "<p class='text-danger text-center h6'></p>" ?>
                             <div class="form-group">
                                 <button type="submit" class="btn btn-primary btn-block"> Creat account </button>
                             </div>
