@@ -1,33 +1,34 @@
-<?php 
+<?php
 
-	define("DEFAULT_ROLE", 1);
+define("DEFAULT_ROLE", 1);
 
-	require_once('models/user_model.php');
-    class UserController
+require_once('models/user_model.php');
+class UserController
+{
+	public function getUser()
 	{
-		public function getUser() {
-			$username = isset($_POST['name'])? $_POST['name']: '' ;
-			$password = isset($_POST['pass'])? $_POST['pass']: '' ;
-			if ($password != '' && $username != '' ) {
-				$usermodel = new UserModel();
-                $user = $usermodel->signup($username , $password);
-                if ($user) {
-					require_once('views/signup_view.php');
-					$_SESSION["username"] = $username;
-					$_SESSION["role"] = DEFAULT_ROLE;
-					echo "sign up success";
-                } else {
-					require_once('views/signup_view.php');
-					echo "sign up failed";
-                }
+		$username = isset($_POST['name']) ? $_POST['name'] : '';
+		$password = isset($_POST['pass']) ? $_POST['pass'] : '';
+		if ($password != '' && $username != '') {
+			$usermodel = new UserModel();
+			$user = $usermodel->signup($username, $password);
+			if ($user) {
+				require_once('views/signup_view.php');
+				$_SESSION["username"] = $username;
+				$_SESSION["role"] = DEFAULT_ROLE;
+				echo "sign up success";
 			} else {
 				require_once('views/signup_view.php');
-				// echo "invalid";
+				echo "sign up failed";
 			}
+		} else {
+			require_once('views/signup_view.php');
+			// echo "invalid";
 		}
-	} 
+	}
+}
 ?>
 
 <script>
-    
+
 </script>

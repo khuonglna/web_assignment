@@ -2,17 +2,20 @@
 require_once('db_model.php');
 require_once('answer.php');
 
-class Question { 
+class Question
+{
     private $questionId;
     private $questionText;
     private $answerList;
 
-    function __construct($questionId, $questionText) {
+    function __construct($questionId, $questionText)
+    {
         $this->questionId = $questionId;
         $this->questionText = $questionText;
     }
 
-    function getCorrectAnswer() {
+    function getCorrectAnswer()
+    {
         $answerModel = new AnswerModel();
         $correctAnswer = $answerModel->queryGetCorrectAnswerByQuestionId($this->questionId);
         $correct = -1;
@@ -24,25 +27,31 @@ class Question {
         return $correct;
     }
 
-    public function getAnswerList() {
+    public function getAnswerList()
+    {
         return $this->answerList;
     }
 
-    public function getQuestionId() {
+    public function getQuestionId()
+    {
         return $this->questionId;
     }
 
-    public function getQuestionText() {
+    public function getQuestionText()
+    {
         return $this->questionText;
     }
 
-    public function setAnswerList(array $answerList) {
+    public function setAnswerList(array $answerList)
+    {
         $this->answerList = $answerList;
     }
 }
 
-class QuestionModel extends DbModel {
-    public function queryQuestionList($category, $level) {
+class QuestionModel extends DbModel
+{
+    public function queryQuestionList($category, $level)
+    {
         $questionList = array();
         $conn = $this->connect();
         $sql = "SELECT 
@@ -64,7 +73,8 @@ class QuestionModel extends DbModel {
         return $questionList;
     }
 
-    public function queryAddQuestion($category , $level, $questionText, $ansList, $correct) {   
+    public function queryAddQuestion($category, $level, $questionText, $ansList, $correct)
+    {
         $conn = $this->connect();
         $sql = "SELECT 
                     * 
@@ -91,7 +101,7 @@ class QuestionModel extends DbModel {
         }
 
         $qId = $this->queryGetLastID();
-  
+
         $answermodel = new AnswerModel();
         $result = $answermodel->queryAddAnswers($qId, $ansList, $correct);
         if (!$result) {
@@ -100,7 +110,8 @@ class QuestionModel extends DbModel {
         return true;
     }
 
-    public function queryGetLastID() {
+    public function queryGetLastID()
+    {
         $conn = $this->connect();
         $sql = "SELECT 
                     MAX(Q_ID) 
@@ -120,8 +131,9 @@ class QuestionModel extends DbModel {
         }
         return $qId;
     }
-    
-    public function queryDeleteQuestion($questionId) {
+
+    public function queryDeleteQuestion($questionId)
+    {
         $conn = $this->connect();
         $q_id = (int)$questionId;
         $sql = "DELETE FROM 
@@ -135,7 +147,8 @@ class QuestionModel extends DbModel {
         return true;
     }
 
-    public function queryUpdateQuestion($questionId, $questionText) {
+    public function queryUpdateQuestion($questionId, $questionText)
+    {
         $conn = $this->connect();
         $sql = "UPDATE 
                     QUESTION
@@ -151,7 +164,8 @@ class QuestionModel extends DbModel {
         return true;
     }
 
-    public function queryQuestions($category, $level) {
+    public function queryQuestions($category, $level)
+    {
         $questionList = array();
         $conn = $this->connect();
         $sql = "SELECT
@@ -167,7 +181,7 @@ class QuestionModel extends DbModel {
                 WHERE
                     q.q_level = $level AND q.q_category = $category
                 ";
-        $data =array();
+        $data = array();
         $res = mysqli_query($conn, $sql);
         while ($row = mysqli_fetch_assoc($res)) {
             $data[] = $row;
@@ -175,7 +189,8 @@ class QuestionModel extends DbModel {
         return $data;
     }
 
-    public function querygetCorrectAnswer($qId) {
+    public function querygetCorrectAnswer($qId)
+    {
         $conn = $this->connect();
         $sql = "SELECT 
                     a.a_id,
@@ -195,7 +210,8 @@ class QuestionModel extends DbModel {
         return 0;
     }
 
-    public function queryCategory() {
+    public function queryCategory()
+    {
         $conn = $this->connect();
         $sql = "SELECT 
                     *
@@ -205,7 +221,7 @@ class QuestionModel extends DbModel {
                     C_NAME ASC
                 ";
         $res =  mysqli_query($conn, $sql);
-        $data =array();
+        $data = array();
         $res = mysqli_query($conn, $sql);
         while ($row = mysqli_fetch_assoc($res)) {
             $data[] = $row;
@@ -213,7 +229,8 @@ class QuestionModel extends DbModel {
         return $data;
     }
 
-    public function queryExamQuestionList($category, $level) {
+    public function queryExamQuestionList($category, $level)
+    {
         $questionList = array();
         $conn = $this->connect();
         $sql = "SELECT 

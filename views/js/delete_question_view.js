@@ -5,9 +5,12 @@ function openQuestionList() {
 	closeNumWarning();
 	var cate = document.getElementById("category");
 	var lvl = document.getElementById("level");
-	if (cate.options[cate.selectedIndex].value != "" && lvl.options[lvl.selectedIndex].value != "") {
+	if (
+		cate.options[cate.selectedIndex].value != "" &&
+		lvl.options[lvl.selectedIndex].value != ""
+	) {
 		clearQuestionList();
-    	getQuestionList();
+		getQuestionList();
 	} else {
 		document.getElementById("questionForm").style.display = "none";
 	}
@@ -29,24 +32,24 @@ function clearQuestionList() {
 	var questions = document.getElementById("questionTable");
 	for (var i = questions.rows.length - 1; i >= 0; i--) {
 		questions.deleteRow(i);
-	}	
+	}
 }
 
 function closeNothingNoti() {
-  document.getElementById("nothing").style.display = "none";
+	document.getElementById("nothing").style.display = "none";
 }
 
 function closeDelSuccess() {
-  document.getElementById("success").style.display = "none";
+	document.getElementById("success").style.display = "none";
 }
 
 function closeDelError() {
-  document.getElementById("error").style.display = "none";
+	document.getElementById("error").style.display = "none";
 }
 
 function closeNumWarning() {
 	document.getElementById("warning").style.display = "none";
-  }
+}
 
 function submitForm() {
 	deleteQuestions();
@@ -64,43 +67,51 @@ function showQuestionList(questionList) {
 	for (var index in questionList) {
 		// Insert a row at the end of the table
 		var newRow1 = table.insertRow(-1);
-	
-		// Insert a cell in the row 
+
+		// Insert a cell in the row
 		var id = newRow1.insertCell(0);
 		id.rowSpan = 3;
 		id.style.textAlign = "center";
 		// id.setAttribute("id", "id" + index);
-		id.appendChild(document.createTextNode(parseFloat(index)+1));
+		id.appendChild(document.createTextNode(parseFloat(index) + 1));
 
-		// Insert a cell in the row 
+		// Insert a cell in the row
 		var question = newRow1.insertCell(1);
 		question.rowSpan = 3;
-		question.appendChild(document.createTextNode(questionList[index].q_text));
+		question.appendChild(
+			document.createTextNode(questionList[index].q_text)
+		);
 
-		// Insert a cell in the row 
+		// Insert a cell in the row
 		var ans = newRow1.insertCell(2);
-		ans.appendChild(document.createTextNode(questionList[index].ans[0].a_text));	
+		ans.appendChild(
+			document.createTextNode(questionList[index].ans[0].a_text)
+		);
 
-		// Insert a cell in the row 
+		// Insert a cell in the row
 		var del = newRow1.insertCell(3);
 		del.rowSpan = 3;
 		del.setAttribute("id", questionList[index].q_id);
-		del.style.textAlign = "center"; 
+		del.style.textAlign = "center";
 		/* create a radio button */
 		var delButton = document.createElement("input");
 		delButton.setAttribute("type", "checkbox");
 		delButton.setAttribute("id", index);
-		del.appendChild(delButton);	
+		del.appendChild(delButton);
 
 		// Insert a row at the end of the table
 		var newRow2 = table.insertRow(-1);
 		var ans = newRow2.insertCell(0);
-		ans.appendChild(document.createTextNode(questionList[index].ans[1].a_text));
+		ans.appendChild(
+			document.createTextNode(questionList[index].ans[1].a_text)
+		);
 
 		// Insert a row at the end of the table
 		var newRow3 = table.insertRow(-1);
 		var ans = newRow3.insertCell(0);
-		ans.appendChild(document.createTextNode(questionList[index].ans[2].a_text));
+		ans.appendChild(
+			document.createTextNode(questionList[index].ans[2].a_text)
+		);
 	}
 	document.getElementById("questionForm").style.display = "block";
 }
@@ -115,17 +126,17 @@ function checkNumber() {
 			questionChosen = questionChosen + 1;
 		}
 	}
-	return ((totalQuestions - questionChosen) >= 10 ? true : false);
+	return totalQuestions - questionChosen >= 10 ? true : false;
 }
 
-function removeDelRow () {
+function removeDelRow() {
 	var questions = document.getElementById("questionTable");
 	var totalQuestions = questions.rows.length / 3;
-	
+
 	for (var i = totalQuestions - 1; i >= 0; i--) {
 		if (document.getElementById(i).checked == true) {
 			for (var j = 0; j < 3; j++) {
-				questions.deleteRow(3*i);
+				questions.deleteRow(3 * i);
 				// questions.
 			}
 		}
@@ -145,16 +156,18 @@ function getCategory() {
 			// console.log(result);
 			addCategory(cateList);
 		}
-	}
+	};
 	ajax.open(method, url, asynchronous);
 	ajax.send();
 }
 
 function getQuestionList() {
-	var cate = document.getElementById("category").options[document.getElementById("category").selectedIndex].id;
+	var cate = document.getElementById("category").options[
+		document.getElementById("category").selectedIndex
+	].id;
 	var lvl = document.getElementById("level").value;
 
-	var dataStr = '&category=' + cate + '&level=' + lvl; 
+	var dataStr = "&category=" + cate + "&level=" + lvl;
 
 	var ajax = new XMLHttpRequest();
 	var method = "POST";
@@ -168,7 +181,7 @@ function getQuestionList() {
 			questionList = JSON.parse(data);
 			showQuestionList(questionList);
 		}
-	}
+	};
 	ajax.open(method, url + dataStr, asynchronous);
 	ajax.send();
 }
@@ -178,15 +191,15 @@ function deleteQuestions() {
 	closeDelSuccess();
 	closeDelError();
 	closeNumWarning();
-	var dataStr = '&q_id='; 
+	var dataStr = "&q_id=";
 
 	var questions = document.getElementById("questionTable");
 	var totalQuestions = questions.rows.length / 3;
 	var questionChosen = 0;
-	
+
 	for (var i = totalQuestions - 1; i >= 0; i--) {
 		if (document.getElementById(i).checked == true) {
-			dataStr = dataStr + questions.rows[3*i].cells[3].id + '-';
+			dataStr = dataStr + questions.rows[3 * i].cells[3].id + "-";
 			questionChosen = questionChosen + 1;
 		}
 	}
@@ -196,7 +209,8 @@ function deleteQuestions() {
 	} else {
 		var ajax = new XMLHttpRequest();
 		var method = "POST";
-		var url = "controllers/manage_exam_controller.php?function=deleteQuestion";
+		var url =
+			"controllers/manage_exam_controller.php?function=deleteQuestion";
 		var asynchronous = true;
 
 		ajax.onreadystatechange = function () {
@@ -213,7 +227,7 @@ function deleteQuestions() {
 					document.getElementById("error").style.display = "block";
 				}
 			}
-		}
+		};
 		ajax.open(method, url + dataStr, asynchronous);
 		ajax.send();
 	}

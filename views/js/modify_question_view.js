@@ -4,9 +4,12 @@ function openQuestionList() {
 	closeDelError();
 	var cate = document.getElementById("category");
 	var lvl = document.getElementById("level");
-	if (cate.options[cate.selectedIndex].value != "" && lvl.options[lvl.selectedIndex].value != "") {
+	if (
+		cate.options[cate.selectedIndex].value != "" &&
+		lvl.options[lvl.selectedIndex].value != ""
+	) {
 		clearQuestionList();
-    	getQuestionList();
+		getQuestionList();
 	} else {
 		document.getElementById("questionForm").style.display = "none";
 	}
@@ -30,22 +33,22 @@ function clearQuestionList() {
 	var questions = document.getElementById("questionTable");
 	for (var i = questions.rows.length - 1; i >= 0; i--) {
 		questions.deleteRow(i);
-	}	
+	}
 }
 
 //*******************************************************************************************//
 function closeNothingNoti() {
-  document.getElementById("nothing").style.display = "none";
+	document.getElementById("nothing").style.display = "none";
 }
 
 //*******************************************************************************************//
 function closeDelSuccess() {
-  document.getElementById("success").style.display = "none";
+	document.getElementById("success").style.display = "none";
 }
 
 //*******************************************************************************************//
 function closeDelError() {
-  document.getElementById("error").style.display = "none";
+	document.getElementById("error").style.display = "none";
 }
 
 //*******************************************************************************************//
@@ -56,35 +59,49 @@ function submitForm() {
 	var questions = document.getElementById("questionTable");
 	var totalQuestions = questions.rows.length / 3;
 	var changed = false;
-	
+
 	for (var i = totalQuestions - 1; i >= 0; i--) {
 		// if question is modified
-		if (questions.rows[3*i].cells[1].firstChild.value != questions.rows[3*i].cells[1].firstChild.defaultValue) {
+		if (
+			questions.rows[3 * i].cells[1].firstChild.value !=
+			questions.rows[3 * i].cells[1].firstChild.defaultValue
+		) {
 			changed = true;
-			var newQuestion = questions.rows[3*i].cells[1].firstChild.value;
-			var questionId = questions.rows[3*i].cells[1].firstChild.id;
+			var newQuestion = questions.rows[3 * i].cells[1].firstChild.value;
+			var questionId = questions.rows[3 * i].cells[1].firstChild.id;
 			updateQuestion(questionId, newQuestion);
-			questions.rows[3*i].cells[1].firstChild.defaultValue = newQuestion;
+			questions.rows[
+				3 * i
+			].cells[1].firstChild.defaultValue = newQuestion;
 		}
 
 		// if answer is modified
 		for (var j = 0; j < 3; j++) {
-			var cell = (j == 0) ? 2 : 0;
-			if (questions.rows[3*i+j].cells[cell].firstChild.value != questions.rows[3*i+j].cells[cell].firstChild.defaultValue) {
+			var cell = j == 0 ? 2 : 0;
+			if (
+				questions.rows[3 * i + j].cells[cell].firstChild.value !=
+				questions.rows[3 * i + j].cells[cell].firstChild.defaultValue
+			) {
 				changed = true;
-				var newAnswer = questions.rows[3*i+j].cells[cell].firstChild.value;
-				var answerId = questions.rows[3*i+j].cells[cell].firstChild.id;
+				var newAnswer =
+					questions.rows[3 * i + j].cells[cell].firstChild.value;
+				var answerId =
+					questions.rows[3 * i + j].cells[cell].firstChild.id;
 				updateAnswer(answerId, newAnswer, 1);
-				questions.rows[3*i+j].cells[cell].firstChild.defaultValue = newAnswer;
+				questions.rows[3 * i + j].cells[
+					cell
+				].firstChild.defaultValue = newAnswer;
 			}
 		}
 
 		// if chosen correct answer is changed
-		var optionName = questions.rows[3*i].cells[3].firstChild.getAttribute("name");
-		var option = document.getElementsByName(optionName); 
+		var optionName = questions.rows[3 * i].cells[3].firstChild.getAttribute(
+			"name"
+		);
+		var option = document.getElementsByName(optionName);
 		for (var j = 0; j < 3; j++) {
-			var cell = (j == 0) ? 2 : 0;
-			var answerId = questions.rows[3*i+j].cells[cell].firstChild.id;
+			var cell = j == 0 ? 2 : 0;
+			var answerId = questions.rows[3 * i + j].cells[cell].firstChild.id;
 			if (option[j].checked != option[j].defaultChecked) {
 				changed = true;
 				updateAnswer(answerId, option[j].checked, 0);
@@ -107,15 +124,15 @@ function showQuestionList(questionList) {
 
 		// Insert a row at the end of the table
 		var newRow1 = table.insertRow(-1);
-	
-		// Insert a cell for numbering question in the row 
+
+		// Insert a cell for numbering question in the row
 		var id = newRow1.insertCell(0);
 		id.rowSpan = 3;
 		id.style.textAlign = "center";
 		id.setAttribute("id", "id" + index);
-		id.appendChild(document.createTextNode(parseFloat(index)+1));
+		id.appendChild(document.createTextNode(parseFloat(index) + 1));
 
-		// Insert a cell for question text in the row 
+		// Insert a cell for question text in the row
 		var question = newRow1.insertCell(1);
 		question.rowSpan = 3;
 		var ques_text = document.createElement("input");
@@ -125,18 +142,17 @@ function showQuestionList(questionList) {
 		ques_text.style.width = ques_text.value.length + "5px";
 		question.appendChild(ques_text);
 
-
-		// Setup for the fisrt answer 
+		// Setup for the fisrt answer
 		var ans = newRow1.insertCell(2);
 		var ans1 = document.createElement("input");
 		ans1.setAttribute("value", questionList[index].ans[0].a_text);
 		ans1.setAttribute("id", questionList[index].ans[0].a_id);
 		ans1.style.border = "none";
 		ans1.style.width = ans1.value.length + "2px";
-		ans.appendChild(ans1);	
+		ans.appendChild(ans1);
 
 		var correct = newRow1.insertCell(3);
-		correct.style.textAlign = "center"; 
+		correct.style.textAlign = "center";
 		/* create a radio button */
 		var correctButton = document.createElement("input");
 		correctButton.setAttribute("type", "radio");
@@ -145,10 +161,9 @@ function showQuestionList(questionList) {
 		if (correctAns == 0) {
 			correctButton.setAttribute("checked", "checked");
 		}
-		correct.appendChild(correctButton);	
+		correct.appendChild(correctButton);
 
-
-		// Setup for the second answer 
+		// Setup for the second answer
 		var newRow2 = table.insertRow(-1);
 		var ans = newRow2.insertCell(0);
 		var ans2 = document.createElement("input");
@@ -159,7 +174,7 @@ function showQuestionList(questionList) {
 		ans.appendChild(ans2);
 
 		var correct = newRow2.insertCell(1);
-		correct.style.textAlign = "center"; 
+		correct.style.textAlign = "center";
 		/* create a radio button */
 		var correctButton = document.createElement("input");
 		correctButton.setAttribute("type", "radio");
@@ -168,10 +183,9 @@ function showQuestionList(questionList) {
 		if (correctAns == 1) {
 			correctButton.setAttribute("checked", "checked");
 		}
-		correct.appendChild(correctButton);	
+		correct.appendChild(correctButton);
 
-
-		// Setup for the third answer 
+		// Setup for the third answer
 		var newRow3 = table.insertRow(-1);
 		var ans = newRow3.insertCell(0);
 		var ans3 = document.createElement("input");
@@ -182,7 +196,7 @@ function showQuestionList(questionList) {
 		ans.appendChild(ans3);
 
 		var correct = newRow3.insertCell(1);
-		correct.style.textAlign = "center"; 
+		correct.style.textAlign = "center";
 		/* create a radio button */
 		var correctButton = document.createElement("input");
 		correctButton.setAttribute("type", "radio");
@@ -191,7 +205,7 @@ function showQuestionList(questionList) {
 		if (correctAns == 2) {
 			correctButton.setAttribute("checked", "checked");
 		}
-		correct.appendChild(correctButton);	
+		correct.appendChild(correctButton);
 	}
 	document.getElementById("questionForm").style.display = "block";
 }
@@ -210,17 +224,19 @@ function getCategory() {
 			// console.log(result);
 			addCategory(cateList);
 		}
-	}
+	};
 	ajax.open(method, url, asynchronous);
 	ajax.send();
 }
 
 //*******************************************************************************************//
 function getQuestionList() {
-	var cate = document.getElementById("category").options[document.getElementById("category").selectedIndex].id;
+	var cate = document.getElementById("category").options[
+		document.getElementById("category").selectedIndex
+	].id;
 	var lvl = document.getElementById("level").value;
 
-	var dataStr = '&category=' + cate + '&level=' + lvl; 
+	var dataStr = "&category=" + cate + "&level=" + lvl;
 
 	var ajax = new XMLHttpRequest();
 	var method = "POST";
@@ -234,18 +250,19 @@ function getQuestionList() {
 			questionList = JSON.parse(data);
 			showQuestionList(questionList);
 		}
-	}
+	};
 	ajax.open(method, url + dataStr, asynchronous);
 	ajax.send();
 }
 
 //*******************************************************************************************//
 function updateQuestion(questionId, newQuestion) {
-	var dataStr = '&q_id=' + questionId + '&q_text=' + newQuestion; 
+	var dataStr = "&q_id=" + questionId + "&q_text=" + newQuestion;
 
 	var ajax = new XMLHttpRequest();
 	var method = "POST";
-	var url = "controllers/manage_exam_controller.php?function=updateQuestionText";
+	var url =
+		"controllers/manage_exam_controller.php?function=updateQuestionText";
 	var asynchronous = true;
 
 	ajax.onreadystatechange = function () {
@@ -258,7 +275,7 @@ function updateQuestion(questionId, newQuestion) {
 				document.getElementById("error").style.display = "block";
 			}
 		}
-	}
+	};
 	ajax.open(method, url + dataStr, asynchronous);
 	ajax.send();
 }
@@ -266,14 +283,15 @@ function updateQuestion(questionId, newQuestion) {
 //*******************************************************************************************//
 function updateAnswer(answerId, data, option) {
 	if (option == 0) {
-		data = (data == true) ? 1 : 0;
-		var dataStr = '&a_id=' + answerId + '&correct=' + data; 
+		data = data == true ? 1 : 0;
+		var dataStr = "&a_id=" + answerId + "&correct=" + data;
 
 		var ajax = new XMLHttpRequest();
 		var method = "POST";
-		var url = "controllers/manage_exam_controller.php?function=updateAnswerCorrect";
+		var url =
+			"controllers/manage_exam_controller.php?function=updateAnswerCorrect";
 		var asynchronous = true;
-	
+
 		ajax.onreadystatechange = function () {
 			if (this.readyState == 4 && this.status == 200) {
 				var result = this.responseText;
@@ -284,17 +302,18 @@ function updateAnswer(answerId, data, option) {
 					document.getElementById("error").style.display = "block";
 				}
 			}
-		}
+		};
 		ajax.open(method, url + dataStr, asynchronous);
 		ajax.send();
 	} else if (option == 1) {
-		var dataStr = '&a_id=' + answerId + '&a_text=' + data; 
+		var dataStr = "&a_id=" + answerId + "&a_text=" + data;
 
 		var ajax = new XMLHttpRequest();
 		var method = "POST";
-		var url = "controllers/manage_exam_controller.php?function=updateAnswerText";
+		var url =
+			"controllers/manage_exam_controller.php?function=updateAnswerText";
 		var asynchronous = true;
-	
+
 		ajax.onreadystatechange = function () {
 			if (this.readyState == 4 && this.status == 200) {
 				var result = this.responseText;
@@ -305,7 +324,7 @@ function updateAnswer(answerId, data, option) {
 					document.getElementById("error").style.display = "block";
 				}
 			}
-		}
+		};
 		ajax.open(method, url + dataStr, asynchronous);
 		ajax.send();
 	}
