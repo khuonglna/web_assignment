@@ -43,7 +43,7 @@ body {
 
 .content {
 	position: relative;
-	min-height: 350px;
+	min-height: 400px;
 	width: 100%;
 }
 /* STYLE FOR HOME ----------------------------------------------------*/
@@ -102,3 +102,16 @@ body {
 }
 
 /* STYLE FOR CATEGORY ----------------------------------------------------*/
+
+/* STYLE FOR EXAM ----------------------------------------------------*/
+#submitBtn {
+	position: fixed;
+	bottom: 200px;
+	right: 400px;
+}
+
+#score {
+	position: fixed;
+	bottom: 300px;
+	right: 400px;
+}

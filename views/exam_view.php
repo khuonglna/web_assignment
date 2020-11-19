@@ -1,16 +1,18 @@
-<!-- <?php include('test_process.php') ?> -->
-<?php include('./controllers/exam_controller.php') ?>
-<div class="container content">
-    <h1 id="category"> Category</h1>
-    <h2 id="difficulty"> Difficulty</h2>
-    <div class="container">
-        <div>
-            <?php
-                $examController = new ExamController();
-                echo $examController->getQuestionList(2,2); 
-            ?>
-        </div>
-    </div>
+<!DOCTYPE html>
+<html lang="en">
+<head>
     
+</head>
+
+<body>
     
-</div>
+    <div class="container content">
+        <button type="button" class="btn btn-secondary" onclick="getExamForm()"></button>
+        <form id="examForm" class="form-group">
+        <p id="score"></p>
+        <button id="submitBtn" type="button" class="btn btn-primary" onclick="submitForm()">Submit</button>
+        </form>
+        <script src="views/js/exam_view.js"></script>
+    </div>    
+</body>
+</html>

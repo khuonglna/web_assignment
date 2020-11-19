@@ -1,6 +1,5 @@
 <?php 
-	class DbModel 
-	{
+	class DbModel {
         private $servername = "localhost";
         private $username = "root";
         private $password = "";     

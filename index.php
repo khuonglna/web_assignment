@@ -2,6 +2,14 @@
     session_start();
     include 'views/header.php';
     
+    define('STAFF', '2');
+    define('ADMIN', '3');
+    
+    if (!isset($_SESSION['role'])) {
+        $_SESSION['role'] = '';
+    }
+    $role = $_SESSION['role'];
+
     if (isset($_GET['page'])) {
         $page = $_GET['page'];
         if ($page == "") {
@@ -31,34 +39,32 @@
             require_once('controllers/logout_controller.php');
             $usercontroller = new $controller();
             $usercontroller-> $action();
-        } 
-
-        elseif ($page == "insert_staff") {
+        } elseif ($page == "home") {
+            include "views/$page.php";
+        } elseif ($page == "modify_question" && $role == STAFF) {
+            include "views/modify_question_view.php";
+        } elseif ($page == "add_question" && $role == STAFF) {
+            include "views/add_question_view.php";
+        } elseif ($page == "delete_question" && $role == STAFF) {
+            include "views/delete_question_view.php";
+        } elseif ($page == "insert_staff" && $role == ADMIN) {
             $controller = isset($_GET['controller'])? $_GET['controller'].'Controller' : 'StaffController' ;
             $action = isset($_GET['action'])?$_GET['action']: 'insertStaff' ;
 
             require_once('controllers/insert_staff_controller.php');
             $usercontroller = new $controller();
             $usercontroller-> $action();
-        }  
-
-        elseif ($page == "delete_staff") {
+        }  elseif ($page == "delete_staff" && $role == ADMIN) {
             $controller = isset($_GET['controller'])? $_GET['controller'].'Controller' : 'StaffController' ;
             $action = isset($_GET['action'])?$_GET['action']: 'insertStaff' ;
 
             require_once('controllers/delete_staff_controller.php');
             $usercontroller = new $controller();
             $usercontroller-> $action();
-        } 
-
-
-        elseif ($page == "add_test") {
-            include "views/add_question.php";
-        }
-        elseif ($page == "exam_view") {
+        } elseif ($page == "exam_view") {
             include "views/category_view.php";
         } else {
-            include "views/$page.php";
+            include "views/exception.php";
         }
     } 
     require_once 'views/footer.php'; 

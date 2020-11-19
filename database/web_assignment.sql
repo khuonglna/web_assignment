@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 05, 2020 at 06:10 AM
+-- Generation Time: Nov 17, 2020 at 05:08 AM
 -- Server version: 10.4.14-MariaDB
 -- PHP Version: 7.4.10
 
@@ -177,7 +177,10 @@ CREATE TABLE `category` (
 
 INSERT INTO `category` (`c_id`, `c_name`) VALUES
 (1, 'Family'),
-(2, 'Tense');
+(2, 'Tense'),
+(3, 'Animal'),
+(4, 'Country'),
+(5, 'Science');
 
 -- --------------------------------------------------------
 
@@ -241,6 +244,20 @@ INSERT INTO `question` (`q_id`, `q_level`, `q_category`, `q_text`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `submission`
+--
+
+CREATE TABLE `submission` (
+  `s_id` int(5) NOT NULL,
+  `username` text NOT NULL,
+  `s_category` int(3) NOT NULL,
+  `s_level` int(1) NOT NULL,
+  `s_score` int(3) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `users`
 --
 
@@ -260,7 +277,9 @@ INSERT INTO `users` (`username`, `password`, `role`) VALUES
 ('tienanh3', '202cb962ac59075b964b07152d234b70', 1),
 ('tien', 'c4ca4238a0b923820dcc509a6f75849b', 1),
 ('admin', '21232f297a57a5a743894a0e4a801fc3', 3),
-('staff', '1253208465b1efa876f982d8a9e73eef', 2);
+('staff', '1253208465b1efa876f982d8a9e73eef', 2),
+('khuong', '48c6c450f1a4a0cc53d9585dc0fee742', 1),
+('test', '098f6bcd4621d373cade4e832627b4f6', 1);
 
 --
 -- Indexes for dumped tables
@@ -287,6 +306,13 @@ ALTER TABLE `question`
   ADD KEY `q_category` (`q_category`);
 
 --
+-- Indexes for table `submission`
+--
+ALTER TABLE `submission`
+  ADD PRIMARY KEY (`s_id`),
+  ADD KEY `s_category` (`s_category`);
+
+--
 -- AUTO_INCREMENT for dumped tables
 --
 
@@ -294,19 +320,25 @@ ALTER TABLE `question`
 -- AUTO_INCREMENT for table `answer`
 --
 ALTER TABLE `answer`
-  MODIFY `a_id` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=121;
+  MODIFY `a_id` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=127;
 
 --
 -- AUTO_INCREMENT for table `category`
 --
 ALTER TABLE `category`
-  MODIFY `c_id` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `c_id` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `question`
 --
 ALTER TABLE `question`
-  MODIFY `q_id` int(3) NOT NULL AUTO_INCREMENT COMMENT 'question id', AUTO_INCREMENT=41;
+  MODIFY `q_id` int(3) NOT NULL AUTO_INCREMENT COMMENT 'question id', AUTO_INCREMENT=63;
+
+--
+-- AUTO_INCREMENT for table `submission`
+--
+ALTER TABLE `submission`
+  MODIFY `s_id` int(5) NOT NULL AUTO_INCREMENT;
 
 --
 -- Constraints for dumped tables

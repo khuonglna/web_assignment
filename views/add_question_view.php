@@ -5,17 +5,16 @@
     <script src="views/js/add_question_view.js"></script>
 </head>
 
-<body onload="onEnterEvent()">
+<body onload="setUp()">
   <div class="container content">
-    <form id="addForm" class="form-group" method="post" action=""> 
+    <form id="addForm" class="form-group"z> 
       <div class="row justify-content-md-center">
         <div class="col col-3 text-center"> 
           <h5>Category:</h5>
           <select onchange="openForm()" class="custom-select custom-select-sm" name="category" id="category" required>
             <option value=""></option>
-            <option value="1">Tense</option>
-            <option value="2">Family</option>
-
+            <!-- <option value="1">Family</option>
+            <option value="2">Tense</option> -->
           </select>
         </div>
         
@@ -77,7 +76,7 @@
           </tbody>
         </table>
 
-        <input type="button" id="btn" class="btn btn-primary btn-block" value="Add Question" onclick="submitForm()">
+        <input id="btn" type="button" class="btn btn-primary btn-block" value="Add Question" onclick="submitForm()">
       </div>
       <br>
 
@@ -93,9 +92,6 @@
         <button type="button" class="close" aria-label="Close" onclick="closeAddSuccess()">
           <span aria-hidden="true">&times;</span>
         </button>
-        <!-- <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button> -->
       </div>
 
       <div class="alert alert-danger" role="alert" id="error" style="display:none;">
@@ -106,7 +102,11 @@
       </div>
 
       <p id="demo"></p>
+
+      <div id="container"></div>
     </form>
+
+    
   </div>
 </body>
 </html>
