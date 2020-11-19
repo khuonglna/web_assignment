@@ -1,13 +1,16 @@
 <?php 
-	require_once('models/user_model.php');
+	require_once('../models/user_model.php');
+
 	$res = $_REQUEST['function'];
+
 	if ($res == "getStaffList") {
-
+		$usermodel = new UserModel();
+		$data = $usermodel->queryStaffList();
+		echo($data);
 	}
-
-	if ($res == "")
+	else {
+		
+		echo "here";
+	}
+	
 ?>
-
-<script>
-    
-</script>

@@ -80,7 +80,7 @@
         }
 
         public function queryStaffList() {
-            $staffList = array();
+            $staffList = "";
             $idx = 0;
             $conn = $this->connect();
             $sql = "SELECT 
@@ -93,8 +93,8 @@
             $res = mysqli_query($conn, $sql);
             if (mysqli_num_rows($res) > 0) {
                 while ($row = mysqli_fetch_assoc($res)) {
-                    $staffList[$idx] = $row["username"];
-                    $idx = $idx + 1;
+                    $staffList= $staffList.'_'.$row["username"];
+               
                 }
             }
             return $staffList;
