@@ -11,11 +11,11 @@ class UserController
 			$usermodel = new UserModel();
 			$user = $usermodel->login($username, $password);
 			if ($user) {
-				require_once('views/home.php');
+				require_once('views/home.html');
 				$_SESSION["username"] = $user["username"];
 				$_SESSION["role"] = $user["role"];
 			} else {
-				require_once('views/login_view.php');
+				require_once('views/login_view.html');
 				echo '<script language="javascript">';
 				echo 'alert("failed")';
 				echo '</script>';
@@ -23,7 +23,7 @@ class UserController
 		} else {
 			// When pressed login again will remove session
 			session_unset();
-			require_once('views/login_view.php');
+			require_once('views/login_view.html');
 		}
 	}
 }

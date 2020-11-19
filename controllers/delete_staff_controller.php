@@ -10,14 +10,14 @@ class StaffController
 			$usermodel = new UserModel();
 			$user = $usermodel->addStaff($username, $password);
 			if ($user) {
-				require_once('views/delete_staff_view.php');
+				require_once('views/delete_staff_view.html');
 				echo "Delete staff success";
 			} else {
-				require_once('views/delete_staff_view.php');
+				require_once('views/delete_staff_view.html');
 				echo "delete staff failed";
 			}
 		} else {
-			require_once('views/delete_staff_view.php');
+			require_once('views/delete_staff_view.html');
 			// echo "invalid";
 		}
 	}

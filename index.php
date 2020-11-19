@@ -1,6 +1,6 @@
 <?php
 session_start();
-include 'views/header.php';
+include 'views/header.html';
 
 define('STAFF', '2');
 define('ADMIN', '3');
@@ -13,7 +13,7 @@ $role = $_SESSION['role'];
 if (isset($_GET['page'])) {
     $page = $_GET['page'];
     if ($page == "") {
-        include "views/exception.php";
+        include "views/exception.html";
     } elseif ($page == "login") {
         $controller = isset($_GET['controller']) ? $_GET['controller'] . 'Controller' : 'UserController';
         $action = isset($_GET['action']) ? $_GET['action'] : 'getUser';
@@ -36,13 +36,13 @@ if (isset($_GET['page'])) {
         $usercontroller = new $controller();
         $usercontroller->$action();
     } elseif ($page == "home") {
-        include "views/$page.php";
+        include "views/$page.html";
     } elseif ($page == "modify_question" && $role == STAFF) {
-        include "views/modify_question_view.php";
+        include "views/modify_question_view.html";
     } elseif ($page == "add_question" && $role == STAFF) {
-        include "views/add_question_view.php";
+        include "views/add_question_view.html";
     } elseif ($page == "delete_question" && $role == STAFF) {
-        include "views/delete_question_view.php";
+        include "views/delete_question_view.html";
     } elseif ($page == "insert_staff" && $role == ADMIN) {
         $controller = isset($_GET['controller']) ? $_GET['controller'] . 'Controller' : 'StaffController';
         $action = isset($_GET['action']) ? $_GET['action'] : 'insertStaff';
@@ -58,9 +58,9 @@ if (isset($_GET['page'])) {
         $usercontroller = new $controller();
         $usercontroller->$action();
     } elseif ($page == "exam_view") {
-        include "views/exam_view.php";
+        include "views/exam_view.html";
     } else {
-        include "views/exception.php";
+        include "views/exception.html";
     }
 }
-require_once 'views/footer.php';
+require_once 'views/footer.html';

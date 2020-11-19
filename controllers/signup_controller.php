@@ -13,16 +13,16 @@ class UserController
 			$usermodel = new UserModel();
 			$user = $usermodel->signup($username, $password);
 			if ($user) {
-				require_once('views/signup_view.php');
+				require_once('views/signup_view.html');
 				$_SESSION["username"] = $username;
 				$_SESSION["role"] = DEFAULT_ROLE;
 				echo "sign up success";
 			} else {
-				require_once('views/signup_view.php');
+				require_once('views/signup_view.html');
 				echo "sign up failed";
 			}
 		} else {
-			require_once('views/signup_view.php');
+			require_once('views/signup_view.html');
 			// echo "invalid";
 		}
 	}
