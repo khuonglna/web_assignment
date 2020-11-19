@@ -6,6 +6,6 @@ class UserController
     public function logout()
     {
         session_unset();
-        require_once('views/home.php');
+        require_once('views/home.html');
     }
 }
