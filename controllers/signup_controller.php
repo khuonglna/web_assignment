@@ -27,8 +27,3 @@ class UserController
 		}
 	}
 }
-?>
-
-<script>
-
-</script>

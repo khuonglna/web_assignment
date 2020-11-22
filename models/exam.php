@@ -57,4 +57,23 @@ class ExamModel extends DbModel
         }
         return $category;
     }
+
+    public function queryAddSubmission($usr, $cat, $lvl, $score) {
+        $conn = $this->connect();
+        $sql = "INSERT INTO submission (
+                    username
+                    , s_category
+                    , s_level
+                    , s_score
+                )
+                VALUES(
+                    '$usr'
+                    , '$cat'
+                    , '$lvl'
+                    , '$score'
+                )
+        ";
+        // if(mysqli_query($conn, $sql) ? true : false);      
+        mysqli_query($conn, $sql);
+    }
 }
