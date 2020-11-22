@@ -35,7 +35,8 @@ class Answer
 
 class AnswerModel extends DbModel
 {
-    function queryListAnswerByQuestionId($questionId) {
+    function queryListAnswerByQuestionId($questionId)
+    {
         $answerList = array();
         $conn = $this->connect();
         $sql = "SELECT
@@ -60,7 +61,8 @@ class AnswerModel extends DbModel
         return $answerList;
     }
 
-    public function queryGetCorrectAnswerByQuestionId($questionId) {
+    public function queryGetCorrectAnswerByQuestionId($questionId)
+    {
         $conn = $this->connect();
         $sql = "SELECT 
                     `a_text`
@@ -83,10 +85,11 @@ class AnswerModel extends DbModel
         return $result;
     }
 
-    public function queryAddAnswers($qId , $ansText, $correctAns) {   
+    public function queryAddAnswers($qId, $ansText, $correctAns)
+    {
         $conn = $this->connect();
 
-        for ($i = 0; $i < 3 ; $i++) {
+        for ($i = 0; $i < 3; $i++) {
             $correctFlag = ((int)$correctAns == $i + 1) ? 1 : 0;
             $query =    "INSERT INTO 
                             ANSWER (`q_id`, `a_text`, `a_correct_flag`) 
@@ -100,7 +103,8 @@ class AnswerModel extends DbModel
         return true;
     }
 
-    public function queryDeleteAnswerByQuestionId ($questionId) {
+    public function queryDeleteAnswerByQuestionId($questionId)
+    {
         $conn = $this->connect();
         $sql = "DELETE FROM 
                     ANSWER
@@ -114,7 +118,8 @@ class AnswerModel extends DbModel
         return true;
     }
 
-    public function queryUpdateAnswerText($answerId, $answerText) {
+    public function queryUpdateAnswerText($answerId, $answerText)
+    {
         $conn = $this->connect();
         $sql = "UPDATE 
                     ANSWER
@@ -130,7 +135,8 @@ class AnswerModel extends DbModel
         return true;
     }
 
-    public function queryUpdateAnswerCorrect($answerId, $correct) {
+    public function queryUpdateAnswerCorrect($answerId, $correct)
+    {
         $conn = $this->connect();
         $sql = "UPDATE 
                     ANSWER

@@ -11,7 +11,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     <script src='https://kit.fontawesome.com/a076d05399.js'></script>
-    <script src='views/js/roles.js'></script> 
+    <script src='views/js/roles.js'></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
     <script type="text/javascript">
@@ -68,10 +68,9 @@
                     <div class="col-7" id="nav_col">
                         <div class="container w-100" id="nav_container">
                             <nav class="navbar navbar-expand-md navbar-light bg-light">
-                                <div class="collapse navbar-collapse" >
+                                <div class="collapse navbar-collapse">
                                     <ul class="navbar-nav" id="nav_menu">
-                                        <li class="nav-item active"><a class="nav-link" href="index.php?page=home">Home</a</li> 
-                                        <li class="nav-item"><a class="nav-link" href="#" id="info_navtab">About Us</a></li>
+                                        <li class="nav-item active"><a class="nav-link" href="index.php?page=home">Home</a</li> <li class="nav-item"><a class="nav-link" href="#" id="info_navtab">About Us</a></li>
                                     </ul>
                                 </div>
                             </nav>
@@ -84,5 +83,3 @@
             </div>
         </div>
     </header>
-
-    

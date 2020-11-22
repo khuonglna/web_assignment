@@ -9,6 +9,5 @@ class Result
 
     public function getQuestionList(array $question)
     {
-        
     }
 }
