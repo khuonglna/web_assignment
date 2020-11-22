@@ -200,7 +200,7 @@ function showQuestionList(questionList) {
 function getCategory() {
 	var ajax = new XMLHttpRequest();
 	var method = "POST";
-	var url = "controllers/manage_exam_controller.php?function=getCategory";
+	var url = "controllers/manage_exam_ptj.php?function=getCategory";
 	var asynchronous = true;
 
 	ajax.onreadystatechange = function () {
@@ -224,7 +224,7 @@ function getQuestionList() {
 
 	var ajax = new XMLHttpRequest();
 	var method = "POST";
-	var url = "controllers/manage_exam_controller.php?function=listQuestion";
+	var url = "controllers/manage_exam_ptj.php?function=listQuestion";
 	var asynchronous = true;
 
 	ajax.onreadystatechange = function () {
@@ -245,7 +245,7 @@ function updateQuestion(questionId, newQuestion) {
 
 	var ajax = new XMLHttpRequest();
 	var method = "POST";
-	var url = "controllers/manage_exam_controller.php?function=updateQuestionText";
+	var url = "controllers/manage_exam_ptj.php?function=updateQuestionText";
 	var asynchronous = true;
 
 	ajax.onreadystatechange = function () {
@@ -271,14 +271,14 @@ function updateAnswer(answerId, data, option) {
 
 		var ajax = new XMLHttpRequest();
 		var method = "POST";
-		var url = "controllers/manage_exam_controller.php?function=updateAnswerCorrect";
+		var url = "controllers/manage_exam_ptj.php?function=updateAnswerCorrect";
 		var asynchronous = true;
 	
 		ajax.onreadystatechange = function () {
 			if (this.readyState == 4 && this.status == 200) {
 				var result = this.responseText;
 				// console.log(result);
-				if (result) {
+				if (result == true) {
 					document.getElementById("success").style.display = "block";
 				} else {
 					document.getElementById("error").style.display = "block";
@@ -292,14 +292,14 @@ function updateAnswer(answerId, data, option) {
 
 		var ajax = new XMLHttpRequest();
 		var method = "POST";
-		var url = "controllers/manage_exam_controller.php?function=updateAnswerText";
+		var url = "controllers/manage_exam_ptj.php?function=updateAnswerText";
 		var asynchronous = true;
 	
 		ajax.onreadystatechange = function () {
 			if (this.readyState == 4 && this.status == 200) {
 				var result = this.responseText;
 				// console.log(result);
-				if (result) {
+				if (result == true) {
 					document.getElementById("success").style.display = "block";
 				} else {
 					document.getElementById("error").style.display = "block";

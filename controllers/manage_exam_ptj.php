@@ -21,7 +21,7 @@
 
         $examController = new ExamController();
         $result = $examController->addQuestion($question, $category, $level, $ansList, $correct);
-        echo json_encode($result);
+        echo $result;
 
     } elseif ($res == "listQuestion") {
         $category = $_REQUEST['category'];
@@ -89,7 +89,7 @@
         $examController = new ExamController();
         $result = $examController->updateQuestionText($q_id, $q_text);
 
-        echo json_encode($result);
+        echo $result;
 
     } elseif ($res == "updateAnswerText") {
         $a_id = $_REQUEST['a_id'];
@@ -98,7 +98,7 @@
         $examController = new ExamController();
         $result = $examController->updateAnswerText($a_id, $a_text);
         
-        echo json_encode($result);
+        echo $result;
 
     } elseif ($res == "updateAnswerCorrect") {
         $a_id = $_REQUEST['a_id'];
@@ -107,7 +107,7 @@
         $examController = new ExamController();
         $result = $examController->updateAnswerCorrect($a_id, $correct);
         
-        echo json_encode($result);
+        echo $result;
     } else {
             // echo "guest";
     }

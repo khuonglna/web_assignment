@@ -45,7 +45,7 @@
           </tbody>
         </table>
 
-        <input id="btn" type="button" class="btn btn-primary btn-block" value="Detele All Selected Questions" onclick="submitForm()">
+        <input id="btn" type="button" class="btn btn-primary btn-block" value="Modify Questions" onclick="submitForm()">
       </div>
       <br>
 

@@ -101,14 +101,14 @@ function addQuestion() {
 
 	var ajax = new XMLHttpRequest();
 	var method = "POST";
-	var url = "controllers/manage_exam_controller.php?function=addQuestion";
+	var url = "controllers/manage_exam_ptj.php?function=addQuestion";
 	var asynchronous = true;
 
 	ajax.onreadystatechange = function () {
 		if (this.readyState == 4 && this.status == 200) {
 			var result = this.responseText;
 			// console.log(result);
-			if (JSON.parse(result)) {
+			if (result == true) {
 				document.getElementById("questionForm").style.display = "none";
 				document.getElementById("addForm").reset();
 				document.getElementById("success").style.display = "block";
@@ -124,7 +124,7 @@ function addQuestion() {
 function getCategory() {
 	var ajax = new XMLHttpRequest();
 	var method = "POST";
-	var url = "controllers/manage_exam_controller.php?function=getCategory";
+	var url = "controllers/manage_exam_ptj.php?function=getCategory";
 	var asynchronous = true;
 
 	ajax.onreadystatechange = function () {
