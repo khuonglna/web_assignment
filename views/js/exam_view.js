@@ -118,7 +118,6 @@ function showResult(result) {
 }
 
 function retry() {
-	console.log("RETRY");
 	location.reload();
 }
 
@@ -144,10 +143,10 @@ function submitForm() {
 		ajax.onreadystatechange = function () {
 			if (this.readyState == 4 && this.status == 200) {
 				data = this.responseText;
-				result = JSON.parse(data);
 				// console.log(data);
-				console.log(result);
-				console.log(result.score);
+				result = JSON.parse(data);
+				// console.log(result);
+				// console.log(result.score);
 				showResult(result);
 			}
 		};
@@ -191,6 +190,7 @@ function sF(ele) {
 	);
 	var dif = ele.id.substr(0, 1);
 	var data = "&category=" + category + "&dif=" + dif;
+	// console.log(data);
 	var ajax = new XMLHttpRequest();
 	var url = "controllers/question_ptj.php?do=getExam";
 	ajax.onreadystatechange = function () {
@@ -212,7 +212,7 @@ function showCategory() {
 	ajax.onreadystatechange = function () {
 		if (this.readyState == 4 && this.status == 200) {
 			var data = this.responseText;
-			console.log(data);
+			// console.log(data);
 			data = JSON.parse(this.responseText);
 			for (x of data) {
 				createCategory(x.name, x.id + "category");
