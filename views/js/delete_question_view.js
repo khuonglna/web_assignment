@@ -88,7 +88,6 @@ function showQuestionList(questionList) {
 		/* create a radio button */
 		var delButton = document.createElement("input");
 		delButton.setAttribute("type", "checkbox");
-		delButton.setAttribute("id", index);
 		del.appendChild(delButton);	
 
 		// Insert a row at the end of the table
