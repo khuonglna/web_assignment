@@ -1,10 +1,11 @@
 <?php
-    require_once('models/user_model.php');
+require_once('models/user_model.php');
 
-    class UserController
+class UserController
+{
+    public function logout()
     {
-        public function logout() {
-            session_unset();
-            require_once('views/home.php');
-        }
+        session_unset();
+        require_once('views/home.html');
     }
+}

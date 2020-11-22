@@ -5,9 +5,12 @@ function openQuestionList() {
 	closeNumWarning();
 	var cate = document.getElementById("category");
 	var lvl = document.getElementById("level");
-	if (cate.options[cate.selectedIndex].value != "" && lvl.options[lvl.selectedIndex].value != "") {
+	if (
+		cate.options[cate.selectedIndex].value != "" &&
+		lvl.options[lvl.selectedIndex].value != ""
+	) {
 		clearQuestionList();
-    	getQuestionList();
+		getQuestionList();
 	} else {
 		document.getElementById("questionForm").style.display = "none";
 	}
@@ -31,22 +34,22 @@ function clearQuestionList() {
 	var questions = document.getElementById("questionTable");
 	for (var i = questions.rows.length - 1; i >= 0; i--) {
 		questions.deleteRow(i);
-	}	
+	}
 }
 
 //*******************************************************************************************//
 function closeNothingNoti() {
-  document.getElementById("nothing").style.display = "none";
+	document.getElementById("nothing").style.display = "none";
 }
 
 //*******************************************************************************************//
 function closeDelSuccess() {
-  document.getElementById("success").style.display = "none";
+	document.getElementById("success").style.display = "none";
 }
 
 //*******************************************************************************************//
 function closeDelError() {
-  document.getElementById("error").style.display = "none";
+	document.getElementById("error").style.display = "none";
 }
 
 //*******************************************************************************************//
@@ -82,8 +85,8 @@ function showQuestionList(questionList) {
 	for (var index in questionList) {
 		// Insert a row at the end of the table
 		var newRow1 = table.insertRow(-1);
-	
-		// Insert a cell in the row 
+
+		// Insert a cell in the row
 		var id = newRow1.insertCell(0);
 		id.rowSpan = 3;
 		id.style.textAlign = "center";
@@ -93,12 +96,16 @@ function showQuestionList(questionList) {
 		// Insert a cell fo question text 
 		var question = newRow1.insertCell(1);
 		question.rowSpan = 3;
-		question.appendChild(document.createTextNode(questionList[index].q_text));
+		question.appendChild(
+			document.createTextNode(questionList[index].q_text)
+		);
 
 
 		// Insert a cell for first answer 
 		var ans = newRow1.insertCell(2);
-		ans.appendChild(document.createTextNode(questionList[index].ans[0].a_text));	
+		ans.appendChild(
+			document.createTextNode(questionList[index].ans[0].a_text)
+		);
 
 
 		// Insert a cell for selected button
@@ -116,13 +123,17 @@ function showQuestionList(questionList) {
 		// Insert a row for second answer
 		var newRow2 = table.insertRow(-1);
 		var ans = newRow2.insertCell(0);
-		ans.appendChild(document.createTextNode(questionList[index].ans[1].a_text));
+		ans.appendChild(
+			document.createTextNode(questionList[index].ans[1].a_text)
+		);
 
 
 		// Insert a row for third answer
 		var newRow3 = table.insertRow(-1);
 		var ans = newRow3.insertCell(0);
-		ans.appendChild(document.createTextNode(questionList[index].ans[2].a_text));
+		ans.appendChild(
+			document.createTextNode(questionList[index].ans[2].a_text)
+		);
 	}
 	document.getElementById("questionForm").style.display = "block";
 
@@ -163,17 +174,19 @@ function getCategory() {
 			// console.log(result);
 			addCategory(cateList);
 		}
-	}
+	};
 	ajax.open(method, url, asynchronous);
 	ajax.send();
 }
 
 //*******************************************************************************************//
 function getQuestionList() {
-	var cate = document.getElementById("category").options[document.getElementById("category").selectedIndex].id;
+	var cate = document.getElementById("category").options[
+		document.getElementById("category").selectedIndex
+	].id;
 	var lvl = document.getElementById("level").value;
 
-	var dataStr = '&category=' + cate + '&level=' + lvl; 
+	var dataStr = "&category=" + cate + "&level=" + lvl;
 
 	var ajax = new XMLHttpRequest();
 	var method = "POST";
@@ -187,7 +200,7 @@ function getQuestionList() {
 			questionList = JSON.parse(data);
 			showQuestionList(questionList);
 		}
-	}
+	};
 	ajax.open(method, url + dataStr, asynchronous);
 	ajax.send();
 }
@@ -198,12 +211,12 @@ function deleteQuestions() {
 	closeDelSuccess();
 	closeDelError();
 	closeNumWarning();
-	var dataStr = '&q_id='; 
+	var dataStr = "&q_id=";
 
 	var questions = document.getElementById("questionTable");
 	var totalQuestions = questions.rows.length / 3;
 	var questionChosen = 0;
-	
+
 	for (var i = totalQuestions - 1; i >= 0; i--) {
 		var q_id = questions.rows[3*i].cells[3].getAttribute("id");
 		console.log(q_id + document.getElementById("btn" + q_id).checked);
@@ -235,7 +248,7 @@ function deleteQuestions() {
 					document.getElementById("error").style.display = "block";
 				}
 			}
-		}
+		};
 		ajax.open(method, url + dataStr, asynchronous);
 		ajax.send();
 	}
