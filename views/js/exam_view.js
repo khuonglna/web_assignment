@@ -182,17 +182,27 @@ function closeDifficult(ele) {
 
 function sF(ele) {
 	//alert(ele.id);
-	document.getElementById("categorySelectionCtn").remove();
-	document.getElementById("examForm").removeAttribute("style");
+	
 	var category = ele.parentElement.id.substr(
 		0,
 		ele.parentElement.id.length - 6
 	);
 	var dif = ele.id.substr(0, 1);
+	var categoryNode = document.getElementById(category);	
+	var categoryText = categoryNode.textContent;
+	var levelNode = document.getElementById(dif);
+	var levelText = levelNode.textContent;
+	console.log(levelText);
+	var categoryTextNode = document.createTextNode(categoryText);
+	var levelTextNode =  document.createTextNode(levelText);
+	document.getElementById("examCategory").appendChild(categoryTextNode);
+	document.getElementById("examLevel").appendChild(levelTextNode);
 	var data = "&category=" + category + "&dif=" + dif;
 	// console.log(data);
 	var ajax = new XMLHttpRequest();
 	var url = "controllers/question_ptj.php?do=getExam";
+	document.getElementById("categorySelectionCtn").remove();
+	document.getElementById("examForm").removeAttribute("style");
 	ajax.onreadystatechange = function () {
 		if (this.readyState == 4 && this.status == 200) {
 			var data = this.responseText;
@@ -229,6 +239,7 @@ function createCategory(name, id) {
 	var Elementary = document.createElement("button");
 	var Intermediate = document.createElement("button");
 	var Native = document.createElement("button");
+	var pbreak = document.createElement("br");
 
 	category.setAttribute("id", id);
 	category.setAttribute("onmouseover", "openDifficult(this)");
@@ -273,7 +284,7 @@ function createCategory(name, id) {
 
 	container.appendChild(category);
 	container.appendChild(choice);
-
+	container.appendChild(pbreak);
 	var element = document.getElementById("where");
 	element.appendChild(temp);
 	element.appendChild(container);
