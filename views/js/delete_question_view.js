@@ -72,8 +72,7 @@ function showQuestionList(questionList) {
 		var id = newRow1.insertCell(0);
 		id.rowSpan = 3;
 		id.style.textAlign = "center";
-		// id.setAttribute("id", "id" + index);
-		id.appendChild(document.createTextNode(parseFloat(index) + 1));
+		id.appendChild(document.createTextNode(parseFloat(index)+1));
 
 		// Insert a cell in the row
 		var question = newRow1.insertCell(1);
@@ -96,8 +95,7 @@ function showQuestionList(questionList) {
 		/* create a radio button */
 		var delButton = document.createElement("input");
 		delButton.setAttribute("type", "checkbox");
-		delButton.setAttribute("id", index);
-		del.appendChild(delButton);
+		del.appendChild(delButton);	
 
 		// Insert a row at the end of the table
 		var newRow2 = table.insertRow(-1);
@@ -118,7 +116,7 @@ function showQuestionList(questionList) {
 
 function checkNumber() {
 	var questions = document.getElementById("questionTable");
-	var totalQuestions = questions.rows.length / 3 - 1;
+	var totalQuestions = questions.rows.length / 3;
 	var questionChosen = 0;
 
 	for (var i = questions.rows.length / 3 - 1; i >= 0; i--) {
@@ -177,7 +175,7 @@ function getQuestionList() {
 	ajax.onreadystatechange = function () {
 		if (this.readyState == 4 && this.status == 200) {
 			var data = this.responseText;
-			// console.log(data);
+			console.log(data);
 			questionList = JSON.parse(data);
 			showQuestionList(questionList);
 		}
@@ -198,8 +196,9 @@ function deleteQuestions() {
 	var questionChosen = 0;
 
 	for (var i = totalQuestions - 1; i >= 0; i--) {
-		if (document.getElementById(i).checked == true) {
-			dataStr = dataStr + questions.rows[3 * i].cells[3].id + "-";
+		var q_id = questions.rows[3*i].cells[3].getAttribute("id");
+		if (document.getElementById(q_id).firstChild.checked == true) {
+			dataStr = dataStr + q_id + '-';
 			questionChosen = questionChosen + 1;
 		}
 	}
@@ -216,7 +215,8 @@ function deleteQuestions() {
 		ajax.onreadystatechange = function () {
 			if (this.readyState == 4 && this.status == 200) {
 				var result = this.responseText;
-				console.log(this.responseText);
+				// console.log(this.responseText);
+				// console.log(dataStr);
 				if (result == -1) {
 					document.getElementById("nothing").style.display = "block";
 				} else if (result) {
