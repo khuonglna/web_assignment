@@ -7,7 +7,6 @@ define('MAX_SCORE', 100);
 define('INCORRECT', 10);
 define("QUESTION_NUMBER", 10);
 
-session_start();
 class ExamController
 {
     private function test_input($data)
@@ -125,22 +124,19 @@ class ExamController
                 $score -= INCORRECT;
             }
         }
-        if(isset($_SESSION['username'])) {
-            $temp = $submission->saveSubmissionResult($score);
-        }
+        $submission->saveSubmissionResult($score);
         $result = array(
             "score" => $score,
             "red" => $incorrectList,
-            "green" => array_values($correctAns),
-            "test" => $temp
+            "green" => array_values($correctAns)
         );
-        
         
         return $result;
     }
 
     private function saveSubmissionResult($score) 
     {
+        // session_start();
         $username = $_SESSION['username'];
         $category = $_SESSION['category'];
         preg_match_all('!\d+!', $category, $matches);
@@ -157,3 +153,4 @@ class ExamController
         return $categoryList;
     }
 }
+ 

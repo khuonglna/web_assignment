@@ -143,7 +143,7 @@ function submitForm() {
 		ajax.onreadystatechange = function () {
 			if (this.readyState == 4 && this.status == 200) {
 				data = this.responseText;
-				// console.log(data);
+				console.log(data);
 				result = JSON.parse(data);
 				// console.log(result);
 				// console.log(result.score);
