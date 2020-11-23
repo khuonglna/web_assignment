@@ -13,34 +13,10 @@
                     <th scope="col"></th>
                 </tr>
             </thead>
-            <tbody>
+            <tbody id="del_staff_table">
                 <!-- <tr>
                     <th scope="row">1</th>
                     <td>Mark</td>
-                    <td class = "p-0">
-                        <div class="form-check">
-                            <label class="form-check-label">
-                                <input type="checkbox" class="form-check-input" value="">
-                            </label>
-                        </div>
-                    </td>
-                </tr>
-
-                <tr>
-                    <th scope="row">2</th>
-                    <td>Jacob</td>
-                    <td class = "p-0">
-                        <div class="form-check">
-                            <label class="form-check-label">
-                                <input type="checkbox" class="form-check-input" value="">
-                            </label>
-                        </div>
-                    </td>
-                </tr>
-
-                <tr>
-                    <th scope="row">3</th>
-                    <td>Larry</td>
                     <td class = "p-0">
                         <div class="form-check">
                             <label class="form-check-label">
@@ -53,7 +29,7 @@
                 
             </tbody>
         </table>
-        <button type="button" class="btn btn-success">Confirm</button>
+        <button type="button" class="btn btn-success" onclick="confirmDeleteStaff()">Confirm</button>
     </div>
 </body>
 
