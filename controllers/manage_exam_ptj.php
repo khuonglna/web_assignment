@@ -37,9 +37,6 @@ if ($res == "getCategory") {
         $questionList[$i] = array(
             "q_id" => $q_id,
             "q_text" => $q_text,
-            // "ans1"=>$answerList[0]->getAnswerText(),
-            // "ans2"=>$answerList[1]->getAnswerText(),
-            // "ans3"=>$answerList[2]->getAnswerText());
             "ans" => array(
                 array(
                     "a_id"      => $answerList[0]->getAnswerId(),

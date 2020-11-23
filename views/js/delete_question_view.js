@@ -17,6 +17,26 @@ function openQuestionList() {
 }
 
 //*******************************************************************************************//
+function closeNothingNoti() {
+	document.getElementById("nothing").style.display = "none";
+}
+
+//*******************************************************************************************//
+function closeDelSuccess() {
+	document.getElementById("success").style.display = "none";
+}
+
+//*******************************************************************************************//
+function closeDelError() {
+	document.getElementById("error").style.display = "none";
+}
+
+//*******************************************************************************************//
+function closeNumWarning() {
+	document.getElementById("warning").style.display = "none";
+}
+
+//*******************************************************************************************//
 function addCategory(cateList) {
 	var category = document.getElementById("category");
 
@@ -38,43 +58,30 @@ function clearQuestionList() {
 }
 
 //*******************************************************************************************//
-function closeNothingNoti() {
-	document.getElementById("nothing").style.display = "none";
-}
-
-//*******************************************************************************************//
-function closeDelSuccess() {
-	document.getElementById("success").style.display = "none";
-}
-
-//*******************************************************************************************//
-function closeDelError() {
-	document.getElementById("error").style.display = "none";
-}
-
-//*******************************************************************************************//
-function closeNumWarning() {
-	document.getElementById("warning").style.display = "none";
-}
-
-//*******************************************************************************************//
 function submitForm() {
-	deleteQuestions();
-}
+	closeNothingNoti();
+	closeDelSuccess();
+	closeDelError();
+	closeNumWarning();
+	var dataStr = "&q_id=";
 
-//*******************************************************************************************//
-function resetDelForm() {
-	// document.getElementById("deleteForm").reset();
-	// clearQuestionList();
-	// document.getElementById("questionForm").style.display = "none";
-	removeDelRow();
 	var questions = document.getElementById("questionTable");
-	totalQuestions = questions.rows.length / 3;
+	var totalQuestions = questions.rows.length / 3;
+	var questionChosen = 0;
 
 	for (var i = totalQuestions - 1; i >= 0; i--) {
-		var oldChild = questions.rows[3*i].cells[0].firstChild;
-		var root = questions.rows[3*i].cells[0];
-		root.replaceChild(document.createTextNode(i+1), oldChild);
+		var q_id = questions.rows[3*i].cells[3].getAttribute("id");
+		// console.log(q_id + document.getElementById("btn" + q_id).checked);
+		if (document.getElementById("btn" + q_id).checked == true) {
+			dataStr = dataStr + q_id + '-';
+			questionChosen = questionChosen + 1;
+		}
+	}
+
+	if (totalQuestions - questionChosen < 10) {
+		document.getElementById("warning").style.display = "block";
+	} else {
+		deleteQuestions(dataStr);
 	}
 }
 
@@ -136,13 +143,19 @@ function showQuestionList(questionList) {
 		);
 	}
 	document.getElementById("questionForm").style.display = "block";
+}
 
-	// var totalQuestions = table.rows.length / 3;
-	
-	// for (var i = totalQuestions - 1; i >= 0; i--) {
-	// 	var q_id = table.rows[3*i].cells[3].getAttribute("id");
-	// 	console.log(q_id + document.getElementById("btn" + q_id).checked + document.getElementById(q_id).firstChild.checked);
-	// }
+//*******************************************************************************************//
+function resetDelForm() {
+	removeDelRow();
+	var questions = document.getElementById("questionTable");
+	totalQuestions = questions.rows.length / 3;
+
+	for (var i = totalQuestions - 1; i >= 0; i--) {
+		var oldChild = questions.rows[3*i].cells[0].firstChild;
+		var root = questions.rows[3*i].cells[0];
+		root.replaceChild(document.createTextNode(i+1), oldChild);
+	}
 }
 
 //*******************************************************************************************//
@@ -152,7 +165,7 @@ function removeDelRow () {
 
 	for (var i = totalQuestions - 1; i >= 0; i--) {
 		var q_id = questions.rows[3*i].cells[3].getAttribute("id");
-		if (document.getElementById(q_id).firstChild.checked == true) {
+		if (document.getElementById("btn" + q_id).checked == true) {
 			for (var j = 0; j < 3; j++) {
 				questions.deleteRow(3*i);
 			}
@@ -206,50 +219,27 @@ function getQuestionList() {
 }
 
 //*******************************************************************************************//
-function deleteQuestions() {
-	closeNothingNoti();
-	closeDelSuccess();
-	closeDelError();
-	closeNumWarning();
-	var dataStr = "&q_id=";
+function deleteQuestions(dataStr) {
+	var ajax = new XMLHttpRequest();
+	var method = "POST";
+	var url = "controllers/manage_exam_ptj.php?function=deleteQuestion";
+	var asynchronous = true;
 
-	var questions = document.getElementById("questionTable");
-	var totalQuestions = questions.rows.length / 3;
-	var questionChosen = 0;
-
-	for (var i = totalQuestions - 1; i >= 0; i--) {
-		var q_id = questions.rows[3*i].cells[3].getAttribute("id");
-		console.log(q_id + document.getElementById("btn" + q_id).checked);
-		if (document.getElementById("btn" + q_id).checked == true) {
-			dataStr = dataStr + q_id + '-';
-			questionChosen = questionChosen + 1;
-		}
-	}
-
-	if (totalQuestions - questionChosen < 10) {
-		document.getElementById("warning").style.display = "block";
-	} else {
-		var ajax = new XMLHttpRequest();
-		var method = "POST";
-		var url = "controllers/manage_exam_ptj.php?function=deleteQuestion";
-		var asynchronous = true;
-
-		ajax.onreadystatechange = function () {
-			if (this.readyState == 4 && this.status == 200) {
-				var result = this.responseText;
-				// console.log(this.responseText);
-				// console.log(dataStr);
-				if (result == -1) {
-					document.getElementById("nothing").style.display = "block";
-				} else if (result) {
-					resetDelForm();
-					document.getElementById("success").style.display = "block";
-				} else {
-					document.getElementById("error").style.display = "block";
-				}
+	ajax.onreadystatechange = function () {
+		if (this.readyState == 4 && this.status == 200) {
+			var result = this.responseText;
+			// console.log(this.responseText);
+			// console.log(dataStr);
+			if (result == -1) {
+				document.getElementById("nothing").style.display = "block";
+			} else if (result) {
+				resetDelForm();
+				document.getElementById("success").style.display = "block";
+			} else {
+				document.getElementById("error").style.display = "block";
 			}
-		};
-		ajax.open(method, url + dataStr, asynchronous);
-		ajax.send();
-	}
+		}
+	};
+	ajax.open(method, url + dataStr, asynchronous);
+	ajax.send();
 }

@@ -159,7 +159,6 @@ function getCategory() {
 		if (this.readyState == 4 && this.status == 200) {
 			var data = this.responseText;
 			var cateList = JSON.parse(data);
-			// console.log(result);
 			addCategory(cateList);
 		}
 	};
