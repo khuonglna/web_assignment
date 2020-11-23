@@ -143,7 +143,7 @@ function submitForm() {
 		ajax.onreadystatechange = function () {
 			if (this.readyState == 4 && this.status == 200) {
 				data = this.responseText;
-				// console.log(data);
+				console.log(data);
 				result = JSON.parse(data);
 				// console.log(result);
 				// console.log(result.score);
@@ -192,7 +192,6 @@ function sF(ele) {
 	var categoryText = categoryNode.textContent;
 	var levelNode = document.getElementById(dif);
 	var levelText = levelNode.textContent;
-	console.log(levelText);
 	var categoryTextNode = document.createTextNode(categoryText);
 	var levelTextNode =  document.createTextNode(levelText);
 	document.getElementById("examCategory").appendChild(categoryTextNode);

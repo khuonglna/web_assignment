@@ -1,4 +1,5 @@
 <?php
+session_start();
 include 'exam_controller.php';
 $res = $_REQUEST['do'];
 if ($res == 'getExam') {

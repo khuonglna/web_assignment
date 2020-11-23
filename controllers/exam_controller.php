@@ -7,7 +7,6 @@ define('MAX_SCORE', 100);
 define('INCORRECT', 10);
 define("QUESTION_NUMBER", 10);
 
-// session_start();
 class ExamController
 {
     private function test_input($data)
@@ -128,15 +127,13 @@ class ExamController
             }
         }
         if(isset($_SESSION['username'])) {
-            $temp = $submission->saveSubmissionResult($score);
+            $submission->saveSubmissionResult($score);
         }
         $result = array(
             "score" => $score,
             "red" => $incorrectList,
-            "green" => array_values($correctAns),
-            "test" => $temp
+            "green" => array_values($correctAns)
         );
-        
         
         return $result;
     }
@@ -145,11 +142,9 @@ class ExamController
     {
         $username = $_SESSION['username'];
         $category = $_SESSION['category'];
-        preg_match_all('!\d+!', $category, $matches);
         $level = $_SESSION['level'];
         $exam = new ExamModel();
         $exam->queryAddSubmission($username, $category, $level, $score);
-        return $matches;
     }
 
     public function getCategoryList()
@@ -159,3 +154,4 @@ class ExamController
         return $categoryList;
     }
 }
+ 
