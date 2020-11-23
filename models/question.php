@@ -20,7 +20,7 @@ class Question
         $correctAnswer = $answerModel->queryGetCorrectAnswerByQuestionId($this->questionId);
         $correct = -1;
         for ($i = 0; $i < 3; $i++) {
-            if ($correctAnswer == $this->answerList[$i]->getAnswerText()) {
+            if ($correctAnswer == $this->answerList[$i]->getAnswerId()) {
                 $correct = $i;
             }
         }

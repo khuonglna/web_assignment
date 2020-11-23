@@ -59,29 +59,33 @@ function clearQuestionList() {
 
 //*******************************************************************************************//
 function submitForm() {
-	closeNothingNoti();
-	closeDelSuccess();
-	closeDelError();
-	closeNumWarning();
-	var dataStr = "&q_id=";
+	var decision = confirm("ARE YOU SURE?");
 
-	var questions = document.getElementById("questionTable");
-	var totalQuestions = questions.rows.length / 3;
-	var questionChosen = 0;
+	if (decision) {
+		closeNothingNoti();
+		closeDelSuccess();
+		closeDelError();
+		closeNumWarning();
+		var dataStr = "&q_id=";
 
-	for (var i = totalQuestions - 1; i >= 0; i--) {
-		var q_id = questions.rows[3*i].cells[3].getAttribute("id");
-		// console.log(q_id + document.getElementById("btn" + q_id).checked);
-		if (document.getElementById("btn" + q_id).checked == true) {
-			dataStr = dataStr + q_id + '-';
-			questionChosen = questionChosen + 1;
+		var questions = document.getElementById("questionTable");
+		var totalQuestions = questions.rows.length / 3;
+		var questionChosen = 0;
+
+		for (var i = totalQuestions - 1; i >= 0; i--) {
+			var q_id = questions.rows[3*i].cells[3].getAttribute("id");
+			// console.log(q_id + document.getElementById("btn" + q_id).checked);
+			if (document.getElementById("btn" + q_id).checked == true) {
+				dataStr = dataStr + q_id + '-';
+				questionChosen = questionChosen + 1;
+			}
 		}
-	}
 
-	if (totalQuestions - questionChosen < 10) {
-		document.getElementById("warning").style.display = "block";
-	} else {
-		deleteQuestions(dataStr);
+		if (totalQuestions - questionChosen < 10) {
+			document.getElementById("warning").style.display = "block";
+		} else {
+			deleteQuestions(dataStr);
+		}
 	}
 }
 
@@ -90,27 +94,36 @@ function showQuestionList(questionList) {
 	var table = document.getElementById("questionTable");
 
 	for (var index in questionList) {
+		// Get correct answer
+		var correctAns = parseFloat(questionList[index].correct);
+
 		// Insert a row at the end of the table
 		var newRow1 = table.insertRow(-1);
 
 		// Insert a cell in the row
 		var id = newRow1.insertCell(0);
 		id.rowSpan = 3;
-		id.style.textAlign = "center";
+		id.setAttribute("style", "width: 50px; text-align: center;");
 		id.appendChild(document.createTextNode(parseFloat(index)+1));
 
 
 		// Insert a cell fo question text 
 		var question = newRow1.insertCell(1);
 		question.rowSpan = 3;
+		// question.setAttribute("class", "text-wrap");
+		question.setAttribute("style", "width: 600px;");
 		question.appendChild(
 			document.createTextNode(questionList[index].q_text)
 		);
 
 
 		// Insert a cell for first answer 
-		var ans = newRow1.insertCell(2);
-		ans.appendChild(
+		var ans1 = newRow1.insertCell(2);
+		if (correctAns == 0) {
+			ans1.setAttribute("class", "font-weight-bold");
+			ans1.setAttribute("style", "color: green;");
+		}
+		ans1.appendChild(
 			document.createTextNode(questionList[index].ans[0].a_text)
 		);
 
@@ -119,7 +132,7 @@ function showQuestionList(questionList) {
 		var del = newRow1.insertCell(3);
 		del.rowSpan = 3;
 		del.setAttribute("id", questionList[index].q_id);
-		del.style.textAlign = "center"; 
+		del.setAttribute("style", "width: 100px; text-align: center;");
 		/* create a checkbox */
 		var delButton = document.createElement("input");
 		delButton.setAttribute("type", "checkbox");
@@ -129,16 +142,24 @@ function showQuestionList(questionList) {
 
 		// Insert a row for second answer
 		var newRow2 = table.insertRow(-1);
-		var ans = newRow2.insertCell(0);
-		ans.appendChild(
+		var ans2 = newRow2.insertCell(0);
+		if (correctAns == 1) {
+			ans2.setAttribute("class", "font-weight-bold");
+			ans2.setAttribute("style", "color: green;")
+		}
+		ans2.appendChild(
 			document.createTextNode(questionList[index].ans[1].a_text)
 		);
 
 
 		// Insert a row for third answer
 		var newRow3 = table.insertRow(-1);
-		var ans = newRow3.insertCell(0);
-		ans.appendChild(
+		var ans3 = newRow3.insertCell(0);
+		if (correctAns == 2) {
+			ans3.setAttribute("class", "font-weight-bold");
+			ans3.setAttribute("style", "color: green;")
+		}
+		ans3.appendChild(
 			document.createTextNode(questionList[index].ans[2].a_text)
 		);
 	}

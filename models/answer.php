@@ -65,7 +65,7 @@ class AnswerModel extends DbModel
     {
         $conn = $this->connect();
         $sql = "SELECT 
-                    `a_text`
+                    `a_id`
                 FROM 
                     ANSWER
                 WHERE 
@@ -79,7 +79,7 @@ class AnswerModel extends DbModel
         $result = "";
         if (mysqli_num_rows($res) > 0) {
             while ($row = mysqli_fetch_assoc($res)) {
-                $result = $row["a_text"];
+                $result = $row["a_id"];
             }
         }
         return $result;

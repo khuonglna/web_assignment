@@ -63,22 +63,26 @@ function addCategory(cateList) {
 }
 
 function submitForm() {
-	closeMissingError();
-	closeAddSuccess();
-	closeAddError();
-	var ques = document.getElementById("question");
-	var ans1 = document.getElementById("answer1");
-	var ans2 = document.getElementById("answer2");
-	var ans3 = document.getElementById("answer3");
-	if (
-		ques.value == "" ||
-		ans1.value == "" ||
-		ans2.value == "" ||
-		ans3.value == ""
-	) {
-		document.getElementById("missing").style.display = "block";
-	} else {
-		addQuestion();
+	var decision = confirm("ARE YOU SURE?");
+
+	if (decision) {
+		closeMissingError();
+		closeAddSuccess();
+		closeAddError();
+		var ques = document.getElementById("question");
+		var ans1 = document.getElementById("answer1");
+		var ans2 = document.getElementById("answer2");
+		var ans3 = document.getElementById("answer3");
+		if (
+			ques.value == "" ||
+			ans1.value == "" ||
+			ans2.value == "" ||
+			ans3.value == ""
+		) {
+			document.getElementById("missing").style.display = "block";
+		} else {
+			addQuestion();
+		}
 	}
 }
 

@@ -53,64 +53,68 @@ function closeDelError() {
 
 //*******************************************************************************************//
 function submitForm() {
-	closeNothingNoti();
-	closeDelSuccess();
-	closeDelError();
-	var questions = document.getElementById("questionTable");
-	var totalQuestions = questions.rows.length / 3;
-	var changed = false;
+	var decision = confirm("ARE YOU SURE?");
 
-	for (var i = totalQuestions - 1; i >= 0; i--) {
-		// if question is modified
-		if (
-			questions.rows[3 * i].cells[1].firstChild.value !=
-			questions.rows[3 * i].cells[1].firstChild.defaultValue
-		) {
-			changed = true;
-			var newQuestion = questions.rows[3 * i].cells[1].firstChild.value;
-			var questionId = questions.rows[3 * i].cells[1].firstChild.id;
-			updateQuestion(questionId, newQuestion);
-			questions.rows[
-				3 * i
-			].cells[1].firstChild.defaultValue = newQuestion;
-		}
+	if (decision) {
+		closeNothingNoti();
+		closeDelSuccess();
+		closeDelError();
+		var questions = document.getElementById("questionTable");
+		var totalQuestions = questions.rows.length / 3;
+		var changed = false;
 
-		// if answer is modified
-		for (var j = 0; j < 3; j++) {
-			var cell = j == 0 ? 2 : 0;
+		for (var i = totalQuestions - 1; i >= 0; i--) {
+			// if question is modified
 			if (
-				questions.rows[3 * i + j].cells[cell].firstChild.value !=
-				questions.rows[3 * i + j].cells[cell].firstChild.defaultValue
+				questions.rows[3 * i].cells[1].firstChild.value !=
+				questions.rows[3 * i].cells[1].firstChild.defaultValue
 			) {
 				changed = true;
-				var newAnswer =
-					questions.rows[3 * i + j].cells[cell].firstChild.value;
-				var answerId =
-					questions.rows[3 * i + j].cells[cell].firstChild.id;
-				updateAnswer(answerId, newAnswer, 1);
-				questions.rows[3 * i + j].cells[
-					cell
-				].firstChild.defaultValue = newAnswer;
+				var newQuestion = questions.rows[3 * i].cells[1].firstChild.value;
+				var questionId = questions.rows[3 * i].cells[1].firstChild.id;
+				updateQuestion(questionId, newQuestion);
+				questions.rows[
+					3 * i
+				].cells[1].firstChild.defaultValue = newQuestion;
+			}
+
+			// if answer is modified
+			for (var j = 0; j < 3; j++) {
+				var cell = j == 0 ? 2 : 0;
+				if (
+					questions.rows[3 * i + j].cells[cell].firstChild.value !=
+					questions.rows[3 * i + j].cells[cell].firstChild.defaultValue
+				) {
+					changed = true;
+					var newAnswer =
+						questions.rows[3 * i + j].cells[cell].firstChild.value;
+					var answerId =
+						questions.rows[3 * i + j].cells[cell].firstChild.id;
+					updateAnswer(answerId, newAnswer, 1);
+					questions.rows[3 * i + j].cells[
+						cell
+					].firstChild.defaultValue = newAnswer;
+				}
+			}
+
+			// if chosen correct answer is changed
+			var optionName = questions.rows[3 * i].cells[3].firstChild.getAttribute(
+				"name"
+			);
+			var option = document.getElementsByName(optionName);
+			for (var j = 0; j < 3; j++) {
+				var cell = j == 0 ? 2 : 0;
+				var answerId = questions.rows[3 * i + j].cells[cell].firstChild.id;
+				if (option[j].checked != option[j].defaultChecked) {
+					changed = true;
+					updateAnswer(answerId, option[j].checked, 0);
+				}
 			}
 		}
 
-		// if chosen correct answer is changed
-		var optionName = questions.rows[3 * i].cells[3].firstChild.getAttribute(
-			"name"
-		);
-		var option = document.getElementsByName(optionName);
-		for (var j = 0; j < 3; j++) {
-			var cell = j == 0 ? 2 : 0;
-			var answerId = questions.rows[3 * i + j].cells[cell].firstChild.id;
-			if (option[j].checked != option[j].defaultChecked) {
-				changed = true;
-				updateAnswer(answerId, option[j].checked, 0);
-			}
+		if (changed == false) {
+			document.getElementById("nothing").style.display = "block";
 		}
-	}
-
-	if (changed == false) {
-		document.getElementById("nothing").style.display = "block";
 	}
 }
 
@@ -135,11 +139,14 @@ function showQuestionList(questionList) {
 		// Insert a cell for question text in the row
 		var question = newRow1.insertCell(1);
 		question.rowSpan = 3;
-		var ques_text = document.createElement("input");
+		var ques_text = document.createElement("textarea");
 		ques_text.setAttribute("id", questionList[index].q_id);
+		ques_text.setAttribute("class", "form-control");
+		ques_text.setAttribute("aria-lable", "With textarea");
+		ques_text.setAttribute("style", "border:none; resize:none;");
+		ques_text.setAttribute("rows", "6");
+		ques_text.setAttribute("cols", "25");
 		ques_text.defaultValue = questionList[index].q_text;
-		ques_text.style.border = "none";
-		ques_text.style.width = ques_text.value.length + "5px";
 		question.appendChild(ques_text);
 
 		// Setup for the fisrt answer
@@ -147,8 +154,11 @@ function showQuestionList(questionList) {
 		var ans1 = document.createElement("input");
 		ans1.setAttribute("value", questionList[index].ans[0].a_text);
 		ans1.setAttribute("id", questionList[index].ans[0].a_id);
-		ans1.style.border = "none";
-		ans1.style.width = ans1.value.length + "2px";
+		ans1.setAttribute("class", "form-control");
+		ans1.setAttribute("aria-lable", "With textarea");
+		ans1.setAttribute("style", "border:none; resize:none;");
+		ans1.setAttribute("rows", "1");
+		ans1.setAttribute("cols", "15");
 		ans.appendChild(ans1);
 
 		var correct = newRow1.insertCell(3);
@@ -169,8 +179,11 @@ function showQuestionList(questionList) {
 		var ans2 = document.createElement("input");
 		ans2.setAttribute("value", questionList[index].ans[1].a_text);
 		ans2.setAttribute("id", questionList[index].ans[1].a_id);
-		ans2.style.border = "none";
-		ans2.style.width = ans2.value.length + "2px";
+		ans2.setAttribute("class", "form-control");
+		ans2.setAttribute("aria-lable", "With textarea");
+		ans2.setAttribute("style", "border:none; resize:none;");
+		ans2.setAttribute("rows", "1");
+		ans2.setAttribute("cols", "15");
 		ans.appendChild(ans2);
 
 		var correct = newRow2.insertCell(1);
@@ -191,8 +204,11 @@ function showQuestionList(questionList) {
 		var ans3 = document.createElement("input");
 		ans3.setAttribute("value", questionList[index].ans[2].a_text);
 		ans3.setAttribute("id", questionList[index].ans[2].a_id);
-		ans3.style.border = "none";
-		ans3.style.width = ans3.value.length + "2px";
+		ans3.setAttribute("class", "form-control");
+		ans3.setAttribute("aria-lable", "With textarea");
+		ans3.setAttribute("style", "border:none; resize:none;");
+		ans3.setAttribute("rows", "1");
+		ans3.setAttribute("cols", "15");
 		ans.appendChild(ans3);
 
 		var correct = newRow3.insertCell(1);
