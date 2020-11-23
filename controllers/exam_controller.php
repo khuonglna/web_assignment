@@ -124,7 +124,9 @@ class ExamController
                 $score -= INCORRECT;
             }
         }
-        $submission->saveSubmissionResult($score);
+        if(isset($_SESSION['username'])) {
+            $submission->saveSubmissionResult($score);
+        }
         $result = array(
             "score" => $score,
             "red" => $incorrectList,
@@ -136,14 +138,11 @@ class ExamController
 
     private function saveSubmissionResult($score) 
     {
-        // session_start();
         $username = $_SESSION['username'];
         $category = $_SESSION['category'];
-        preg_match_all('!\d+!', $category, $matches);
         $level = $_SESSION['level'];
         $exam = new ExamModel();
         $exam->queryAddSubmission($username, $category, $level, $score);
-        return $matches;
     }
 
     public function getCategoryList()

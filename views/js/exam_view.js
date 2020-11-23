@@ -192,7 +192,6 @@ function sF(ele) {
 	var categoryText = categoryNode.textContent;
 	var levelNode = document.getElementById(dif);
 	var levelText = levelNode.textContent;
-	console.log(levelText);
 	var categoryTextNode = document.createTextNode(categoryText);
 	var levelTextNode =  document.createTextNode(levelText);
 	document.getElementById("examCategory").appendChild(categoryTextNode);
