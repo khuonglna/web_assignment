@@ -204,8 +204,8 @@ function getCategory() {
 	ajax.onreadystatechange = function () {
 		if (this.readyState == 4 && this.status == 200) {
 			var data = this.responseText;
+			// console.log(data);
 			var cateList = JSON.parse(data);
-			// console.log(result);
 			addCategory(cateList);
 		}
 	};
