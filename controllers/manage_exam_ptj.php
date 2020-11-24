@@ -20,7 +20,8 @@ if ($res == "getCategory") {
 
     $examController = new ExamController();
     $result = $examController->addQuestion($question, $category, $level, $ansList, $correct);
-    echo json_encode($result);
+    
+    echo $result;
 } elseif ($res == "listQuestion") {
     $category = $_REQUEST['category'];
     $level = $_REQUEST['level'];
@@ -36,9 +37,6 @@ if ($res == "getCategory") {
         $questionList[$i] = array(
             "q_id" => $q_id,
             "q_text" => $q_text,
-            // "ans1"=>$answerList[0]->getAnswerText(),
-            // "ans2"=>$answerList[1]->getAnswerText(),
-            // "ans3"=>$answerList[2]->getAnswerText());
             "ans" => array(
                 array(
                     "a_id"      => $answerList[0]->getAnswerId(),
@@ -57,27 +55,30 @@ if ($res == "getCategory") {
         );
     }
     echo json_encode($questionList);
+
 } elseif ($res == "deleteQuestion") {
     $dataStr = $_REQUEST['q_id'];
 
     $result = -1;
-    $start = 0;
-    $end = 0;
-    $pos = 0;
-    $char = $dataStr[$pos];
-    while ($char != "") {
-        if ($char == "-") {
-            $end = $pos;
-            $q_id = substr($dataStr, $start, ($end - $start));
-            $start = $end + 1;
-            $examController = new ExamController();
-            $result = $examController->deleteQuestions($q_id);
-            if ($result == false) {
-                break;
-            }
-        }
-        $pos = $pos + 1;
+    if ($dataStr != "") {
+        $start = 0;
+        $end = 0;
+        $pos = 0;
         $char = $dataStr[$pos];
+        while ($char != "") {
+            if ($char == "-") {
+                $end = $pos;
+                $q_id = substr($dataStr, $start, ($end - $start));
+                $start = $end + 1;
+                $examController = new ExamController();
+                $result = $examController->deleteQuestions($q_id);
+                if ($result == false) {
+                    break;
+                }
+            }
+            $pos = $pos + 1;
+            $char = $dataStr[$pos];
+        }
     }
     echo json_encode($result);
 } elseif ($res == "updateQuestionText") {
@@ -87,7 +88,7 @@ if ($res == "getCategory") {
     $examController = new ExamController();
     $result = $examController->updateQuestionText($q_id, $q_text);
 
-    echo json_encode($result);
+    echo $result;
 } elseif ($res == "updateAnswerText") {
     $a_id = $_REQUEST['a_id'];
     $a_text = $_REQUEST['a_text'];
@@ -95,7 +96,7 @@ if ($res == "getCategory") {
     $examController = new ExamController();
     $result = $examController->updateAnswerText($a_id, $a_text);
 
-    echo json_encode($result);
+    echo $result;
 } elseif ($res == "updateAnswerCorrect") {
     $a_id = $_REQUEST['a_id'];
     $correct = $_REQUEST['correct'];
@@ -103,7 +104,7 @@ if ($res == "getCategory") {
     $examController = new ExamController();
     $result = $examController->updateAnswerCorrect($a_id, $correct);
 
-    echo json_encode($result);
+    echo $result;
 } else {
     // echo "guest";
 }

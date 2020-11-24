@@ -63,22 +63,26 @@ function addCategory(cateList) {
 }
 
 function submitForm() {
-	closeMissingError();
-	closeAddSuccess();
-	closeAddError();
-	var ques = document.getElementById("question");
-	var ans1 = document.getElementById("answer1");
-	var ans2 = document.getElementById("answer2");
-	var ans3 = document.getElementById("answer3");
-	if (
-		ques.value == "" ||
-		ans1.value == "" ||
-		ans2.value == "" ||
-		ans3.value == ""
-	) {
-		document.getElementById("missing").style.display = "block";
-	} else {
-		addQuestion();
+	var decision = confirm("ARE YOU SURE?");
+
+	if (decision) {
+		closeMissingError();
+		closeAddSuccess();
+		closeAddError();
+		var ques = document.getElementById("question");
+		var ans1 = document.getElementById("answer1");
+		var ans2 = document.getElementById("answer2");
+		var ans3 = document.getElementById("answer3");
+		if (
+			ques.value == "" ||
+			ans1.value == "" ||
+			ans2.value == "" ||
+			ans3.value == ""
+		) {
+			document.getElementById("missing").style.display = "block";
+		} else {
+			addQuestion();
+		}
 	}
 }
 
@@ -129,14 +133,14 @@ function addQuestion() {
 
 	var ajax = new XMLHttpRequest();
 	var method = "POST";
-	var url = "controllers/manage_exam_controller.php?function=addQuestion";
+	var url = "controllers/manage_exam_ptj.php?function=addQuestion";
 	var asynchronous = true;
 
 	ajax.onreadystatechange = function () {
 		if (this.readyState == 4 && this.status == 200) {
 			var result = this.responseText;
 			// console.log(result);
-			if (JSON.parse(result)) {
+			if (result == true) {
 				document.getElementById("questionForm").style.display = "none";
 				document.getElementById("addForm").reset();
 				document.getElementById("success").style.display = "block";
@@ -152,14 +156,13 @@ function addQuestion() {
 function getCategory() {
 	var ajax = new XMLHttpRequest();
 	var method = "POST";
-	var url = "controllers/manage_exam_controller.php?function=getCategory";
+	var url = "controllers/manage_exam_ptj.php?function=getCategory";
 	var asynchronous = true;
 
 	ajax.onreadystatechange = function () {
 		if (this.readyState == 4 && this.status == 200) {
 			var data = this.responseText;
 			var cateList = JSON.parse(data);
-			// console.log(result);
 			addCategory(cateList);
 		}
 	};
