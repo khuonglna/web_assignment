@@ -26,7 +26,7 @@
                         "category" => $row["c_name"],
                         "level" => $row["s_level"],
                         "score" => $row["s_score"],
-                        "time" => $row["s_time"]
+                        "time" => $row["s_date"]
                     );
                 }
                 return $resultList;

@@ -8,7 +8,7 @@ class ResultModel extends DbModel
             return;
         }
         $conn = $this->connect();
-        $sql = "SELECT username, c_name, s_level, s_score, s_time
+        $sql = "SELECT username, c_name, s_level, s_score, s_date
                 FROM submission JOIN category
                 ON s_category = c_id
                 WHERE username = '$username' 
