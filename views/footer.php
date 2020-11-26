@@ -10,7 +10,7 @@
 				</div>
 
 			</div>
-			<div class="col-sm w-10">
+			<div class="col-sm w-4">
 			</div>
 		</div>
 	</div>

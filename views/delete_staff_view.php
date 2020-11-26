@@ -14,22 +14,9 @@
                 </tr>
             </thead>
             <tbody id="del_staff_table">
-                <!-- <tr>
-                    <th scope="row">1</th>
-                    <td>Mark</td>
-                    <td class = "p-0">
-                        <div class="form-check">
-                            <label class="form-check-label">
-                                <input type="checkbox" class="form-check-input" value="">
-                            </label>
-                        </div>
-                    </td>
-                </tr> -->
-
-                
             </tbody>
         </table>
-        <button type="button" class="btn btn-success" onclick="confirmDeleteStaff()">Confirm</button>
+        <button type="button" class="btn btn-success bg-primary" onclick="confirmDeleteStaff()">Confirm</button>
     </div>
 </body>
 

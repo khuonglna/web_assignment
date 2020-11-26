@@ -21,9 +21,10 @@ ajax.onreadystatechange = function () {
         } else {
             state = LOGIN;
             userType = data.role;
-            name = data.username;
+            name = "Welcome, " + data.username + "!";
         }
         toggleTopNavbar(state, name);
+        console.log("Start Session");
         switch (userType) {
             case "1":
                 var navitem = document.createElement("li");
@@ -131,16 +132,19 @@ function toggleTopNavbar(state, name) {
     var signup = document.getElementById("signup");
     var username = document.getElementById("username");
     var logout = document.getElementById("logout");
+    var usershow = document.getElementById("useroption");
     if (state == LOGOUT) {
         login.removeAttribute("style");
         signup.removeAttribute("style");
         username.style.display = "none";
         logout.style.display = "none";
+        usershow.style.display = "none";
     } else {
         login.style.display = "none";
         signup.style.display = "none";
         username.removeAttribute("style");
         logout.removeAttribute("style");
+        usershow.removeAttribute("style");
         username.innerHTML = name;
     }
 }

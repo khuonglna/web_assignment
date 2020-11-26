@@ -111,10 +111,7 @@
                         USERS 
                     WHERE 
                         username='$username'";
-            $res = mysqli_query($conn, $sql);
-			if (mysqli_num_rows($res) > 0) {
-                return false; 	
-            }
+            if (!mysqli_query($conn, $sql)) return false;
             return true;
         }
 	}

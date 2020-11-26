@@ -11,7 +11,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     <script src='https://kit.fontawesome.com/a076d05399.js'></script>
-    <script src='views/js/roles.js'></script> 
+    <script src='views/js/roles.js'></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
     <script type="text/javascript">
@@ -30,27 +30,24 @@
 <body style="margin:0;">
     <header margin=0>
         <div class="container-fluid p-0">
-            <div class="col">
-                <div class="row bg-dark d-flex flex-row-reverse">
-                    <li style="margin-top: 10px; margin-bottom:10px; margin-right:10px">
-                        <a id="signup" href="index.php?page=sign_up" class="btn btn-primary btn-lg " role="button">
-                            <i class="far fa-user-circle" style='font-size:20px;color:white; margin-right: 10px;'></i>
-                            Sign Up
-                        </a>
+            <div class="col p-0">
+                <!-- <div class="navbar navbar-expand-md navbar-dark bg-dark p-0">
+                    <a id="signup" href="index.php?page=sign_up" class="nav-item ml-0 p-3 text-white">
+                        <i class="far fa-user-circle" style='font-size:20px;color:white; margin-right: 10px;'>Sign up</i>
+                    </a>
 
-                        <a id="login" href="index.php?page=login" class="btn btn-primary btn-lg" role="button">
-                            <i class="fas fa-sign-in-alt" style='font-size:20px;color:white; margin-right: 10px;'></i>
-                            Login
-                        </a>
+                    <a id="login" href="index.php?page=login" class="nav-item mr-0 p-3 text-white">
+                        <i class="fas fa-sign-in-alt" style='font-size:20px;color:white; margin-right: 10px;'>Login</i>
+                    </a>
 
-                        <a id="username" class="p-3" href="" style="display: none;"></a>
-
-                        <a id="logout" href="index.php?page=logout" name="logout" class="btn btn-primary btn-lg " role="button" style="display: none;">
-                            <i class="fas fa-code" style='font-size:20px;color:white; margin-right: 10px;'></i>
-                            Logout
-                        </a>
-
-                    </li>
+                    <div class="nav-item dropdown show ml-auto">
+                        <a id="username" href="" style="display: none;" class="nav-link dropdown-toggle p-3 text-white" data-toggle="dropdown" aria-expanded="true"></a>
+                        <div class="dropdown-menu" style="display: none;" id="useroption">
+                            <a class="dropdown-item" href="index.php?page=insert_staff">Profiles</a>
+                            <a class="dropdown-item" id="logout" href="index.php?page=logout" name="logout">Logout</a>
+                        </div>
+                    </div>
+                    </a>
                 </div>
                 <div class="row">
                     <div class="col"> </div>
@@ -62,27 +59,45 @@
                         </div>
                     </div>
                     <div class="col"> </div>
-                </div>
-                <div class="row" id="nav_row">
-                    <div class="col"> </div>
-                    <div class="col-7" id="nav_col">
-                        <div class="container w-100" id="nav_container">
-                            <nav class="navbar navbar-expand-md navbar-light bg-light">
-                                <div class="collapse navbar-collapse" >
-                                    <ul class="navbar-nav" id="nav_menu">
-                                        <li class="nav-item active"><a class="nav-link" href="index.php?page=home">Home</a</li> 
-                                        <li class="nav-item"><a class="nav-link" href="#" id="info_navtab">About Us</a></li>
-                                    </ul>
-                                </div>
-                            </nav>
-                        </div>
-                        <div class="container" style="margin-top:10px">
+                </div> -->
+                <nav class="shadow-sm navbar navbar-fixed-top navbar-expand-lg navbar-light bg-lightstatic-top">
+                    <div class="container">
+                        <a class="navbar-brand" href="index.php?page=home">
+                             <img class="img-fluid" src="assets/images/logoEng.PNG" alt="logo">
+                        </a>
+                        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+                            <span class="navbar-toggler-icon"></span>
+                        </button>
+                        <div class="collapse navbar-collapse" id="navbarResponsive">
+                            <ul class="navbar-nav" id="nav_menu">
+                                <li class="nav-item active">
+                                    <a class="nav-link" href="index.php?page=home">Home
+                                        <span class="sr-only">(current)</span>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="#" id="info_navtab">About</a>
+                                </li>
+                            </ul>
+                            <ul class="navbar-nav ml-auto" id="nav_menu">
+                                <a class="dropdown-item text-primary " id="signup" href="index.php?page=sign_up">Sign Up</a>
+                                <a class="dropdown-item text-white bg-primary " id="login" href="index.php?page=login">Sign In</a>
+                                <li class="nav-item dropdown">
+                                    <div class="nav-item dropdown show">
+                                        <a id="username" href="" style="display: none;" class="nav-link dropdown-toggle p-3 text-primary" data-toggle="dropdown" aria-expanded="true"></a>
+                                        <div class="dropdown-menu" style="display: none;" id="useroption">
+                                            <a class="dropdown-item" href="index.php?page=insert_staff">Profiles</a>
+                                            <div class="dropdown-divider"></div>
+                                            <a class="dropdown-item" id="logout" href="index.php?page=logout" name="logout">Logout</a>
+                                        </div>
+                                    </div>
+                                </li>
+                            </ul>
                         </div>
                     </div>
-                    <div class="col"> </div>
+                </nav>
+                <div class="container" style="margin-top:10px">
                 </div>
             </div>
         </div>
     </header>
-
-    
