@@ -60,13 +60,8 @@ if (isset($_GET['page'])) {
         $usercontroller->$action();
     } 
     elseif ($page == "delete_staff" && $role == ADMIN) {
-        $controller = isset($_GET['controller']) ? $_GET['controller'] . 'Controller' : 'StaffController';
-        $action = isset($_GET['action']) ? $_GET['action'] : 'insertStaff';
-
-        require_once('controllers/delete_staff_controller.php');
-        $usercontroller = new $controller();
-        $usercontroller->$action();
-    } 
+        include "views/delete_staff_view.html";
+    }
     elseif ($page == "exam_view") {
         include "views/exam_view.html";
     } 
@@ -80,4 +75,5 @@ if (isset($_GET['page'])) {
         include "views/exception.html";
     }
 }
+else include "views/home.html";
 require_once 'views/footer.html';

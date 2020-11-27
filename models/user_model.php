@@ -80,28 +80,42 @@ class UserModel extends DbModel
         return true;
     }
 
-    public function queryStaffList()
-    {
-        $staffList = array();
+
+
+    public function queryStaffList() {
+        $staffList = "";
+        $idx = 0;
         $conn = $this->connect();
         $sql = "SELECT 
-                        *
-                    FROM 
-                        USERS
-                    WHERE 
-                        role = '2'
-                    ";
+                    *
+                FROM 
+                    USERS
+                WHERE 
+                    role = '2'
+                ";
         $res = mysqli_query($conn, $sql);
         if (mysqli_num_rows($res) > 0) {
             while ($row = mysqli_fetch_assoc($res)) {
-                $question = new Question();
-                $answerModel = new AnswerModel();
-                $temp = $row["Q_ID"];
-                $temp2 = $answerModel->queryListAnswerByQuestionId($temp);
-                $question->setAnswerList($temp2);
-                $questionList[] = $question;
+                $staffList= $staffList.'_'.$row["username"];
+           
             }
         }
-        return $questionList;
+        return $staffList;
+    }
+
+    public function deleteStaff($username)
+    {   
+        if ($username == ''){
+            return false;
+        }
+        $conn = $this->connect();
+        $sql = "DELETE
+                FROM 
+                    USERS 
+                WHERE 
+                    username='$username'";
+        if (!mysqli_query($conn, $sql)) return false;
+        return true;
     }
 }
+?>
