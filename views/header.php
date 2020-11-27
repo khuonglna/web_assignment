@@ -13,7 +13,9 @@
     <script src='https://kit.fontawesome.com/a076d05399.js'></script>
     <script src='views/js/roles.js'></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css?family=Merriweather:300,400,400i|Noto+Sans:400,400i,700" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600" rel="stylesheet">
     <script type="text/javascript">
         $(function() {
             $("a").click(function() {
@@ -31,39 +33,10 @@
     <header margin=0>
         <div class="container-fluid p-0">
             <div class="col p-0">
-                <!-- <div class="navbar navbar-expand-md navbar-dark bg-dark p-0">
-                    <a id="signup" href="index.php?page=sign_up" class="nav-item ml-0 p-3 text-white">
-                        <i class="far fa-user-circle" style='font-size:20px;color:white; margin-right: 10px;'>Sign up</i>
-                    </a>
-
-                    <a id="login" href="index.php?page=login" class="nav-item mr-0 p-3 text-white">
-                        <i class="fas fa-sign-in-alt" style='font-size:20px;color:white; margin-right: 10px;'>Login</i>
-                    </a>
-
-                    <div class="nav-item dropdown show ml-auto">
-                        <a id="username" href="" style="display: none;" class="nav-link dropdown-toggle p-3 text-white" data-toggle="dropdown" aria-expanded="true"></a>
-                        <div class="dropdown-menu" style="display: none;" id="useroption">
-                            <a class="dropdown-item" href="index.php?page=insert_staff">Profiles</a>
-                            <a class="dropdown-item" id="logout" href="index.php?page=logout" name="logout">Logout</a>
-                        </div>
-                    </div>
-                    </a>
-                </div>
-                <div class="row">
-                    <div class="col"> </div>
-                    <div class="col-7">
-                        <div class="container-fluid">
-                            <a href="index.php?page=home" class="btn" role="button">
-                                <img src="assets/images/logo.PNG" class="img-fluid" alt="Responsive image">
-                            </a>
-                        </div>
-                    </div>
-                    <div class="col"> </div>
-                </div> -->
-                <nav class="shadow-sm navbar navbar-fixed-top navbar-expand-lg navbar-light bg-lightstatic-top">
+                <nav class="shadow-sm navbar fixed-top navbar-expand-sm navbar-light bg-light">
                     <div class="container">
                         <a class="navbar-brand" href="index.php?page=home">
-                             <img class="img-fluid" src="assets/images/logoEng.PNG" alt="logo">
+                            <img class="img-fluid" src="assets/images/logoEng.PNG" alt="logo">
                         </a>
                         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
                             <span class="navbar-toggler-icon"></span>
@@ -96,7 +69,7 @@
                         </div>
                     </div>
                 </nav>
-                <div class="container" style="margin-top:10px">
+                <div class="container" style="margin-top:100px">
                 </div>
             </div>
         </div>

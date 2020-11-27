@@ -62,5 +62,6 @@
             include "views/exception.php";
         }
     } 
+    else include "views/home.php";
     require_once 'views/footer.php'; 
 ?>
