@@ -108,7 +108,6 @@ ajax.onreadystatechange = function () {
 				break;
 		}
 		var element = document.getElementById("nav_menu");
-		var child = document.getElementById("info_navtab");
 		element.insertBefore(navitem, element.childNodes[2]);
 	}
 };
@@ -119,14 +118,12 @@ function toggleTopNavbar(state, name) {
 	var username = document.getElementById("username");
 	var logout = document.getElementById("logout");
 	var usershow = document.getElementById("useroption");
-	var profile = document.getElementById("profile");
 	if (state == LOGOUT) {
 		login.removeAttribute("style");
 		signup.removeAttribute("style");
 		username.style.display = "none";
 		logout.style.display = "none";
 		usershow.style.display = "none";
-		profile.style.display = "none";
 	} else {
 		login.style.display = "none";
 		signup.style.display = "none";
