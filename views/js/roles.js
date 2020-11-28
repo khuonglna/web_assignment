@@ -119,12 +119,14 @@ function toggleTopNavbar(state, name) {
 	var username = document.getElementById("username");
 	var logout = document.getElementById("logout");
 	var usershow = document.getElementById("useroption");
+	var profile = document.getElementById("profile");
 	if (state == LOGOUT) {
 		login.removeAttribute("style");
 		signup.removeAttribute("style");
 		username.style.display = "none";
 		logout.style.display = "none";
 		usershow.style.display = "none";
+		profile.style.display = "none";
 	} else {
 		login.style.display = "none";
 		signup.style.display = "none";
