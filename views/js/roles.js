@@ -118,16 +118,19 @@ function toggleTopNavbar(state, name) {
 	var signup = document.getElementById("signup");
 	var username = document.getElementById("username");
 	var logout = document.getElementById("logout");
+	var profile = document.getElementById("profile");
 	if (state == LOGOUT) {
 		login.removeAttribute("style");
 		signup.removeAttribute("style");
 		username.style.display = "none";
 		logout.style.display = "none";
+		profile.style.display = "none";
 	} else {
 		login.style.display = "none";
 		signup.style.display = "none";
 		username.removeAttribute("style");
 		logout.removeAttribute("style");
+		profile.removeAttribute("style");
 		username.innerHTML = name;
 	}
 }
