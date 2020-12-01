@@ -4,6 +4,22 @@ body {
 	/* overflow: hidden; */
 }
 
+a {
+	font-family: 'Amaranth';
+	font-size: 16px;
+  }
+  h6 {
+	font-family: 'Amaranth';
+	font-size: 16px;
+  }
+  h3 {
+	font-family: 'Amaranth';
+	font-size: 16px;
+  }
+  div {
+	font-family: 'Amaranth';
+	font-size: 16px;
+  }
 .topnav {
 	overflow: hidden;
 	background-color: #dbdbdb;
