@@ -141,24 +141,25 @@ function showQuestionList(questionList) {
 		question.rowSpan = 3;
 		var ques_text = document.createElement("textarea");
 		ques_text.setAttribute("id", questionList[index].q_id);
-		ques_text.setAttribute("class", "form-control");
+		ques_text.setAttribute("class", "form-control text-dark");
 		ques_text.setAttribute("aria-lable", "With textarea");
-		ques_text.setAttribute("style", "border:none; resize:none;");
+		ques_text.setAttribute("style", "border:none; resize:none; box-shadow:none;");
 		ques_text.setAttribute("rows", "6");
-		ques_text.setAttribute("cols", "25");
+		ques_text.setAttribute("cols", "30");
 		ques_text.defaultValue = questionList[index].q_text;
 		question.appendChild(ques_text);
 
+		
 		// Setup for the fisrt answer
 		var ans = newRow1.insertCell(2);
-		var ans1 = document.createElement("input");
-		ans1.setAttribute("value", questionList[index].ans[0].a_text);
+		var ans1 = document.createElement("textarea");
 		ans1.setAttribute("id", questionList[index].ans[0].a_id);
-		ans1.setAttribute("class", "form-control");
+		ans1.setAttribute("class", "form-control text-dark");
 		ans1.setAttribute("aria-lable", "With textarea");
-		ans1.setAttribute("style", "border:none; resize:none;");
+		ans1.setAttribute("style", "border:none; resize:none; box-shadow:none;");
 		ans1.setAttribute("rows", "1");
 		ans1.setAttribute("cols", "15");
+		ans1.defaultValue = questionList[index].ans[0].a_text;
 		ans.appendChild(ans1);
 
 		var correct = newRow1.insertCell(3);
@@ -173,17 +174,19 @@ function showQuestionList(questionList) {
 		}
 		correct.appendChild(correctButton);
 
+
 		// Setup for the second answer
 		var newRow2 = table.insertRow(-1);
 		var ans = newRow2.insertCell(0);
-		var ans2 = document.createElement("input");
+		var ans2 = document.createElement("textarea");
 		ans2.setAttribute("value", questionList[index].ans[1].a_text);
 		ans2.setAttribute("id", questionList[index].ans[1].a_id);
-		ans2.setAttribute("class", "form-control");
+		ans2.setAttribute("class", "form-control text-dark");
 		ans2.setAttribute("aria-lable", "With textarea");
-		ans2.setAttribute("style", "border:none; resize:none;");
+		ans2.setAttribute("style", "border:none; resize:none; box-shadow:none;");
 		ans2.setAttribute("rows", "1");
 		ans2.setAttribute("cols", "15");
+		ans2.defaultValue = questionList[index].ans[1].a_text;
 		ans.appendChild(ans2);
 
 		var correct = newRow2.insertCell(1);
@@ -198,17 +201,19 @@ function showQuestionList(questionList) {
 		}
 		correct.appendChild(correctButton);
 
+
 		// Setup for the third answer
 		var newRow3 = table.insertRow(-1);
 		var ans = newRow3.insertCell(0);
-		var ans3 = document.createElement("input");
+		var ans3 = document.createElement("textarea");
 		ans3.setAttribute("value", questionList[index].ans[2].a_text);
 		ans3.setAttribute("id", questionList[index].ans[2].a_id);
-		ans3.setAttribute("class", "form-control");
+		ans3.setAttribute("class", "form-control text-dark");
 		ans3.setAttribute("aria-lable", "With textarea");
-		ans3.setAttribute("style", "border:none; resize:none;");
+		ans3.setAttribute("style", "border:none; resize:none; box-shadow:none;");
 		ans3.setAttribute("rows", "1");
 		ans3.setAttribute("cols", "15");
+		ans3.defaultValue = questionList[index].ans[2].a_text;
 		ans.appendChild(ans3);
 
 		var correct = newRow3.insertCell(1);

@@ -7,7 +7,7 @@
 
 <body onload="setUp()">
 	<div class="container content">
-		<form id="addForm" class="form-group" z>
+		<form id="addForm" class="form-group p-5 mb-2 bg-light text-dark">
 			<div class="row justify-content-md-center">
 				<div class="col col-3 text-center">
 					<h5>Category:</h5>
@@ -28,7 +28,7 @@
 			</div>
 			<br><br>
 
-			<div id="questionForm" style="display:none;">
+			<div id="questionForm" style="display:none;" class="p-3 mb-2 bg-white text-dark">
 				<table class="table table-bordered">
 					<thead>
 						<tr class="text-center">
@@ -42,14 +42,14 @@
 						<tr>
 							<td rowspan="4">
 								<!-- <input style="border:none; width: 600px;" type="text" id="question" name="question" placeholder="New question..."> -->
-								<textarea style="border:none; resize:none;" rows="6" cols="25" class="form-control" aria-label="With textarea" id="question" name="question" placeholder="New question..."></textarea>
-							</td>
+								<textarea style="border:none; resize:none; box-shadow:none;" rows="6" cols="25" class="form-control" aria-label="With textarea" id="question" name="question" placeholder="New question..."></textarea>
+							</td> 
 						</tr>
 
 						<tr>
 							<td>
 								<!-- <input style="border:none;" type="text" id="answer1" name="answer1" placeholder="Answer 1..."> -->
-								<textarea style="border:none; resize:none;" rows="1" cols="15" class="form-control" aria-label="With textarea" id="answer1" name="answer1" placeholder="Answer 1..."></textarea>
+								<textarea style="border:none; resize:none; box-shadow:none;" rows="1" cols="15" class="form-control" aria-label="With textarea" id="answer1" name="answer1" placeholder="Answer 1..."></textarea>
 							</td>
 							<td class="text-center">
 								<input type="radio" value="1" id="correct1" name="correct" checked="checked">
@@ -59,7 +59,7 @@
 						<tr>
 							<td>
 								<!-- <input style="border:none;" type="text" id="answer2" name="answer2" placeholder="Answer 2..."> -->
-								<textarea style="border:none; resize:none;" rows="1" cols="15" class="form-control" aria-label="With textarea" id="answer2" name="answer2" placeholder="Answer 2..."></textarea>
+								<textarea style="border:none; resize:none; box-shadow:none;" rows="1" cols="15" class="form-control" aria-label="With textarea" id="answer2" name="answer2" placeholder="Answer 2..."></textarea>
 							</td>
 							<td class="text-center">
 								<input type="radio" value="2" id="correct2" name="correct">
@@ -69,7 +69,7 @@
 						<tr>
 							<td>
 								<!-- <input style="border:none;" type="text" id="answer3" name="answer3" placeholder="Answer 3..."> -->
-								<textarea style="border:none; resize:none;" rows="1" cols="15" class="form-control" aria-label="With textarea" id="answer3" name="answer3" placeholder="Answer 3..."></textarea>
+								<textarea style="border:none; resize:none; box-shadow:none;" rows="1" cols="15" class="form-control" aria-label="With textarea" id="answer3" name="answer3" placeholder="Answer 3..."></textarea>
 							</td>
 							<td class="text-center">
 								<input type="radio" value="3" id="correct3" name="correct">
@@ -77,8 +77,10 @@
 						</tr>
 					</tbody>
 				</table>
-
-				<button id="btn" type="button" class="btn btn-primary btn-block" onclick="submitForm()">Add question</button>	
+				 
+				<div class="row justify-content-md-center">
+					<button id="btn" type="button" class="btn btn-primary btn-block" style="width:150px; text-align:center;" onclick="submitForm()">Add</button>	
+				</div>	
 			</div>
 			<br>
 
