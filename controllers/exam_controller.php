@@ -129,9 +129,12 @@ class ExamController
             $submission->saveSubmissionResult($score);
         }
         $result = array(
+            "quesiont" => $questionList,
             "score" => $score,
             "red" => $incorrectList,
-            "green" => array_values($correctAns)
+            "green" => array_values($correctAns),
+            "submission" => $userSubmission,
+            "correct" => $correctAns
         );
         
         return $result;

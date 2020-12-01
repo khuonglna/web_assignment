@@ -45,6 +45,7 @@ body {
 	position: relative;
 	min-height: 552px;
 	width: 100%;
+	padding-bottom: 50px;
 }
 /* STYLE FOR HOME ----------------------------------------------------*/
 
@@ -54,7 +55,7 @@ body {
 .tab {
 	border-radius: 25px;
 	background: #007bff;
-	padding: 20px; 
+	padding: 20px;
 	width: 200px;
 	height: 247px;
 	margin-bottom: 40px;
@@ -105,29 +106,42 @@ body {
 /* STYLE FOR CATEGORY ----------------------------------------------------*/
 
 /* STYLE FOR EXAM ----------------------------------------------------*/
-#submitBtn {
-	position: fixed;
-	bottom: 200px;
-	right: 400px;
-}
 
 #score {
-	position: fixed;
-	bottom: 300px;
-	right: 400px;
+	text-align: center;
+	font-size: 3em;
+	font-weight: bold;
 }
+
+/* #congratulation {
+	font-size: 3em;
+	font-weight: bold;
+} */
 
 .questionNumber {
-	display: block;
-    height: 30px;
-    width: 30px;
-    line-height: 30px;
+	display: inline-block;
+	height: 30px;
+	width: 30px;
+	line-height: 30px;
 
-    -moz-border-radius: 30px;
-    border-radius: 15px;
+	-moz-border-radius: 30px;
+	border-radius: 15px;
 
-    background-color: #007bff;
-    color: white;
-    text-align: center;
-    font-size: 1em;
+	background-color: #007bff;
+	color: white;
+	text-align: center;
+	font-size: 1em;
 }
+
+.custom-control-label::after {
+	top: 0;
+	left: 0;
+}
+
+#answerCtn {
+	padding-left: 50px;
+}
+
+/* div label {
+	margin-left: 50px;
+} */

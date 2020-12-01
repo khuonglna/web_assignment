@@ -72,7 +72,7 @@ if (isset($_GET['page'])) {
         include "views/ranking.html";
     } 
     else {
-        include "views/exception.html";
+        include "views/home.html";
     }
 }
 else include "views/home.html";

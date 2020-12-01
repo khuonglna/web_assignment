@@ -9,40 +9,66 @@ function showExam(questionList) {
 	var exam = document.getElementById("examForm");
 
 	for (i = 0; i < QUESTION_NUMBER; i++) {
-		// document.getElementById("submitBtn")
+		var outerCtn = document.createElement("div");
+		var questionCtn = document.createElement("div");
+		var answerCtn = document.createElement("div");
 		var pbreak = document.createElement("br");
-		exam.appendChild(pbreak);
+		var questionNumber = document.createElement("span");
 		var hidden = document.createElement("input");
 		var questionElement = document.createElement("p");
-		var questionText = document.createTextNode(
-			i + 1 + "." + questionList[i].q_text
-		);
+		var questionText = document.createTextNode(questionList[i].q_text);
+		questionNumber.classList.add("questionNumber");
+		outerCtn.classList.add("container");
+		questionCtn.classList.add("container");
+		// answerCtn.classList.add("container");
+		answerCtn.id = "answerCtn";
+		questionNumber.textContent = i + 1;
 		hidden.id = "hidden_q" + i;
 		hidden.setAttribute("type", "hidden");
 		hidden.setAttribute("value", questionList[i].q_id);
-		// questionElement.setAttribute("name", "q" + i);
 		questionElement.appendChild(questionText);
-		exam.appendChild(hidden);
-		exam.appendChild(questionElement);
+		questionElement.setAttribute(
+			"style",
+			"display: inline-block; padding-left: 10px"
+		);
+		questionCtn.appendChild(hidden);
+		questionCtn.appendChild(questionNumber);
+		questionCtn.appendChild(questionElement);
 		for (j = 0; j < ANSWER_NUMBER; j++) {
+			var customInpLbl = document.createElement("div");
+			var pbreak = document.createElement("br");
 			var answerInput = document.createElement("input");
 			var answerLabel = document.createElement("label");
 			var answerLabelText = document.createTextNode(
 				questionList[i].ans[j].a_text
 			);
 			// answerLabel.setAttribute("style", "color: red");
+			customInpLbl.classList.add("custom-control");
+			customInpLbl.classList.add("custom-radio");
+			// customInpLbl.classList.add("custom-control-inline");
 			answerLabel.id = questionList[i].ans[j].a_id;
-			answerInput.setAttribute("class", "form-check-input");
+			answerLabel.classList.add("custom-control-label");
+			answerLabel.setAttribute("for", "answer" + i + j);
 			answerInput.setAttribute("type", "radio");
+			answerInput.id = "answer" + i + j;
 			answerInput.setAttribute("name", "a" + i);
+			answerInput.setAttribute("class", "custom-control-input");
 			answerInput.setAttribute("value", questionList[i].ans[j].a_id);
+			// if (j%3 == 0) {
+			// 	answerInput.checked = true;
+			// }
 			answerLabel.appendChild(answerLabelText);
-			exam.appendChild(answerInput);
-			exam.appendChild(answerLabel);
-			var pbreak = document.createElement("br");
-			exam.appendChild(pbreak);
+			customInpLbl.appendChild(answerInput);
+			customInpLbl.appendChild(answerLabel);
+			answerCtn.appendChild(customInpLbl);
+			// answerCtn.appendChild(pbreak);
 		}
+		outerCtn.appendChild(questionCtn);
+		outerCtn.appendChild(answerCtn);
+		exam.appendChild(outerCtn);
+		exam.appendChild(pbreak);
 	}
+	document.getElementById("submitBtn").removeAttribute("style");
 }
 
 function getExamForm() {
@@ -62,7 +88,7 @@ function getExamForm() {
 
 function checkAllRadio() {
 	var counter = 0;
-	var inputList = document.getElementsByClassName("form-check-input");
+	var inputList = document.getElementsByClassName("custom-control-input");
 	for (i of inputList) {
 		if (i.checked) {
 			counter++;
@@ -75,7 +101,7 @@ function checkAllRadio() {
 function getSubmission() {
 	var data = "";
 	var answerList = new Array();
-	var answer = document.getElementsByClassName("form-check-input");
+	var answer = document.getElementsByClassName("custom-control-input");
 	for (i of answer) {
 		if (i.checked) {
 			answerList.push(i.value);
@@ -114,7 +140,9 @@ function showResult(result) {
 	}
 	document
 		.getElementById("score")
-		.appendChild(document.createTextNode(result.score + "/100"));
+		.appendChild(document.createTextNode("Congratulation, you got " + result.score + "/100"));
+	// document.getElementById("congratulation").removeAttribute("style");
+	window.scrollTo({top: 0, behavior: 'smooth'});
 }
 
 function retry() {
@@ -143,7 +171,8 @@ function submitForm() {
 		ajax.onreadystatechange = function () {
 			if (this.readyState == 4 && this.status == 200) {
 				data = this.responseText;
-				console.log(data);
+				// console.log(data);
+				// console.log(JSON.parse(data));
 				result = JSON.parse(data);
 				// console.log(result);
 				// console.log(result.score);
@@ -182,18 +211,18 @@ function closeDifficult(ele) {
 
 function sF(ele) {
 	//alert(ele.id);
-	
+
 	var category = ele.parentElement.id.substr(
 		0,
 		ele.parentElement.id.length - 6
 	);
 	var dif = ele.id.substr(0, 1);
-	var categoryNode = document.getElementById(category);	
+	var categoryNode = document.getElementById(category);
 	var categoryText = categoryNode.textContent;
 	var levelNode = document.getElementById(dif);
 	var levelText = levelNode.textContent;
 	var categoryTextNode = document.createTextNode(categoryText);
-	var levelTextNode =  document.createTextNode(levelText);
+	var levelTextNode = document.createTextNode(levelText);
 	document.getElementById("examCategory").appendChild(categoryTextNode);
 	document.getElementById("examLevel").appendChild(levelTextNode);
 	var data = "&category=" + category + "&dif=" + dif;
