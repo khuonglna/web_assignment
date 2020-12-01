@@ -13,7 +13,8 @@
     <script src='https://kit.fontawesome.com/a076d05399.js'></script>
     <script src='views/js/roles.js'></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-
+    <link href='https://fonts.googleapis.com/css?family=Sofia' rel='stylesheet'>
+    <link href='https://fonts.googleapis.com/css?family=Amaranth' rel='stylesheet'>
     <script type="text/javascript">
         $(function() {
             $("a").click(function() {
@@ -30,55 +31,44 @@
 <body style="margin:0;">
     <header margin=0>
         <div class="container-fluid p-0">
-            <div class="col">
-                <div class="row bg-dark d-flex flex-row-reverse">
-                    <li style="margin-top: 10px; margin-bottom:10px; margin-right:10px">
-                        <a id="signup" href="index.php?page=sign_up" class="btn btn-primary btn-lg " role="button">
-                            <i class="far fa-user-circle" style='font-size:20px;color:white; margin-right: 10px;'></i>
-                            Sign Up
+            <div class="col p-0">
+                <nav class="shadow-sm navbar fixed-top navbar-expand-sm navbar-light bg-light">
+                    <div class="container">
+                        <a class="navbar-brand" href="index.php?page=home">
+                            <img class="img-fluid" src="assets/images/logoEng.PNG" alt="logo">
                         </a>
-
-                        <a id="login" href="index.php?page=login" class="btn btn-primary btn-lg" role="button">
-                            <i class="fas fa-sign-in-alt" style='font-size:20px;color:white; margin-right: 10px;'></i>
-                            Login
-                        </a>
-
-                        <a id="username" class="p-3" href="" style="display: none;"></a>
-
-                        <a id="logout" href="index.php?page=logout" name="logout" class="btn btn-primary btn-lg " role="button" style="display: none;">
-                            <i class="fas fa-code" style='font-size:20px;color:white; margin-right: 10px;'></i>
-                            Logout
-                        </a>
-
-                    </li>
-                </div>
-                <div class="row">
-                    <div class="col"> </div>
-                    <div class="col-7">
-                        <div class="container-fluid">
-                            <a href="index.php?page=home" class="btn" role="button">
-                                <img src="assets/images/logo.PNG" class="img-fluid" alt="Responsive image">
-                            </a>
+                        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+                            <span class="navbar-toggler-icon"></span>
+                        </button>
+                        <div class="collapse navbar-collapse" id="navbarResponsive">
+                            <ul class="navbar-nav" id="nav_menu">
+                                <li class="nav-item active">
+                                    <a class="nav-link" href="index.php?page=home">Home
+                                        <span class="sr-only">(current)</span>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="#" id="info_navtab">About</a>
+                                </li>
+                            </ul>
+                            <ul class="navbar-nav ml-auto" id="nav_menu">
+                                <a class="dropdown-item text-primary " id="signup" href="index.php?page=sign_up">Sign Up</a>
+                                <a class="dropdown-item text-white bg-primary " id="login" href="index.php?page=login">Login</a>
+                                <li class="nav-item dropdown">
+                                    <div class="nav-item dropdown show">
+                                        <a id="username" href="" style="display: none;" class="nav-link dropdown-toggle p-3 text-primary" data-toggle="dropdown" aria-expanded="true"></a>
+                                        <div class="dropdown-menu" style="display: none;" id="useroption">
+                                            <a class="dropdown-item" href="index.php?page=result">Profiles</a>
+                                            <div class="dropdown-divider"></div>
+                                            <a class="dropdown-item" id="logout" href="index.php?page=logout" name="logout">Logout</a>
+                                        </div>
+                                    </div>
+                                </li>
+                            </ul>
                         </div>
                     </div>
-                    <div class="col"> </div>
-                </div>
-                <div class="row" id="nav_row">
-                    <div class="col"> </div>
-                    <div class="col-7" id="nav_col">
-                        <div class="container w-100" id="nav_container">
-                            <nav class="navbar navbar-expand-md navbar-light bg-light">
-                                <div class="collapse navbar-collapse">
-                                    <ul class="navbar-nav" id="nav_menu">
-                                        <li class="nav-item active"><a class="nav-link" href="index.php?page=home">Home</a</li> <li class="nav-item"><a class="nav-link" href="#" id="info_navtab">About Us</a></li>
-                                    </ul>
-                                </div>
-                            </nav>
-                        </div>
-                        <div class="container" style="margin-top:10px">
-                        </div>
-                    </div>
-                    <div class="col"> </div>
+                </nav>
+                <div class="container" style="margin-top:100px">
                 </div>
             </div>
         </div>

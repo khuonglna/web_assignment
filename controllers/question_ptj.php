@@ -20,6 +20,6 @@ if ($res == 'getExam') {
     }
 
     $result = $exam->calculateScore($userSubmission);
-
+    // $result = $userSubmission;
     echo json_encode($result);
 }

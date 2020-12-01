@@ -20,7 +20,7 @@ ajax.onreadystatechange = function () {
 		} else {
 			state = LOGIN;
 			userType = data.role;
-			name = data.username;
+			name = "Welcome, " + data.username + "!";
 		}
 		toggleTopNavbar(state, name);
 		switch (userType) {
@@ -108,7 +108,6 @@ ajax.onreadystatechange = function () {
 				break;
 		}
 		var element = document.getElementById("nav_menu");
-		var child = document.getElementById("info_navtab");
 		element.insertBefore(navitem, element.childNodes[2]);
 	}
 };
@@ -118,16 +117,19 @@ function toggleTopNavbar(state, name) {
 	var signup = document.getElementById("signup");
 	var username = document.getElementById("username");
 	var logout = document.getElementById("logout");
+	var usershow = document.getElementById("useroption");
 	if (state == LOGOUT) {
 		login.removeAttribute("style");
 		signup.removeAttribute("style");
 		username.style.display = "none";
 		logout.style.display = "none";
+		usershow.style.display = "none";
 	} else {
 		login.style.display = "none";
 		signup.style.display = "none";
 		username.removeAttribute("style");
 		logout.removeAttribute("style");
+		usershow.removeAttribute("style");
 		username.innerHTML = name;
 	}
 }

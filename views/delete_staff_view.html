@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html>
-
+<head>
+    <script src="views/js/delete_staff.js"></script>
+</head>
 <body>
     <div class="container h-100 content">
         <table class="table">
@@ -11,47 +13,10 @@
                     <th scope="col"></th>
                 </tr>
             </thead>
-            <tbody>
-                <tr>
-                    <th scope="row">1</th>
-                    <td>Mark</td>
-                    <td class="p-0">
-                        <div class="form-check">
-                            <label class="form-check-label">
-                                <input type="checkbox" class="form-check-input" value="">
-                            </label>
-                        </div>
-                    </td>
-                </tr>
-
-                <tr>
-                    <th scope="row">2</th>
-                    <td>Jacob</td>
-                    <td class="p-0">
-                        <div class="form-check">
-                            <label class="form-check-label">
-                                <input type="checkbox" class="form-check-input" value="">
-                            </label>
-                        </div>
-                    </td>
-                </tr>
-
-                <tr>
-                    <th scope="row">3</th>
-                    <td>Larry</td>
-                    <td class="p-0">
-                        <div class="form-check">
-                            <label class="form-check-label">
-                                <input type="checkbox" class="form-check-input" value="">
-                            </label>
-                        </div>
-                    </td>
-                </tr>
-
-
+            <tbody id="del_staff_table">
             </tbody>
         </table>
-        <button type="button" class="btn btn-success">Confirm</button>
+        <button type="button" class="btn btn-success bg-primary" onclick="confirmDeleteStaff()">Confirm</button>
     </div>
 </body>
 

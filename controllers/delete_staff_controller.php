@@ -1,29 +1,29 @@
-<?php
-require_once('models/user_model.php');
-class StaffController
-{
-	public function insertStaff()
-	{
-		$username = isset($_POST['staffname']) ? $_POST['staffname'] : '';
-		$password = isset($_POST['staffpass']) ? $_POST['staffpass'] : '';
-		if ($password != '' && $username != '') {
-			$usermodel = new UserModel();
-			$user = $usermodel->addStaff($username, $password);
-			if ($user) {
-				require_once('views/delete_staff_view.html');
-				echo "Delete staff success";
-			} else {
-				require_once('views/delete_staff_view.html');
-				echo "delete staff failed";
-			}
-		} else {
-			require_once('views/delete_staff_view.html');
-			// echo "invalid";
-		}
+<?php 
+	require_once('../models/user_model.php');
+	$res = $_REQUEST['function'];
+
+	if ($res == "getStaffList") {
+		$usermodel = new UserModel();
+		$data = $usermodel->queryStaffList();
+		echo($data);
 	}
-}
-?>
+	else {
+		
+		$staffList = substr($res, stripos($res, '_') + 1);
+		$flag = 1;
+		while (strlen($staffList) > 0){
+			$username = $staffList;
+			if (strripos($staffList, '_')){
+				$username = substr($staffList, strripos($staffList, '_') + 1);
+				$staffList = substr($staffList, 0, strlen($staffList) - strlen($username) - 1);
+			}
+			else $staffList = '';
 
-<script>
+			$usermodel = new UserModel();
+			if (!$usermodel->deleteStaff($username)) 
+				$flag = 0;
+		}
 
-</script>
+		if ($flag) echo "Delete staffs sucessfully";
+		else echo "Fail to delete staff";
+	}
