@@ -5,18 +5,43 @@
 </head>
 <body>
     <div class="container h-100 content">
-        <table class="table">
-            <thead>
-                <tr>
-                    <th scope="col">#</th>
-                    <th scope="col">username</th>
-                    <th scope="col"></th>
-                </tr>
-            </thead>
-            <tbody id="del_staff_table">
-            </tbody>
-        </table>
-        <button type="button" class="btn btn-success bg-primary" onclick="confirmDeleteStaff()">Confirm</button>
+        <!-- <form class="form-group p-5 mb-2 bg-light text-dark"> -->
+            <div class="p-3 mb-2 bg-white text-dark">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th scope="col">#</th>
+                            <th scope="col">username</th>
+                            <th scope="col"></th>
+                        </tr>
+                    </thead>
+                    <tbody id="del_staff_table">
+                    </tbody>
+                </table>
+                <button type="button" class="btn btn-success bg-primary" onclick="confirmDeleteStaff()">Confirm</button>
+            </div>
+
+            <div class="alert alert-primary" role="alert" id="nothing" style="display:none;">
+                You have not chosen any staffs!!!
+                <button type="button" class="close" aria-label="Close" onclick="closeNothingNoti()">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+
+            <div class="alert alert-success" role="alert" id="success" style="display:none;">
+                Delete staff(s) successfully!
+                <button type="button" class="close" aria-label="Close" onclick="closeDelSuccess()">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+
+            <div class="alert alert-danger" role="alert" id="error" style="display:none;">
+                Failed to delete staff(s)!!!
+                <button type="button" class="close" aria-label="Close" onclick="closeDelError()">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+        <!-- </form> -->
     </div>
 </body>
 
