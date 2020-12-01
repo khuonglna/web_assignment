@@ -108,7 +108,6 @@ ajax.onreadystatechange = function () {
 				break;
 		}
 		var element = document.getElementById("nav_menu");
-		var child = document.getElementById("info_navtab");
 		element.insertBefore(navitem, element.childNodes[2]);
 	}
 };
