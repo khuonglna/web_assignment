@@ -7,7 +7,7 @@
 
 <body onload="getCategory()">
 	<div class="container content">
-		<form id="deleteForm" class="form-group">
+		<form id="deleteForm" class="form-group p-5 mb-2 bg-light text-dark">
 			<div class="row justify-content-md-center">
 				<div class="col col-3 text-center">
 					<h5>Category:</h5>
@@ -29,7 +29,7 @@
 			</div>
 			<br>
 
-			<div id="questionForm" style="display:none;">
+			<div id="questionForm" style="display:none;" class="p-3 mb-2 bg-white text-dark">
 				<table class="table table-bordered text-wrap">
 					<thead>
 						<tr class="text-center">
@@ -44,7 +44,9 @@
 					</tbody>
 				</table>
 
-				<button id="btn" type="button" class="btn btn-primary btn-block" onclick="submitForm()">Delete all selected questions</button>
+				<div class="row justify-content-md-center">
+					<button id="btn" type="button" class="btn btn-primary btn-block" style="width:150px; text-align:center;" onclick="submitForm()">Delete</button>	
+				</div>
 			</div>
 			<br>
 
@@ -76,7 +78,6 @@
 				</button>
 			</div>
 
-			<p id="demo"></p>
 		</form>
 	</div>
 </body>

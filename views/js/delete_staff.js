@@ -62,20 +62,45 @@ ajax.onreadystatechange = function () {
 ajax.open(method, url, asynchronous);
 ajax.send();
 
+function closeNothingNoti() {
+	document.getElementById("nothing").style.display = "none";
+}
+
+function closeDelSuccess() {
+	document.getElementById("success").style.display = "none";
+}
+
+function closeDelError() {
+	document.getElementById("error").style.display = "none";
+}
+
 function confirmDeleteStaff() {
-    var idx = 0;
-    var request = "";
-    var nstaff;
-    var usernameStaff;
-    for (idx = 1; idx <= numStaff; idx++){
-        nstaff = document.getElementById("staff" + idx);
-        if (nstaff.checked){ 
-            usernameStaff = document.getElementById("username" + idx);
-            request = request + "_" + usernameStaff.textContent;
+    var decision = confirm("ARE YOU SURE?");
+
+	if (decision) {
+		closeNothingNoti();
+		closeDelSuccess();
+        closeDelError();
+        var idx = 0;
+        var request = "";
+        var nstaff;
+        var usernameStaff;
+        for (idx = 1; idx <= numStaff; idx++){
+            nstaff = document.getElementById("staff" + idx);
+            if (nstaff.checked){ 
+                usernameStaff = document.getElementById("username" + idx);
+                request = request + "_" + usernameStaff.textContent;
+            }
+        }
+
+        console.log(request + " - ");
+
+        if (request == "") {
+            document.getElementById("nothing").style.display = "block";
+        } else {
+            requestDelStaff(request);
         }
     }
-
-    requestDelStaff(request);
 }
 
 function requestDelStaff(staffList) {
@@ -87,8 +112,13 @@ function requestDelStaff(staffList) {
         if (this.readyState == 4 && this.status == 200) {
             var data = this.responseText;
             console.log(data);
-            alert(data);
-            location.reload();
+            // alert(data);
+            if (data == true) {
+                document.getElementById("success").style.display = "block";
+                location.reload();
+            } else {
+                document.getElementById("error").style.display = "block";
+            }
         }
     }
     ajax.open(method, url + staffList, asynchronous);

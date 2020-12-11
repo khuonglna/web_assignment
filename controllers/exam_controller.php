@@ -6,6 +6,7 @@ require_once('../models/exam.php');
 define('MAX_SCORE', 100);
 define('INCORRECT', 10);
 define("QUESTION_NUMBER", 10);
+
 class ExamController
 {
     private function test_input($data)

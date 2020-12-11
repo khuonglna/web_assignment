@@ -103,29 +103,42 @@ function showQuestionList(questionList) {
 		// Insert a cell in the row
 		var id = newRow1.insertCell(0);
 		id.rowSpan = 3;
-		id.setAttribute("style", "width: 50px; text-align: center;");
-		id.appendChild(document.createTextNode(parseFloat(index)+1));
+		id.style.textAlign = "center";
+		id.appendChild(document.createTextNode(parseFloat(index) + 1));
 
 
 		// Insert a cell fo question text 
 		var question = newRow1.insertCell(1);
 		question.rowSpan = 3;
-		// question.setAttribute("class", "text-wrap");
-		question.setAttribute("style", "width: 600px;");
-		question.appendChild(
-			document.createTextNode(questionList[index].q_text)
-		);
+		var ques_text = document.createElement("textarea");
+		ques_text.setAttribute("readOnly", "true");
+		ques_text.setAttribute("class", "form-control text-dark");
+		ques_text.setAttribute("aria-lable", "With textarea");
+		ques_text.setAttribute("style", "border: none; resize: none; box-shadow: none; background-color: white;");
+		ques_text.setAttribute("rows", "6");
+		ques_text.setAttribute("cols", "30");
+		ques_text.defaultValue = questionList[index].q_text;
+		question.appendChild(ques_text);
 
 
 		// Insert a cell for first answer 
 		var ans1 = newRow1.insertCell(2);
+		var ans1_text = document.createElement("textarea");
+		ans1_text.setAttribute("readOnly", "true");
+		ans1_text.setAttribute("aria-lable", "With textarea");
+		ans1_text.setAttribute("style", "border: none; resize: none; box-shadow: none; background-color: white;");
+		ans1_text.setAttribute("rows", "1");
+		ans1_text.setAttribute("cols", "15");
+		ans1_text.classList.add("form-control");
+		ans1_text.defaultValue = questionList[index].ans[0].a_text;
 		if (correctAns == 0) {
-			ans1.setAttribute("class", "font-weight-bold");
-			ans1.setAttribute("style", "color: green;");
+			ans1_text.classList.add("font-weight-bold");
+			ans1_text.classList.add("text-primary");
+			// ans1.setAttribute("style", "color: blue;");
+		} else {
+			ans1_text.classList.add("text-dark");
 		}
-		ans1.appendChild(
-			document.createTextNode(questionList[index].ans[0].a_text)
-		);
+		ans1.appendChild(ans1_text);
 
 
 		// Insert a cell for selected button
@@ -143,25 +156,43 @@ function showQuestionList(questionList) {
 		// Insert a row for second answer
 		var newRow2 = table.insertRow(-1);
 		var ans2 = newRow2.insertCell(0);
+		var ans2_text = document.createElement("textarea");
+		ans2_text.setAttribute("readOnly", "true");
+		ans2_text.setAttribute("aria-lable", "With textarea");
+		ans2_text.setAttribute("style", "border: none; resize: none; box-shadow: none; background-color: white;");
+		ans2_text.setAttribute("rows", "1");
+		ans2_text.setAttribute("cols", "15");
+		ans2_text.classList.add("form-control");
+		ans2_text.defaultValue = questionList[index].ans[1].a_text;
 		if (correctAns == 1) {
-			ans2.setAttribute("class", "font-weight-bold");
-			ans2.setAttribute("style", "color: green;")
+			ans2_text.classList.add("font-weight-bold");
+			ans2_text.classList.add("text-primary");
+			// ans1.setAttribute("style", "color: blue;");
+		} else {
+			ans2_text.classList.add("text-dark");
 		}
-		ans2.appendChild(
-			document.createTextNode(questionList[index].ans[1].a_text)
-		);
+		ans2.appendChild(ans2_text);
 
 
 		// Insert a row for third answer
 		var newRow3 = table.insertRow(-1);
 		var ans3 = newRow3.insertCell(0);
+		var ans3_text = document.createElement("textarea");
+		ans3_text.setAttribute("readOnly", "true");
+		ans3_text.setAttribute("aria-lable", "With textarea");
+		ans3_text.setAttribute("style", "border:none; resize:none; box-shadow:none; background-color:white;");
+		ans3_text.setAttribute("rows", "1");
+		ans3_text.setAttribute("cols", "15");
+		ans3_text.classList.add("form-control");
+		ans3_text.defaultValue = questionList[index].ans[2].a_text;
 		if (correctAns == 2) {
-			ans3.setAttribute("class", "font-weight-bold");
-			ans3.setAttribute("style", "color: green;")
+			ans3_text.classList.add("font-weight-bold");
+			ans3_text.classList.add("text-primary");
+			// ans1.setAttribute("style", "color: blue;");
+		} else {
+			ans3_text.classList.add("text-dark");
 		}
-		ans3.appendChild(
-			document.createTextNode(questionList[index].ans[2].a_text)
-		);
+		ans3.appendChild(ans3_text);
 	}
 	document.getElementById("questionForm").style.display = "block";
 }
@@ -204,8 +235,8 @@ function getCategory() {
 	ajax.onreadystatechange = function () {
 		if (this.readyState == 4 && this.status == 200) {
 			var data = this.responseText;
+			// console.log(data);
 			var cateList = JSON.parse(data);
-			// console.log(result);
 			addCategory(cateList);
 		}
 	};

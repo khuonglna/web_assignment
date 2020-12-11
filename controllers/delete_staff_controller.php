@@ -24,6 +24,7 @@
 				$flag = 0;
 		}
 
-		if ($flag) echo "Delete staffs sucessfully";
-		else echo "Fail to delete staff";
+		// if ($flag) echo "Delete staffs sucessfully";
+		// else echo "Fail to delete staff";
+		echo $flag;
 	}
