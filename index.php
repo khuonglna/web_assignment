@@ -16,20 +16,10 @@ if (isset($_GET['page'])) {
         include "views/exception.html";
     } 
     elseif ($page == "login") {
-        $controller = isset($_GET['controller']) ? $_GET['controller'] . 'Controller' : 'UserController';
-        $action = isset($_GET['action']) ? $_GET['action'] : 'getUser';
-
-        require_once('controllers/login_controller.php');
-        $usercontroller = new $controller();
-        $usercontroller->$action();
+        include_once "views/login_view.html";
     } 
     elseif ($page == "sign_up") {
-        $controller = isset($_GET['controller']) ? $_GET['controller'] . 'Controller' : 'UserController';
-        $action = isset($_GET['action']) ? $_GET['action'] : 'getUser';
-
-        require_once('controllers/signup_controller.php');
-        $usercontroller = new $controller();
-        $usercontroller->$action();
+        include_once "views/signup_view.html";
     } 
     elseif ($page == "logout") {
         $controller = isset($_GET['controller']) ? $_GET['controller'] . 'Controller' : 'UserController';
