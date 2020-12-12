@@ -164,6 +164,10 @@ a {
 	padding-left: 50px;
 }
 
-/* div label {
-	margin-left: 50px;
-} */
+#navfooter1 a:hover {
+	background-color: white;
+}
+
+#navfooter2 a:hover {
+	background-color: white;
+}
