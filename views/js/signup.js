@@ -17,10 +17,10 @@ function sign_up() {
 				document.getElementById('notification').textContent = 'Registered username';
 				var form = document.getElementById('signup_form');
 				form.reset();
-            }
-            if (response == 2) {
-                document.getElementById('notification').textContent = 'Please input username and password';
-                var form = document.getElementById('signup_form');
+            		}
+		        if (response == 2) {
+				document.getElementById('notification').textContent = 'Please input username and password';
+				var form = document.getElementById('signup_form');
 				form.reset();
 			}
 		}
