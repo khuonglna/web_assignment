@@ -2,27 +2,67 @@
 <html>
 <head>
     <script src="https://cdn.anychart.com/releases/8.9.0/js/anychart-base.min.js"></script>
-    
+    <style>
+        #result_container {
+            background-color: #f9f9f9;
+            width: fit-content;
+        }
+        thead {
+            background-color: #007BFF;
+        }
+        tbody {
+            background-color: white;
+        }
+    </style>
 </head>
 
 <body onload="getTableResult()">
     <script src="views/js/result.js"></script>
-    <div class="container content">
+    <div class="container content" id="result_container">
         <p id="noti" class="text-center font-italic"></p>
-        <div class="d-flex justify-content-center">
-            <table class="table table-bordered w-75 ">
-                <thead id="headerResultTable" class="text-center font-weight-bold">
-                </thead>
-                <tbody id="resultTable">
-                </tbody>
-            </table>
-        </div>
 
-        <div id="piechart"></div>
-        <div id="linechartHard"></div>
-        <div id="linechartMedium"></div>
-        <div id="linechartEasy"></div>
+        <div class="row justify-content-center">
+            <div class="col-auto ">
+                <p class="text-center font-weight-bold">Exam history</p>
+                <table class="table table-bordered table-striped" id="result_table" >
+                    <thead id="headerResultTable" class="text-center font-weight-bold">
+                    </thead>
+                    <tbody id="resultTable">
+                    </tbody>
+                </table>
+            </div>
+            
+        </div>
+        
+        <div class="row">
+            <div class="col" style="padding: 30px 80px; 
+                                    margin: 20px; 
+                                    background-color: white;">
+                <p class="text-center font-weight-bold">Difficulty history</p>
+                <div id="piechart"></div>
+            </div>
+            <div class="col" style="padding: 30px 80px; 
+                                    margin: 20px;
+                                    background-color: white;">
+                <p class="text-center font-weight-bold">Hard exam history</p>                    
+                <div id="linechartHard"></div>
+            </div>
+        </div>
+        
+        <div class="row">
+            <div class="col" style="padding: 30px 80px; 
+                                    margin: 20px;
+                                    background-color: white;">
+                <p class="text-center font-weight-bold">Medium exam history</p>                     
+                <div id="linechartMedium"></div>
+            </div>
+            <div class="col" style="padding: 30px 80px; 
+                                    margin: 20px;
+                                    background-color: white;">
+                <p class="text-center font-weight-bold">Easy exam history</p> 
+                <div id="linechartEasy"></div>
+            </div>
+        </div>
     </div>
 </body>
-
 </html>

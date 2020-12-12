@@ -1,34 +1,35 @@
 <?php
-
-require_once('models/user_model.php');
+session_start();
+require_once('../models/user_model.php');
 class UserController
 {
 	public function getUser()
 	{
-		$username = isset($_POST['name']) ? $_POST['name'] : '';
-		$password = md5(isset($_POST['pass']) ? $_POST['pass'] : '');
+		$res = $_REQUEST['do'];
+		if ($res == 'login') {
+			$username = $_REQUEST['usr'];
+			$password = md5($_REQUEST['pwd']);
+		}
+		$username = $_REQUEST['usr'];
+		$password = md5($_REQUEST['pwd']);
 		if ($password != '' && $username != '') {
 			$usermodel = new UserModel();
 			$user = $usermodel->login($username, $password);
-			if ($user) {
-				require_once('views/home.html');
+			if ($user != null) {
 				$_SESSION["username"] = $user["username"];
 				$_SESSION["role"] = $user["role"];
+				echo 0;
 			} else {
-				require_once('views/login_view.html');
-				echo '<script language="javascript">';
-				echo 'alert("failed")';
-				echo '</script>';
+				echo 1;
 			}
-		} else {
+		} 
+		else {
 			// When pressed login again will remove session
 			session_unset();
-			require_once('views/login_view.html');
+			//require_once('views/login_view.html');
+			echo 2;
 		}
 	}
 }
-?>
-
-<script>
-
-</script>
+$controller = new UserController();
+$controller -> getUser();
