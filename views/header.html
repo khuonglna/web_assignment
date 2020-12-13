@@ -16,14 +16,18 @@
     <link href='https://fonts.googleapis.com/css?family=Sofia' rel='stylesheet'>
     <link href='https://fonts.googleapis.com/css?family=Amaranth' rel='stylesheet'>
     <script type="text/javascript">
-        $(function() {
-            $("a").click(function() {
-                $("a").each(function() {
-                    $(this).removeClass("active");
-                });
-                $(this).addClass("active");
-            });
-        });
+        function getBorder() {
+            var ahome = document.getElementById("ahome");
+            var aabout = document.getElementById("aabout");
+            var aadd = document.getElementById("aadd");
+
+            ahome.classList.remove("active");
+            aabout.classList.remove("active");
+            aadd.classList.remove("active");
+
+            aadd.classList.add("active");
+
+        }
     </script>
     <script src="views/js/ranking.js"></script>
 </head>
@@ -37,33 +41,41 @@
                         <a class="navbar-brand" href="index.php?page=home">
                             <img class="img-fluid" src="assets/images/logoEng.PNG" alt="logo">
                         </a>
-                        <a href="index.php?page=home">
-                            <h1 style="padding-left: 10px;" class="navbar-text">BK English Assessment</h1>
+                        <a class="navbar-brand" href="index.php?page=home">
+                            <h1 class="mt-0 mb-0" style="font-size:22px;"> BK English </br> Assessment</h1>
+                            <!-- <h1 style="font-size: 30px;"> Assessment</h1> -->
                         </a>
-                        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+                        <button class="navbar-toggler" type="button" data-toggle="collapse"
+                            data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false"
+                            aria-label="Toggle navigation">
                             <span class="navbar-toggler-icon"></span>
                         </button>
-                        <div class="collapse navbar-collapse" id="navbarResponsive" style="padding-left: 50px;">
+                        <div class="pl-4 collapse navbar-collapse" id="navbarResponsive">
                             <ul class="navbar-nav" id="nav_menu">
-                                <li class="nav-item active">
+                                <li class="nav-item" id="ahome">
                                     <a class="nav-link" href="index.php?page=home">Home
                                         <span class="sr-only">(current)</span>
                                     </a>
                                 </li>
-                                <li class="nav-item">
+                                <li class="nav-item pl-4" id="aabout">
                                     <a class="nav-link" href="#" id="info_navtab">About</a>
                                 </li>
                             </ul>
                             <ul class="navbar-nav ml-auto" id="nav_menu">
-                                <a class="dropdown-item text-primary " id="signup" href="index.php?page=sign_up">Sign Up</a>
-                                <a class="dropdown-item text-white bg-primary " id="login" href="index.php?page=login">Login</a>
+                                <a class="dropdown-item text-primary " id="signup" href="index.php?page=sign_up">Sign
+                                    Up</a>
+                                <a class="dropdown-item text-white bg-primary " id="login"
+                                    href="index.php?page=login">Login</a>
                                 <li class="nav-item dropdown">
                                     <div class="nav-item dropdown show">
-                                        <a id="username" href="" style="display: none;" class="nav-link dropdown-toggle p-3 text-primary" data-toggle="dropdown" aria-expanded="true"></a>
+                                        <a id="username" href="" style="display: none;"
+                                            class="nav-link dropdown-toggle p-3 text-primary" data-toggle="dropdown"
+                                            aria-expanded="true"></a>
                                         <div class="dropdown-menu" style="display: none;" id="useroption">
                                             <a class="dropdown-item" href="index.php?page=result">Profiles</a>
                                             <div class="dropdown-divider"></div>
-                                            <a class="dropdown-item" id="logout" href="index.php?page=logout" name="logout">Logout</a>
+                                            <a class="dropdown-item" id="logout" href="index.php?page=logout"
+                                                name="logout">Logout</a>
                                         </div>
                                     </div>
                                 </li>
