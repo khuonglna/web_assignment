@@ -5,9 +5,12 @@
 	if ($res == "getStaffList") {
 		$usermodel = new UserModel();
 		$data = $usermodel->queryStaffList();
-		echo($data);
-	}
-	else {
+		echo ($data);
+	} else if ($res = "addStaff") {
+		$usermodel = new UserModel();
+		$result = $usermodel->addStaff($_REQUEST['name'], $_REQUEST['pass']);
+		echo $result;
+	} else {
 		
 		$staffList = substr($res, stripos($res, '_') + 1);
 		$flag = 1;

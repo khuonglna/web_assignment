@@ -1,6 +1,6 @@
 var ajax = new XMLHttpRequest();
 var method = "POST";
-var url = "controllers/delete_staff_controller.php?function=getStaffList";
+var url = "controllers/manage_staff_controller.php?function=getStaffList";
 var asynchronous = true;
 var numStaff = 0;
 ajax.onreadystatechange = function () {
