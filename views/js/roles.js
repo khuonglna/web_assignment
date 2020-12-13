@@ -12,7 +12,7 @@ ajax.send();
 
 ajax.onreadystatechange = function () {
 	if (this.readyState == 4 && this.status == 200) {
-		console.log(this.responseText);
+		// console.log(this.responseText);
 		var data = JSON.parse(this.responseText);
 		if (!data.username) {
 			state = LOGOUT;
