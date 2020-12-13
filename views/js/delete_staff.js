@@ -1,14 +1,4 @@
-///Hover effect
-// var ahome = document.getElementById("ahome");
-// var aabout = document.getElementById("aabout");
-// var aadd = document.getElementById("aadd");
 
-// ahome.classList.remove("active");
-// aabout.classList.remove("active");
-// aadd.classList.remove("active");
-
-// aadd.classList.add("active");
-console.log(aadd);
 var ajax = new XMLHttpRequest();
 var method = "POST";
 var url = "controllers/delete_staff_controller.php?function=getStaffList";
