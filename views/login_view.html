@@ -1,21 +1,24 @@
 <!DOCTYPE html>
 <html>
-
 <body>
+    <script src="views/js/login.js"></script>
+    
     <div class="container h-100 content">
         <div class="row justify-content-center align-items-center h-100">
             <div class="col-4 align-items-center">
                 <div class="card">
-                    <article class="card-body">
+                    <article class="card-body" >
                         <h4 class="card-title text-center mb-4 mt-1">Login</h4>
                         <hr>
-                        <form method="post" action="">
+                        <form method="post" action="" id='login_form'>
                             <div class="form-group">
                                 <div class="input-group">
                                     <div class="input-group-prepend">
                                         <span class="input-group-text"> <i class="fa fa-user"></i> </span>
                                     </div>
-                                    <input name="name" class="form-control" placeholder="Username" type="text">
+                                    <input name="name" class="form-control" 
+                                            placeholder="Username" 
+                                            type="text" id='name'>
                                 </div>
                             </div>
 
@@ -24,11 +27,22 @@
                                     <div class="input-group-prepend">
                                         <span class="input-group-text"> <i class="fa fa-lock"></i> </span>
                                     </div>
-                                    <input name="pass" class="form-control" placeholder="********" type="password">
+                                    <input name="pass" class="form-control" 
+                                            placeholder="********" 
+                                            type="password" id="pass">
                                 </div>
                             </div>
+
+                            <div class="form-check pl-5">
+                                <input type="checkbox" class="form-check-input" id="cookie">
+                                <label class="form-check-label" for="exampleCheck1">Remember me</label>
+                            </div>
+
+                            <p class="text-center text-danger" id="notification"></p>
                             <div class="form-group">
-                                <button type="submit" class="btn btn-primary btn-block">Login </button>
+                                <button type="button" 
+                                    class="btn btn-primary btn-block" 
+                                    onclick="login()">Login </button>
                             </div>
                         </form>
                     </article>

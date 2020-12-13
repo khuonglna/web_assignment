@@ -10,6 +10,11 @@ class Common
                 "role" => $_SESSION["role"]
             );
             return $var;
+        } else {
+            return array(
+                "username" => "",
+                "role" => ""
+            );
         }
     }
 }

@@ -73,10 +73,34 @@ function getResultByLevel (resultList, level){
 	return result;
 }
 
+function getResultByCategory (resultList, categoryList) {
+	var result = {};
+	var res = [];
+	for (i=0; i<categoryList.length; i++){
+		result[categoryList[i]] = 0;
+	}
+	for (i=0; i<resultList.length; i++){
+		result[resultList[i].category] += 1;
+	}
+	for (i=0; i<categoryList.length; i++){
+		res.push([])
+	}
+	console.log(result);
+
+	return result;
+}
+
+function showBarChart(resultList, categoryList){
+	var chart = anychart.bar(getResultByCategory(resultList, categoryList));
+	//chart.title("Taken Exam by Categories");
+	chart.container("barchart");
+	chart.draw();
+}
+
 function showPieChart (resultList){
 	if (resultList.length > 0){
 		var chart = anychart.pie(countSubmissionByLevel(resultList));
-		chart.title("Taken Exam by Levels");
+		//chart.title("Taken Exam by Levels");
 		chart.container("piechart");
 		chart.draw();
 	}
@@ -85,10 +109,10 @@ function showPieChart (resultList){
 function showLineChart (resultList, level){
 	if (resultList.length > 0){
 		var chart = anychart.line(getResultByLevel(resultList, level));
-		chart.title("Taken" + level + "Exam");
+		//chart.title("Taken " + level + " Exam");
 		var container = "linechart";
 		container = container.concat(level);
-		console.log(container);
+		//console.log(container);
 		chart.container(container);
 		chart.draw();
 	}
@@ -104,10 +128,13 @@ function getTableResult() {
 	ajax.onreadystatechange = function () {
 		if (this.readyState == 4 && this.status == 200) {
 			var data = this.responseText;
-			//console.log(data);
-			var resultList = JSON.parse(data);
+			console.log(data);
+			var resultArr = JSON.parse(data);
+			var resultList = resultArr[0];
+			var categoryList = resultArr[1];
 			showUserResult(resultList);
 			showPieChart(resultList);
+			//showBarChart(resultList, categoryList);
 			showLineChart(resultList, "Hard");
 			showLineChart(resultList, "Medium");
 			showLineChart(resultList, "Easy");
