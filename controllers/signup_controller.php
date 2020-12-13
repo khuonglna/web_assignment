@@ -1,29 +1,34 @@
 <?php
-
+session_start();
 define("DEFAULT_ROLE", 1);
-
-require_once('models/user_model.php');
+require_once('../models/user_model.php');
 class UserController
 {
 	public function getUser()
 	{
-		$username = isset($_POST['name']) ? $_POST['name'] : '';
-		$password = isset($_POST['pass']) ? $_POST['pass'] : '';
+		$res = $_REQUEST['do'];
+		if ($res == 'signup') {
+			$username = $_REQUEST['usr'];
+			$password = md5($_REQUEST['pwd']);
+		}
+		$username = $_REQUEST['usr'];
+		$password = md5($_REQUEST['pwd']);
 		if ($password != '' && $username != '') {
 			$usermodel = new UserModel();
 			$user = $usermodel->signup($username, $password);
-			if ($user) {
-				require_once('views/signup_view.html');
+			if ($user != null) {
 				$_SESSION["username"] = $username;
 				$_SESSION["role"] = DEFAULT_ROLE;
-				echo "sign up success";
+				echo 0;
 			} else {
-				require_once('views/signup_view.html');
-				echo "sign up failed";
+				echo 1;
 			}
 		} else {
-			require_once('views/signup_view.html');
-			// echo "invalid";
+			//require_once('views/signup_view.html');
+			echo 2;
 		}
 	}
 }
+
+$controller = new UserController();
+$controller -> getUser();

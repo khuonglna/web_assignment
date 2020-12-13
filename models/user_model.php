@@ -1,14 +1,6 @@
 <?php
 require_once('db_model.php');
 
-class User
-{
-    private $username;
-    private $userId;
-    private $role;
-    private $result = array();
-}
-
 class UserModel extends DbModel
 {
     public function signup($username, $password)
@@ -19,10 +11,10 @@ class UserModel extends DbModel
         $conn = $this->connect();
         $sql = "SELECT 
                         *
-                    FROM 
-                        USERS 
-                    WHERE 
-                        username='$username'";
+                FROM 
+                    USERS 
+                WHERE 
+                    username='$username'";
         $res = mysqli_query($conn, $sql);
         if (mysqli_num_rows($res) > 0) {
             return false;
@@ -43,10 +35,10 @@ class UserModel extends DbModel
         $conn = $this->connect();
         $sql = 'SELECT 
                         * 
-                    FROM 
-                        USERS
-                    WHERE 
-                        username = "' . $username . '" and password = "' . $password . '"';
+                FROM 
+                    USERS
+                WHERE 
+                    username = "' . $username . '" and password = "' . $password . '"';
         $res = mysqli_query($conn, $sql);
         if (mysqli_num_rows($res) > 0) {
             $row = mysqli_fetch_assoc($res);
@@ -79,8 +71,6 @@ class UserModel extends DbModel
         mysqli_query($conn, $query);
         return true;
     }
-
-
 
     public function queryStaffList() {
         $staffList = "";

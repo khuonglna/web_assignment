@@ -1,3 +1,4 @@
+<body onload="getRanking()">
 <div class="container content">
 	<div class="container">
 		<div id="slideshow" class="carousel slide" data-ride="carousel">
@@ -15,6 +16,7 @@
 						</div>
 					</div>
 				</div>
+			</div>
 
 				<div class="carousel-item">
 					<div class="row justify-content-md-center">
@@ -27,6 +29,7 @@
 						</div> -->
 					</div>
 				</div>
+			</div>
 
 				<div class="carousel-item">
 					<div class="row justify-content-md-center">
@@ -39,19 +42,179 @@
 						</div> -->
 					</div>
 				</div>
-
-
-				<a class="carousel-control-prev" href="#slideshow" data-slide="prev">
-					<!-- <span class="carousel-control-prev-icon"></span> -->
-					<i style="color:#000; font-size:30px;" class="fas fa-arrow-alt-circle-left"></i>
-					<span class="sr-only">Previous</span>
-				</a>
-				<a class="carousel-control-next" href="#slideshow" data-slide="next">
-					<!-- <span class="carousel-control-next-icon"></span> -->
-					<i style="color:#000; font-size:30px" class="fas fa-arrow-alt-circle-right"></i>
-					<span class="sr-only">Next</span>
-				</a>
 			</div>
+
+			<a class="carousel-control-prev" href="#slideshow" data-slide="prev">
+				<!-- <span class="carousel-control-prev-icon"></span> -->
+				<i style="color:#000; font-size:30px;" class="fas fa-arrow-alt-circle-left"></i>
+				<span class="sr-only">Previous</span>
+			</a>
+
+			<a class="carousel-control-next" href="#slideshow" data-slide="next">
+				<!-- <span class="carousel-control-next-icon"></span> -->
+				<i style="color:#000; font-size:30px" class="fas fa-arrow-alt-circle-right"></i>
+				<span class="sr-only">Next</span>
+			</a>
+		</div>
+	</div>
+
+	<!-- -------------------------- TIME ------------------------- -->
+	<!-- Use the custom-select class -->
+	<div id="ranking-tables" style="padding-top: 50px; ">
+		<div class="w-100" style="height: 40px;">
+			<div class="float-right">
+				<select class="custom-select" id="option" onchange="changeFunc()"> 
+					<option value="alltime">All time</option> 
+					<option value="lastmonth">Last month</option> 
+					<option value="lastweek">Last week</option> 
+			
+					<option value="hard">Level: Hard</option>
+					<option value="medium">Level: Medium</option>
+					<option value="easy">Level: Easy</option>
+					<option value="family">Topic: Family</option>
+					<option value="tense">Topic: Tense</option>
+					<option value="animal">Topic: Animal</option>
+					<option value="country">Topic: Country</option>
+					<option value="science">Topic: Science</option>
+				</select> 
+			</div>
+		</div>
+		
+
+		<p id="noti" class="text-center font-italic"></p>
+		<div id="alltime">
+			<p class="text-center font-weight-bold">All-time ranking</p>
+			<div class="d-flex justify-content-center">
+				<table class="table table-bordered table-striped">
+					<thead id="headerResultTable" class="text-center font-weight-bold bg-primary text-white">
+					</thead>
+					<tbody id="rankingTable">
+					</tbody>
+				</table>
+			</div>
+		</div>
+		
+		<div id="lastmonth" style="display: none;">
+			<p class="text-center font-weight-bold">Last month ranking</p>
+			<div class="d-flex justify-content-center">
+				<table class="table table-bordered table-striped">
+					<thead id="headerResultTable2" class="text-center font-weight-bold bg-primary text-white">
+					</thead>
+					<tbody id="rankingTable2">
+					</tbody>
+				</table>
+			</div>
+		</div>
+		
+		<div id="lastweek" style="display: none;">
+		<p class="text-center font-weight-bold">Last week ranking</p>
+		<div class="d-flex justify-content-center">
+			<table class="table table-bordered table-striped">
+				<thead id="headerResultTable3" class="text-center font-weight-bold bg-primary text-white">
+				</thead>
+				<tbody id="rankingTable3">
+				</tbody>
+			</table>
+		</div>
+		</div>
+	
+		<!-- -------------------------- LEVEL ------------------------- -->
+		<div id="hard" style="display: none;">
+		<p class="text-center font-weight-bold">Hard-level ranking</p>
+		<div class="d-flex justify-content-center">
+			<table class="table table-bordered table-striped">
+				<thead id="headerResultTable_3" class="text-center font-weight-bold bg-primary text-white">
+				</thead>
+				<tbody id="rankingTable_3">
+				</tbody>
+			</table>
+		</div>
+		</div>
+	
+		<div id="medium" style="display: none;">
+		<p class="text-center font-weight-bold">Medium-level ranking</p>
+		<div class="d-flex justify-content-center">
+			<table class="table table-bordered table-striped">
+				<thead id="headerResultTable_2" class="text-center font-weight-bold bg-primary text-white">
+				</thead>
+				<tbody id="rankingTable_2">
+				</tbody>
+			</table>
+		</div>
+		</div>
+	
+		<div id="easy" style="display: none;">
+		<p class="text-center font-weight-bold">Easy-level ranking</p>
+		<div class="d-flex justify-content-center">
+			<table class="table table-bordered table-striped">
+				<thead id="headerResultTable_1" class="text-center font-weight-bold bg-primary text-white">
+				</thead>
+				<tbody id="rankingTable_1">
+				</tbody>
+			</table>
+		</div>
+		</div>
+	
+		<!-- -------------------------- CATEGORY ------------------------- -->
+		<div id="family" style="display: none;">
+		<p class="text-center font-weight-bold">Family-category ranking</p>
+		<div class="d-flex justify-content-center">
+			<table class="table table-bordered table-striped">
+				<thead id="headerResultTable_Family" class="text-center font-weight-bold bg-primary text-white">
+				</thead>
+				<tbody id="rankingTable_Family">
+				</tbody>
+			</table>
+		</div>
+		</div>
+	
+		<div id="tense" style="display: none;">
+		<p class="text-center font-weight-bold">Tense-category ranking</p>
+		<div class="d-flex justify-content-center">
+			<table class="table table-bordered table-striped">
+				<thead id="headerResultTable_Tense" class="text-center font-weight-bold bg-primary text-white">
+				</thead>
+				<tbody id="rankingTable_Tense">
+				</tbody>
+			</table>
+		</div>
+		</div>
+		
+		<div id="animal" style="display: none;">
+		<p class="text-center font-weight-bold">Animal-category ranking</p>
+		<div class="d-flex justify-content-center">
+			<table class="table table-bordered table-striped">
+				<thead id="headerResultTable_Animal" class="text-center font-weight-bold bg-primary text-white">
+				</thead>
+				<tbody id="rankingTable_Animal">
+				</tbody>
+			</table>
+		</div>
+		</div>
+	
+		<div id="country" style="display: none;">
+		<p class="text-center font-weight-bold">Country-category ranking</p>
+		<div class="d-flex justify-content-center">
+			<table class="table table-bordered table-striped">
+				<thead id="headerResultTable_Country" class="text-center font-weight-bold bg-primary text-white">
+				</thead>
+				<tbody id="rankingTable_Country">
+				</tbody>
+			</table>
+		</div>
+		</div>
+	
+		<div id="science" style="display: none;">
+		<p class="text-center font-weight-bold">Science-category ranking</p>
+		<div class="d-flex justify-content-center">
+			<table class="table table-bordered table-striped">
+				<thead id="headerResultTable_Science" class="text-center font-weight-bold bg-primary text-white">
+				</thead>
+				<tbody id="rankingTable_Science">
+				</tbody>
+			</table>
+		</div>
 		</div>
 	</div>
 </div>
+</body>
