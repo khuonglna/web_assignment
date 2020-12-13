@@ -53,6 +53,9 @@ function openAddError() {
 
 
 function submitForm() {
+    closeNothingNoti();
+    closeAddSuccess();
+    closeAddError();
     var name = document.getElementById("staffname");
     var pass = document.getElementById("staffpass");
     
@@ -66,17 +69,15 @@ function submitForm() {
 
 
 function addStaff(dataStr) {
-    closeNothingNoti();
-    closeAddSuccess();
-    closeAddError();
     console.log(dataStr);
     ajax.onreadystatechange = function () {
         if (this.readyState == 4 && this.status == 200) {
             var result = this.responseText;
             console.log(result);
             if (result == true) {
-                document.getElementById("addForm").reset();
                 openAddSuccess();
+                document.getElementById("staffname").value = "";
+                document.getElementById("staffpass").value = "";
             } else {
                 openAddError();
             }

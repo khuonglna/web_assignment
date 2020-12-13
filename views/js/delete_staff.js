@@ -8,7 +8,7 @@
 // aadd.classList.remove("active");
 
 // aadd.classList.add("active");
-console.log(aadd);
+// console.log(aadd);
 var ajax = new XMLHttpRequest();
 var method = "POST";
 var url = "controllers/manage_staff_controller.php?";
@@ -87,12 +87,12 @@ function openGetError() {
 }
 
 function confirmDeleteStaff() {
+    closeNothingNoti();
+    closeDelSuccess();
+    closeDelError();
     var decision = confirm("ARE YOU SURE?");
 
 	if (decision) {
-		closeNothingNoti();
-		closeDelSuccess();
-        closeDelError();
         var table = document.getElementById("staffTable");
         var idx = 0;
         var del = false;
