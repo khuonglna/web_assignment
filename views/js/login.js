@@ -13,7 +13,12 @@ function login() {
 			if (response == 0) {
 				window.location.replace('index.php?page=home');
 			}
-			else {
+			if (response == 1) {
+				document.getElementById('notification').textContent = 'Wrong username or password';
+				var form = document.getElementById('login_form');
+				form.reset();
+			}
+			if (response == 2) {
 				document.getElementById('notification').textContent = 'Wrong username or password';
 				var form = document.getElementById('login_form');
 				form.reset();
