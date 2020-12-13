@@ -12,7 +12,7 @@ class UserController
 			$password = md5($_REQUEST['pwd']);
 		}
 		$username = $_REQUEST['usr'];
-		$password = md5($_REQUEST['pwd']);
+		$password = $_REQUEST['pwd'];
 		if ($password != '' && $username != '') {
 			$usermodel = new UserModel();
 			$user = $usermodel->signup($username, $password);

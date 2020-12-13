@@ -30,7 +30,10 @@ ajax.onreadystatechange = function () {
 				var para = document.createElement("a");
 				var node = document.createTextNode("Exam");
 				navitem.classList.add("nav-item");
+				
 				navitem.appendChild(para);
+				navitem.classList.add("pl-4");
+				// para.style.fontSize = "200%";
 				para.appendChild(node);
 				para.href = "index.php?page=exam_view";
 				para.classList.add("nav-link");
@@ -56,7 +59,9 @@ ajax.onreadystatechange = function () {
 				parent.classList.add("nav-link");
 				parent.classList.add("dropdown-toggle");
 				navitem.classList.add("nav-item");
+				navitem.classList.add("pl-4");
 				navitem.classList.add("dropdown");
+				// navitem.id = "aadd";
 				parent.setAttribute("data-toggle", "dropdown");
 
 				insertNode.appendChild(insertText);
@@ -86,9 +91,10 @@ ajax.onreadystatechange = function () {
 				parent.classList.add("nav-link");
 				parent.classList.add("dropdown-toggle");
 				navitem.classList.add("nav-item");
+				navitem.classList.add("pl-4");
 				navitem.classList.add("dropdown");
 				parent.setAttribute("data-toggle", "dropdown");
-
+				// navitem.id = "aadd";
 				insertNode.appendChild(insertText);
 				deleteNode.appendChild(deleteText);
 				parent.appendChild(nodeText);
@@ -102,12 +108,15 @@ ajax.onreadystatechange = function () {
 				var para = document.createElement("a");
 				var node = document.createTextNode("Exam");
 				navitem.classList.add("nav-item");
+				// navitem.id = "aadd";
+				navitem.classList.add("pl-4");
 				navitem.appendChild(para);
 				para.appendChild(node);
 				para.href = "index.php?page=exam_view";
 				para.classList.add("nav-link");
 				break;
 		}
+		navitem.id = "aadd";
 		var element = document.getElementById("nav_menu");
 		element.insertBefore(navitem, element.childNodes[2]);
 	}

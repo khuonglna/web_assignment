@@ -248,6 +248,18 @@ function sF(ele) {
 }
 
 function showCategory() {
+	///Hover effect
+	var ahome = document.getElementById("ahome");
+	var aabout = document.getElementById("aabout");
+	var aadd = document.getElementById("aadd");
+
+	ahome.classList.remove("active");
+	aabout.classList.remove("active");
+	aadd.classList.remove("active");
+
+	aadd.classList.add("active");
+
+	
 	url = "controllers/category_ptj.php";
 	ajax = new XMLHttpRequest();
 	ajax.open(METHOD, url, ASYN);
@@ -262,6 +274,9 @@ function showCategory() {
 			}
 		}
 	};
+
+	
+
 }
 
 function createCategory(name, id) {

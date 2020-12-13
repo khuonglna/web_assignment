@@ -39,7 +39,7 @@ function showUserResult(resultList) {
 		}
 	}
 	else {
-		document.getElementById("noti").innerHTML = "Have not taken exams!";
+		document.getElementById("noti").change = "Have not taken exams!";
 	}
 }
 
@@ -130,14 +130,25 @@ function getTableResult() {
 			var data = this.responseText;
 			console.log(data);
 			var resultArr = JSON.parse(data);
-			var resultList = resultArr[0];
-			var categoryList = resultArr[1];
-			showUserResult(resultList);
-			showPieChart(resultList);
-			//showBarChart(resultList, categoryList);
-			showLineChart(resultList, "Hard");
-			showLineChart(resultList, "Medium");
-			showLineChart(resultList, "Easy");
+			if (resultArr != null){
+				var resultList = resultArr[0];
+				var categoryList = resultArr[1];
+				showUserResult(resultList);
+				showPieChart(resultList);
+				//showBarChart(resultList, categoryList);
+				showLineChart(resultList, "Hard");
+				showLineChart(resultList, "Medium");
+				showLineChart(resultList, "Easy");
+			}
+			else {
+				document.getElementById('noti').textContent = 'No data available';
+				document.getElementById('result_container').style.background = 'white';
+				document.getElementById('examhistorty').style.display = 'none';
+				document.getElementById('difficulty').style.display = 'none';
+				document.getElementById('hard').style.display = 'none';
+				document.getElementById('medium').style.display = 'none';
+				document.getElementById('easy').style.display = 'none';
+			}
 		}
 	};
 }
