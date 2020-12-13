@@ -15,6 +15,9 @@ class UserController
 		}
 		
 		if ($password != '' && $username != '') {
+			if ($_REQUEST['cookie'] == 1) {
+				setcookie("user", $username, time() + 86400 * 30, "/");
+			}
 			$usermodel = new UserModel();
 			$user = $usermodel->signup($username, $password);
 			if ($user != null) {

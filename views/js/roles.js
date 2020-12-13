@@ -1,23 +1,29 @@
 var ajax = new XMLHttpRequest();
 var method = "GET";
-var url = "controllers/session_ptj.php";
+var url = "controllers/session_ptj.php?logout=0";
 var asynchronous = true;
 var userType;
 var LOGOUT = 0;
 var LOGIN = 1;
 var state;
 var name;
+var role;
 ajax.open(method, url, asynchronous);
 ajax.send();
 
 ajax.onreadystatechange = function () {
 	if (this.readyState == 4 && this.status == 200) {
-		// console.log(this.responseText);
+		console.log(this.responseText);
 		var data = JSON.parse(this.responseText);
 		if (!data.username) {
-			state = LOGOUT;
-			userType = 0;
-			name = "";
+			if (getCookie("user") && getCookie("role")) {
+				name = getCookie("user");
+				userType = getCookie("role");
+			} else {
+				state = LOGOUT;
+				userType = 0;
+				name = "";
+			}
 		} else {
 			state = LOGIN;
 			userType = data.role;
@@ -30,7 +36,7 @@ ajax.onreadystatechange = function () {
 				var para = document.createElement("a");
 				var node = document.createTextNode("Exam");
 				navitem.classList.add("nav-item");
-				
+
 				navitem.appendChild(para);
 				navitem.classList.add("pl-4");
 				// para.style.fontSize = "200%";
@@ -119,6 +125,16 @@ ajax.onreadystatechange = function () {
 		navitem.id = "aadd";
 		var element = document.getElementById("nav_menu");
 		element.insertBefore(navitem, element.childNodes[2]);
+
+		var ahome = document.getElementById("ahome");
+		var aabout = document.getElementById("aabout");
+		var aadd = document.getElementById("aadd");
+
+		ahome.classList.remove("active");
+		aabout.classList.remove("active");
+		aadd.classList.remove("active");
+
+		aadd.classList.add("active");
 	}
 };
 
@@ -143,3 +159,35 @@ function toggleTopNavbar(state, name) {
 		username.innerHTML = name;
 	}
 }
+
+function logout() {
+	url = "controllers/session_ptj.php?logout=1";
+	ajax.open(method, url, asynchronous);
+	ajax.send();
+	ajax.onreadystatechange = function () {
+		if (this.readyState == 4 && this.status == 200) {
+			console.log(this.responseText);
+			if (this.responseText) {
+				document.cookie = "user=;expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+				document.cookie = "role=;expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+				window.location.replace('index.php?page=home');
+			}
+		}
+	}
+}
+
+function getCookie(cname) {
+	var name = cname + "=";
+	var decodedCookie = decodeURIComponent(document.cookie);
+	var ca = decodedCookie.split(';');
+	for(var i = 0; i <ca.length; i++) {
+	  var c = ca[i];
+	  while (c.charAt(0) == ' ') {
+		c = c.substring(1);
+	  }
+	  if (c.indexOf(name) == 0) {
+		return c.substring(name.length, c.length);
+	  }
+	}
+	return "";
+  }

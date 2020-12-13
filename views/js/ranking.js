@@ -66,7 +66,7 @@ function showRanking(resultList) {  // ALL-TIME
 		timeHeader.appendChild(document.createTextNode('Easy Level Score'));
 
         resultList = sortUser(resultList);
-        console.log(resultList);
+        // console.log(resultList);
 		var table = document.getElementById("rankingTable");
 		for (i=0; i<resultList.length; i++){
 			// Insert a row at the end of the table
@@ -115,7 +115,7 @@ function showRankingLastMonth(resultList) {  // Last-month
 		timeHeader.appendChild(document.createTextNode('Easy Level Score'));
 
         resultList = sortUser(resultList);
-        console.log(resultList);
+        // console.log(resultList);
 		var table = document.getElementById("rankingTable2");
 		for (i=0; i<resultList.length; i++){
 			// Insert a row at the end of the table
@@ -145,7 +145,7 @@ function showRankingLastMonth(resultList) {  // Last-month
 }
 
 function showRankingLastWeek(resultList) {  // Last-week
-	console.log(resultList);
+	// console.log(resultList);
 	if (resultList == undefined){
 		document.getElementById('weekHeader').innerHTML = 'No data available';
 	}
@@ -165,7 +165,7 @@ function showRankingLastWeek(resultList) {  // Last-week
 		timeHeader.appendChild(document.createTextNode('Easy Level Score'));
 
         resultList = sortUser(resultList);
-        console.log(resultList);
+        // console.log(resultList);
 		var table = document.getElementById("rankingTable3");
 		for (i=0; i<resultList.length; i++){
 			// Insert a row at the end of the table
@@ -257,7 +257,7 @@ function changeFunc() {
 	science.style.display = 'none';
 
 	var selectedValue = selectBox.options[selectBox.selectedIndex].value;
-	console.log(selectedValue);
+	// console.log(selectedValue);
 	if (selectedValue == 'alltime'){
 		alltime.style.display = 'inline';
 	}
@@ -303,7 +303,7 @@ function getRanking() {
 	ajax.onreadystatechange = function () {
 		if (this.readyState == 4 && this.status == 200) {
             var data = this.responseText;
-			console.log(data);
+			// console.log(data);
 			var resultList = JSON.parse(data);
             showRanking(resultList['all_time']);
             showRankingLastMonth(resultList['last_month']);

@@ -21,14 +21,6 @@ if (isset($_GET['page'])) {
     elseif ($page == "sign_up") {
         include_once "views/signup_view.html";
     } 
-    elseif ($page == "logout") {
-        $controller = isset($_GET['controller']) ? $_GET['controller'] . 'Controller' : 'UserController';
-        $action = isset($_GET['action']) ? $_GET['action'] : 'logout';
-
-        require_once('controllers/logout_controller.php');
-        $usercontroller = new $controller();
-        $usercontroller->$action();
-    } 
     elseif ($page == "home") {
         include "views/$page.html";
     } 
@@ -61,6 +53,9 @@ if (isset($_GET['page'])) {
     elseif ($page == "ranking") {
         include "views/ranking.html";
     } 
+    elseif ($page == 'about'){
+        include "views/about_view.html";
+    }
     else {
         include "views/home.html";
     }
