@@ -323,19 +323,4 @@ function getRanking() {
             showRankingLevel(resultList['Science'], 'Science')
 		}
 	};
-
-
-	///Hover effect
-	var ahome = document.getElementById("ahome");
-	var aabout = document.getElementById("aabout");
-	var aadd = document.getElementById("aadd");
-
-	ahome.classList.remove("active");
-	aabout.classList.remove("active");
-	aadd.classList.remove("active");
-
-	ahome.classList.add("active");
-
-
-
 }
