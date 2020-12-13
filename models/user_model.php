@@ -91,7 +91,7 @@ class UserModel extends DbModel
         if (mysqli_num_rows($res) > 0) {
             while ($row = mysqli_fetch_assoc($res)) {
                 // $staffList= $staffList.'_'.$row["username"];
-           
+                $staffList[] = $row['username'];
             }
         }
         return $staffList;

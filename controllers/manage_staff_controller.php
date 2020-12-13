@@ -5,12 +5,12 @@
 	if ($res == "getStaffList") {
 		$usermodel = new UserModel();
 		$data = $usermodel->queryStaffList();
-		echo ($data);
-	} else if ($res = "addStaff") {
+		echo json_encode($data);
+	} else if ($res == "addStaff") {
 		$usermodel = new UserModel();
 		$result = $usermodel->addStaff($_REQUEST['name'], $_REQUEST['pass']);
 		echo $result;
-	} else {
+	} else if ($res == "deleteStaff") {
 		
 		$staffList = substr($res, stripos($res, '_') + 1);
 		$flag = 1;
@@ -30,4 +30,6 @@
 		// if ($flag) echo "Delete staffs sucessfully";
 		// else echo "Fail to delete staff";
 		echo $flag;
+	} else {
+		echo false;
 	}
