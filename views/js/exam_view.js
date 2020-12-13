@@ -5,7 +5,10 @@ var ASYN = true;
 var ELEMENTARY = 1;
 var INTERMEDIATE = 2;
 var NATIVE = 3;
+
+
 function showExam(questionList) {
+	
 	var exam = document.getElementById("examForm");
 
 	for (i = 0; i < QUESTION_NUMBER; i++) {
@@ -136,7 +139,7 @@ function showResult(result) {
 		document.getElementById(i).setAttribute("style", "color: green");
 	}
 	for (i of result.red) {
-		document.getElementById(i).setAttribute("style", "color: red");
+		document.getElementById(i).setAttribute("style", "color: red; font-weight: 900");
 	}
 	document
 		.getElementById("score")
@@ -211,7 +214,9 @@ function closeDifficult(ele) {
 
 function sF(ele) {
 	//alert(ele.id);
-
+	window.onbeforeunload = function(){
+		return 'Are you sure you want to leave? All progress will be lost';
+	};
 	var category = ele.parentElement.id.substr(
 		0,
 		ele.parentElement.id.length - 6

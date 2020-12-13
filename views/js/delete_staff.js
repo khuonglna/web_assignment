@@ -115,7 +115,7 @@ function requestDelStaff(staffList) {
             // alert(data);
             if (data == true) {
                 document.getElementById("success").style.display = "block";
-                location.reload();
+                // location.reload();
             } else {
                 document.getElementById("error").style.display = "block";
             }
