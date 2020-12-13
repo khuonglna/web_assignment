@@ -1,45 +1,45 @@
 <body onload="getRanking()">
 <div class="container content">
-	<div id="slideshow" class="carousel slide" data-ride="carousel">
-		<ul class="carousel-indicators">
-			<li data-target="#slideshow" data-slide-to="0" class="active"></li>
-			<li data-target="#slideshow" data-slide-to="1"></li>
-			<li data-target="#slideshow" data-slide-to="2"></li>
-		</ul>
+	<div class="container">
+		<div id="slideshow" class="carousel slide" data-ride="carousel">
+			<ul class="carousel-indicators">
+				<li data-target="#slideshow" data-slide-to="0" class="active"></li>
+				<li data-target="#slideshow" data-slide-to="1"></li>
+				<li data-target="#slideshow" data-slide-to="2"></li>
+			</ul>
 
-		<div class="carousel-inner">
-			<div class="carousel-item active">
-				<div class="row justify-content-md-center">
-					<div class="col text-center home-image-sidebar">
-						<img class="d-block rounded shadow-lg" src="http://mediad.publicbroadcasting.net/p/michigan/files/styles/medium/public/201402/standardized_test.jpg" width="700" height="300">
-					</div>
-
-					<div class="col home-text-sidebar">
-						<h2>Welcome to our online English test.</h2>
+			<div class="carousel-inner">
+				<div class="carousel-item active">
+					<div class="row justify-content-md-center">
+						<div class="col text-center home-image-sidebar">
+							<img class="d-block rounded shadow-lg" src="assets/images/home_eng.jpg" height="100%" width="100%">
+						</div>
 					</div>
 				</div>
 			</div>
 
-			<div class="carousel-item">
-				<div class="row justify-content-md-center">
-					<div class="col text-center home-image-sidebar">
-						<img class="d-block rounded shadow-lg" src="http://www.minddisorders.com/photos/wide-range-achievement-test-973.jpg" width="700" height="300">
-					</div>
+				<div class="carousel-item">
+					<div class="row justify-content-md-center">
+						<div class="col text-center home-image-sidebar">
+							<img class="d-block rounded shadow-lg" src="assets/images/home_img.png" width="100%">
+						</div>
 
-					<div class="col text-justify home-text-sidebar">
-						<h5>We are here to help you learn and improve your English.</h5>
+						<!-- <div class="col text-justify home-text-sidebar">
+							<h5>We are here to help you learn and improve your English.</h5>
+						</div> -->
 					</div>
 				</div>
 			</div>
 
-			<div class="carousel-item">
-				<div class="row justify-content-md-center">
-					<div class="col text-center home-image-sidebar">
-						<img class="d-block rounded shadow-lg" src="http://mediad.publicbroadcasting.net/p/michigan/files/styles/medium/public/201402/standardized_test.jpg" width="700" height="300">
-					</div>
+				<div class="carousel-item">
+					<div class="row justify-content-md-center">
+						<div class="col text-center home-image-sidebar">
+							<img class="d-block rounded shadow-lg" src="assets/images/home_people.jpg" width="100%">
+						</div>
 
-					<div class="col text-justify home-text-sidebar">
-						<h5>We have lots of exams with different topics and levels for you to test your English.</h5>
+						<!-- <div class="col text-justify home-text-sidebar">
+							<h5>We have lots of exams with different topics and levels for you to test your English.</h5>
+						</div> -->
 					</div>
 				</div>
 			</div>
@@ -60,9 +60,9 @@
 
 	<!-- -------------------------- TIME ------------------------- -->
 	<!-- Use the custom-select class -->
-	<div id="ranking-tables" style="padding-top: 50px; ">
+	<div id="ranking-tables" style="padding-top: 50px; padding-bottom: 50px; padding-left: 400px; padding-right: 400px;">
 		<div class="w-100" style="height: 40px;">
-			<div class="float-right">
+			<div class="float-left">
 				<select class="custom-select" id="option" onchange="changeFunc()"> 
 					<option value="alltime">All time</option> 
 					<option value="lastmonth">Last month</option> 
