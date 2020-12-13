@@ -1,63 +1,46 @@
 var ajax = new XMLHttpRequest();
 var method = "POST";
-var url = "controllers/manage_staff_controller.php?function=getStaffList";
+var url = "controllers/manage_staff_controller.php?";
 var asynchronous = true;
-var numStaff = 0;
-ajax.onreadystatechange = function () {
-    if (this.readyState == 4 && this.status == 200) {
-        var result = this.responseText;
-        // console.log(result);
-
-        if (result.length > 0) {
-            var data = JSON.parse(result);
-            console.log(data);
-            showStaff(data);
-        } else {
-            openGetError();
-        }
-    }
-}
-ajax.open(method, url, asynchronous);
-ajax.send();
+// var numStaff = 0;
 
 function showStaff(staffList) {
-    for (index in staffList) {
-        ///INSERT NEW ROW
-        var nrow = document.createElement("tr");
-        var idx = document.createElement("th");
-        var username = document.createElement("td");
-        var box = document.createElement("td");
-        var idxVal = document.createTextNode(index);
-        var userVal = document.createTextNode(staffList[index]);
+    // var index = 0;
+    var table = document.getElementById("staffTable");
+    for (var index in staffList) {
+		var newRow1 = table.insertRow(-1);
 
-        nrow.appendChild(idx);
-        nrow.appendChild(username);
-        nrow.appendChild(box);
+		// Insert a cell in the row
+		var id = newRow1.insertCell(0);
+		id.appendChild(document.createTextNode(parseFloat(index) + 1));
 
-        var fcheck = document.createElement("div");
-        var lbel = document.createElement("label");
-        var iput = document.createElement("input");
+        // Insert a cell in the row
+        var col = newRow1.insertCell(1);
 
-        idx.appendChild(idxVal);
-        username.appendChild(userVal);
-        username.id = "username" + index;
+		// Insert a cell for staff name
+        var name = newRow1.insertCell(2);
+		var name_text = document.createElement("textarea");
+		name_text.setAttribute("readOnly", "true");
+		name_text.setAttribute("class", "form-control text-dark");
+		name_text.setAttribute("aria-lable", "With textarea");
+		name_text.setAttribute("style", "border: none; resize: none; box-shadow: none; background-color: white;");
+		name_text.setAttribute("rows", "1");
+		name_text.setAttribute("cols", "30");
+		name_text.defaultValue = staffList[index];
+		name.appendChild(name_text);
 
-        box.appendChild(fcheck);
-        fcheck.appendChild(lbel);
-        lbel.appendChild(iput);
 
-        idx.scope = "row";
-        box.classList.add("p-0");
-        fcheck.classList.add("form-check");
-        lbel.classList.add("form-check-label");
-        iput.type = "checkbox";
-        iput.classList.add("form-check-input");
-        iput.id = "staff" + index;
-
-        var tble = document.getElementById("del_staff_table");
-        tble.appendChild(nrow);
-        index = index + 1;
+		// Insert a cell for selected button
+        var del = newRow1.insertCell(3);
+        del.setAttribute("id", staffList[index])
+        var delButton = document.createElement("input");
+        delButton.setAttribute("class", "form-check-input");
+		delButton.setAttribute("type", "checkbox");
+		delButton.setAttribute("id", "btn" + parseFloat(index));
+		del.appendChild(delButton);
     }
+    // console.log(index);
+    // numStaff = index + 1;
 }
 
 function closeNothingNoti() {
@@ -99,47 +82,74 @@ function confirmDeleteStaff() {
 		closeNothingNoti();
 		closeDelSuccess();
         closeDelError();
+        var table = document.getElementById("staffTable");
         var idx = 0;
-        var request = "";
-        var nstaff;
-        var usernameStaff;
-        for (idx = 1; idx <= numStaff; idx++){
-            nstaff = document.getElementById("staff" + idx);
-            if (nstaff.checked){ 
-                usernameStaff = document.getElementById("username" + idx);
-                request = request + "_" + usernameStaff.textContent;
+        var del = false;
+        // console.log(table.length);
+        for (idx = table.rows.length - 1; idx >= 0; idx--) {
+            var nstaff = document.getElementById("btn" + idx);
+            if (nstaff.checked) { 
+                del = true;
+                var staff = nstaff.parentElement.getAttribute("id");
+                var dataStr = "&staff=" + staff;
+                nstaff.checked = "false";
+                requestDelStaff(dataStr);
+                table.deleteRow(idx);
             }
         }
-
-        console.log(request + " - ");
-
-        if (request == "") {
+        // console.log(request + " - ");
+        if (del == false) {
             openNothingNoti();
         } else {
-            requestDelStaff(request);
+            resetStaffTable();
         }
     }
 }
 
-function requestDelStaff(staffList) {
-    var ajax = new XMLHttpRequest();
-    var method = "POST";
-    var url = "controllers/delete_staff_controller.php?function=deleteStaff";
-    var asynchronous = true;
+function resetStaffTable() {
+    var table = document.getElementById("staffTable");
+    for (var i = 0; i < table.rows.length; i++) {
+        table.rows[i].cells[0].innerHTML = i + 1;
+        table.rows[i].cells[3].children[0].id = "btn" + i;
+    }
+}
+
+function getStaffList() {
+    request = "function=getStaffList";
+    ajax.onreadystatechange = function () {
+        if (this.readyState == 4 && this.status == 200) {
+            var result = this.responseText;
+            // console.log(result);
+            if (result.length > 0) {
+                var data = JSON.parse(result);
+                console.log(data);
+                // staffList = data;
+                showStaff(data);
+            } else {
+                openGetError();
+            }
+        }
+    }
+    ajax.open(method, url + request, asynchronous);
+    ajax.send();
+}
+
+function requestDelStaff(dataStr) {
+    request = "function=deleteStaff" + dataStr;
     ajax.onreadystatechange = function () {
         if (this.readyState == 4 && this.status == 200) {
             var data = this.responseText;
-            console.log(data);
+            // console.log(data);
             // alert(data);
             if (data == true) {
                 openDelSuccess();
                 // location.reload();
             } else {
                 openDelError();
+                getStaffList();
             }
         }
     }
-    ajax.open(method, url + staffList, asynchronous);
+    ajax.open(method, url + request, asynchronous);
     ajax.send();
-    
 }

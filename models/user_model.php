@@ -86,7 +86,8 @@ class UserModel extends DbModel
                     USERS
                 WHERE 
                     role = '2'
-                ";
+                ORDER BY
+                    username";
         $res = mysqli_query($conn, $sql);
         if (mysqli_num_rows($res) > 0) {
             while ($row = mysqli_fetch_assoc($res)) {

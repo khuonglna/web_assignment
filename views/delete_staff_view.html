@@ -3,7 +3,7 @@
 <head>
     <script src="views/js/delete_staff.js"></script>
 </head>
-<body>
+<body onload="getStaffList()">
     <div class="container h-100 content">
         <!-- <form class="form-group p-5 mb-2 bg-light text-dark"> -->
             <div class="p-3 mb-2 bg-white text-dark">
@@ -11,15 +11,21 @@
                     <thead>
                         <tr>
                             <th scope="col">#</th>
-                            <th scope="col">username</th>
+                            <th scope="col"></th>
+                            <th scope="col">Username</th>
                             <th scope="col"></th>
                         </tr>
                     </thead>
-                    <tbody id="del_staff_table">
+
+                    <tbody id="staffTable">
                     </tbody>
                 </table>
+            </div>
+            
+            <div class="p-3 mb-2">
                 <button type="button" class="btn btn-success bg-primary" onclick="confirmDeleteStaff()">Confirm</button>
             </div>
+            
 
             <div class="alert alert-primary" role="alert" id="nothing" style="display:none;">
                 You have not chosen any staffs!!!

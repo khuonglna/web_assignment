@@ -11,25 +11,10 @@
 		$result = $usermodel->addStaff($_REQUEST['name'], $_REQUEST['pass']);
 		echo $result;
 	} else if ($res == "deleteStaff") {
-		
-		$staffList = substr($res, stripos($res, '_') + 1);
-		$flag = 1;
-		while (strlen($staffList) > 0){
-			$username = $staffList;
-			if (strripos($staffList, '_')){
-				$username = substr($staffList, strripos($staffList, '_') + 1);
-				$staffList = substr($staffList, 0, strlen($staffList) - strlen($username) - 1);
-			}
-			else $staffList = '';
+		$usermodel = new UserModel();
+		$result = $usermodel->deleteStaff($_REQUEST['staff']);
 
-			$usermodel = new UserModel();
-			if (!$usermodel->deleteStaff($username)) 
-				$flag = 0;
-		}
-
-		// if ($flag) echo "Delete staffs sucessfully";
-		// else echo "Fail to delete staff";
-		echo $flag;
+		echo $result;
 	} else {
 		echo false;
 	}
