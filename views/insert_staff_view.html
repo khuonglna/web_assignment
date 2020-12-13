@@ -1,20 +1,9 @@
 <!DOCTYPE html>
 <html>
-
-<!-- <head>
-    <script>
-        var ahome = document.getElementById("ahome");
-        var aabout = document.getElementById("aabout");
-        var aadd = document.getElementById("aadd");
-
-        ahome.classList.remove("active");
-        aabout.classList.remove("active");
-        aadd.classList.remove("active");
-        aadd.classList.add("active");
-    </script>
-</head> -->
-
-<body onload="getBorder()">
+<head>
+    <script src="views/js/insert_staff.js"></script>
+</head>
+<body onload="setUp()">
     <div class="container h-100 content">
         <div class="row justify-content-center align-items-center h-100">
             <div class="col-4 align-items-center">
@@ -22,32 +11,58 @@
                     <article class="card-body">
                         <h4 class="card-title text-center mb-4 mt-1">Staff details</h4>
                         <hr>
-                        <form method="post" action="">
+                        <form>
                             <div class="form-group">
                                 <div class="input-group">
                                     <div class="input-group-prepend">
                                         <span class="input-group-text"><i class="fas fa-user-cog"></i> </span>
                                     </div>
-                                    <input name="staffname" class="form-control" placeholder="Staffname" type="text">
+                                    <input id="staffname" name="staffname" class="form-control" placeholder="Staffname" type="text">
                                 </div>
                             </div>
-                            <?php echo "<p class='text-danger text-center h6'></p>" ?>
+                            <!-- <?php echo "<p class='text-danger text-center h6'></p>" ?> -->
 
                             <div class="form-group">
                                 <div class="input-group">
                                     <div class="input-group-prepend">
                                         <span class="input-group-text"> <i class="fas fa-key"></i> </span>
                                     </div>
-                                    <input name="staffpass" class="form-control" placeholder="********" type="password">
+                                    <input id="staffpass" name="staffpass" class="form-control" placeholder="********" type="password">
                                 </div>
                             </div>
-                            <?php echo "<p class='text-danger text-center h6'></p>" ?>
+                            <!-- <?php echo "<p class='text-danger text-center h6'></p>" ?> -->
                             <div class="form-group">
-                                <button type="submit" class="btn btn-primary btn-block"> Add staff </button>
+                                <button id="btn" type="button" class="btn btn-primary btn-block" onclick="submitForm()"> Add staff </button>
                             </div>
                         </form>
                     </article>
                 </div>
             </div>
         </div>
+        <br>
+
+        <div class="row justify-content-center align-items-center">
+            <div class="col-5 alert alert-primary" role="alert" id="nothing" style="display:none;">
+                You have not filled enough information!!!
+                <button type="button" class="close" aria-label="Close" onclick="closeNothingNoti()">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+
+            <div class="col-5 alert alert-success" role="alert" id="success" style="display:none;">
+                Add staff successfully!
+                <button type="button" class="close" aria-label="Close" onclick="closeAddSuccess()">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+
+            <div class="col-5 alert alert-danger" role="alert" id="error" style="display:none;">
+                Failed to add staff!!!
+                <button type="button" class="close" aria-label="Close" onclick="closeAddError()">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+        </div>
     </div>
+</body>
+</html>

@@ -23,7 +23,9 @@ class UserModel extends DbModel
                         USERS (username, password) 
                     VALUES 
                         ('$username','" . md5($password) . "')";
-        mysqli_query($conn, $query);
+        if (!mysqli_query($conn, $query)) {
+            return false;
+        }
         return true;
     }
 
@@ -68,12 +70,14 @@ class UserModel extends DbModel
                         USERS (username, password, role) 
                     VALUES 
                         ('$username','" . md5($password) . "','2')";
-        mysqli_query($conn, $query);
+        if (!mysqli_query($conn, $query)) {
+            return false;
+        }
         return true;
     }
 
     public function queryStaffList() {
-        $staffList = "";
+        $staffList = array();
         $idx = 0;
         $conn = $this->connect();
         $sql = "SELECT 
@@ -82,12 +86,13 @@ class UserModel extends DbModel
                     USERS
                 WHERE 
                     role = '2'
-                ";
+                ORDER BY
+                    username";
         $res = mysqli_query($conn, $sql);
         if (mysqli_num_rows($res) > 0) {
             while ($row = mysqli_fetch_assoc($res)) {
-                $staffList= $staffList.'_'.$row["username"];
-           
+                // $staffList= $staffList.'_'.$row["username"];
+                $staffList[] = $row['username'];
             }
         }
         return $staffList;
