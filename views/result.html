@@ -18,11 +18,10 @@
 
 <body onload="getTableResult()">
     <script src="views/js/result.js"></script>
+    <p id="noti" class="text-center font-italic"></p>
     <div class="container content" id="result_container">
-        <p id="noti" class="text-center font-italic"></p>
-
         <div class="row justify-content-center">
-            <div class="col-auto ">
+            <div class="col" id="examhistorty">
                 <p class="text-center font-weight-bold">Exam history</p>
                 <table class="table table-bordered table-striped" id="result_table" >
                     <thead id="headerResultTable" class="text-center font-weight-bold">
@@ -37,13 +36,13 @@
         <div class="row">
             <div class="col" style="padding: 30px 80px; 
                                     margin: 20px; 
-                                    background-color: white;">
+                                    background-color: white;" id="difficulty">
                 <p class="text-center font-weight-bold">Difficulty history</p>
                 <div id="piechart"></div>
             </div>
             <div class="col" style="padding: 30px 80px; 
                                     margin: 20px;
-                                    background-color: white;">
+                                    background-color: white;" id="hard">
                 <p class="text-center font-weight-bold">Hard exam history</p>                    
                 <div id="linechartHard"></div>
             </div>
@@ -52,13 +51,13 @@
         <div class="row">
             <div class="col" style="padding: 30px 80px; 
                                     margin: 20px;
-                                    background-color: white;">
+                                    background-color: white;" id="medium">
                 <p class="text-center font-weight-bold">Medium exam history</p>                     
                 <div id="linechartMedium"></div>
             </div>
             <div class="col" style="padding: 30px 80px; 
                                     margin: 20px;
-                                    background-color: white;">
+                                    background-color: white;" id="easy">
                 <p class="text-center font-weight-bold">Easy exam history</p> 
                 <div id="linechartEasy"></div>
             </div>
