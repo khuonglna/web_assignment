@@ -20,6 +20,7 @@ ajax.onreadystatechange = function () {
 			if (getCookie("user") && getCookie("role")) {
 				name = getCookie("user");
 				userType = getCookie("role");
+				state = LOGIN;
 			} else {
 				state = LOGOUT;
 				userType = 0;
