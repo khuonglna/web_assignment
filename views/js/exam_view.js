@@ -257,19 +257,26 @@ function showCategory() {
 	ajax.onreadystatechange = function () {
 		if (this.readyState == 4 && this.status == 200) {
 			var data = this.responseText;
-			// console.log(data);
+			console.log(data);
 			data = JSON.parse(this.responseText);
-			for (x of data) {
-				createCategory(x.name, x.id + "category");
+			for (var index in data) {
+				if (index < data.length/2) {
+					createCategory(data[index].name, data[index].id + "category", index);
+				} else {
+					createCategory(data[index].name, data[index].id + "category", data.length-index);
+				}
+				
 			}
 		}
 	};
-
-	
-
 }
 
-function createCategory(name, id) {
+function intToARGB(hex) {
+    hex = '000000' + hex;
+    return hex.substring(hex.length, hex.length-6);
+}
+
+function createCategory(name, id, index) {
 	var container = document.createElement("div");
 	var temp = document.createElement("div");
 	var category = document.createElement("button");
@@ -278,6 +285,11 @@ function createCategory(name, id) {
 	var Intermediate = document.createElement("button");
 	var Native = document.createElement("button");
 	var pbreak = document.createElement("br");
+
+	var color = parseInt('180A00',16) * parseInt(index) + parseInt('268FFF', 16);
+	var background = intToARGB(color.toString(16));
+
+	container.setAttribute("style", "background: #" + background + ";");
 
 	category.setAttribute("id", id);
 	category.setAttribute("onmouseover", "openDifficult(this)");
@@ -310,7 +322,7 @@ function createCategory(name, id) {
 
 	container.classList.add("tab");
 	container.classList.add("col-sm-3");
-	temp.classList.add("col-sm-3");
+	temp.classList.add("col-sm-1");
 	category.classList.add("tablinks");
 	Elementary.classList.add("tablinks");
 	Intermediate.classList.add("tablinks");
@@ -324,6 +336,6 @@ function createCategory(name, id) {
 	container.appendChild(choice);
 	container.appendChild(pbreak);
 	var element = document.getElementById("where");
-	element.appendChild(temp);
 	element.appendChild(container);
+	element.appendChild(temp);
 }
