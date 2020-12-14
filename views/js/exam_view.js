@@ -138,10 +138,10 @@ function getSubmission() {
 
 function showResult(result) {
 	for (i of result.green) {
-		document.getElementById(i).setAttribute("style", "color: green");
+		document.getElementById(i).setAttribute("style", "color: green; font-weight: 600");
 	}
 	for (i of result.red) {
-		document.getElementById(i).setAttribute("style", "color: red; font-weight: 900");
+		document.getElementById(i).setAttribute("style", "color: red; font-weight: 600");
 	}
 	document
 		.getElementById("score")
