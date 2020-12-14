@@ -258,3 +258,8 @@ div {
 #navfooter2 a:hover {
 	background-color: white;
 }
+
+#examForm {
+	border: solid black;
+	border-width: thin;
+}

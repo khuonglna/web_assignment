@@ -20,6 +20,8 @@ function showExam(questionList) {
 		var hidden = document.createElement("input");
 		var questionElement = document.createElement("p");
 		var questionText = document.createTextNode(questionList[i].q_text);
+		var dash = document.getElementById("dash");
+		dash.style.display = '';
 		questionNumber.classList.add("questionNumber");
 		outerCtn.classList.add("container");
 		questionCtn.classList.add("container");
@@ -175,7 +177,7 @@ function submitForm() {
 		ajax.onreadystatechange = function () {
 			if (this.readyState == 4 && this.status == 200) {
 				data = this.responseText;
-				// console.log(data);
+				console.log(data);
 				// console.log(JSON.parse(data));
 				result = JSON.parse(data);
 				// console.log(result);
