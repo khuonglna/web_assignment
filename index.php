@@ -2,6 +2,7 @@
 session_start();
 include 'views/header.html';
 
+define('MEMBER', '1');
 define('STAFF', '2');
 define('ADMIN', '3');
 
@@ -15,10 +16,10 @@ if (isset($_GET['page'])) {
     if ($page == "") {
         include "views/exception.html";
     } 
-    elseif ($page == "login") {
+    elseif ($page == "login" && $role == '') {
         include_once "views/login_view.html";
     } 
-    elseif ($page == "sign_up") {
+    elseif ($page == "sign_up" && $role == '') {
         include_once "views/signup_view.html";
     } 
     elseif ($page == "home") {
@@ -54,7 +55,7 @@ if (isset($_GET['page'])) {
     elseif ($page == "ranking") {
         include "views/ranking.html";
     } 
-    elseif ($page == 'about'){
+    elseif ($page == "about") {
         include "views/about_view.html";
     }
     else {

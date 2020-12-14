@@ -8,19 +8,22 @@
 <body onload="getCategory()">
 	<div class="container content">
 		<form id="deleteForm" class="form-group p-5 mb-2 bg-light text-dark">
+			<div>
+				<h4>Select category and level to modify question(s)</h4>
+			</div>
+			<br>
+
 			<div class="row justify-content-md-center">
 				<div class="col col-3 text-center">
-					<h5>Category:</h5>
-					<select onchange="openQuestionList()" class="custom-select custom-select-sm" name="category" id="category" required>
+					<h5>Category</h5>
+					<select onchange="openForm()" class="custom-select custom-select-sm" name="category" id="category" required>
 						<option value=""></option>
-						<!-- <option value="1">Family</option>
-            <option value="2">Tense</option> -->
 					</select>
 				</div>
 
 				<div class="col col-3 text-center">
-					<h5>Level:</h5>
-					<select onchange="openQuestionList()" class="custom-select custom-select-sm" name="level" id="level" required>
+					<h5>Level</h5>
+					<select onchange="openForm()" class="custom-select custom-select-sm" name="level" id="level" required>
 						<option value=""></option>
 						<option value="1">Elementary</option>
 						<option value="2">Intermediate</option>
@@ -28,7 +31,7 @@
 					</select>
 				</div>
 			</div>
-			<br>
+			<br><br>
 
 			<div id="questionForm" style="display:none;" class="p-3 mb-2 bg-white text-dark">
 				<table class="table table-bordered">

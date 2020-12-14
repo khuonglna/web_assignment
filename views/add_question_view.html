@@ -8,16 +8,21 @@
 <body onload="setUp()">
 	<div class="container content">
 		<form id="addForm" class="form-group p-5 mb-2 bg-light text-dark">
+			<div>
+				<h4>Select category and level to add new question</h4>
+			</div>
+			<br>
+
 			<div class="row justify-content-md-center">
 				<div class="col col-3 text-center">
-					<h5>Category:</h5>
+					<h5>Category</h5>
 					<select onchange="openForm()" class="custom-select custom-select-sm" name="category" id="category" required>
 						<option value=""></option>
 					</select>
 				</div>
 
 				<div class="col col-3 text-center">
-					<h5>Level:</h5>
+					<h5>Level</h5>
 					<select onchange="openForm()" class="custom-select custom-select-sm" name="level" id="level" required>
 						<option value=""></option>
 						<option value="1">Elementary</option>
