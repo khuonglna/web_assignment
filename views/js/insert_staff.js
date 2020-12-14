@@ -13,16 +13,22 @@ function onEnterEvent() {
 	var pass = document.getElementById("staffpass");
 
 	name.addEventListener("keyup", function (event) {
-		if (event.keyCode === 13) {
-			event.preventDefault();
-			document.getElementById("btn").click();
-		}
+        closeNothingNoti();
+        closeAddSuccess();
+        closeAddError();
+		// if (event.keyCode === 13) {
+		// 	event.preventDefault();
+		// 	document.getElementById("btn").click();
+		// }
 	});
 	pass.addEventListener("keyup", function (event) {
-		if (event.keyCode === 13) {
-			event.preventDefault();
-			document.getElementById("btn").click();
-		}
+        closeNothingNoti();
+        closeAddSuccess();
+        closeAddError();
+		// if (event.keyCode === 13) {
+		// 	event.preventDefault();
+		// 	document.getElementById("btn").click();
+		// }
 	});
 }
 

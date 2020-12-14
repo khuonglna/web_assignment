@@ -21,7 +21,7 @@ function showStaff(staffList) {
         var name = newRow1.insertCell(2);
 		var name_text = document.createElement("textarea");
 		name_text.setAttribute("readOnly", "true");
-		name_text.setAttribute("class", "form-control text-dark");
+		name_text.setAttribute("class", "text-dark");
 		name_text.setAttribute("aria-lable", "With textarea");
 		name_text.setAttribute("style", "border: none; resize: none; box-shadow: none; background-color: white;");
 		name_text.setAttribute("rows", "1");
