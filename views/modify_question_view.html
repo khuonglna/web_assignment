@@ -2,10 +2,10 @@
 <html>
 
 <head>
-	<script src="views/js/modify_question_view.js"></script>
+	<script src="views/js/modify_question.js"></script>
 </head>
 
-<body onload="getCategory(); getBorder()">
+<body onload="getCategory()">
 	<div class="container content">
 		<form id="deleteForm" class="form-group p-5 mb-2 bg-light text-dark">
 			<div class="row justify-content-md-center">
@@ -22,9 +22,9 @@
 					<h5>Level:</h5>
 					<select onchange="openQuestionList()" class="custom-select custom-select-sm" name="level" id="level" required>
 						<option value=""></option>
-						<option value="1">Easy</option>
-						<option value="2">Medium</option>
-						<option value="3">Hard</option>
+						<option value="1">Elementary</option>
+						<option value="2">Intermediate</option>
+						<option value="3">Native</option>
 					</select>
 				</div>
 			</div>
