@@ -3,45 +3,61 @@
 <head>
     <script src="views/js/delete_staff.js"></script>
 </head>
-<body onload="getBorder()">
+<body onload="getStaffList()">
     <div class="container h-100 content">
-        <!-- <form class="form-group p-5 mb-2 bg-light text-dark"> -->
+        <div class="p-5 mb-2 bg-light">
             <div class="p-3 mb-2 bg-white text-dark">
+                <h3 class="row justify-content-sm-center">Staff List</h3>
+                <br>
                 <table class="table">
-                    <thead>
+                    <thead class="bg-primary text-white">
                         <tr>
                             <th scope="col">#</th>
-                            <th scope="col">username</th>
+                            <th scope="col"></th>
+                            <th scope="col">Staff username</th>
                             <th scope="col"></th>
                         </tr>
                     </thead>
-                    <tbody id="del_staff_table">
+
+                    <tbody id="staffTable">
                     </tbody>
                 </table>
-                <button type="button" class="btn btn-success bg-primary" onclick="confirmDeleteStaff()">Confirm</button>
             </div>
-
+            <br>
+            
+            <div class="row justify-content-md-center">
+                <button type="button" class="btn btn-block bg-primary text-white" style="width:150px; text-align:center;" onclick="confirmDeleteStaff()">Delete</button>
+            </div>
+            <br>
+            
             <div class="alert alert-primary" role="alert" id="nothing" style="display:none;">
                 You have not chosen any staffs!!!
                 <button type="button" class="close" aria-label="Close" onclick="closeNothingNoti()">
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
-
+    
             <div class="alert alert-success" role="alert" id="success" style="display:none;">
                 Delete staff(s) successfully!
                 <button type="button" class="close" aria-label="Close" onclick="closeDelSuccess()">
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
-
+    
             <div class="alert alert-danger" role="alert" id="error" style="display:none;">
                 Failed to delete staff(s)!!!
                 <button type="button" class="close" aria-label="Close" onclick="closeDelError()">
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
-        <!-- </form> -->
+    
+            <div class="alert alert-danger" role="alert" id="get" style="display:none;">
+                Failed to get staffs!!!
+                <button type="button" class="close" aria-label="Close" onclick="closeGetError()">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+        </div>
     </div>
 </body>
 

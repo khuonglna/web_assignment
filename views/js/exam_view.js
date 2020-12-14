@@ -20,6 +20,8 @@ function showExam(questionList) {
 		var hidden = document.createElement("input");
 		var questionElement = document.createElement("p");
 		var questionText = document.createTextNode(questionList[i].q_text);
+		var dash = document.getElementById("dash");
+		dash.style.display = '';
 		questionNumber.classList.add("questionNumber");
 		outerCtn.classList.add("container");
 		questionCtn.classList.add("container");
@@ -136,16 +138,17 @@ function getSubmission() {
 
 function showResult(result) {
 	for (i of result.green) {
-		document.getElementById(i).setAttribute("style", "color: green");
+		document.getElementById(i).setAttribute("style", "color: green; font-weight: 600");
 	}
 	for (i of result.red) {
-		document.getElementById(i).setAttribute("style", "color: red; font-weight: 900");
+		document.getElementById(i).setAttribute("style", "color: red; font-weight: 600");
 	}
 	document
 		.getElementById("score")
 		.appendChild(document.createTextNode("Congratulation, you got " + result.score + "/100"));
 	// document.getElementById("congratulation").removeAttribute("style");
 	window.scrollTo({top: 0, behavior: 'smooth'});
+	window.onbeforeunload = null;
 }
 
 function retry() {
@@ -174,7 +177,7 @@ function submitForm() {
 		ajax.onreadystatechange = function () {
 			if (this.readyState == 4 && this.status == 200) {
 				data = this.responseText;
-				// console.log(data);
+				console.log(data);
 				// console.log(JSON.parse(data));
 				result = JSON.parse(data);
 				// console.log(result);
@@ -249,17 +252,6 @@ function sF(ele) {
 
 function showCategory() {
 	///Hover effect
-	var ahome = document.getElementById("ahome");
-	var aabout = document.getElementById("aabout");
-	var aadd = document.getElementById("aadd");
-
-	ahome.classList.remove("active");
-	aabout.classList.remove("active");
-	aadd.classList.remove("active");
-
-	aadd.classList.add("active");
-
-	
 	url = "controllers/category_ptj.php";
 	ajax = new XMLHttpRequest();
 	ajax.open(METHOD, url, ASYN);
@@ -267,19 +259,26 @@ function showCategory() {
 	ajax.onreadystatechange = function () {
 		if (this.readyState == 4 && this.status == 200) {
 			var data = this.responseText;
-			// console.log(data);
+			console.log(data);
 			data = JSON.parse(this.responseText);
-			for (x of data) {
-				createCategory(x.name, x.id + "category");
+			for (var index in data) {
+				if (index < data.length/2) {
+					createCategory(data[index].name, data[index].id + "category", index);
+				} else {
+					createCategory(data[index].name, data[index].id + "category", data.length-index);
+				}
+				
 			}
 		}
 	};
-
-	
-
 }
 
-function createCategory(name, id) {
+function intToARGB(hex) {
+    hex = '000000' + hex;
+    return hex.substring(hex.length, hex.length-6);
+}
+
+function createCategory(name, id, index) {
 	var container = document.createElement("div");
 	var temp = document.createElement("div");
 	var category = document.createElement("button");
@@ -288,6 +287,11 @@ function createCategory(name, id) {
 	var Intermediate = document.createElement("button");
 	var Native = document.createElement("button");
 	var pbreak = document.createElement("br");
+
+	var color = parseInt('180A00',16) * parseInt(index) + parseInt('268FFF', 16);
+	var background = intToARGB(color.toString(16));
+
+	container.setAttribute("style", "background: #" + background + ";");
 
 	category.setAttribute("id", id);
 	category.setAttribute("onmouseover", "openDifficult(this)");
@@ -320,7 +324,7 @@ function createCategory(name, id) {
 
 	container.classList.add("tab");
 	container.classList.add("col-sm-3");
-	temp.classList.add("col-sm-3");
+	temp.classList.add("col-sm-1");
 	category.classList.add("tablinks");
 	Elementary.classList.add("tablinks");
 	Intermediate.classList.add("tablinks");
@@ -334,6 +338,6 @@ function createCategory(name, id) {
 	container.appendChild(choice);
 	container.appendChild(pbreak);
 	var element = document.getElementById("where");
-	element.appendChild(temp);
 	element.appendChild(container);
+	element.appendChild(temp);
 }

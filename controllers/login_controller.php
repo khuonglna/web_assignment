@@ -13,11 +13,16 @@ class UserController
 		$username = $_REQUEST['usr'];
 		$password = md5($_REQUEST['pwd']);
 		if ($password != '' && $username != '') {
+			
 			$usermodel = new UserModel();
 			$user = $usermodel->login($username, $password);
 			if ($user != null) {
 				$_SESSION["username"] = $user["username"];
 				$_SESSION["role"] = $user["role"];
+				if($_REQUEST['cookie'] == 1) {
+					setcookie("user", $user["username"], time() + 86400 * 30, "/");
+					setcookie("role", $user["role"], time() + 86400 * 30, "/");
+				}
 				echo 0;
 			} else {
 				echo 1;

@@ -7,13 +7,17 @@ class UserController
 	public function getUser()
 	{
 		$res = $_REQUEST['do'];
+		$username = '';
+		$password = '';
 		if ($res == 'signup') {
 			$username = $_REQUEST['usr'];
-			$password = md5($_REQUEST['pwd']);
+			$password = $_REQUEST['pwd'];
 		}
-		$username = $_REQUEST['usr'];
-		$password = md5($_REQUEST['pwd']);
+		
 		if ($password != '' && $username != '') {
+			if ($_REQUEST['cookie'] == 1) {
+				setcookie("user", $username, time() + 86400 * 30, "/");
+			}
 			$usermodel = new UserModel();
 			$user = $usermodel->signup($username, $password);
 			if ($user != null) {

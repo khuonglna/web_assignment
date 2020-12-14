@@ -1,15 +1,11 @@
 <?php
     session_start();
-    if (isset($_SESSION["username"])) {
-        $var = array(
-            "username" => $_SESSION["username"],
-            "role" => $_SESSION["role"]
-        );
-        echo json_encode($var);
+    include "common_controller.php";
+    $common = new Common();
+    if ($_REQUEST['logout'] == 1) {
+        session_unset();
+        echo 1;
     } else {
-        echo json_encode(array(
-            "username" => "",
-            "role" => ""
-        ));
+        echo json_encode($common->checkLogin());  
     }
 ?>

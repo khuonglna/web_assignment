@@ -5,36 +5,44 @@
 
 </head>
 
-<body onload="showCategory(); getBorder()">
+<body onload="showCategory()">
 
-    <div class="container content">
-        <div id="categorySelectionCtn" class="container"">
+    <div class="container content p-5 mb-2 bg-light">
+        <div id="categorySelectionCtn" class="container">
             <h1 style="padding-bottom: 25px;" id="category">Select Category and Level</h1>
             <!-- <script src="views/js/category_function.js"></script> -->
             <div id='where' class="row">
             </div>
         </div>
-        <form id="examForm" class="form-group" style="display: none;">
-            <div class="container">
-                <div class="row">
-                    <div class="col">
-                        <p style="font-size: 2em; color: #007bff">Category:</p>
-                    </div>
-                    <div class="col">
-                        <p style="font-size: 2em" id="examCategory"></p>
-                    </div>
+        <div class="container">
+            <div class="row justify-content-md-center">
+                <!-- <div class="col-2">
+                    <p style="font-size: 2em">Category:</p>
+                </div> -->
+                <!-- <div class="col-3"></div> -->
+                <div class="col-2">
+                    <p style="font-size: 2em; color: black; text-align: right;;" id="examCategory"></p>
+                </div>
+                <div class="col-1">
+                    <p style="font-size: 2em; color: black; text-align: center; display: none;" id="dash"><i class="fas fa-chevron-right"></i> </p>
+                </div>
+                <div class="col-2">
+                    <p style="font-size: 2em; color: black; text-align: left;" id="examLevel"></p>
                 </div>
             </div>
-            <div class="container">
+        </div>
+        <form id="examForm" class="form-group p-3 mb-2 bg-white" style="display: none;">
+            
+            <!-- <div class="container">
                 <div class="row">
-                    <div class="col">
-                        <p style="font-size: 2em; color: #007bff" >Level:</p>
+                    <div class="col-2">
+                        <p style="font-size: 2em" >Level:</p>
                     </div>
-                    <div class="col">
-                        <p style="font-size: 2em" id="examLevel"></p>
+                    <div class="col-1">
+                        <p style="font-size: 2em; color: #007bff" id="examLevel"></p>
                     </div>
                 </div>
-            </div>
+            </div> -->
             <div class="container">
                 <div class="row">
                     <div class="col-sm-7 mx-auto">
@@ -43,11 +51,13 @@
                 </div>
             </div>
         </form>
+        <br>
+        
         <div class="container">
             <div class="row">
                 <div class="col text-center">
                     <button id="submitBtn" type="button" class="btn btn-primary" onclick="submitForm()"
-                        style="display: none;">Submit</button>
+                        style="display: none">Submit</button>
                 </div>
             </div>
         </div>
