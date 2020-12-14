@@ -14,6 +14,7 @@ ajax.send();
 ajax.onreadystatechange = function () {
 	if (this.readyState == 4 && this.status == 200) {
 		console.log(this.responseText);
+		console.log(window.location.hostname);
 		var data = JSON.parse(this.responseText);
 		if (!data.username) {
 			if (getCookie("user") && getCookie("role")) {
@@ -126,15 +127,15 @@ ajax.onreadystatechange = function () {
 		var element = document.getElementById("nav_menu");
 		element.insertBefore(navitem, element.childNodes[2]);
 
-		var ahome = document.getElementById("ahome");
-		var aabout = document.getElementById("aabout");
-		var aadd = document.getElementById("aadd");
+		// var ahome = document.getElementById("ahome");
+		// var aabout = document.getElementById("aabout");
+		// var aadd = document.getElementById("aadd");
 
-		ahome.classList.remove("active");
-		aabout.classList.remove("active");
-		aadd.classList.remove("active");
+		// ahome.classList.remove("active");
+		// aabout.classList.remove("active");
+		// aadd.classList.remove("active");
 
-		aadd.classList.add("active");
+		// aadd.classList.add("active");
 	}
 };
 
@@ -144,15 +145,18 @@ function toggleTopNavbar(state, name) {
 	var username = document.getElementById("username");
 	var logout = document.getElementById("logout");
 	var usershow = document.getElementById("useroption");
+	var footer = document.getElementById("footer-profile");
 	if (state == LOGOUT) {
 		login.removeAttribute("style");
 		signup.removeAttribute("style");
+		footer.style.display = "none";
 		username.style.display = "none";
 		logout.style.display = "none";
 		usershow.style.display = "none";
 	} else {
 		login.style.display = "none";
 		signup.style.display = "none";
+		footer.removeAttribute("style");
 		username.removeAttribute("style");
 		logout.removeAttribute("style");
 		usershow.removeAttribute("style");
