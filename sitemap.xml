@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://localhost/web_assignment/index.php">
+    <url>
+        <loc>http://localhost/web_assignment/index.php?page=home</loc>
+        <lastmod>2020-12-14</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+   </url>
+   <url>
+        <loc>http://localhost/web_assignment/index.php?page=exam_view</loc>
+        <lastmod>2020-12-14</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+   </url>
+   <url>
+        <loc>http://localhost/web_assignment/index.php?page=about</loc>
+        <lastmod>2020-12-14</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+   </url>
+   <url>
+        <loc>http://localhost/web_assignment/index.php?page=sign_up</loc>
+        <lastmod>2020-12-14</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+   </url>
+   <url>
+        <loc>http://localhost/web_assignment/index.php?page=login</loc>
+        <lastmod>2020-12-14</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+   </url>
+   <url>
+        <loc>http://localhost/web_assignment/index.php?page=result</loc>
+        <lastmod>2020-12-14</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+   </url>
+</urlset>
+
+
