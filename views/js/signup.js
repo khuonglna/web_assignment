@@ -1,6 +1,12 @@
 function sign_up() {
 	username = document.getElementById("name").value;
 	password = document.getElementById("pass").value;
+	password2 = document.getElementById("pass2").value;
+	if (password != password2){
+		document.getElementById("notification").textContent =
+					"Please confirm your password again";
+		return;
+	}
 	cookie = document.getElementById("cookie");
 	var url = "";
 	if (cookie.checked) {
