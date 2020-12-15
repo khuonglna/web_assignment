@@ -22,13 +22,9 @@ function login() {
 			}
 			if (response == 1) {
 				document.getElementById('notification').textContent = 'Wrong username or password';
-				var form = document.getElementById('login_form');
-				form.reset();
 			}
 			if (response == 2) {
 				document.getElementById('notification').textContent = 'Please input username and password';
-				var form = document.getElementById('login_form');
-				form.reset();
 			}
 		}
 	};
