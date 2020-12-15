@@ -6,12 +6,14 @@ class UserController
 	public function getUser()
 	{
 		$res = $_REQUEST['do'];
+		$username = '';
+		$password = '';
 		if ($res == 'login') {
 			$username = $_REQUEST['usr'];
+			$username = str_replace(' ', '', $username);
 			$password = md5($_REQUEST['pwd']);
 		}
-		$username = $_REQUEST['usr'];
-		$password = md5($_REQUEST['pwd']);
+		
 		if ($password != '' && $username != '') {
 			
 			$usermodel = new UserModel();

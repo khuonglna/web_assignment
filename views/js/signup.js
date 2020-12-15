@@ -1,6 +1,12 @@
 function sign_up() {
 	username = document.getElementById("name").value;
 	password = document.getElementById("pass").value;
+	password2 = document.getElementById("pass2").value;
+	if (password != password2){
+		document.getElementById("notification").textContent =
+					"Please confirm your password again";
+		return;
+	}
 	cookie = document.getElementById("cookie");
 	var url = "";
 	if (cookie.checked) {
@@ -22,14 +28,13 @@ function sign_up() {
 			if (response == 1) {
 				document.getElementById("notification").textContent =
 					"Registered username";
-				var form = document.getElementById("signup_form");
-				form.reset();
 			}
 			if (response == 2) {
 				document.getElementById("notification").textContent =
 					"Please input username and password";
-				var form = document.getElementById("signup_form");
-				form.reset();
+			}
+			if (response ==3){
+				document.getElementById("passwordRule").style.display = 'inline';
 			}
 		}
 	};
