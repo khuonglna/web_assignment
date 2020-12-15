@@ -35,12 +35,6 @@ if (isset($_GET['page'])) {
         include "views/delete_question_view.html";
     } 
     elseif ($page == "insert_staff" && $role == ADMIN) {
-        // $controller = isset($_GET['controller']) ? $_GET['controller'] . 'Controller' : 'StaffController';
-        // $action = isset($_GET['action']) ? $_GET['action'] : 'insertStaff';
-
-        // require_once('controllers/insert_staff_controller.php');
-        // $usercontroller = new $controller();
-        // $usercontroller->$action();
         include "views/insert_staff_view.html";
     } 
     elseif ($page == "delete_staff" && $role == ADMIN) {
