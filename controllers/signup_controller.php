@@ -11,6 +11,7 @@ class UserController
 		$password = '';
 		if ($res == 'signup') {
 			$username = $_REQUEST['usr'];
+			$username = str_replace(' ', '', $username);
 			$password = $_REQUEST['pwd'];
 		}
 		$uppercase = preg_match('@[A-Z]@', $password);
