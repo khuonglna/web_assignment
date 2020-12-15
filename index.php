@@ -49,7 +49,7 @@ if (isset($_GET['page'])) {
     elseif ($page == "exam_view") {
         include "views/exam_view.html";
     } 
-    elseif ($page == "result") {
+    elseif ($page == "result" && $_SESSION['role'] != null) {
         include "views/result.html";
     } 
     elseif ($page == "ranking") {
