@@ -59,11 +59,11 @@ function showRanking(resultList) {  // ALL-TIME
 		var categoryHeader = newRow.insertCell(1);
 		categoryHeader.appendChild(document.createTextNode('Username'));
 		var levelHeader = newRow.insertCell(2);
-		levelHeader.appendChild(document.createTextNode('Hard Level Score'));
+		levelHeader.appendChild(document.createTextNode('Native Level Score'));
 		var scoreHeader = newRow.insertCell(3);
-		scoreHeader.appendChild(document.createTextNode('Medium Level Score'));
+		scoreHeader.appendChild(document.createTextNode('Intermediate Level Score'));
 		var timeHeader = newRow.insertCell(4);
-		timeHeader.appendChild(document.createTextNode('Easy Level Score'));
+		timeHeader.appendChild(document.createTextNode('Elementary Level Score'));
 
         resultList = sortUser(resultList);
         // console.log(resultList);
@@ -108,11 +108,11 @@ function showRankingLastMonth(resultList) {  // Last-month
 		var categoryHeader = newRow.insertCell(1);
 		categoryHeader.appendChild(document.createTextNode('Username'));
 		var levelHeader = newRow.insertCell(2);
-		levelHeader.appendChild(document.createTextNode('Hard Level Score'));
+		levelHeader.appendChild(document.createTextNode('Native Level Score'));
 		var scoreHeader = newRow.insertCell(3);
-		scoreHeader.appendChild(document.createTextNode('Medium Level Score'));
+		scoreHeader.appendChild(document.createTextNode('Intermediate Level Score'));
 		var timeHeader = newRow.insertCell(4);
-		timeHeader.appendChild(document.createTextNode('Easy Level Score'));
+		timeHeader.appendChild(document.createTextNode('Elementary Level Score'));
 
         resultList = sortUser(resultList);
         // console.log(resultList);
@@ -158,11 +158,11 @@ function showRankingLastWeek(resultList) {  // Last-week
 		var categoryHeader = newRow.insertCell(1);
 		categoryHeader.appendChild(document.createTextNode('Username'));
 		var levelHeader = newRow.insertCell(2);
-		levelHeader.appendChild(document.createTextNode('Hard Level Score'));
+		levelHeader.appendChild(document.createTextNode('Native Level Score'));
 		var scoreHeader = newRow.insertCell(3);
-		scoreHeader.appendChild(document.createTextNode('Medium Level Score'));
+		scoreHeader.appendChild(document.createTextNode('Intermediate Level Score'));
 		var timeHeader = newRow.insertCell(4);
-		timeHeader.appendChild(document.createTextNode('Easy Level Score'));
+		timeHeader.appendChild(document.createTextNode('Elementary Level Score'));
 
         resultList = sortUser(resultList);
         // console.log(resultList);
