@@ -40,8 +40,9 @@ function sortUser(resultList){
     result.push({"username" :tempName,
                 "hardScore": hardScore, 
                 "mediumScore": mediumScore, 
-                "easyScore" : easyScore});
-    return result.sort(function(a,b){return b.hardScore - a.hardScore});
+				"easyScore" : easyScore});
+	return result.sort(function(a,b){return ((b.hardScore*3 + b.mediumScore*2 + b.easyScore) - 
+											(a.hardScore*3 + a.mediumScore*2 + a.easyScore))});
 }
 
 
