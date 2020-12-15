@@ -211,8 +211,7 @@ function openDifficult(ele) {
 function closeDifficult(ele) {
 	var id = ele.id;
 	document.getElementById(id).style.display = "none";
-	document.getElementById(id.substr(0, id.length - 6)).style.display =
-		"block";
+	document.getElementById(id.substr(0, id.length - 6)).style.display = "block";
 }
 
 function sF(ele) {
@@ -288,7 +287,7 @@ function createCategory(name, id, index) {
 	var Native = document.createElement("button");
 	var pbreak = document.createElement("br");
 
-	var color = parseInt('180A00',16) * parseInt(index) + parseInt('268FFF', 16);
+	var color = parseInt('130A00',16) * parseInt(index) + parseInt('258FFF', 16);
 	var background = intToARGB(color.toString(16));
 
 	container.setAttribute("style", "background: #" + background + ";");
