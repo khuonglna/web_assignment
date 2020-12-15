@@ -81,7 +81,7 @@ class QuestionModel extends DbModel
                 FROM 
                     QUESTION 
                 WHERE 
-                    Q_TEXT='$questionText'";
+                    Q_TEXT = '$questionText'";
         $res = mysqli_query($conn, $sql);
         if (!$res) {
             echo mysqli_error($conn);

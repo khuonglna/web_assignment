@@ -9,40 +9,21 @@ class UserModel extends DbModel
             return false;
         }
         $conn = $this->connect();
-        $sql = "SELECT 
+        $sql = 'SELECT 
                     *
                 FROM 
                     USERS 
                 WHERE 
-                    username = ?";
-        $stmt = mysqli_prepare($conn, $sql);
-        if (!$stmt) {
+                    username = "'. $username .'"';
+        $res = mysqli_query($conn, $sql);
+        if (mysqli_num_rows($res) > 0) {
             return false;
         }
-        mysqli_stmt_bind_param($stmt, "s", $username);
-        // $res = mysqli_query($conn, $sql);
-        if (!mysqli_stmt_execute($stmt)) {
-            return false;
-        }
-        mysqli_stmt_bind_result($stmt, $name, $pass, $role);
-        if (mysqli_stmt_fetch($stmt)) {
-            return false;
-        }
-
-        $sql = "INSERT INTO 
-                    USERS (username, password) 
-                VALUES 
-                    (? , ?)";
-        $stmt = mysqli_prepare($conn, $sql);
-        if (!$stmt) {
-            return false;
-        }
-        if (!mysqli_stmt_execute($stmt)) {
-            return false;
-        }
-        $password = md5($password);
-        mysqli_stmt_bind_param($stmt, "ss", $username, $password);
-        if (!mysqli_stmt_execute($stmt)) {
+        $query = "INSERT INTO 
+                        USERS (username, password) 
+                    VALUES 
+                        ('$username','" . md5($password) . "')";
+        if (!mysqli_query($conn, $query)) {
             return false;
         }
         return true;
@@ -50,39 +31,6 @@ class UserModel extends DbModel
 
     public function login($username, $password)
     {
-        // if ($username == '' || $password == '') {
-        //     return false;
-        // }
-        // $conn = $this->connect();
-        // $sql = "SELECT 
-        //             *
-        //         FROM
-        //             USERS
-        //         WHERE 
-        //             `username` = ? AND `password` = ?";
-        // $stmt = mysqli_prepare($conn, $sql);
-        // if (!$stmt) {
-        //     return false;
-        // }
-        // $password = md5($password);
-        // mysqli_stmt_bind_param($stmt, "ss", $username, $password);
-        // if (!mysqli_stmt_execute($stmt)) {
-        //     return false;
-        // }
-        // mysqli_stmt_bind_result($stmt, $name, $pass, $role);
-        // // $stmt->bind_result($name, $pass, $role);
-        // $result = array();
-        // // echo "ba";
-        // if (!$stmt->fetch()) {
-        //     echo "hmm2";
-        // }
-        // // while (mysqli_stmt_fetch($stmt)) {
-        //     echo "Hello" . $name . $role;
-        //     $result = array("username" => $name, "role" => $role);
-        // // }
-        // // echo implode($result);
-        // return $result;
-        // return false;
         if ($username == '' || $password == '') {
             return false;
         }
@@ -108,12 +56,12 @@ class UserModel extends DbModel
             return false;
         }
         $conn = $this->connect();
-        $sql = "SELECT 
-                        *
-                    FROM 
-                        USERS 
-                    WHERE 
-                        username='$username'";
+        $sql = 'SELECT 
+                    *
+                FROM 
+                    USERS 
+                WHERE 
+                    username = "'. $username .'"';
         $res = mysqli_query($conn, $sql);
         if (mysqli_num_rows($res) > 0) {
             return false;
@@ -156,11 +104,11 @@ class UserModel extends DbModel
             return false;
         }
         $conn = $this->connect();
-        $sql = "DELETE
+        $sql = 'DELETE
                 FROM 
                     USERS 
                 WHERE 
-                    username='$username'";
+                    username ="'. $username .'"';
         if (!mysqli_query($conn, $sql)) return false;
         return true;
     }
