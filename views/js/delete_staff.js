@@ -84,18 +84,17 @@ function confirmDeleteStaff() {
 	if (decision) {
         var table = document.getElementById("staffTable");
         var del = false;
-        // console.log(table.length);
-        for (var index = table.rows.length - 1; index >= 0; index--) {
-            var nstaff = document.getElementById("btn" + index);
+        for (var idx = table.rows.length - 1; idx >= 0; idx--) {
+            var nstaff = document.getElementById("btn" + idx);
             if (nstaff.checked) { 
                 del = true;
                 var staff = nstaff.parentElement.getAttribute("id");
                 var dataStr = "&staff=" + staff;
-                nstaff.checked = "false";
-                requestDelStaff(dataStr, index);
+                // nstaff.checked = "false";
+                requestDelStaff(dataStr);
+                // table.deleteRow(idx);
             }
         }
-        // console.log(request + " - ");
         if (del == false) {
             openNothingNoti();
         } else {
@@ -106,6 +105,12 @@ function confirmDeleteStaff() {
 
 function resetStaffTable() {
     var table = document.getElementById("staffTable");
+    for (var idx = table.rows.length - 1; idx >= 0; idx--) {
+        var nstaff = document.getElementById("btn" + idx);
+        if (nstaff.checked) {
+            table.deleteRow(idx);
+        }
+    }
     for (var i = 0; i < table.rows.length; i++) {
         table.rows[i].cells[0].innerHTML = i + 1;
         table.rows[i].cells[3].children[0].id = "btn" + i;
@@ -132,9 +137,9 @@ function getStaffList() {
     ajax.send();
 }
 
-function requestDelStaff(dataStr, index) {
-    var table = document.getElementById("staffTable");
+function requestDelStaff(dataStr) {
     request = "function=deleteStaff" + dataStr;
+    console.log(request);
 
     ajax.onreadystatechange = function () {
         if (this.readyState == 4 && this.status == 200) {
@@ -142,7 +147,6 @@ function requestDelStaff(dataStr, index) {
             // console.log(data);
             // alert(data);
             if (data == true) {
-                table.deleteRow(index);
                 openDelSuccess();
                 // location.reload();
             } else {
