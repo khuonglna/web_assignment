@@ -34,17 +34,17 @@ ajax.onreadystatechange = function () {
 		toggleTopNavbar(state, name);
 		switch (userType) {
 			case "1":
-				var navitem = document.createElement("li");
-				var para = document.createElement("a");
-				var node = document.createTextNode("Exam");
-				navitem.classList.add("nav-item");
+				// var navitem = document.createElement("li");
+				// var para = document.createElement("a");
+				// var node = document.createTextNode("Exam");
+				// navitem.classList.add("nav-item");
 
-				navitem.appendChild(para);
-				navitem.classList.add("pl-4");
-				// para.style.fontSize = "200%";
-				para.appendChild(node);
-				para.href = "index.php?page=exam_view";
-				para.classList.add("nav-link");
+				// navitem.appendChild(para);
+				// navitem.classList.add("pl-4");
+				// // para.style.fontSize = "200%";
+				// para.appendChild(node);
+				// para.href = "index.php?page=exam_view";
+				// para.classList.add("nav-link");
 				break;
 			case "2":
 				var navitem = document.createElement("li");
@@ -81,8 +81,45 @@ ajax.onreadystatechange = function () {
 				container.appendChild(modifyNode);
 				navitem.appendChild(parent);
 				navitem.appendChild(container);
+				var element = document.getElementById("nav_menu");
+				element.insertBefore(navitem, element.childNodes[2]);
 				break;
 			case "3":
+				var navitemQ = document.createElement("li");
+				var parentQ = document.createElement("a");
+				var containerQ = document.createElement("div");
+				var insertNodeQ = document.createElement("a");
+				var deleteNodeQ = document.createElement("a");
+				var modifyNodeQ = document.createElement("a");
+				var insertTextQ = document.createTextNode("Add Question");
+				var deleteTextQ = document.createTextNode("Delete Question");
+				var modifyTextQ = document.createTextNode("Modify Question");
+				var nodeTextQ = document.createTextNode("Manage Exam");
+				insertNodeQ.classList.add("dropdown-item");
+				deleteNodeQ.classList.add("dropdown-item");
+				modifyNodeQ.classList.add("dropdown-item");
+				insertNodeQ.href = "index.php?page=add_question";
+				deleteNodeQ.href = "index.php?page=delete_question";
+				modifyNodeQ.href = "index.php?page=modify_question";
+				containerQ.classList.add("dropdown-menu");
+				parentQ.classList.add("nav-link");
+				parentQ.classList.add("dropdown-toggle");
+				navitemQ.classList.add("nav-item");
+				navitemQ.classList.add("pl-4");
+				navitemQ.classList.add("dropdown");
+				// navitem.id = "aadd";
+				parentQ.setAttribute("data-toggle", "dropdown");
+
+				insertNodeQ.appendChild(insertTextQ);
+				deleteNodeQ.appendChild(deleteTextQ);
+				modifyNodeQ.appendChild(modifyTextQ);
+				parentQ.appendChild(nodeTextQ);
+				containerQ.appendChild(insertNodeQ);
+				containerQ.appendChild(deleteNodeQ);
+				containerQ.appendChild(modifyNodeQ);
+				navitemQ.appendChild(parentQ);
+				navitemQ.appendChild(containerQ);
+
 				var navitem = document.createElement("li");
 				var parent = document.createElement("a");
 				var container = document.createElement("div");
@@ -110,24 +147,31 @@ ajax.onreadystatechange = function () {
 				container.appendChild(deleteNode);
 				navitem.appendChild(parent);
 				navitem.appendChild(container);
+				var element = document.getElementById("nav_menu");
+				element.insertBefore(navitem, element.childNodes[2]);
+				element.insertBefore(navitemQ, element.childNodes[2]);
 				break;
 			default:
-				var navitem = document.createElement("li");
-				var para = document.createElement("a");
-				var node = document.createTextNode("Exam");
-				navitem.classList.add("nav-item");
-				// navitem.id = "aadd";
-				navitem.classList.add("pl-4");
-				navitem.appendChild(para);
-				para.appendChild(node);
-				para.href = "index.php?page=exam_view";
-				para.classList.add("nav-link");
+				// var navitem = document.createElement("li");
+				// var para = document.createElement("a");
+				// var node = document.createTextNode("Exam");
+				// navitem.classList.add("nav-item");
+				// // navitem.id = "aadd";
+				// navitem.classList.add("pl-4");
+				// navitem.appendChild(para);
+				// para.appendChild(node);
+				// para.href = "index.php?page=exam_view";
+				// para.classList.add("nav-link");
 				break;
 		}
-		navitem.id = "aadd";
-		var element = document.getElementById("nav_menu");
-		element.insertBefore(navitem, element.childNodes[2]);
-
+		// navitem.id = "aadd";
+		// var element = document.getElementById("nav_menu");
+		// if (userType == 2 || userType == 3) {
+		// 	element.insertBefore(navitem, element.childNodes[2]);
+		// 	if (userType == 3) {
+				
+		// 	}
+		// }
 		// var ahome = document.getElementById("ahome");
 		// var aabout = document.getElementById("aabout");
 		// var aadd = document.getElementById("aadd");
@@ -157,7 +201,7 @@ function toggleTopNavbar(state, name) {
 	} else {
 		login.style.display = "none";
 		signup.style.display = "none";
-		footer.removeAttribute("style");
+		footer.style.display = "";
 		username.removeAttribute("style");
 		logout.removeAttribute("style");
 		usershow.removeAttribute("style");
@@ -173,26 +217,28 @@ function logout() {
 		if (this.readyState == 4 && this.status == 200) {
 			console.log(this.responseText);
 			if (this.responseText) {
-				document.cookie = "user=;expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
-				document.cookie = "role=;expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
-				window.location.replace('index.php?page=home');
+				document.cookie =
+					"user=;expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+				document.cookie =
+					"role=;expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+				window.location.replace("index.php?page=home");
 			}
 		}
-	}
+	};
 }
 
 function getCookie(cname) {
 	var name = cname + "=";
 	var decodedCookie = decodeURIComponent(document.cookie);
-	var ca = decodedCookie.split(';');
-	for(var i = 0; i <ca.length; i++) {
-	  var c = ca[i];
-	  while (c.charAt(0) == ' ') {
-		c = c.substring(1);
-	  }
-	  if (c.indexOf(name) == 0) {
-		return c.substring(name.length, c.length);
-	  }
+	var ca = decodedCookie.split(";");
+	for (var i = 0; i < ca.length; i++) {
+		var c = ca[i];
+		while (c.charAt(0) == " ") {
+			c = c.substring(1);
+		}
+		if (c.indexOf(name) == 0) {
+			return c.substring(name.length, c.length);
+		}
 	}
 	return "";
-  }
+}
