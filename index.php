@@ -25,13 +25,13 @@ if (isset($_GET['page'])) {
     elseif ($page == "home") {
         include "views/$page.html";
     } 
-    elseif ($page == "modify_question" && ($role == STAFF || $role == ADMIN)){
+    elseif ($page == "modify_question" && $role == STAFF) {
         include "views/modify_question_view.html";
     }
-    elseif ($page == "add_question" && ($role == STAFF || $role == ADMIN)) {
+    elseif ($page == "add_question" && $role == STAFF) {
         include "views/add_question_view.html";
     } 
-    elseif ($page == "delete_question" && ($role == STAFF || $role == ADMIN)) {
+    elseif ($page == "delete_question" && $role == STAFF) {
         include "views/delete_question_view.html";
     } 
     elseif ($page == "insert_staff" && $role == ADMIN) {
@@ -57,4 +57,4 @@ if (isset($_GET['page'])) {
     }
 }
 else include "views/home.html";
-include 'views/footer.html';
+require_once 'views/footer.html';

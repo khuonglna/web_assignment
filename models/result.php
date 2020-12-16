@@ -38,7 +38,7 @@ class ResultModel extends DbModel
                     SUM(s_score) AS total_score
                 FROM
                     submission s
-                JOIN users u ON
+                LEFT JOIN users u ON
                     s.username = u.username AND u.role = 1
                 WHERE
                     s_level = $level
@@ -63,7 +63,7 @@ class ResultModel extends DbModel
                     SUM((s_level * s_score)) AS total_score
                 FROM
                     submission s
-                JOIN users u ON
+                LEFT JOIN users u ON
                     s.username = u.username AND u.role = 1
                 JOIN category ON c_id = s_category
                 WHERE
@@ -83,7 +83,7 @@ class ResultModel extends DbModel
         $conn = $this->connect();
         $sql = "SELECT s.username, s_level, s_score
                 FROM submission s
-                JOIN users u ON
+                LEFT JOIN users u ON
                     s.username = u.username AND u.role = 1
                 ORDER BY username
         ";
@@ -96,7 +96,7 @@ class ResultModel extends DbModel
         $conn = $this->connect();
         $sql = "SELECT s.username, s_level, s_score
                 FROM submission s
-                JOIN users u ON
+                LEFT JOIN users u ON
                     s.username = u.username AND u.role = 1
                 WHERE YEAR(s_date) = YEAR(CURRENT_DATE - INTERVAL 1 MONTH) 
                     AND MONTH(s_date) = MONTH(CURRENT_DATE - INTERVAL 1 MONTH)
@@ -111,7 +111,7 @@ class ResultModel extends DbModel
         $conn = $this->connect();
         $sql = "SELECT s.username, s_level, s_score
                 FROM submission s
-                JOIN users u ON
+                LEFT JOIN users u ON
                     s.username = u.username AND u.role = 1
                 WHERE s_date >= curdate() - INTERVAL DAYOFWEEK(curdate())+6 DAY
                     AND s_date < curdate() - INTERVAL DAYOFWEEK(curdate())-1 DAY
