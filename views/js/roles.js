@@ -1,6 +1,6 @@
 var ajax = new XMLHttpRequest();
 var method = "GET";
-var url = "controllers/session_ptj.php?logout=0";
+var urlRole = "controllers/session_ptj.php?logout=0";
 var asynchronous = true;
 var userType;
 var LOGOUT = 0;
@@ -8,7 +8,7 @@ var LOGIN = 1;
 var state;
 var name;
 var role;
-ajax.open(method, url, asynchronous);
+ajax.open(method, urlRole, asynchronous);
 ajax.send();
 
 ajax.onreadystatechange = function () {
