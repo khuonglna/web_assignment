@@ -83,18 +83,16 @@ function confirmDeleteStaff() {
 
 	if (decision) {
         var table = document.getElementById("staffTable");
-        var idx = 0;
         var del = false;
         // console.log(table.length);
-        for (idx = table.rows.length - 1; idx >= 0; idx--) {
-            var nstaff = document.getElementById("btn" + idx);
+        for (var index = table.rows.length - 1; index >= 0; index--) {
+            var nstaff = document.getElementById("btn" + index);
             if (nstaff.checked) { 
                 del = true;
                 var staff = nstaff.parentElement.getAttribute("id");
                 var dataStr = "&staff=" + staff;
                 nstaff.checked = "false";
-                requestDelStaff(dataStr);
-                table.deleteRow(idx);
+                requestDelStaff(dataStr, index);
             }
         }
         // console.log(request + " - ");
@@ -134,14 +132,17 @@ function getStaffList() {
     ajax.send();
 }
 
-function requestDelStaff(dataStr) {
+function requestDelStaff(dataStr, index) {
+    var table = document.getElementById("staffTable");
     request = "function=deleteStaff" + dataStr;
+
     ajax.onreadystatechange = function () {
         if (this.readyState == 4 && this.status == 200) {
             var data = this.responseText;
             // console.log(data);
             // alert(data);
             if (data == true) {
+                table.deleteRow(index);
                 openDelSuccess();
                 // location.reload();
             } else {
