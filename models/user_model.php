@@ -42,12 +42,17 @@ class UserModel extends DbModel
                 WHERE 
                     username = "' . $username . '" and password = "' . $password . '"';
         $res = mysqli_query($conn, $sql);
-        if (mysqli_num_rows($res) > 0) {
-            $row = mysqli_fetch_assoc($res);
-            return $row;
+        if ($res) {
+            if (mysqli_num_rows($res) > 0) {
+                $row = mysqli_fetch_assoc($res);
+                return $row;
+            } else {
+                return null;
+            }
         } else {
             return null;
         }
+        
     }
 
     public function addStaff($username, $password)
